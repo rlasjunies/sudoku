@@ -1,0 +1,71 @@
+.sudoku-board {
+    margin:10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sudoku-board .row {
+    display: flex;
+    /* flex: 1; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.sudoku-board .cell {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 95px;
+    min-height: 95px;
+}
+
+.sudoku-board .cell .value {
+    margin: auto;
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.selected {
+    background-color: antiquewhite;
+}
+
+/* 
+
+Draw the black line of the board 
+
+*/
+.sudoku-board .row0 {
+    border-top: black;
+    border-top-style: solid;
+}
+.sudoku-board .row1, .row4, .row7 {
+    border-top: black;
+    border-top-style: dotted;
+}
+
+.sudoku-board .row2, .row5, .row8 {
+    border-top: black;
+    border-top-style: dotted;
+    border-bottom: black;
+    border-bottom-style: solid;
+}
+
+.sudoku-board .column0 {
+    border-left: black;
+    border-left-style: solid;
+}
+.column1, .column4, .column7{
+    border-left: black;
+    border-left-style: dotted;
+}
+.sudoku-board .column2, .column5, .column8 {
+    border-left: black;
+    border-left-style: dotted;
+    border-right: black;
+    border-right-style: solid;
+}
+
+.sudoku-board .incorrect {
+    background-color: burlywood;
+}

@@ -7,54 +7,52 @@
 
 import '@stencil/core';
 
-import '@stencil/router';
-import '@stencil/state-tunnel';
-import {
-  MatchResults,
-} from '@stencil/router';
+
 
 
 export namespace Components {
 
-  interface AppHome {}
-  interface AppHomeAttributes extends StencilHTMLAttributes {}
-
-  interface AppProfile {
-    'match': MatchResults;
-  }
-  interface AppProfileAttributes extends StencilHTMLAttributes {
-    'match'?: MatchResults;
-  }
-
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface KeyBoard {}
+  interface KeyBoardAttributes extends StencilHTMLAttributes {
+    'onKeyClicked'?: (event: CustomEvent) => void;
+  }
+
+  interface KeyBoard2 {}
+  interface KeyBoard2Attributes extends StencilHTMLAttributes {
+    'onKeyClicked'?: (event: CustomEvent) => void;
+  }
+
+  interface SudokuBoard {
+    'board': number[];
+    'cellSelected': number;
+    'incorrectCells': number[];
+  }
+  interface SudokuBoardAttributes extends StencilHTMLAttributes {
+    'board'?: number[];
+    'cellSelected'?: number;
+    'incorrectCells'?: number[];
+    'onCellSelection'?: (event: CustomEvent) => void;
+  }
 }
 
 declare global {
   interface StencilElementInterfaces {
-    'AppHome': Components.AppHome;
-    'AppProfile': Components.AppProfile;
     'AppRoot': Components.AppRoot;
+    'KeyBoard': Components.KeyBoard;
+    'KeyBoard2': Components.KeyBoard2;
+    'SudokuBoard': Components.SudokuBoard;
   }
 
   interface StencilIntrinsicElements {
-    'app-home': Components.AppHomeAttributes;
-    'app-profile': Components.AppProfileAttributes;
     'app-root': Components.AppRootAttributes;
+    'key-board': Components.KeyBoardAttributes;
+    'key-board2': Components.KeyBoard2Attributes;
+    'sudoku-board': Components.SudokuBoardAttributes;
   }
 
-
-  interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {}
-  var HTMLAppHomeElement: {
-    prototype: HTMLAppHomeElement;
-    new (): HTMLAppHomeElement;
-  };
-
-  interface HTMLAppProfileElement extends Components.AppProfile, HTMLStencilElement {}
-  var HTMLAppProfileElement: {
-    prototype: HTMLAppProfileElement;
-    new (): HTMLAppProfileElement;
-  };
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
@@ -62,16 +60,36 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLKeyBoardElement extends Components.KeyBoard, HTMLStencilElement {}
+  var HTMLKeyBoardElement: {
+    prototype: HTMLKeyBoardElement;
+    new (): HTMLKeyBoardElement;
+  };
+
+  interface HTMLKeyBoard2Element extends Components.KeyBoard2, HTMLStencilElement {}
+  var HTMLKeyBoard2Element: {
+    prototype: HTMLKeyBoard2Element;
+    new (): HTMLKeyBoard2Element;
+  };
+
+  interface HTMLSudokuBoardElement extends Components.SudokuBoard, HTMLStencilElement {}
+  var HTMLSudokuBoardElement: {
+    prototype: HTMLSudokuBoardElement;
+    new (): HTMLSudokuBoardElement;
+  };
+
   interface HTMLElementTagNameMap {
-    'app-home': HTMLAppHomeElement
-    'app-profile': HTMLAppProfileElement
     'app-root': HTMLAppRootElement
+    'key-board': HTMLKeyBoardElement
+    'key-board2': HTMLKeyBoard2Element
+    'sudoku-board': HTMLSudokuBoardElement
   }
 
   interface ElementTagNameMap {
-    'app-home': HTMLAppHomeElement;
-    'app-profile': HTMLAppProfileElement;
     'app-root': HTMLAppRootElement;
+    'key-board': HTMLKeyBoardElement;
+    'key-board2': HTMLKeyBoard2Element;
+    'sudoku-board': HTMLSudokuBoardElement;
   }
 
 

@@ -14,12 +14,19 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
-    "jsxFactory": "h"
+    "jsxFactory": "h",
+    "baseUrl": ".",
+    "paths": {
+      "state/*":["src/state/*"],
+      "services/*":["src/services/*"],
+      // "*":["./src/*"],
+    }
   },
   "include": [
     "src"
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  
 }
