@@ -5,6 +5,8 @@
   x  change la couleur de fond
   - est-ce possible de réduire la taille des autres des autres valeurs?
 
+[ ] mettre en evidence les chiffres quand l'utilisateur sélectionne un chiffre
+[ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
 [ ] informer l'utilisateur quand le tableau est fini
 [ ] proposer la génération de nouveau tableau quand le jeu commence
 [ ] proposer la génération de nouveau tableau quand le jeu est terminé
@@ -16,4 +18,9 @@
 * (resize the table depend on the siez of the screen)
 (mediaquery)
 * put the "keyboard" on the side when 
+
+
+# FIXME: 
+
+[x] when starting the cell is selected
 

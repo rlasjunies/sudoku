@@ -31,10 +31,12 @@ export class SudokuBoard {
 
         const isIncorrectCell = this.incorrectCells.lastIndexOf(cell) !== -1;
         const incorrectClass = isIncorrectCell ? " incorrect " : "";
-        const cellSelectedClass = (this.cellSelected === cell) ||
+        console.log(`cell:${cell} - selected:${this.cellSelected} - ${((this.cellSelected !== -1) && (this.cellSelected !== null))}`);
+        const cellSelectedClass = ((this.cellSelected !== -1) && (this.cellSelected !== null)) && 
+            ((this.cellSelected === cell) ||
             (colOfCell === colOfCellSelected) ||
             (rowOfCell === rowOfCellSelected) ||
-            (zoneOfCell === zoneOfCellSelected) ? " selected " : "";
+            (zoneOfCell === zoneOfCellSelected)) ? " selected " : "";
 
         return `cell` +
             ` cell${cell} ` +
