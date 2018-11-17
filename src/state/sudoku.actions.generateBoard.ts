@@ -1,5 +1,5 @@
 import { AppAction } from "./app.actions";
-import { generateSudokuBoard, SudokuLevelType } from "../services/sudoku/sudoku";
+import { generateSudokuBoard, SudokuLevelType, initializeCandidatesBoard } from "../services/sudoku/sudoku";
 import { SudokuPageState } from "./sudoku.state";
 import { SudokuAction } from "./sudoku.actions";
 export const GENERATE_BOARD = "GENERATE_BOARD"; 
@@ -25,6 +25,7 @@ export function generateBoardReducer(state:SudokuPageState, action:SudokuAction)
     ...state,
     board: board,
     boardLevel: level,
-    incorrectCells: []
+    incorrectCells: [],
+    candidatesBoard: initializeCandidatesBoard()
   }
 }

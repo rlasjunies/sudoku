@@ -7,7 +7,7 @@
 
 [x] définir les valeurs possibles
 [ ] pouvoir annuler le dernier coup 
-[ ] interdire l'écrassement d'une valeur donnée intialement
+[ ] interdire l'écrassement d'une valeur donnée initialement
 [ ] mettre en evidence les chiffres quand l'utilisateur sélectionne un chiffre
 [ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
 [ ] informer l'utilisateur quand le tableau est fini
@@ -25,4 +25,4 @@
 # FIXME: 
 
 [x] when starting the cell is selected
-
+[x] reinitiliaze the candidates same time as the board
