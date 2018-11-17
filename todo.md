@@ -6,6 +6,7 @@
   - est-ce possible de réduire la taille des autres des autres valeurs?
 
 [x] définir les valeurs possibles
+[x] mettre en évidence la cellule sélectionnée, par rapport aux lignes/colonnes/zone
 [ ] pouvoir annuler le dernier coup 
 [ ] interdire l'écrassement d'une valeur donnée initialement
 [ ] mettre en evidence les chiffres quand l'utilisateur sélectionne un chiffre

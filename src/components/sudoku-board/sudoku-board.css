@@ -20,6 +20,10 @@
     min-height: 95px;
 }
 
+.area-selected {
+    background-color: cornsilk;
+} 
+
 .selected {
     background-color: antiquewhite;
 } 

@@ -42,6 +42,6 @@
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.sudoku-board-cell .selected {
+/* .sudoku-board-cell .selected {
     background-color: antiquewhite;
-}
+} */
