@@ -28,6 +28,9 @@ export class SudokuBoard {
     }
 
     returnClassForTheCell(cell: number) {
+        const selectedCellValue = this.board[this.cellSelected] + "";
+        const cellValue = this.board[cell] + "";
+
         const colOfCell = colOfCellNumber(cell);
         const rowOfCell = rowOfCellNumber(cell);
         const zoneOfCell = zoneOfCellNumber(cell);
@@ -39,13 +42,21 @@ export class SudokuBoard {
         const isIncorrectCell = this.incorrectCells.lastIndexOf(cell) !== -1;
         const incorrectClass = isIncorrectCell ? " incorrect " : "";
         // console.log(`cell:${cell} - selected:${this.cellSelected} - ${((this.cellSelected !== -1) && (this.cellSelected !== null))}`);
-        const cellsSelectedClass = ((this.cellSelected !== -1) && 
-            (this.cellSelected !== null) && 
+        const cellsSelectedClass = ((this.cellSelected !== -1) &&
+            (this.cellSelected !== null) &&
             (this.cellSelected !== cell) &&
             ((colOfCell === colOfCellSelected) ||
                 (rowOfCell === rowOfCellSelected) ||
                 (zoneOfCell === zoneOfCellSelected))) ? " area-selected " : "";
         const cellSelectedClass = (this.cellSelected === cell) ? " selected " : "";
+
+        const sameValueAsTheOneSelected =
+            (
+                (selectedCellValue == cellValue) &&
+                (selectedCellValue !== "undefined") && 
+                (cellValue !== "undefined")
+            ) ? " selected " : "";
+        console.log(`selectCellValue:${selectedCellValue} - cellValue:${cellValue} - ${sameValueAsTheOneSelected} - ${typeof (selectedCellValue)} - ${typeof (cellValue)}`);
         return `cell` +
             ` cell${cell} ` +
             ` row${rowOfCell} ` +
@@ -53,6 +64,7 @@ export class SudokuBoard {
             ` zone${zoneOfCell}` +
             cellsSelectedClass +
             cellSelectedClass +
+            sameValueAsTheOneSelected +
             incorrectClass;
     }
 

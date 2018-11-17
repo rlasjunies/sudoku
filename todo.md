@@ -7,15 +7,14 @@
 
 [x] définir les valeurs possibles
 [x] mettre en évidence la cellule sélectionnée, par rapport aux lignes/colonnes/zone
-[ ] pouvoir annuler le dernier coup 
-[ ] interdire l'écrassement d'une valeur donnée initialement
-[ ] mettre en evidence les chiffres quand l'utilisateur sélectionne un chiffre
+[x] mettre en evidence les chiffres quand l'utilisateur sélectionne un chiffre
+[ ] when the app restart, the game restart at the same stage (persist the state in the localstaorage)  
 [ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
+[ ] interdire l'écrassement d'une valeur donnée initialement
+[ ] pouvoir annuler le dernier coup 
 [ ] informer l'utilisateur quand le tableau est fini
 [ ] proposer la génération de nouveau tableau quand le jeu commence
 [ ] proposer la génération de nouveau tableau quand le jeu est terminé
-[ ] faire disparaitre une touche 
-[ ] when the app restart, the game restart at the same stage (persist the state in the localstaorage)  
 
 [ ] user can play on small device
 * (resize the table depend on the siez of the screen)

@@ -20,13 +20,6 @@
     min-height: 95px;
 }
 
-.area-selected {
-    background-color: cornsilk;
-} 
-
-.selected {
-    background-color: antiquewhite;
-} 
 
 /* 
 
@@ -64,6 +57,14 @@ Draw the black line of the board
     border-right-style: solid;
 }
 
-.sudoku-board .incorrect {
+.incorrect {
     background-color: burlywood;
 }
+
+.area-selected {
+    background-color: cornsilk;
+} 
+
+.selected {
+    background-color: antiquewhite;
+} 
