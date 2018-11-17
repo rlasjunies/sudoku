@@ -3,6 +3,7 @@ import { SudokuAction } from "./sudoku.actions";
 import { CELL_SELECTED_ACTION, cellSelectedReducer } from "./sudoku.actions.cellSelected";
 import { GENERATE_BOARD, generateBoardReducer } from "./sudoku.actions.generateBoard";
 import { VALUE_TYPED_ACTION, valueTypedReducer } from "./sudoku.actions.valueTyped";
+import { swtichModeReducer } from "./sudoku.actions.switchDraftMode";
 export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialState, action: SudokuAction) {
   switch (action.type) {
     case CELL_SELECTED_ACTION: {
@@ -13,6 +14,9 @@ export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialStat
     };
     case VALUE_TYPED_ACTION: {
       return valueTypedReducer(state, action);
+    }
+    case "SWITCH_DRAFT_MODE":{
+      return swtichModeReducer(state, action);
     }
   }
 

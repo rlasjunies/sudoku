@@ -20,15 +20,9 @@
     min-height: 95px;
 }
 
-.sudoku-board .cell .value {
-    margin: auto;
-    font-size: 50px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
 .selected {
     background-color: antiquewhite;
-}
+} 
 
 /* 
 

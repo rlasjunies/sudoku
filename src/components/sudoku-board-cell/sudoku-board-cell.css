@@ -1,0 +1,47 @@
+.sudoku-board-cell-draft {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.sudoku-board-cell-draft .row {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: center;
+}
+
+.sudoku-board-cell-draft .draft {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 30px;
+    min-height: 30px;
+    font-size: 25px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.sudoku-board-cell-draft .cell .value {
+    margin: auto;
+    font-size: 15px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.sudoku-board-cell {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 95px;
+    min-height: 95px;
+}
+
+.sudoku-board-cell .value {
+    margin: auto;
+    font-size: 50px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.sudoku-board-cell .selected {
+    background-color: antiquewhite;
+}

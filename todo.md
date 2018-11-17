@@ -5,12 +5,14 @@
   x  change la couleur de fond
   - est-ce possible de réduire la taille des autres des autres valeurs?
 
+[x] définir les valeurs possibles
+[ ] pouvoir annuler le dernier coup 
+[ ] interdire l'écrassement d'une valeur donnée intialement
 [ ] mettre en evidence les chiffres quand l'utilisateur sélectionne un chiffre
 [ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
 [ ] informer l'utilisateur quand le tableau est fini
 [ ] proposer la génération de nouveau tableau quand le jeu commence
 [ ] proposer la génération de nouveau tableau quand le jeu est terminé
-[ ] définir les valeurs possibles
 [ ] faire disparaitre une touche 
 [ ] when the app restart, the game restart at the same stage (persist the state in the localstaorage)  
 

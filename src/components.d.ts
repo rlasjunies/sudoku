@@ -12,6 +12,16 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface AccButton {}
+  interface AccButtonAttributes extends StencilHTMLAttributes {
+    'onClick_'?: (event: CustomEvent) => void;
+  }
+
+  interface AccSwitch {}
+  interface AccSwitchAttributes extends StencilHTMLAttributes {
+    'onSwitch'?: (event: CustomEvent) => void;
+  }
+
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
@@ -25,13 +35,24 @@ export namespace Components {
     'onKeyClicked'?: (event: CustomEvent) => void;
   }
 
+  interface SudokuBoardCell {
+    'candidates': boolean[];
+    'value': number;
+  }
+  interface SudokuBoardCellAttributes extends StencilHTMLAttributes {
+    'candidates'?: boolean[];
+    'value'?: number;
+  }
+
   interface SudokuBoard {
     'board': number[];
+    'candidatesBoard': boolean[][];
     'cellSelected': number;
     'incorrectCells': number[];
   }
   interface SudokuBoardAttributes extends StencilHTMLAttributes {
     'board'?: number[];
+    'candidatesBoard'?: boolean[][];
     'cellSelected'?: number;
     'incorrectCells'?: number[];
     'onCellSelection'?: (event: CustomEvent) => void;
@@ -40,19 +61,37 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'AccButton': Components.AccButton;
+    'AccSwitch': Components.AccSwitch;
     'AppRoot': Components.AppRoot;
     'KeyBoard': Components.KeyBoard;
     'KeyBoard2': Components.KeyBoard2;
+    'SudokuBoardCell': Components.SudokuBoardCell;
     'SudokuBoard': Components.SudokuBoard;
   }
 
   interface StencilIntrinsicElements {
+    'acc-button': Components.AccButtonAttributes;
+    'acc-switch': Components.AccSwitchAttributes;
     'app-root': Components.AppRootAttributes;
     'key-board': Components.KeyBoardAttributes;
     'key-board2': Components.KeyBoard2Attributes;
+    'sudoku-board-cell': Components.SudokuBoardCellAttributes;
     'sudoku-board': Components.SudokuBoardAttributes;
   }
 
+
+  interface HTMLAccButtonElement extends Components.AccButton, HTMLStencilElement {}
+  var HTMLAccButtonElement: {
+    prototype: HTMLAccButtonElement;
+    new (): HTMLAccButtonElement;
+  };
+
+  interface HTMLAccSwitchElement extends Components.AccSwitch, HTMLStencilElement {}
+  var HTMLAccSwitchElement: {
+    prototype: HTMLAccSwitchElement;
+    new (): HTMLAccSwitchElement;
+  };
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
@@ -72,6 +111,12 @@ declare global {
     new (): HTMLKeyBoard2Element;
   };
 
+  interface HTMLSudokuBoardCellElement extends Components.SudokuBoardCell, HTMLStencilElement {}
+  var HTMLSudokuBoardCellElement: {
+    prototype: HTMLSudokuBoardCellElement;
+    new (): HTMLSudokuBoardCellElement;
+  };
+
   interface HTMLSudokuBoardElement extends Components.SudokuBoard, HTMLStencilElement {}
   var HTMLSudokuBoardElement: {
     prototype: HTMLSudokuBoardElement;
@@ -79,16 +124,22 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'acc-button': HTMLAccButtonElement
+    'acc-switch': HTMLAccSwitchElement
     'app-root': HTMLAppRootElement
     'key-board': HTMLKeyBoardElement
     'key-board2': HTMLKeyBoard2Element
+    'sudoku-board-cell': HTMLSudokuBoardCellElement
     'sudoku-board': HTMLSudokuBoardElement
   }
 
   interface ElementTagNameMap {
+    'acc-button': HTMLAccButtonElement;
+    'acc-switch': HTMLAccSwitchElement;
     'app-root': HTMLAppRootElement;
     'key-board': HTMLKeyBoardElement;
     'key-board2': HTMLKeyBoard2Element;
+    'sudoku-board-cell': HTMLSudokuBoardCellElement;
     'sudoku-board': HTMLSudokuBoardElement;
   }
 
