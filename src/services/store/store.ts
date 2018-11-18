@@ -1,10 +1,10 @@
 export type ActionType = string;
 export interface Action {
-    type:ActionType;
+    type: ActionType;
     payload?: any;
-  }
+}
 
-export interface Reaction{
+export interface Reaction {
     function: Function;
     context: any;
 }
@@ -16,21 +16,25 @@ export class Store {
     constructor(reducers = {}, initialState = {}) {
         this.reducers = reducers;
         this.reactions = [];
-        this._state = this.reduce(initialState, {});
-        console.log("STORE CONSTRUCTED!",this._state);
+        const retrievePreviousState = retrieve();
+        const storedOrInitState = (retrievePreviousState !== null) ? retrievePreviousState : initialState; 
+        this._state = this.reduce(storedOrInitState, {});
+        console.log("STORE CONSTRUCTED!", this._state);
         this.reactions.push({
-            function: (state, _ ) => console.log("STORE HISTORY:", state.actionType, state), 
-            context: null});
+            function: (state, _) => console.log("STORE HISTORY:", state.actionType, state),
+            context: null
+        });
     }
 
     get state() {
         return this._state;
     }
 
-    dispatch(action:Action) {
+    dispatch(action: Action) {
         this._state = this.reduce(this._state, action);
         this._state.actionType = action.type;
-        this.reactions.forEach(reaction => reaction.function(this._state, reaction.context ));
+        persist(this._state);
+        this.reactions.forEach(reaction => reaction.function(this._state, reaction.context));
     }
 
     private reduce(state, action) {
@@ -50,10 +54,28 @@ export class Store {
     // }
 
     subscribeReaction(reactionFunction: Function, reactionThis: any) {
-        this.reactions = [...this.reactions, {function: reactionFunction, context: reactionThis}];
+        this.reactions = [...this.reactions, { function: reactionFunction, context: reactionThis }];
         reactionFunction(this._state, reactionThis);
         return () => {
             this.reactions = this.reactions.filter(reaction => reaction.function !== reactionFunction);
         };
+    }
+}
+
+function persist(state: any){
+    if (typeof localStorage != 'undefined') {
+        localStorage.setItem('accurentis-sudoku', JSON.stringify(state));
+    } else {
+        console.log("no localstorage");
+    }
+}
+
+function retrieve():any{
+    if (typeof localStorage != 'undefined') {
+        let storePersisted = localStorage.getItem('accurentis-sudoku');
+        if (storePersisted!== null ) storePersisted = JSON.parse(storePersisted);
+        return storePersisted;
+    } else {
+        console.log("no localstorage");
     }
 }

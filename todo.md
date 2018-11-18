@@ -8,7 +8,7 @@
 [x] définir les valeurs possibles
 [x] mettre en évidence la cellule sélectionnée, par rapport aux lignes/colonnes/zone
 [x] mettre en evidence les chiffres quand l'utilisateur sélectionne un chiffre
-[ ] when the app restart, the game restart at the same stage (persist the state in the localstaorage)  
+[x] when the app restart, the game restart at the same stage (persist the state in the localstaorage)  
 [ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
 [ ] interdire l'écrassement d'une valeur donnée initialement
 [ ] pouvoir annuler le dernier coup 
@@ -26,3 +26,4 @@
 
 [x] when starting the cell is selected
 [x] reinitiliaze the candidates same time as the board
+[ ] wrong highlight when selecting "empty" cell
