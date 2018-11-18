@@ -26,4 +26,4 @@
 
 [x] when starting the cell is selected
 [x] reinitiliaze the candidates same time as the board
-[ ] wrong highlight when selecting "empty" cell
+[x] wrong highlight when selecting "empty" cell

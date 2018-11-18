@@ -52,11 +52,12 @@ export class SudokuBoard {
 
         const sameValueAsTheOneSelected =
             (
+                (selectedCellValue !== "null") &&
                 (selectedCellValue == cellValue) &&
                 (selectedCellValue !== "undefined") && 
                 (cellValue !== "undefined")
             ) ? " selected " : "";
-        // console.log(`selectCellValue:${selectedCellValue} - cellValue:${cellValue} - ${sameValueAsTheOneSelected} - ${typeof (selectedCellValue)} - ${typeof (cellValue)}`);
+        console.log(`selectCellValue:${selectedCellValue} - cellValue:${cellValue} - ${sameValueAsTheOneSelected} - ${typeof (selectedCellValue)} - ${typeof (cellValue)}`);
         return `cell` +
             ` cell${cell} ` +
             ` row${rowOfCell} ` +

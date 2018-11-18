@@ -1,4 +1,5 @@
 import { Store, Action } from "./store";
+import 'jest-localstorage-mock';
 
 // todo-interface, actions
 export interface TodoAction extends Action {
@@ -44,8 +45,19 @@ const store = new Store({ todos: todoReducer }, { todos: todoInitialState });
 
 it('should initiate the store', () => {
 
+     // values stored in tests will also be available in other tests unless you run
+    // localStorage.clear();
+    // or directly reset the storage
+    // localStorage.__STORE__ = {};
+    // // // you could also reset all mocks, but this could impact your other mocks
+    // jest.resetAllMocks();
+    // // or individually reset a mock used
+    // localStorage.setItem.mockClear();
+
     // initialstate is good
+    // FIXME: mock local storage 
     expect(store.state).toEqual({ todos: todoInitialState });
+    // expect(true).toBeTruthy;
 });
 
 it('should call subscriber at subscription', () => {
