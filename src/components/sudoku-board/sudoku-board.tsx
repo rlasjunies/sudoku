@@ -47,7 +47,7 @@ export class SudokuBoard {
     boardSolvedWatcher(newValue: number) {
         // console.log(`boardSolvedWatcher:${newValue}, ${oldValue}`);
         if (newValue != 0 && newValue != undefined) {
-            this.chenillardBoard(this.cellSelected);
+            this.chenillardBoard();
         }
     }
 
