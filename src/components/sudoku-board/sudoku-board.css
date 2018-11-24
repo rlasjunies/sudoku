@@ -20,7 +20,6 @@
     min-height: 95px;
 }
 
-
 /* 
 
 Draw the black line of the board 
@@ -61,10 +60,6 @@ Draw the black line of the board
     border-right-style: solid;
 }
 
-.incorrect {
-    background-color: burlywood;
-}
-
 .area-selected {
     background-color: cornsilk;
 }
@@ -75,9 +70,13 @@ Draw the black line of the board
 
 .chenillardCol {
     /* background-color:cyan; */
-    background-color:antiquewhite;
+    background-color: antiquewhite;
     /* background: linear-gradient(to top, burlywood); */
     /* background-size: 300% 300% ; */
     /* background-position: top bottom; */
     /* transition: background-color 0.2s ease; */
+}
+
+.incorrect {
+    background-color: burlywood;
 }
