@@ -8,6 +8,10 @@ export interface SudokuPageState {
   incorrectCells: number[] ;
   boardJustFinish: boolean;
   draftMode:boolean;
+  rowSolved: number;
+  colSolved: number;
+  zoneSolved: number;
+  boardSolved: boolean;
 }
   
 export const sudokuPageInitialState: SudokuPageState = {
@@ -17,5 +21,9 @@ export const sudokuPageInitialState: SudokuPageState = {
   incorrectCells: [],
   boardJustFinish: false,
   draftMode: false,
- candidatesBoard: initializeCandidatesBoard()
+  candidatesBoard: initializeCandidatesBoard(),
+  rowSolved: null,
+  colSolved: null,
+  zoneSolved: null,
+  boardSolved: false
 };

@@ -87,44 +87,44 @@ export function isPossibleNumber(cell: number, number: number, board: number[]) 
     return isPossibleRow(number, row, board) && isPossibleCol(number, col, board) && isPossibleBlock(number, block, board);
 }
 
-// export function isCorrectRow(row: number, sudoku: number[]) {
-//     var rightSequence = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
-//     var rowTemp = new Array();
-//     for (var i = 0; i <= 8; i++) {
-//         rowTemp[i] = sudoku[row * 9 + i];
-//     }
-//     rowTemp.sort();
-//     return rowTemp.join() == rightSequence.join();
-// }
+export function isRowSolved(row: number, sudoku: number[]) {
+    var rightSequence = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    var rowTemp = new Array();
+    for (var i = 0; i <= 8; i++) {
+        rowTemp[i] = sudoku[row * 9 + i];
+    }
+    rowTemp.sort();
+    return rowTemp.join() == rightSequence.join();
+}
 
-// export function isCorrectCol(col: number, sudoku: number[]) {
-//     var rightSequence = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
-//     var colTemp = new Array();
-//     for (var i = 0; i <= 8; i++) {
-//         colTemp[i] = sudoku[col + i * 9];
-//     }
-//     colTemp.sort();
-//     return colTemp.join() == rightSequence.join();
-// }
+export function isColSolved(col: number, sudoku: number[]) {
+    var rightSequence = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    var colTemp = new Array();
+    for (var i = 0; i <= 8; i++) {
+        colTemp[i] = sudoku[col + i * 9];
+    }
+    colTemp.sort();
+    return colTemp.join() == rightSequence.join();
+}
 
-// export function isCorrectBlock(block: number, sudoku: number[]) {
-//     var rightSequence = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
-//     var blockTemp = new Array();
-//     for (var i = 0; i <= 8; i++) {
-//         blockTemp[i] = sudoku[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)];
-//     }
-//     blockTemp.sort();
-//     return blockTemp.join() == rightSequence.join();
-// }
+export function isZoneSolved(block: number, sudoku: number[]) {
+    var rightSequence = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
+    var blockTemp = new Array();
+    for (var i = 0; i <= 8; i++) {
+        blockTemp[i] = sudoku[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)];
+    }
+    blockTemp.sort();
+    return blockTemp.join() == rightSequence.join();
+}
 
-// export function isSolvedSudoku(sudoku: number[]) {
-//     for (var i = 0; i <= 8; i++) {
-//         if (!isCorrectBlock(i, sudoku) || !isCorrectRow(i, sudoku) || !isCorrectCol(i, sudoku)) {
-//             return false;
-//         }
-//     }
-//     return true;
-// }
+export function isBoardSolved(sudoku: number[]) {
+    for (var i = 0; i <= 8; i++) {
+        if (!isZoneSolved(i, sudoku) || !isRowSolved(i, sudoku) || !isColSolved(i, sudoku)) {
+            return false;
+        }
+    }
+    return true;
+}
 
 export function determinePossibleValues(cell: number, board: number[]) {
     var possible = new Array();

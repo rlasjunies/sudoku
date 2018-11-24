@@ -1,6 +1,6 @@
 import { SudokuAction } from "./sudoku.actions";
 import { SudokuPageState } from "./sudoku.state";
-import { updateBoard, isPossibleNumber } from "../services/sudoku/sudoku";
+import { updateBoard, isPossibleNumber, isRowSolved, rowOfCellNumber, colOfCellNumber, zoneOfCellNumber, isColSolved, isZoneSolved, isBoardSolved } from "../services/sudoku/sudoku";
 export const VALUE_TYPED_ACTION = "VALUE_TYPED";
 
 interface valueTypeActionPayload {
@@ -17,6 +17,13 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
   const payload: valueTypeActionPayload = action.payload;
   const currentCell = state.cellSelected;
   const currentBoard = state.board;
+  const row = rowOfCellNumber(currentCell);
+  const col = colOfCellNumber(currentCell);
+  const zone = zoneOfCellNumber(currentCell);
+  let rowSolved:number|null;
+  let colSolved:number|null;
+  let zoneSolved:number|null;
+  let boardSolved: boolean;
 
   let newCandidatesBoard = [...state.candidatesBoard];
   let newIncorrectCells = [...state.incorrectCells];
@@ -50,15 +57,24 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       if (!isValueCorrect) {
         newIncorrectCells.push(currentCell);
       }
-
       newBoard = updateBoard(value, currentCell, currentBoard);
+      rowSolved = isRowSolved(row,newBoard) ? row : null;
+      colSolved = isColSolved(col, newBoard) ? col : null;
+      zoneSolved = isZoneSolved(zone,newBoard) ? zone : null;
+      boardSolved = isBoardSolved(newBoard) ? true:false;
+
+      console.log(` [${col}-${row}-${zone}] rowSolved:${rowSolved} - colSolved:${colSolved} - zoneSolved:${zoneSolved} - boardSolved:${boardSolved}`);
     }
 
     return {
       ...state,
       board: newBoard,
       incorrectCells: newIncorrectCells,
-      candidatesBoard: newCandidatesBoard
+      candidatesBoard: newCandidatesBoard,
+      rowSolved: rowSolved,
+      colSolved: colSolved,
+      zoneSolved: zoneSolved,
+      boardSolved: boardSolved
     }
   }
 }

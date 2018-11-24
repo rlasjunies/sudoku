@@ -10,6 +10,10 @@ export class SudokuBoard {
     @Element() element: HTMLSudokuBoardElement;
     @Event() cellSelection: EventEmitter;
 
+    @Prop() solvedRow: number;
+    @Prop() solvedCol: number;
+    @Prop() solvedZone: number;
+    @Prop() boardSolved: boolean;
     @Prop() board: number[] = Array(81);
     @Prop() candidatesBoard: boolean[][] = Array(81);
 
@@ -23,8 +27,89 @@ export class SudokuBoard {
 
     @Prop() incorrectCells: number[] = [];
 
-    cellSelectedHandler(cell: number) {
-        this.cellSelection.emit(cell);
+    @Watch("solvedCol")
+    solvedColWatcher(newValue: number) {
+        // console.log(`solvedColWatcher:${newValue}, ${oldValue}`);
+        if (newValue != 0 && newValue != undefined) {
+            this.chenillardCol(newValue, this.cellSelected);
+        }
+    }
+    
+    @Watch("solvedRow")
+    solvedRowWatcher(newValue: number) {
+        // console.log(`solvedRowWatcher:${newValue}, ${oldValue}`);
+        if (newValue != 0 && newValue != undefined) {
+            this.chenillardRow(newValue, this.cellSelected);
+        }
+    }
+    
+    @Watch("boardSolved")
+    boardSolvedWatcher(newValue: number) {
+        // console.log(`boardSolvedWatcher:${newValue}, ${oldValue}`);
+        if (newValue != 0 && newValue != undefined) {
+            this.chenillardBoard(this.cellSelected);
+        }
+    }
+
+    chenillardCol(column: number, startCell: number) {
+        const rowOfCellNumber_ = rowOfCellNumber(startCell);
+        console.log(`chenillardCol:${column},${startCell},${rowOfCellNumber_}`);
+
+        const cellsOfCol = this.element.shadowRoot.querySelectorAll(`.column${column}`);
+        this.addRemoveChenillardClassToElement(cellsOfCol[rowOfCellNumber_],0);
+        
+        for (let index = rowOfCellNumber_ -1; index >= 0 ; index--) {
+            // console.log("for#1",index);
+            const elt = cellsOfCol[index];
+            this.addRemoveChenillardClassToElement(elt, (rowOfCellNumber_ - index) );
+        }
+        for (let index = rowOfCellNumber_ + 1; index < 9 ; index++) {
+            // console.log("for#2",index);
+            const elt = cellsOfCol[index];
+            this.addRemoveChenillardClassToElement(elt, ( index - rowOfCellNumber_));
+        }
+        
+
+    }
+
+    chenillardBoard() {
+        // TODO: improve with several / randomize highlight
+        // console.log(`chenillard Board - cell selected:${startCell}`)
+        const cellsOfTheBoard = this.element.shadowRoot.querySelectorAll(`.cell`);
+        for (let index = 0; index < cellsOfTheBoard.length; index++) {
+            const cell = cellsOfTheBoard[index];
+            this.addRemoveChenillardClassToElement(cell,index);
+        }
+
+    }
+
+    chenillardRow(row: number, startCell: number) {
+        const colOfCellNumber_ = colOfCellNumber(startCell);
+        console.log(`chenillardCol:${row},${startCell},${colOfCellNumber_}`);
+
+        const cellsOfRow = this.element.shadowRoot.querySelectorAll(`.row${row}`);
+        this.addRemoveChenillardClassToElement(cellsOfRow[colOfCellNumber_],0);
+        
+        for (let index = colOfCellNumber_ -1; index >= 0 ; index--) {
+            // console.log("for#1",index);
+            const elt = cellsOfRow[index];
+            this.addRemoveChenillardClassToElement(elt, (colOfCellNumber_ - index) );
+        }
+        for (let index = colOfCellNumber_ + 1; index < 9 ; index++) {
+            // console.log("for#2",index);
+            const elt = cellsOfRow[index];
+            this.addRemoveChenillardClassToElement(elt, ( index - colOfCellNumber_));
+        }
+    }
+
+    addRemoveChenillardClassToElement(element:Element, delayCoeff:number){
+        const delay = delayCoeff * 100; 
+        setTimeout(()=>{
+            element.classList.add("chenillardCol");
+            setTimeout(() => {
+                element.classList.remove("chenillardCol");
+            }, 200);
+        }, delay)
     }
 
     returnClassForTheCell(cell: number) {
@@ -54,10 +139,10 @@ export class SudokuBoard {
             (
                 (selectedCellValue !== "null") &&
                 (selectedCellValue == cellValue) &&
-                (selectedCellValue !== "undefined") && 
+                (selectedCellValue !== "undefined") &&
                 (cellValue !== "undefined")
             ) ? " selected " : "";
-        console.log(`selectCellValue:${selectedCellValue} - cellValue:${cellValue} - ${sameValueAsTheOneSelected} - ${typeof (selectedCellValue)} - ${typeof (cellValue)}`);
+        // console.log(`selectCellValue:${selectedCellValue} - cellValue:${cellValue} - ${sameValueAsTheOneSelected} - ${typeof (selectedCellValue)} - ${typeof (cellValue)}`);
         return `cell` +
             ` cell${cell} ` +
             ` row${rowOfCell} ` +
@@ -67,6 +152,10 @@ export class SudokuBoard {
             cellSelectedClass +
             sameValueAsTheOneSelected +
             incorrectClass;
+    }
+
+    cellSelectedHandler(cell: number) {
+        this.cellSelection.emit(cell);
     }
 
     render() {

@@ -1,5 +1,5 @@
 .sudoku-board {
-    margin:10px;
+    margin: 10px;
     display: flex;
     flex-direction: column;
 }
@@ -26,10 +26,12 @@
 Draw the black line of the board 
 
 */
+
 .sudoku-board .row0 {
     border-top: black;
     border-top-style: solid;
 }
+
 .sudoku-board .row1, .row4, .row7 {
     border-top: black;
     border-top-style: dotted;
@@ -46,10 +48,12 @@ Draw the black line of the board
     border-left: black;
     border-left-style: solid;
 }
-.column1, .column4, .column7{
+
+.column1, .column4, .column7 {
     border-left: black;
     border-left-style: dotted;
 }
+
 .sudoku-board .column2, .column5, .column8 {
     border-left: black;
     border-left-style: dotted;
@@ -63,8 +67,17 @@ Draw the black line of the board
 
 .area-selected {
     background-color: cornsilk;
-} 
+}
 
 .selected {
     background-color: antiquewhite;
-} 
+}
+
+.chenillardCol {
+    /* background-color:cyan; */
+    background-color:antiquewhite;
+    /* background: linear-gradient(to top, burlywood); */
+    /* background-size: 300% 300% ; */
+    /* background-position: top bottom; */
+    /* transition: background-color 0.2s ease; */
+}

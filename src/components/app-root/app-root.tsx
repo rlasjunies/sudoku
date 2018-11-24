@@ -18,8 +18,10 @@ export class AppRoot {
   @State() candidatesBoard: boolean[][];
   @State() incorrectCells: number[];
   @State() cellSelected: number;
-
-  // @State() draftMode: boolean;
+  @State() colSolved: number;
+  @State() rowSolved: number;
+  @State() zoneSolved: number;
+  @State() boardSolved: boolean;
   sudokuBoardElt: HTMLSudokuBoardElement;
   unsubscribeStateChanged: () => void;
 
@@ -36,6 +38,12 @@ export class AppRoot {
     thisContext.incorrectCells = state.sudokuPage.incorrectCells;
     thisContext.cellSelected = state.sudokuPage.cellSelected;
     // thisContext.draftMode = state.sudokuPage.draftMode;
+
+    thisContext.colSolved = state.sudokuPage.colSolved
+    thisContext.rowSolved = state.sudokuPage.rowSolved
+    thisContext.zoneSolved= state.sudokuPage.zoneSolved
+    thisContext.boardSolved =  state.sudokuPage.boardSolved
+
   }
 
   dispatchGenerateSudokuBoard() {
@@ -70,7 +78,11 @@ export class AppRoot {
             candidatesBoard={this.candidatesBoard}
             cellSelected={this.cellSelected}
             incorrectCells={this.incorrectCells}
-            // draftMode={this.draftMode}
+            solvedRow={this.rowSolved}
+            solvedCol={this.colSolved}
+            solvedZone={this.zoneSolved}
+            boardSolved={this.boardSolved}
+            
             onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}></sudoku-board>
           <key-board2 onKeyClicked={(keyCustomeEvent) => this.dispatchKeyBoardValueTyped(keyCustomeEvent)}></key-board2>
         </div>
