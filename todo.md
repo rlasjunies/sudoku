@@ -37,4 +37,4 @@
 [x] reinitiliaze the candidates same time as the board
 [x] wrong highlight when selecting "empty" cell
 [x] cellule incorrect n'apparait pas tout le temps
-[ ] cell become incorrect when value re typed
+[x] cell become incorrect when value re typed

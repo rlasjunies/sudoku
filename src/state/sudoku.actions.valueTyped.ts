@@ -48,6 +48,10 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       newCandidatesBoard[currentCell][value - 1] = newCandidatesBoard[currentCell][value - 1] ? false : true;
       // console.log(`newCandidatesBoard[${currentCell}][${value}] aprés`, newCandidatesBoard[currentCell][value]);
     } else {
+
+      // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
+      currentBoard[currentCell] = null;
+
       // managed incorrect cell
       const isValueCorrect = isPossibleNumber(currentCell, value, currentBoard);
 
