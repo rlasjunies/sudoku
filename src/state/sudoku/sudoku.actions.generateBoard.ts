@@ -27,6 +27,7 @@ export function generateBoardReducer(state:SudokuPageState, action:SudokuAction)
     boardLevel: level,
     incorrectCells: [],
     cellSelected: -1,
-    candidatesBoard: initializeCandidatesBoard()
+    candidatesBoard: initializeCandidatesBoard(),
+    gameOnGoing: true
   }
 }

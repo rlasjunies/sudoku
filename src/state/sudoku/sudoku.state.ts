@@ -12,7 +12,7 @@ export interface SudokuPageState {
   colSolved: number;
   zoneSolved: number;
   boardSolved: boolean;
-  // showPage: boolean;
+  gameOnGoing: boolean;
 }
   
 export const sudokuPageInitialState: SudokuPageState = {
@@ -27,5 +27,5 @@ export const sudokuPageInitialState: SudokuPageState = {
   colSolved: null,
   zoneSolved: null,
   boardSolved: false,
-  // showPage: false
+  gameOnGoing: false
 };

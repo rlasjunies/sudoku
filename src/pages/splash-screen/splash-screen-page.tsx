@@ -1,8 +1,9 @@
-import { Component, Method, Element } from '@stencil/core';
+import { Component, Method, Element, State } from '@stencil/core';
 import { store } from 'state/appStore';
 import { generateBoardAction } from 'state/sudoku/sudoku.actions.generateBoard';
 import { SudokuLevelType } from 'services/sudoku/sudoku';
 import { navigateToSudokuPageAction } from 'state/app-root/app-root.actions';
+import { AppState } from 'state/app.state';
 // import { closeSplashScreenAction } from 'state/splash-screen/splash-screen.actions.close';
 
 @Component({
@@ -13,6 +14,21 @@ export class SplashScreenPage {
 
   @Element() element: HTMLElement;
 
+  @State() gameOnGoing: boolean;
+
+  unsubscribeStateChanged: () => void;
+
+  componentDidUnload() {
+    this.unsubscribeStateChanged();
+  }
+
+  componentDidLoad() {
+    this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
+  }
+  stateChanged(state: AppState, thisContext: SplashScreenPage): any {
+    thisContext.gameOnGoing = state.sudokuPage.gameOnGoing;
+  }
+  
   @Method()
   hide() {
     this.element.classList.remove("show");
@@ -24,21 +40,30 @@ export class SplashScreenPage {
     this.element.classList.add("show");
   }
 
-  onClickHandler(difficulty: SudokuLevelType) {
+  generateNewBoardOnClickHandler(difficulty: SudokuLevelType) {
     // console.log(`difficulty:${difficulty}`);
     store.dispatch(generateBoardAction(difficulty));
     store.dispatch(navigateToSudokuPageAction());
   }
+
+  navigateToSudokuPage(){
+    store.dispatch(navigateToSudokuPageAction());
+  }
+  navigateToSudokuPageAction
+
   render() {
     return (
       <div id="page">
-        <div id="banner">Sudoku</div>
+        <div id="banner">
+          <div id="title">Sudoku</div>
+          <acc-button id="gotogame" class={ this.gameOnGoing ? "gameOnGoingshow" : "gameOnGoinghide"} onClick={() => this.navigateToSudokuPage()}>></acc-button>
+        </div>
         <div id="question">Génération d'un nouveau tableau</div>
         <div class="buttonList">
-          <acc-button onClick={() => this.onClickHandler("easy")}>Facile</acc-button>
-          <acc-button onClick={() => this.onClickHandler("medium")}>Moyen</acc-button>
-          <acc-button onClick={() => this.onClickHandler("complex")}>Difficile</acc-button>
-          <acc-button onClick={() => this.onClickHandler("very complex")}>Très difficile</acc-button>
+          <acc-button onClick={() => this.generateNewBoardOnClickHandler("easy")}>Facile</acc-button>
+          <acc-button onClick={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</acc-button>
+          <acc-button onClick={() => this.generateNewBoardOnClickHandler("complex")}>Difficile</acc-button>
+          <acc-button onClick={() => this.generateNewBoardOnClickHandler("very complex")}>Très difficile</acc-button>
         </div>
       </div>
     );

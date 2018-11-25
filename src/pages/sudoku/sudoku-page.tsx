@@ -68,7 +68,7 @@ export class SudokuPage {
         <header>
           <acc-button onClick={()=> this.onBackClickHandler()} >Back</acc-button>
           <h1>Sudoku maison</h1>
-          {/* <acc-switch onSwitch={(draftMode) => this.dispartchSwitchDraftMode(draftMode)}>Draft mode</acc-switch> */}
+          <acc-switch onSwitch={(draftMode) => this.dispartchSwitchDraftMode(draftMode)}>Draft mode</acc-switch>
         </header>,
         <div class="main">
           <sudoku-board
