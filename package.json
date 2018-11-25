@@ -11,8 +11,6 @@
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {
-    "@stencil/core": "^0.14.1",
-    "@stencil/router": "^0.3.1"
   },
   "repository": {
     "type": "git",
@@ -25,6 +23,8 @@
   },
   "homepage": "https://github.com/ionic-team/stencil",
   "devDependencies": {
+    "@stencil/core": "^0.14.1",
+    "@stencil/router": "^0.3.1",
     "@types/jest": "23.3.5",
     "@types/puppeteer": "1.6.4",
     "jest": "23.6.0",

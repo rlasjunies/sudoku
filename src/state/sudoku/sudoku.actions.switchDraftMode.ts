@@ -1,4 +1,4 @@
-import { AppAction } from "./app.actions";
+import { AppAction } from "../app.actions";
 import { SudokuPageState } from "./sudoku.state";
 import { SudokuAction } from "./sudoku.actions";
 

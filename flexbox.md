@@ -13,6 +13,25 @@ https://www.youtube.com/watch?v=k32voqQhODc
 ## chage the order of column of the column
 1. use the attribute `order:<value>` the value being the expect order for column
 
+## alignement
+https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Flexible_Box_Layout/Aligner_des_%C3%A9l%C3%A9ments_dans_un_conteneur_flexible
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container box {
+  width: 100px;
+  height: 100px;
+}
+
+## solved by flexbox
+https://philipwalton.github.io/solved-by-flexbox/
+https://www.design-fluide.com/24-07-2018/centrer-verticalement-flexbox/
+https://www.design-fluide.com/blog/
+
 ## 
 justify-content: space-between
 ...
@@ -32,15 +51,12 @@ https://codepen.io/hadarweiss/pen/WvEXeK
 https://codepen.io/pavlovsk/pen/XmjPOE
 https://www.emanueleferonato.com/2015/06/23/pure-javascript-sudoku-generatorsolver/
 
-
-
 http://moriel.smarterthanthat.com/tips/javascript-sudoku-backtracking-algorithm/
 
-
 http://einaregilsson.com/sudoku-in-javascript/
-
 
 https://stackoverflow.com/questions/15690254/how-to-generate-a-complete-sudoku-board-algorithm-error
 
 http://www.sudokubum.com/documentation.html
+
 https://arxiv.org/abs/cs/0011047

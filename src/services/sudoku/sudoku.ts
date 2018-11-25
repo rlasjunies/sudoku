@@ -177,7 +177,7 @@ function generateBoardFromCell(cell: number, board: number[]) {
     return { board: null, finish: false, daedEnd: true };
 }
 
-export type SudokuLevelType =  "easy"| "normal" | "complex";
+export type SudokuLevelType =  "easy"| "medium" | "complex" | "very complex";
 
 export function generateSudokuBoard(level: SudokuLevelType):number[] {
     const solvedBoard = generateBoard();
@@ -193,10 +193,12 @@ export function generateSudokuBoard(level: SudokuLevelType):number[] {
     switch(level) {
         case "easy":
             numberOfComplexity = (81-62);
-        case "normal":
+        case "medium":
             numberOfComplexity = (81-53);
         case "complex":
             numberOfComplexity = (81-44);
+        case "very complex":
+            numberOfComplexity = (81-35);
     }
 
     const indexCellsToHide = Array(81);

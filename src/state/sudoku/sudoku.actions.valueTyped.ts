@@ -1,6 +1,6 @@
 import { SudokuAction } from "./sudoku.actions";
 import { SudokuPageState } from "./sudoku.state";
-import { updateBoard, isPossibleNumber, isRowSolved, rowOfCellNumber, colOfCellNumber, zoneOfCellNumber, isColSolved, isZoneSolved, isBoardSolved } from "../services/sudoku/sudoku";
+import { updateBoard, isPossibleNumber, isRowSolved, rowOfCellNumber, colOfCellNumber, zoneOfCellNumber, isColSolved, isZoneSolved, isBoardSolved } from "../../services/sudoku/sudoku";
 export const VALUE_TYPED_ACTION = "VALUE_TYPED";
 
 interface valueTypeActionPayload {

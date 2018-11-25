@@ -1,6 +1,8 @@
-import { SudokuPageState } from "./sudoku.state";
-
-export interface AppState{
+import { SudokuPageState } from "./sudoku/sudoku.state";
+import { SplashScreenPageState } from "./splash-screen/splash-screen.state";
+import { AppRootState } from "./app-root/app-root.state";
+export interface AppState {
   sudokuPage: SudokuPageState;
-  messageToNotify: string | null;
+  splashScreenPage: SplashScreenPageState;
+  appRoot: AppRootState
 }

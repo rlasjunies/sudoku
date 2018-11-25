@@ -8,10 +8,6 @@ import { Component, Prop } from '@stencil/core';
 export class SudokuBoardCell {
 
     @Prop() candidates: boolean[] = Array(9);
-    // @Watch('candidates')
-    // watchHandler(newValue) {
-    //     console.log('The value of candidates is: ', newValue);
-    // }
     @Prop() value: number = null;
 
     isThereValueDefined():boolean{
@@ -19,8 +15,6 @@ export class SudokuBoardCell {
     }
 
     render() {
-        // console.log(`this.candidate dans cell render`,this.candidates);
-
         if (this.isThereValueDefined() ) {
             // console.log(`draft value:[${this.value}] -  ${this.candidates}`);
             return (

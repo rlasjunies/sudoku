@@ -18,6 +18,12 @@ export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialStat
     case "SWITCH_DRAFT_MODE":{
       return swtichModeReducer(state, action);
     }
+    // case "HIDE":{
+    //   return hidePageReducer(state);
+    // }
+    // case "SHOW":{
+    //   return showPageReducer(state);
+    // }
   }
 
   // return the state if no action reducer is identified

@@ -1,5 +1,5 @@
-import { AppAction } from "./app.actions";
-import { generateSudokuBoard, SudokuLevelType, initializeCandidatesBoard } from "../services/sudoku/sudoku";
+import { AppAction } from "../app.actions";
+import { generateSudokuBoard, SudokuLevelType, initializeCandidatesBoard } from "../../services/sudoku/sudoku";
 import { SudokuPageState } from "./sudoku.state";
 import { SudokuAction } from "./sudoku.actions";
 export const GENERATE_BOARD = "GENERATE_BOARD"; 

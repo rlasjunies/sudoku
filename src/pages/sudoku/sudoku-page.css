@@ -1,4 +1,8 @@
-header {
+sudoku-page acc-page {
+
+}
+
+sudoku-page acc-page header {
   background: #5851ff;
   color: white;
   height: 56px;
@@ -7,21 +11,20 @@ header {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
 
-h1 {
+sudoku-page acc-page h1 {
   font-size: 1.4rem;
   font-weight: 500;
   color: #fff;
   padding: 0 12px;
 }
 
-.main{
+sudoku-page acc-page .main {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-key-board{
-  flex:1;
-  
+sudoku-page acc-page key-board {
+  flex: 1;
 }

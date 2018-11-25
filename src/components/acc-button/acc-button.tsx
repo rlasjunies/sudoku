@@ -13,7 +13,7 @@ export class AccButton {
   }
   render() {
     return (
-      <button class="acc-button" onClick={()=> this.onClickHandler()}><slot/></button>
+      <button class="acc-button blue" onClick={()=> this.onClickHandler()}><slot/></button>
     );
   }
 }

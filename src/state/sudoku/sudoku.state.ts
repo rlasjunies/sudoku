@@ -1,4 +1,4 @@
-import { SudokuLevelType, initializeCandidatesBoard } from "../services/sudoku/sudoku";
+import { SudokuLevelType, initializeCandidatesBoard } from "../../services/sudoku/sudoku";
 
 export interface SudokuPageState {
   board: number[];
@@ -12,6 +12,7 @@ export interface SudokuPageState {
   colSolved: number;
   zoneSolved: number;
   boardSolved: boolean;
+  // showPage: boolean;
 }
   
 export const sudokuPageInitialState: SudokuPageState = {
@@ -25,5 +26,6 @@ export const sudokuPageInitialState: SudokuPageState = {
   rowSolved: null,
   colSolved: null,
   zoneSolved: null,
-  boardSolved: false
+  boardSolved: false,
+  // showPage: false
 };

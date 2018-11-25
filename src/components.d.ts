@@ -22,9 +22,6 @@ export namespace Components {
     'onSwitch'?: (event: CustomEvent) => void;
   }
 
-  interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {}
-
   interface KeyBoard {}
   interface KeyBoardAttributes extends StencilHTMLAttributes {
     'onKeyClicked'?: (event: CustomEvent) => void;
@@ -65,27 +62,51 @@ export namespace Components {
     'solvedRow'?: number;
     'solvedZone'?: number;
   }
+
+  interface AccPage {
+    'hide': () => void;
+    'show': () => void;
+  }
+  interface AccPageAttributes extends StencilHTMLAttributes {}
+
+  interface AppRoot {}
+  interface AppRootAttributes extends StencilHTMLAttributes {}
+
+  interface SplashScreenPage {
+    'hide': () => void;
+    'show': () => void;
+  }
+  interface SplashScreenPageAttributes extends StencilHTMLAttributes {}
+
+  interface SudokuPage {}
+  interface SudokuPageAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
     'AccButton': Components.AccButton;
     'AccSwitch': Components.AccSwitch;
-    'AppRoot': Components.AppRoot;
     'KeyBoard': Components.KeyBoard;
     'KeyBoard2': Components.KeyBoard2;
     'SudokuBoardCell': Components.SudokuBoardCell;
     'SudokuBoard': Components.SudokuBoard;
+    'AccPage': Components.AccPage;
+    'AppRoot': Components.AppRoot;
+    'SplashScreenPage': Components.SplashScreenPage;
+    'SudokuPage': Components.SudokuPage;
   }
 
   interface StencilIntrinsicElements {
     'acc-button': Components.AccButtonAttributes;
     'acc-switch': Components.AccSwitchAttributes;
-    'app-root': Components.AppRootAttributes;
     'key-board': Components.KeyBoardAttributes;
     'key-board2': Components.KeyBoard2Attributes;
     'sudoku-board-cell': Components.SudokuBoardCellAttributes;
     'sudoku-board': Components.SudokuBoardAttributes;
+    'acc-page': Components.AccPageAttributes;
+    'app-root': Components.AppRootAttributes;
+    'splash-screen-page': Components.SplashScreenPageAttributes;
+    'sudoku-page': Components.SudokuPageAttributes;
   }
 
 
@@ -99,12 +120,6 @@ declare global {
   var HTMLAccSwitchElement: {
     prototype: HTMLAccSwitchElement;
     new (): HTMLAccSwitchElement;
-  };
-
-  interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
-  var HTMLAppRootElement: {
-    prototype: HTMLAppRootElement;
-    new (): HTMLAppRootElement;
   };
 
   interface HTMLKeyBoardElement extends Components.KeyBoard, HTMLStencilElement {}
@@ -131,24 +146,54 @@ declare global {
     new (): HTMLSudokuBoardElement;
   };
 
+  interface HTMLAccPageElement extends Components.AccPage, HTMLStencilElement {}
+  var HTMLAccPageElement: {
+    prototype: HTMLAccPageElement;
+    new (): HTMLAccPageElement;
+  };
+
+  interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
+  var HTMLAppRootElement: {
+    prototype: HTMLAppRootElement;
+    new (): HTMLAppRootElement;
+  };
+
+  interface HTMLSplashScreenPageElement extends Components.SplashScreenPage, HTMLStencilElement {}
+  var HTMLSplashScreenPageElement: {
+    prototype: HTMLSplashScreenPageElement;
+    new (): HTMLSplashScreenPageElement;
+  };
+
+  interface HTMLSudokuPageElement extends Components.SudokuPage, HTMLStencilElement {}
+  var HTMLSudokuPageElement: {
+    prototype: HTMLSudokuPageElement;
+    new (): HTMLSudokuPageElement;
+  };
+
   interface HTMLElementTagNameMap {
     'acc-button': HTMLAccButtonElement
     'acc-switch': HTMLAccSwitchElement
-    'app-root': HTMLAppRootElement
     'key-board': HTMLKeyBoardElement
     'key-board2': HTMLKeyBoard2Element
     'sudoku-board-cell': HTMLSudokuBoardCellElement
     'sudoku-board': HTMLSudokuBoardElement
+    'acc-page': HTMLAccPageElement
+    'app-root': HTMLAppRootElement
+    'splash-screen-page': HTMLSplashScreenPageElement
+    'sudoku-page': HTMLSudokuPageElement
   }
 
   interface ElementTagNameMap {
     'acc-button': HTMLAccButtonElement;
     'acc-switch': HTMLAccSwitchElement;
-    'app-root': HTMLAppRootElement;
     'key-board': HTMLKeyBoardElement;
     'key-board2': HTMLKeyBoard2Element;
     'sudoku-board-cell': HTMLSudokuBoardCellElement;
     'sudoku-board': HTMLSudokuBoardElement;
+    'acc-page': HTMLAccPageElement;
+    'app-root': HTMLAppRootElement;
+    'splash-screen-page': HTMLSplashScreenPageElement;
+    'sudoku-page': HTMLSudokuPageElement;
   }
 
 

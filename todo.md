@@ -18,7 +18,9 @@
 [ ] pouvoir annuler le dernier coup (full history?)
 [ ] clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
 
-[ ] proposer la génération de nouveau tableau quand le jeu commence
+[x] proposer la génération de nouveau tableau quand le jeu commence
+[ ] splash screen navigate to current board if any
+[ ] create new board page
 [ ] proposer la génération de nouveau tableau quand le jeu est terminé
 
 [ ] user can play on small device
@@ -29,7 +31,11 @@
 [ ] timer
 [ ] publish on website
 [ ] convert to PWA
-[ ] link to advise
+[ ] include advise 
+[ ] challenge quotidien
+
+[ ] create a nicer button with ripple
+[ ] create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back
 
 # FIXME: 
 
