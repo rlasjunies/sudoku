@@ -10,8 +10,7 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
@@ -23,16 +22,15 @@
   },
   "homepage": "https://github.com/ionic-team/stencil",
   "devDependencies": {
-    "@stencil/core": "^0.14.1",
-    "@stencil/router": "^0.3.1",
+    "@stencil/core": "^0.16.0",
     "@types/jest": "23.3.5",
     "@types/puppeteer": "1.6.4",
     "jest": "23.6.0",
     "jest-cli": "23.6.0",
     "jest-environment-node": "23.4.0",
-    "jest-localstorage-mock": "^2.3.0",
+    "jest-localstorage-mock": "2.3.0",
     "pixelmatch": "4.0.2",
     "puppeteer": "1.7.0",
-    "ts-jest": "^23.10.4"
+    "ts-jest": "23.10.5"
   }
 }
