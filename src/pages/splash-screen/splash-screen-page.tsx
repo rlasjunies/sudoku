@@ -56,14 +56,14 @@ export class SplashScreenPage {
       <div id="page">
         <div id="banner">
           <div id="title">Sudoku</div>
-          <acc-button id="gotogame" class={ this.gameOnGoing ? "gameOnGoingshow" : "gameOnGoinghide"} onClick={() => this.navigateToSudokuPage()}>></acc-button>
+          <acc-button id="gotogame" class={ this.gameOnGoing ? "gameOnGoingshow" : "gameOnGoinghide"} onClick_={() => this.navigateToSudokuPage()}>></acc-button>
         </div>
         <div id="question">Génération d'un nouveau tableau</div>
         <div class="buttonList">
-          <acc-button onClick={() => this.generateNewBoardOnClickHandler("easy")}>Facile</acc-button>
-          <acc-button onClick={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</acc-button>
-          <acc-button onClick={() => this.generateNewBoardOnClickHandler("complex")}>Difficile</acc-button>
-          <acc-button onClick={() => this.generateNewBoardOnClickHandler("very complex")}>Très difficile</acc-button>
+          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("easy")}>Facile</acc-button>
+          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</acc-button>
+          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("complex")}>Difficile</acc-button>
+          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("very complex")}>Très difficile</acc-button>
         </div>
       </div>
     );

@@ -67,7 +67,6 @@ splash-screen-page #banner {
   font-size: 10vh;
   display: flex;
   flex-direction: row;
-  flex: 1;
   align-self: center;
   justify-content: center;
   /* background-color: beige; */
@@ -75,7 +74,7 @@ splash-screen-page #banner {
 
 splash-screen-page #title {
   /* font-size: 10vh; */
-  /* display: flex; */
+  display: flex;
   /* flex-direction: row; */
   /* flex: 1; */
   /* align-self: center; */
@@ -86,40 +85,42 @@ splash-screen-page #title {
 splash-screen-page #gotogame {
   font-size: 5vh;
   display: flex;
+}
+
+/* splash-screen-page #gotogame button { */
+  /* font-size: 5vh; */
+  /* display: flex; */
   /* flex-direction: row; */
   /* flex: 1; */
   /* align-self: center; */
   /* justify-content: center; */
   /* background-color: yellow; */
-}
-splash-screen-page #gotogame button {
-  font-size: 5vh;
-  display: flex;
-  /* flex-direction: row; */
-  /* flex: 1; */
-  align-self: center;
-  /* justify-content: center; */
-  background-color: yellow;
-}
+/* } */
 
 splash-screen-page #question {
   /* flex conteneur */
   display: flex;
   flex-direction: row;
+
   /* align-items: flex-start; */
   justify-content: center;
   align-content: center;
+
   /* flex attributes */
   align-self: center;
+
   /* flex children*/
   /* align-self: center; */
   /* align-content: center; */
+
   /* sizing */
   /* width: 80vw; */
   /* height: 80vh; */
   padding: 20px;
   margin: 20px;
+
   /* styling */
+
   /* font-size: 35px; */
   font-size: 4vh;
   /* background-color: aqua; */
@@ -128,48 +129,45 @@ splash-screen-page #question {
 splash-screen-page .buttonList {
   /* flex conteneur */
   display: flex;
+  flex:1;
+
   /* align-items: flex-start; */
   justify-content: center;
   flex-direction: column;
+  
   /* flex attributes */
+  
   /* flex children*/
-  align-self: center;
+  /* align-self: center; */
   /* align-content: center; */
+  
   /* sizing */
-  /* width: 80vw; */
-  /* height: 80vh; */
-  flex-grow: 1;
+  width: 100%;
+  
   /* styling */
-  font-size: 35px;
+  /* font-size: 35px; */
   /* background-color: aqua; */
 }
 
-splash-screen-page .buttonList acc-button {
+splash-screen-page .generate-board { 
   /* flex conteneur*/
   display: flex;
+
   /* flex attributes*/
-  flex-grow: 1;
-  /* flex: 1; */
-  /* align-items: center; */
-  /* align-content: center; */
+  flex: 1;
+
+  align-items: center;
+  align-content: center; 
   align-self: center;
+
   /* flex children */
-  justify-content: center;
+  /* justify-content: center; */
+
   /* sizing */
   width: 100%;
+ 
   /* styling */
   /* background-color: blueviolet; */
-}
-
-splash-screen-page .buttonList .acc-button {
-  /* align-items: flex-start; */
-  align-self: center;
-  /* flex-grow: 1; */
-  /* display: flex; */
-  flex: 1;
-  /* width: 80%; */
-  /* height:80%; */
-  /* padding:10 10 10 10; */
-  /* background-color: aliceblue; */
   font-size: 9vh;
+  
 }

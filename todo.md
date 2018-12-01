@@ -19,23 +19,26 @@
 [ ] clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
 
 [x] proposer la génération de nouveau tableau quand le jeu commence
-[ ] splash screen navigate to current board if any
+[x] splash screen navigate to current board if any
 [ ] create new board page
-[ ] proposer la génération de nouveau tableau quand le jeu est terminé
+[ ] player can continue playing easily after ending a game
 
 [ ] user can play on small device
 * (resize the table depend on the siez of the screen)
 (mediaquery)
 * put the "keyboard" on the side when 
 
-[ ] timer
-[ ] publish on website
+[ ] player knows how long duration of the current board game
+[ ] player can access to the sudoku from web browser
 [ ] convert to PWA
-[ ] include advise 
-[ ] challenge quotidien
+[ ] revenus are made from the application
+[ ] player are "pushed" to come back in the app
 
-[ ] create a nicer button with ripple
+[x] create a nicer button with ripple
 [ ] create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back
+[ ] unit tests
+[ ] e2e tests
+[ ] remove the stenciljs and rely in the statelgt framework?
 
 # FIXME: 
 
