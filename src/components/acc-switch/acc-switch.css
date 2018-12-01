@@ -1,10 +1,29 @@
 /* The switch - the box around the slider */
+acc-switch{
+  display: flex;
+  /* flex:1; */
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  /* align-self: center; */
+  /* justify-content: center; */
+  color: black;
+}
 
-.acc-switch {
+.container{
+  display: flex;
+  /* align-content: center; */
+  align-items: center;
+  /* align-self: center; */
+  /* justify-content: center; */
+  padding: 10px;
+}
+label {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
+  color: darkslateblue;
 }
 
 /* Hide default HTML checkbox */
@@ -42,11 +61,13 @@
 }
 
 .acc-switch input:checked+.slider {
-  background-color: #2196F3;
+  /* background-color: #2196F3; */
+  background: #89669b;
 }
 
 .acc-switch input:focus+.slider {
-  box-shadow: 0 0 1px #2196F3;
+  /* box-shadow: 0 0 1px #2196F3; */
+  box-shadow: 0 0 1px #89669b;
 }
 
 .acc-switch input:checked+.slider:before {

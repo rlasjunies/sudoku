@@ -55,13 +55,13 @@ export class AppRoot {
   @State() showCreateNewBoardPage: boolean;
   @Watch('showCreateNewBoardPage')
   showCreateNewBoardPagewatcher(newValue, oldValue) {
-    console.log(`showCreateNewBoardPagewatcher: ${newValue} - ${oldValue}`)
+    // console.log(`showCreateNewBoardPagewatcher: ${newValue} - ${oldValue}`)
     const $createNewBoard: HTMLAccPageElement = this.element.shadowRoot.querySelector('create-new-board > acc-page');
     if (newValue && !oldValue) {
-      console.log("Show the create board page!!!!");
+      // console.log("Show the create board page!!!!");
       $createNewBoard.show();
     } else if (!newValue && oldValue) {
-      console.log("Hiding the create board page!!!!");
+      // console.log("Hiding the create board page!!!!");
       $createNewBoard.hide();
     }
   }

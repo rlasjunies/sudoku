@@ -9,7 +9,7 @@ import { EventEmitter } from 'events';
 export class AccSwitch {
   @Event() switch: EventEmitter
 
-  checkBoxChangeHandler(switchValue:boolean) {
+  checkBoxChangeHandler(switchValue: boolean) {
     this.switch.emit(switchValue + "");
   }
 
@@ -17,13 +17,16 @@ export class AccSwitch {
     return (
       // <div onClick={_ => this.onClickHandler()}>
       // <div onClick={evt => this.divOnClickChange(evt)} >
-        <label class="acc-switch" >
-          <input type="checkbox" onChange={ evt => this.checkBoxChangeHandler((evt.srcElement as HTMLInputElement).checked)} />
-          {/* <input type="checkbox"/> */}
-          <span class="slider"></span>
-          <slot/>
-        </label>
-      // </div>
+      [
+        <slot />,
+        <div class="container">
+          <label class="acc-switch" >
+            <input type="checkbox" onChange={evt => this.checkBoxChangeHandler((evt.srcElement as HTMLInputElement).checked)} />
+            {/* <input type="checkbox"/> */}
+            <span class="slider round"></span>
+          </label>
+        </div>
+      ]
     );
   }
 }
