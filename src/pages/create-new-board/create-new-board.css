@@ -1,0 +1,20 @@
+
+#banner {
+  font-size: 15vh;
+  display: flex;
+  /* flex-direction: row; */
+  align-self: center;
+  /* justify-content: center; */
+  /* background-color: beige; */
+}
+
+.generate-board {
+  font-size: 10vh;
+  display: flex;
+  padding: 20px;
+  /* width: 96%; */
+
+  /* flex attributes*/
+  flex: 1;
+
+}

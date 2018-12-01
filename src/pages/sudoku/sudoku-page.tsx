@@ -4,7 +4,7 @@ import { AppState } from 'state/app.state';
 import { cellSelectedAction } from "../../state/sudoku/sudoku.actions.cellSelected";
 import { switchDraftModeAction } from "../../state/sudoku/sudoku.actions.switchDraftMode";
 import { valueTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
-import { navigateToSplashPageAction } from 'state/app-root/app-root.actions';
+import { navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';
 
 @Component({
   tag: 'sudoku-page',
@@ -60,7 +60,7 @@ export class SudokuPage {
   }
 
   onBackClickHandler(){
-    store.dispatch(navigateToSplashPageAction());
+    store.dispatch(navigateToSplashScreenPageAction());
   }
   render() {
     return (

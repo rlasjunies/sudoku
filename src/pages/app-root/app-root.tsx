@@ -19,8 +19,9 @@ export class AppRoot {
     this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
   }
   stateChanged(state: AppState, thisContext: AppRoot): any {
-    thisContext.showSplashScreenPage = state.appRoot.showSplashScreenPage
-    thisContext.showSudokuPage = state.appRoot.showSudokuPage
+    thisContext.showSplashScreenPage = state.appRoot.showSplashScreenPage;
+    thisContext.showSudokuPage = state.appRoot.showSudokuPage;
+    thisContext.showCreateNewBoardPage = state.appRoot.showCreateNewBoardPage;
   }
 
   @State() showSplashScreenPage: boolean;
@@ -50,10 +51,25 @@ export class AppRoot {
       sudoku.hide();
     }
   }
+
+  @State() showCreateNewBoardPage: boolean;
+  @Watch('showCreateNewBoardPage')
+  showCreateNewBoardPagewatcher(newValue, oldValue) {
+    console.log(`showCreateNewBoardPagewatcher: ${newValue} - ${oldValue}`)
+    const $createNewBoard: HTMLAccPageElement = this.element.shadowRoot.querySelector('create-new-board > acc-page');
+    if (newValue && !oldValue) {
+      console.log("Show the create board page!!!!");
+      $createNewBoard.show();
+    } else if (!newValue && oldValue) {
+      console.log("Hiding the create board page!!!!");
+      $createNewBoard.hide();
+    }
+  }
   render() {
     return [
       <splash-screen-page></splash-screen-page>,
       <sudoku-page></sudoku-page>,
+      <create-new-board></create-new-board>
     ]
   }
 }

@@ -25,13 +25,14 @@ splash-screen-page.show {
 splash-screen-page #page {
   /* flex conteneur */
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: flex-start;
   flex-direction: column;
   /* flex attributes for current */
   /* flex for children */
   /* sizing */
   min-height: 100vh;
+  width: 100%;
   /* styling */
   opacity: 1;
   /* visibility: hidden; */
@@ -64,17 +65,17 @@ splash-screen-page #page.open {
 }
 
 splash-screen-page #banner {
-  font-size: 10vh;
+  font-size: 15vh;
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   align-self: center;
-  justify-content: center;
+  /* justify-content: center; */
   /* background-color: beige; */
 }
 
 splash-screen-page #title {
   /* font-size: 10vh; */
-  display: flex;
+  /* display: flex; */
   /* flex-direction: row; */
   /* flex: 1; */
   /* align-self: center; */
@@ -82,22 +83,30 @@ splash-screen-page #title {
   /* background-color: beige; */
 }
 
-splash-screen-page #gotogame {
-  font-size: 5vh;
+
+.whatnext{
   display: flex;
+  flex-direction: column;
+  flex:1; 
+  /* width: 100%; */
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  /* background-color: aqua; */
 }
 
-/* splash-screen-page #gotogame button { */
-  /* font-size: 5vh; */
-  /* display: flex; */
-  /* flex-direction: row; */
-  /* flex: 1; */
-  /* align-self: center; */
-  /* justify-content: center; */
-  /* background-color: yellow; */
-/* } */
+.whatnext-question-button {
+  font-size: 10vh;
+  display: flex;
+  padding: 20px;
+  width: 100%;
 
-splash-screen-page #question {
+  /* flex attributes*/
+  flex: 1;
+
+}
+
+splash-screen-page .question {
   /* flex conteneur */
   display: flex;
   flex-direction: row;

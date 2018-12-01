@@ -14,14 +14,24 @@ export function appRootReducer(state: AppRootState = appRootInitialState, action
       return {
         ...state,
         showSudokuPage: true,
-        showSplashScreenPage:false
+        showSplashScreenPage: false,
+        showCreateNewBoardPage: false
       }
     };
     case "NAVIGATETO_SPLASHPAGE": {
       return {
         ...state,
         showSudokuPage: false,
-        showSplashScreenPage:true
+        showCreateNewBoardPage: false,
+        showSplashScreenPage: true
+      }
+    };
+    case "NAVIGATETO_CREATENEWBAORD": {
+      return {
+        ...state,
+        showSudokuPage: false,
+        showCreateNewBoardPage: true,
+        showSplashScreenPage: false
       }
     };
   }

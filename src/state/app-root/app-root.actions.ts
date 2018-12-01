@@ -1,7 +1,7 @@
 import { Action } from "services/store/store";
 
 export type AppRootActionType = 
-  "NAVIGATETO_SUDOKUPAGE" | "NAVIGATETO_SPLASHPAGE"
+  "NAVIGATETO_SUDOKUPAGE" | "NAVIGATETO_SPLASHPAGE" | "NAVIGATETO_CREATENEWBAORD";
 
   export interface AppRootAction extends Action {
   type: AppRootActionType;
@@ -14,9 +14,16 @@ export function navigateToSudokuPageAction() : AppRootAction {
     payload: {  }
   }
 }
-export function navigateToSplashPageAction() : AppRootAction {
+export function navigateToSplashScreenPageAction() : AppRootAction {
   return {
     type: "NAVIGATETO_SPLASHPAGE",
+    payload: {  }
+  }
+}
+
+export function navigateToCreateNewBordPageAction() : AppRootAction {
+  return {
+    type: "NAVIGATETO_CREATENEWBAORD",
     payload: {  }
   }
 }

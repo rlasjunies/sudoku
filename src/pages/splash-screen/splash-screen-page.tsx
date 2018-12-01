@@ -1,8 +1,7 @@
 import { Component, Method, Element, State } from '@stencil/core';
 import { store } from 'state/appStore';
-import { generateBoardAction } from 'state/sudoku/sudoku.actions.generateBoard';
-import { SudokuLevelType } from 'services/sudoku/sudoku';
-import { navigateToSudokuPageAction } from 'state/app-root/app-root.actions';
+
+import { navigateToSudokuPageAction, navigateToCreateNewBordPageAction } from 'state/app-root/app-root.actions';
 import { AppState } from 'state/app.state';
 // import { closeSplashScreenAction } from 'state/splash-screen/splash-screen.actions.close';
 
@@ -28,7 +27,7 @@ export class SplashScreenPage {
   stateChanged(state: AppState, thisContext: SplashScreenPage): any {
     thisContext.gameOnGoing = state.sudokuPage.gameOnGoing;
   }
-  
+
   @Method()
   hide() {
     this.element.classList.remove("show");
@@ -39,31 +38,26 @@ export class SplashScreenPage {
     this.element.classList.remove("hide");
     this.element.classList.add("show");
   }
-
-  generateNewBoardOnClickHandler(difficulty: SudokuLevelType) {
-    // console.log(`difficulty:${difficulty}`);
-    store.dispatch(generateBoardAction(difficulty));
+  navigateToSudokuPage() {
     store.dispatch(navigateToSudokuPageAction());
   }
-
-  navigateToSudokuPage(){
-    store.dispatch(navigateToSudokuPageAction());
+  navigateToCreateNewBoardPage() {
+    store.dispatch(navigateToCreateNewBordPageAction());
   }
-  navigateToSudokuPageAction
 
   render() {
     return (
       <div id="page">
         <div id="banner">
           <div id="title">Sudoku</div>
-          <acc-button id="gotogame" class={ this.gameOnGoing ? "gameOnGoingshow" : "gameOnGoinghide"} onClick_={() => this.navigateToSudokuPage()}>></acc-button>
         </div>
-        <div id="question">Génération d'un nouveau tableau</div>
-        <div class="buttonList">
-          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("easy")}>Facile</acc-button>
-          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</acc-button>
-          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("complex")}>Difficile</acc-button>
-          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("very complex")}>Très difficile</acc-button>
+
+        <div class="whatnext">
+          {this.gameOnGoing ?
+            <acc-button id="gotogame" class="whatnext-question-button" onClick_={() => this.navigateToSudokuPage()}>Continue</acc-button>
+            : ''
+          }
+            <acc-button id="createnewboard" class="whatnext-question-button" onClick_={() => this.navigateToCreateNewBoardPage()}>New</acc-button>
         </div>
       </div>
     );

@@ -72,6 +72,9 @@ export namespace Components {
   interface AppRoot {}
   interface AppRootAttributes extends StencilHTMLAttributes {}
 
+  interface CreateNewBoard {}
+  interface CreateNewBoardAttributes extends StencilHTMLAttributes {}
+
   interface SplashScreenPage {
     'hide': () => void;
     'show': () => void;
@@ -92,6 +95,7 @@ declare global {
     'SudokuBoard': Components.SudokuBoard;
     'AccPage': Components.AccPage;
     'AppRoot': Components.AppRoot;
+    'CreateNewBoard': Components.CreateNewBoard;
     'SplashScreenPage': Components.SplashScreenPage;
     'SudokuPage': Components.SudokuPage;
   }
@@ -105,6 +109,7 @@ declare global {
     'sudoku-board': Components.SudokuBoardAttributes;
     'acc-page': Components.AccPageAttributes;
     'app-root': Components.AppRootAttributes;
+    'create-new-board': Components.CreateNewBoardAttributes;
     'splash-screen-page': Components.SplashScreenPageAttributes;
     'sudoku-page': Components.SudokuPageAttributes;
   }
@@ -158,6 +163,12 @@ declare global {
     new (): HTMLAppRootElement;
   };
 
+  interface HTMLCreateNewBoardElement extends Components.CreateNewBoard, HTMLStencilElement {}
+  var HTMLCreateNewBoardElement: {
+    prototype: HTMLCreateNewBoardElement;
+    new (): HTMLCreateNewBoardElement;
+  };
+
   interface HTMLSplashScreenPageElement extends Components.SplashScreenPage, HTMLStencilElement {}
   var HTMLSplashScreenPageElement: {
     prototype: HTMLSplashScreenPageElement;
@@ -179,6 +190,7 @@ declare global {
     'sudoku-board': HTMLSudokuBoardElement
     'acc-page': HTMLAccPageElement
     'app-root': HTMLAppRootElement
+    'create-new-board': HTMLCreateNewBoardElement
     'splash-screen-page': HTMLSplashScreenPageElement
     'sudoku-page': HTMLSudokuPageElement
   }
@@ -192,6 +204,7 @@ declare global {
     'sudoku-board': HTMLSudokuBoardElement;
     'acc-page': HTMLAccPageElement;
     'app-root': HTMLAppRootElement;
+    'create-new-board': HTMLCreateNewBoardElement;
     'splash-screen-page': HTMLSplashScreenPageElement;
     'sudoku-page': HTMLSudokuPageElement;
   }

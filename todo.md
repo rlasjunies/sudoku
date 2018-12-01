@@ -11,6 +11,7 @@
 [x] when the app restart, the game restart at the same stage (persist the state in the localstaorage)  
 [x] informer l'utilisateur quand une area(ligne/colonne) est finie
 [x] informer l'utilisateur quand le tableau est fini
+[x] improve UX for continue or new game
 
 [ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
 [ ] interdire l'écrassement d'une valeur donnée initialement
