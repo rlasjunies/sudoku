@@ -3,7 +3,8 @@ import { Action } from "../../services/store/store";
 export type SudokuActionType = 
   "CELL_SELECTED" | 
   "GENERATE_BOARD" | 
-  "VALUE_TYPED" |
+  "NUMBER_TYPED" |
+  "CLEAR_TYPED" | 
   "SWITCH_DRAFT_MODE" |
   "SHOW" | "HIDE" 
 

@@ -3,7 +3,7 @@ import { store } from 'state/appStore';
 import { AppState } from 'state/app.state';
 import { cellSelectedAction } from "../../state/sudoku/sudoku.actions.cellSelected";
 import { switchDraftModeAction } from "../../state/sudoku/sudoku.actions.switchDraftMode";
-import { valueTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
+import { numberTypedAction, clearTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
 import { navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';
 
 @Component({
@@ -51,25 +51,28 @@ export class SudokuPage {
     store.dispatch(cellSelectedAction(cell))
   }
 
-  dispatchKeyBoardValueTyped({ detail: keyTyped }) {
-    store.dispatch(valueTypedAction(keyTyped));
+  dispatchNumberTyped({ detail: keyTyped }) {
+    store.dispatch(numberTypedAction(keyTyped));
+  }
+  dispatchClearTyped() {
+    store.dispatch(clearTypedAction());
   }
 
-  dispartchSwitchDraftMode({ detail: draftMode }): void {
+  dispatchSwitchDraftMode({ detail: draftMode }): void {
     // console.log(`dispartchSwitchDraftMode:`,draftMode);
     store.dispatch(switchDraftModeAction(draftMode));
   }
 
-  onBackClickHandler(){
+  onBackClickHandler() {
     store.dispatch(navigateToSplashScreenPageAction());
   }
   render() {
     return (
       <acc-page>
         <header>
-          <acc-button onClick={()=> this.onBackClickHandler()} >Back</acc-button>
+          <acc-button onClick={() => this.onBackClickHandler()} >Back</acc-button>
           <div class="title">Sudoku</div>
-          <acc-switch onSwitch={(draftMode) => this.dispartchSwitchDraftMode(draftMode)}>Draft mode</acc-switch>
+          <acc-switch onSwitch={(draftMode) => this.dispatchSwitchDraftMode(draftMode)}>Draft mode</acc-switch>
         </header>
         <div class="main">
           <sudoku-board
@@ -83,8 +86,13 @@ export class SudokuPage {
             solvedZone={this.zoneSolved}
             boardSolved={this.boardSolved}
 
-            onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}></sudoku-board>
-          <key-board2 draftMode={this.draftMode} onKeyClicked={(keyCustomeEvent) => this.dispatchKeyBoardValueTyped(keyCustomeEvent)}></key-board2>
+            onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
+          </sudoku-board>
+          <key-board2
+            draftMode={this.draftMode}
+            onClearClicked={_ => this.dispatchClearTyped()}
+            onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}>
+          </key-board2>
         </div>
       </acc-page>
     );

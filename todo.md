@@ -20,7 +20,7 @@
     [ ] player can pause the timer
 [ ] user visualy understand action button (icons)
 [x] user can leave generate board without generating a new board (back)
-[ ] user can clean a cell
+[x] user can erase a cell value and candidate
 [ ] user can visualize the cell selected even if the cell is in error
 [ ] user should visualize when he click in the keyboard keys (click effect missing)
 

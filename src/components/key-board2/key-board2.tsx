@@ -6,11 +6,16 @@ import { Component, EventEmitter, Event, Prop } from '@stencil/core';
   shadow: true
 })
 export class KeyBoard2 {
-  @Event() keyClicked: EventEmitter;
+  @Event() numberClicked: EventEmitter;
+  @Event() clearClicked: EventEmitter;
 
   @Prop() draftMode: boolean;
-  keyClickedHandler(value: string) {
-    this.keyClicked.emit(value);
+
+  numberClickedHandler(value: string) {
+    this.numberClicked.emit(value);
+  }
+  clearClickedHandler() {
+    this.clearClicked.emit("x");
   }
 
   cellHTML(digit: number) {
@@ -47,15 +52,16 @@ export class KeyBoard2 {
     return (
       <div class="key-board">
         <div class="row">
-          <div class="key" onClick={() => this.keyClickedHandler("1")}>{this.cellHTML(1)}</div>
-          <div class="key" onClick={() => this.keyClickedHandler("2")}>{this.cellHTML(2)}</div>
-          <div class="key" onClick={() => this.keyClickedHandler("3")}>{this.cellHTML(3)}</div>
-          <div class="key" onClick={() => this.keyClickedHandler("4")}>{this.cellHTML(4)}</div>
-          <div class="key" onClick={() => this.keyClickedHandler("5")}>{this.cellHTML(5)}</div>
-          <div class="key" onClick={() => this.keyClickedHandler("6")}>{this.cellHTML(6)}</div>
-          <div class="key" onClick={() => this.keyClickedHandler("7")}>{this.cellHTML(7)}</div>
-          <div class="key" onClick={() => this.keyClickedHandler("8")}>{this.cellHTML(8)}</div>
-          <div class="key" onClick={() => this.keyClickedHandler("9")}>{this.cellHTML(9)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("1")}>{this.cellHTML(1)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("2")}>{this.cellHTML(2)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("3")}>{this.cellHTML(3)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("4")}>{this.cellHTML(4)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("5")}>{this.cellHTML(5)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("6")}>{this.cellHTML(6)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("7")}>{this.cellHTML(7)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("8")}>{this.cellHTML(8)}</div>
+          <div class="key" onClick={() => this.numberClickedHandler("9")}>{this.cellHTML(9)}</div>
+          <div class="key" onClick={() => this.clearClickedHandler()}><div>X</div></div>
         </div>
       </div>
     );

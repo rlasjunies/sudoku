@@ -34,7 +34,7 @@ export class AccButton {
     }, 1500);
 
     // 
-    setTimeout(() => this.click_.emit(), 250 );
+    this.click_.emit();
   }
   render() {
     return (

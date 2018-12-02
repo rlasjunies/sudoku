@@ -1,15 +1,24 @@
 import { SudokuAction } from "./sudoku.actions";
 import { SudokuPageState } from "./sudoku.state";
 import { updateBoard, isPossibleNumber, isRowSolved, rowOfCellNumber, colOfCellNumber, zoneOfCellNumber, isColSolved, isZoneSolved, isBoardSolved } from "../../services/sudoku/sudoku";
-export const VALUE_TYPED_ACTION = "VALUE_TYPED";
+// export const VALUE_TYPED_ACTION = 
+
+export type keyboardActionType =
+  "NUMBER_TYPED" | "CLEAR_TYPED";
 
 interface valueTypeActionPayload {
   valueTyped: number
 }
-export function valueTypedAction(value: number): SudokuAction {
+export function numberTypedAction(value: number): SudokuAction {
   return {
-    type: VALUE_TYPED_ACTION,
+    type: "NUMBER_TYPED",
     payload: { valueTyped: value }
+  }
+}
+export function clearTypedAction(): SudokuAction {
+  return {
+    type: "CLEAR_TYPED",
+    payload: { valueTyped: null }
   }
 }
 
@@ -20,9 +29,9 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
   const row = rowOfCellNumber(currentCell);
   const col = colOfCellNumber(currentCell);
   const zone = zoneOfCellNumber(currentCell);
-  let rowSolved:number|null;
-  let colSolved:number|null;
-  let zoneSolved:number|null;
+  let rowSolved: number | null;
+  let colSolved: number | null;
+  let zoneSolved: number | null;
   let boardSolved: boolean;
 
   let newCandidatesBoard = [...state.candidatesBoard];
@@ -31,43 +40,44 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
 
   // TODO: algo a revoir quand fonctionnel avancé, il faut mettre dans des sous fonctions l'ensemeble des cas
 
-
   if (currentCell === null) {
-    // TODO
-    // return {
-    //   ...state,
-    //   messageToNotify: "Select a cell before";
-    // }
+    // noting done
   } else {
     const value = payload.valueTyped;
 
-    if (state.draftMode === true) {
-      // console.log(`dans typed action, drftamode:`,state.draftMode);
-      // switch value in the candidates
-      // console.log(`newCandidatesBoard[${currentCell}][${value}] avant`, newCandidatesBoard[currentCell][value]);
-      newCandidatesBoard[currentCell][value - 1] = newCandidatesBoard[currentCell][value - 1] ? false : true;
-      // console.log(`newCandidatesBoard[${currentCell}][${value}] aprés`, newCandidatesBoard[currentCell][value]);
+    if (action.type === "CLEAR_TYPED") {
+        newCandidatesBoard[currentCell]= [];
+        newBoard = updateBoard(null, currentCell, currentBoard);
+        // remove the cell of the incorrect cells
+        newIncorrectCells = newIncorrectCells.filter((cellNumber) => cellNumber !== currentCell);
     } else {
 
-      // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
-      currentBoard[currentCell] = null;
+      if (state.draftMode === true) {
+        // switch value in the candidates
+        newCandidatesBoard[currentCell][value - 1] = newCandidatesBoard[currentCell][value - 1] ? false : true;
 
-      // managed incorrect cell
-      const isValueCorrect = isPossibleNumber(currentCell, value, currentBoard);
+      } else {
 
-      // remove the value from the list if already exists
-      // TODO: create an array library - retrieve the one from uacommander
-      newIncorrectCells = newIncorrectCells.filter((cellNumber) => cellNumber !== currentCell)
-      if (!isValueCorrect) {
-        newIncorrectCells.push(currentCell);
+        // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
+        currentBoard[currentCell] = null;
+
+        // managed incorrect cell
+        const isValueCorrect = isPossibleNumber(currentCell, value, currentBoard);
+
+        // remove the value from the list if already exists
+        // TODO: create an array library - retrieve the one from uacommander
+        newIncorrectCells = newIncorrectCells.filter((cellNumber) => cellNumber !== currentCell)
+        if (!isValueCorrect) {
+          newIncorrectCells.push(currentCell);
+        }
+        newBoard = updateBoard(value, currentCell, currentBoard);
+        rowSolved = isRowSolved(row, newBoard) ? row : null;
+        colSolved = isColSolved(col, newBoard) ? col : null;
+        zoneSolved = isZoneSolved(zone, newBoard) ? zone : null;
+        boardSolved = isBoardSolved(newBoard) ? true : false;
+
+        // console.log(` [${col}-${row}-${zone}] rowSolved:${rowSolved} - colSolved:${colSolved} - zoneSolved:${zoneSolved} - boardSolved:${boardSolved}`);
       }
-      newBoard = updateBoard(value, currentCell, currentBoard);
-      rowSolved = isRowSolved(row,newBoard) ? row : null;
-      colSolved = isColSolved(col, newBoard) ? col : null;
-      zoneSolved = isZoneSolved(zone,newBoard) ? zone : null;
-      boardSolved = isBoardSolved(newBoard) ? true:false;
-
-      console.log(` [${col}-${row}-${zone}] rowSolved:${rowSolved} - colSolved:${colSolved} - zoneSolved:${zoneSolved} - boardSolved:${boardSolved}`);
     }
 
     return {

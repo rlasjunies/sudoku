@@ -2,7 +2,7 @@ import { SudokuPageState, sudokuPageInitialState } from "./sudoku.state";
 import { SudokuAction } from "./sudoku.actions";
 import { CELL_SELECTED_ACTION, cellSelectedReducer } from "./sudoku.actions.cellSelected";
 import { GENERATE_BOARD, generateBoardReducer } from "./sudoku.actions.generateBoard";
-import { VALUE_TYPED_ACTION, valueTypedReducer } from "./sudoku.actions.valueTyped";
+import { valueTypedReducer } from "./sudoku.actions.valueTyped";
 import { swtichModeReducer } from "./sudoku.actions.switchDraftMode";
 export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialState, action: SudokuAction) {
   switch (action.type) {
@@ -12,18 +12,15 @@ export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialStat
     case GENERATE_BOARD: {
       return generateBoardReducer(state, action);
     };
-    case VALUE_TYPED_ACTION: {
+    case "CLEAR_TYPED": {
       return valueTypedReducer(state, action);
     }
-    case "SWITCH_DRAFT_MODE":{
+    case "NUMBER_TYPED": {
+      return valueTypedReducer(state, action);
+    }
+    case "SWITCH_DRAFT_MODE": {
       return swtichModeReducer(state, action);
     }
-    // case "HIDE":{
-    //   return hidePageReducer(state);
-    // }
-    // case "SHOW":{
-    //   return showPageReducer(state);
-    // }
   }
 
   // return the state if no action reducer is identified

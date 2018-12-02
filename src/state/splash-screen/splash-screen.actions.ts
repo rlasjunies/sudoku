@@ -1,7 +1,7 @@
 import { Action } from "../../services/store/store";
 
 export type SplashScreenActionType = 
-  "HIDE" | "SHOW"
+  "HIDE" | "SHOW";
 
 export interface SplashScreenAction extends Action {
   type: SplashScreenActionType;

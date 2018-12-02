@@ -32,7 +32,8 @@ export namespace Components {
   }
   interface KeyBoard2Attributes extends StencilHTMLAttributes {
     'draftMode'?: boolean;
-    'onKeyClicked'?: (event: CustomEvent) => void;
+    'onClearClicked'?: (event: CustomEvent) => void;
+    'onNumberClicked'?: (event: CustomEvent) => void;
   }
 
   interface SudokuBoardCell {
