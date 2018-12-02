@@ -84,7 +84,7 @@ export class SudokuPage {
             boardSolved={this.boardSolved}
 
             onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}></sudoku-board>
-          <key-board2 draftMode={this.draftMode} onKeyClicked={(keyCustomeEvent) => this.dispatchKeyBoardValueTyped(keyCustomeEvent)}></key-board3>
+          <key-board2 draftMode={this.draftMode} onKeyClicked={(keyCustomeEvent) => this.dispatchKeyBoardValueTyped(keyCustomeEvent)}></key-board2>
         </div>
       </acc-page>
     );
