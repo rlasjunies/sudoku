@@ -44,7 +44,7 @@
 [ ] revenus are made from the application
 [ ] player are "pushed" to come back in the app
 
-[ ] all pages of the program are based on acc-page
+[x] all pages of the program are based on acc-page
 [x] create a nicer button with ripple
 [ ] operator enjoy a new slide button
 [ ] create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back

@@ -1,4 +1,4 @@
-import { Component, Method, Element, State } from '@stencil/core';
+import { Component, Element, State } from '@stencil/core';
 import { store } from 'state/appStore';
 
 import { navigateToSudokuPageAction, navigateToCreateNewBordPageAction } from 'state/app-root/app-root.actions';
@@ -28,16 +28,6 @@ export class SplashScreenPage {
     thisContext.gameOnGoing = state.sudokuPage.gameOnGoing;
   }
 
-  @Method()
-  hide() {
-    this.element.classList.remove("show");
-    this.element.classList.add("hide");
-  }
-  @Method()
-  show() {
-    this.element.classList.remove("hide");
-    this.element.classList.add("show");
-  }
   navigateToSudokuPage() {
     store.dispatch(navigateToSudokuPageAction());
   }
@@ -47,11 +37,10 @@ export class SplashScreenPage {
 
   render() {
     return (
-      <div id="page">
+      <acc-page>
         <div id="banner">
           <div id="title">Sudoku</div>
         </div>
-
         <div class="whatnext">
           {this.gameOnGoing ?
             <acc-button id="gotogame" class="whatnext-question-button" onClick_={() => this.navigateToSudokuPage()}>Continue</acc-button>
@@ -59,7 +48,7 @@ export class SplashScreenPage {
           }
             <acc-button id="createnewboard" class="whatnext-question-button" onClick_={() => this.navigateToCreateNewBoardPage()}>New</acc-button>
         </div>
-      </div>
+      </acc-page>
     );
   }
 }

@@ -28,7 +28,7 @@ export class AppRoot {
   @Watch("showSplashScreenPage")
   showSplashScreenWatcher(newValue: boolean, oldValue: boolean) {
     // console.log(`showSplashScreenWatcher: ${newValue} - ${oldValue}`)
-    const splash = this.element.shadowRoot.querySelector('splash-screen-page');
+    const splash : HTMLAccPageElement = this.element.shadowRoot.querySelector('splash-screen-page > acc-page');
     if (newValue && !oldValue) {
       // console.log("Show the splash screen!!!!");
       splash.show();

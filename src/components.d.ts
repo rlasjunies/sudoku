@@ -78,10 +78,7 @@ export namespace Components {
   interface CreateNewBoard {}
   interface CreateNewBoardAttributes extends StencilHTMLAttributes {}
 
-  interface SplashScreenPage {
-    'hide': () => void;
-    'show': () => void;
-  }
+  interface SplashScreenPage {}
   interface SplashScreenPageAttributes extends StencilHTMLAttributes {}
 
   interface SudokuPage {}

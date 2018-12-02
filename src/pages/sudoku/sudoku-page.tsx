@@ -70,7 +70,7 @@ export class SudokuPage {
           <acc-button onClick={()=> this.onBackClickHandler()} >Back</acc-button>
           <div class="title">Sudoku</div>
           <acc-switch onSwitch={(draftMode) => this.dispartchSwitchDraftMode(draftMode)}>Draft mode</acc-switch>
-        </header>,
+        </header>
         <div class="main">
           <sudoku-board
             id="sudokuboard"
