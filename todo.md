@@ -19,7 +19,10 @@
   [ ] player knows how long duration of the current board game
     [ ] player can pause the timer
 [ ] user visualy understand action button (icons)
-[ ] user can leave generate board without generating a new board (back)
+[x] user can leave generate board without generating a new board (back)
+[ ] user can clean a cell
+[ ] user can visualize the cell selected even if the cell is in error
+[ ] user should visualize when he click in the keyboard keys (click effect missing)
 
 [ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
 [ ] interdire l'écrassement d'une valeur donnée initialement
@@ -41,6 +44,7 @@
 [ ] revenus are made from the application
 [ ] player are "pushed" to come back in the app
 
+[ ] all pages of the program are based on acc-page
 [x] create a nicer button with ripple
 [ ] operator enjoy a new slide button
 [ ] create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back

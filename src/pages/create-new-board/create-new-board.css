@@ -1,20 +1,46 @@
-
-#banner {
-  font-size: 15vh;
-  display: flex;
-  /* flex-direction: row; */
-  align-self: center;
-  /* justify-content: center; */
-  /* background-color: beige; */
+acc-button {
+  font-size: 2vh;
+  padding: 10px;
 }
+
+.header {
+  /* background: #5851ff; */
+  background-color: antiquewhite;
+  color: white;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  /* align-self: center; */
+  justify-content: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.title {
+  flex: 1;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  font-size: 3vh;
+  /* color: #fff; */
+  color: black;
+  /* padding: 0 12px; */
+}
+
+
+.buttons{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  flex:1;
+}
+
 
 .generate-board {
   font-size: 10vh;
   display: flex;
   padding: 20px;
   /* width: 96%; */
-
   /* flex attributes*/
   flex: 1;
-
 }

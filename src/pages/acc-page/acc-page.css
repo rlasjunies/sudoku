@@ -1,5 +1,6 @@
 acc-page {
   display: none;
+  min-height: 100vh;
 }
 
 acc-page.hide{

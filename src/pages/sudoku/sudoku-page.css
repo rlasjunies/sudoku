@@ -2,12 +2,13 @@ sudoku-page acc-page {}
 
 acc-button {
   font-size: 2vh;
+  padding: 10px;
 }
 sudoku-page acc-page header {
   /* background: #5851ff; */
   background-color: antiquewhite;
   color: white;
-  height: 56px;
+  height: 70px;
   display: flex;
   align-items: center;
   /* align-self: center; */
@@ -21,9 +22,9 @@ sudoku-page acc-page .title {
   justify-content: center;
   align-content: center;
   text-align: center;
-  font-size: 3vh;
+  font-size: 4vh;
   /* color: #fff; */
-  color: darkslateblue;
+  color: black;
   /* padding: 0 12px; */
 }
 

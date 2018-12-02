@@ -2,7 +2,7 @@ import { Component } from '@stencil/core';
 import { generateBoardAction } from 'state/sudoku/sudoku.actions.generateBoard';
 import { SudokuLevelType } from 'services/sudoku/sudoku';
 import { store } from 'state/appStore';
-import { navigateToSudokuPageAction } from 'state/app-root/app-root.actions';
+import { navigateToSudokuPageAction, navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';
 
 @Component({
   tag: 'create-new-board',
@@ -15,18 +15,23 @@ export class CreateNewBoard {
     store.dispatch(generateBoardAction(difficulty));
     store.dispatch(navigateToSudokuPageAction());
   }
-
+  onBackClickHandler() {
+    store.dispatch(navigateToSplashScreenPageAction());
+  }
   render() {
     return (
       <acc-page>
-        <div id="banner">
-          <div id="title">Sudoku</div>
+        <div class="header">
+          <acc-button onClick={() => this.onBackClickHandler()} >Back</acc-button>
+          <div class="title">Sudoku</div>
         </div>
-        <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("easy")}>Facile</acc-button>
-        <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</acc-button>
-        <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("complex")}>Difficile</acc-button>
-        <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("very complex")}>Très difficile</acc-button>
-        </acc-page>
+        <div class="buttons">
+          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("easy")}>Facile</acc-button>
+          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</acc-button>
+          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("complex")}>Difficile</acc-button>
+          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("very complex")}>Très difficile</acc-button>
+        </div>
+      </acc-page>
     );
   }
 }
