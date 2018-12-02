@@ -6,6 +6,14 @@
   flex-direction: row;
 }
 
+.draftvalue{
+  /* background-color: aqua; */
+  min-height: 1vh;
+  min-width: 1vw;
+  font-size: 2vh;
+  font-weight: bold;
+}
+
 .key-board .row{
   display: flex;
   /* background: beige; */

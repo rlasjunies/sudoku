@@ -12,12 +12,14 @@
 [x] informer l'utilisateur quand une area(ligne/colonne) est finie
 [x] informer l'utilisateur quand le tableau est fini
 [x] improve UX for continue or new game
-[x] user can easily switch to draft mode
-[ ] user sees when in draft mode
+[x] user sees when in draft mode
 [ ] game board expressive header
+  [x] user can easily switch to draft mode
   [ ] pouvoir annuler le dernier coup (full history?)
   [ ] player knows how long duration of the current board game
     [ ] player can pause the timer
+[ ] user visualy understand action button (icons)
+[ ] user can leave generate board without generating a new board (back)
 
 [ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
 [ ] interdire l'écrassement d'une valeur donnée initialement

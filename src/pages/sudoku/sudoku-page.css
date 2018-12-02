@@ -1,5 +1,8 @@
 sudoku-page acc-page {}
 
+acc-button {
+  font-size: 2vh;
+}
 sudoku-page acc-page header {
   /* background: #5851ff; */
   background-color: antiquewhite;

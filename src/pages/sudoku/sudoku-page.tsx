@@ -16,6 +16,7 @@ export class SudokuPage {
   @State() candidatesBoard: boolean[][];
   @State() incorrectCells: number[];
   @State() cellSelected: number;
+  @State() draftMode: boolean;
   @State() colSolved: number;
   @State() rowSolved: number;
   @State() zoneSolved: number;
@@ -36,7 +37,7 @@ export class SudokuPage {
     thisContext.candidatesBoard = state.sudokuPage.candidatesBoard;
     thisContext.incorrectCells = state.sudokuPage.incorrectCells;
     thisContext.cellSelected = state.sudokuPage.cellSelected;
-    // thisContext.draftMode = state.sudokuPage.draftMode;
+    thisContext.draftMode = state.sudokuPage.draftMode;
 
     thisContext.colSolved = state.sudokuPage.colSolved
     thisContext.rowSolved = state.sudokuPage.rowSolved
@@ -83,7 +84,7 @@ export class SudokuPage {
             boardSolved={this.boardSolved}
 
             onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}></sudoku-board>
-          <key-board2 onKeyClicked={(keyCustomeEvent) => this.dispatchKeyBoardValueTyped(keyCustomeEvent)}></key-board2>
+          <key-board2 draftMode={this.draftMode} onKeyClicked={(keyCustomeEvent) => this.dispatchKeyBoardValueTyped(keyCustomeEvent)}></key-board3>
         </div>
       </acc-page>
     );

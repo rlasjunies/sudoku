@@ -27,8 +27,11 @@ export namespace Components {
     'onKeyClicked'?: (event: CustomEvent) => void;
   }
 
-  interface KeyBoard2 {}
+  interface KeyBoard2 {
+    'draftMode': boolean;
+  }
   interface KeyBoard2Attributes extends StencilHTMLAttributes {
+    'draftMode'?: boolean;
     'onKeyClicked'?: (event: CustomEvent) => void;
   }
 
