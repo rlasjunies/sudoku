@@ -8,6 +8,10 @@
 import '@stencil/core';
 
 
+import {
+  SudokuBoard,
+  SudokuBoardCell,
+} from './services/sudoku/sudoku';
 
 
 export namespace Components {
@@ -36,29 +40,27 @@ export namespace Components {
     'onNumberClicked'?: (event: CustomEvent) => void;
   }
 
-  interface SudokuBoardCell {
+  interface SudokuBoardCellComponent {
     'candidates': boolean[];
-    'value': number;
+    'cell': SudokuBoardCell;
   }
-  interface SudokuBoardCellAttributes extends StencilHTMLAttributes {
+  interface SudokuBoardCellComponentAttributes extends StencilHTMLAttributes {
     'candidates'?: boolean[];
-    'value'?: number;
+    'cell'?: SudokuBoardCell;
   }
 
-  interface SudokuBoard {
-    'board': number[];
+  interface SudokuBoardComponent {
+    'board': SudokuBoard;
     'boardSolved': boolean;
-    'candidatesBoard': boolean[][];
     'cellSelected': number;
     'incorrectCells': number[];
     'solvedCol': number;
     'solvedRow': number;
     'solvedZone': number;
   }
-  interface SudokuBoardAttributes extends StencilHTMLAttributes {
-    'board'?: number[];
+  interface SudokuBoardComponentAttributes extends StencilHTMLAttributes {
+    'board'?: SudokuBoard;
     'boardSolved'?: boolean;
-    'candidatesBoard'?: boolean[][];
     'cellSelected'?: number;
     'incorrectCells'?: number[];
     'onCellSelection'?: (event: CustomEvent) => void;
@@ -92,8 +94,8 @@ declare global {
     'AccSwitch': Components.AccSwitch;
     'KeyBoard': Components.KeyBoard;
     'KeyBoard2': Components.KeyBoard2;
-    'SudokuBoardCell': Components.SudokuBoardCell;
-    'SudokuBoard': Components.SudokuBoard;
+    'SudokuBoardCellComponent': Components.SudokuBoardCellComponent;
+    'SudokuBoardComponent': Components.SudokuBoardComponent;
     'AccPage': Components.AccPage;
     'AppRoot': Components.AppRoot;
     'CreateNewBoard': Components.CreateNewBoard;
@@ -106,8 +108,8 @@ declare global {
     'acc-switch': Components.AccSwitchAttributes;
     'key-board': Components.KeyBoardAttributes;
     'key-board2': Components.KeyBoard2Attributes;
-    'sudoku-board-cell': Components.SudokuBoardCellAttributes;
-    'sudoku-board': Components.SudokuBoardAttributes;
+    'sudoku-board-cell-component': Components.SudokuBoardCellComponentAttributes;
+    'sudoku-board-component': Components.SudokuBoardComponentAttributes;
     'acc-page': Components.AccPageAttributes;
     'app-root': Components.AppRootAttributes;
     'create-new-board': Components.CreateNewBoardAttributes;
@@ -140,16 +142,16 @@ declare global {
     new (): HTMLKeyBoard2Element;
   };
 
-  interface HTMLSudokuBoardCellElement extends Components.SudokuBoardCell, HTMLStencilElement {}
-  var HTMLSudokuBoardCellElement: {
-    prototype: HTMLSudokuBoardCellElement;
-    new (): HTMLSudokuBoardCellElement;
+  interface HTMLSudokuBoardCellComponentElement extends Components.SudokuBoardCellComponent, HTMLStencilElement {}
+  var HTMLSudokuBoardCellComponentElement: {
+    prototype: HTMLSudokuBoardCellComponentElement;
+    new (): HTMLSudokuBoardCellComponentElement;
   };
 
-  interface HTMLSudokuBoardElement extends Components.SudokuBoard, HTMLStencilElement {}
-  var HTMLSudokuBoardElement: {
-    prototype: HTMLSudokuBoardElement;
-    new (): HTMLSudokuBoardElement;
+  interface HTMLSudokuBoardComponentElement extends Components.SudokuBoardComponent, HTMLStencilElement {}
+  var HTMLSudokuBoardComponentElement: {
+    prototype: HTMLSudokuBoardComponentElement;
+    new (): HTMLSudokuBoardComponentElement;
   };
 
   interface HTMLAccPageElement extends Components.AccPage, HTMLStencilElement {}
@@ -187,8 +189,8 @@ declare global {
     'acc-switch': HTMLAccSwitchElement
     'key-board': HTMLKeyBoardElement
     'key-board2': HTMLKeyBoard2Element
-    'sudoku-board-cell': HTMLSudokuBoardCellElement
-    'sudoku-board': HTMLSudokuBoardElement
+    'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement
+    'sudoku-board-component': HTMLSudokuBoardComponentElement
     'acc-page': HTMLAccPageElement
     'app-root': HTMLAppRootElement
     'create-new-board': HTMLCreateNewBoardElement
@@ -201,8 +203,8 @@ declare global {
     'acc-switch': HTMLAccSwitchElement;
     'key-board': HTMLKeyBoardElement;
     'key-board2': HTMLKeyBoard2Element;
-    'sudoku-board-cell': HTMLSudokuBoardCellElement;
-    'sudoku-board': HTMLSudokuBoardElement;
+    'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement;
+    'sudoku-board-component': HTMLSudokuBoardComponentElement;
     'acc-page': HTMLAccPageElement;
     'app-root': HTMLAppRootElement;
     'create-new-board': HTMLCreateNewBoardElement;

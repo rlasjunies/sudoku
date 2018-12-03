@@ -23,10 +23,11 @@
 [x] user can erase a cell value and candidate
 [ ] user can visualize the cell selected even if the cell is in error
 [ ] user should visualize when he click in the keyboard keys (click effect missing)
+[ ] user is notified when a zone is completed
 
 [ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
-[ ] interdire l'écrassement d'une valeur donnée initialement
-[ ] mettre les valeurs initiales dans une couleur légèrement différente
+[x] interdire l'écrassement d'une valeur donnée initialement
+[x] mettre les valeurs initiales dans une couleur légèrement différente
 [ ] clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
 
 [x] proposer la génération de nouveau tableau quand le jeu commence
