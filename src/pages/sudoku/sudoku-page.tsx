@@ -1,21 +1,22 @@
-import { Component, State, Element } from '@stencil/core';
+import { Component, State } from '@stencil/core';
 import { store } from 'state/appStore';
 import { AppState } from 'state/app.state';
 import { cellSelectedAction } from "../../state/sudoku/sudoku.actions.cellSelected";
 import { switchDraftModeAction } from "../../state/sudoku/sudoku.actions.switchDraftMode";
 import { numberTypedAction, clearTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
 import { navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';
+import { SudokuBoard, initializeSudokuBoard } from 'services/sudoku/sudoku';
 
 @Component({
   tag: 'sudoku-page',
   styleUrl: 'sudoku-page.css'
 })
 export class SudokuPage {
-  @Element() element: HTMLSudokuPageElement;
-  @State() board: number[];
-  @State() candidatesBoard: boolean[][];
+  // @Element() element: HTMLSudokuPageElement;
+  @State() board: SudokuBoard = initializeSudokuBoard();
+  // @State() candidatesBoard: boolean[][];
   @State() incorrectCells: number[];
-  @State() cellSelected: number;
+  @State() cellSelected: number = -1;
   @State() draftMode: boolean;
   @State() colSolved: number;
   @State() rowSolved: number;
@@ -29,13 +30,12 @@ export class SudokuPage {
   }
 
   componentDidLoad() {
-    // this.sudokuBoardElt = this.element.shadowRoot.querySelector("sudoku-board");
     this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
   }
   stateChanged(state: AppState, thisContext: SudokuPage): any {
     thisContext.board = state.sudokuPage.board;
-    thisContext.candidatesBoard = state.sudokuPage.candidatesBoard;
-    thisContext.incorrectCells = state.sudokuPage.incorrectCells;
+    // thisContext.candidatesBoard = state.sudokuPage.candidatesBoard;
+    thisContext.incorrectCells = state.sudokuPage.board.incorrectCells;
     thisContext.cellSelected = state.sudokuPage.cellSelected;
     thisContext.draftMode = state.sudokuPage.draftMode;
 
@@ -43,8 +43,6 @@ export class SudokuPage {
     thisContext.rowSolved = state.sudokuPage.rowSolved
     thisContext.zoneSolved = state.sudokuPage.zoneSolved
     thisContext.boardSolved = state.sudokuPage.boardSolved
-    // thisContext.showSplashScreenPage = state.splashScreenPage.showPage
-    // thisContext.showSudokuPage = state.sudokuPage.showPage
   }
 
   dispatchCellSelection({ detail: cell }) {
@@ -75,10 +73,10 @@ export class SudokuPage {
           <acc-switch onSwitch={(draftMode) => this.dispatchSwitchDraftMode(draftMode)}>Draft mode</acc-switch>
         </header>
         <div class="main">
-          <sudoku-board
+          <sudoku-board-component
             id="sudokuboard"
             board={this.board}
-            candidatesBoard={this.candidatesBoard}
+            // candidatesBoard={this.candidatesBoard}
             cellSelected={this.cellSelected}
             incorrectCells={this.incorrectCells}
             solvedRow={this.rowSolved}
@@ -87,7 +85,7 @@ export class SudokuPage {
             boardSolved={this.boardSolved}
 
             onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
-          </sudoku-board>
+          </sudoku-board-component>
           <key-board2
             draftMode={this.draftMode}
             onClearClicked={_ => this.dispatchClearTyped()}

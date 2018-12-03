@@ -1,11 +1,11 @@
-import { SudokuLevelType, initializeCandidatesBoard } from "../../services/sudoku/sudoku";
+import { SudokuLevelType, SudokuBoard, initializeSudokuBoard } from "../../services/sudoku/sudoku";
 
 export interface SudokuPageState {
-  board: number[];
-  candidatesBoard: boolean[][];
+  board: SudokuBoard;
+  // incorrectCells: number[] ;
+  // candidatesBoard: boolean[][];
   boardLevel: SudokuLevelType | null;
   cellSelected: number | null;
-  incorrectCells: number[] ;
   boardJustFinish: boolean;
   draftMode:boolean;
   rowSolved: number;
@@ -15,17 +15,20 @@ export interface SudokuPageState {
   gameOnGoing: boolean;
 }
   
+const temp = initializeSudokuBoard();
 export const sudokuPageInitialState: SudokuPageState = {
-  board: Array(81),
-  boardLevel: null,
-  cellSelected: null,
-  incorrectCells: [],
-  boardJustFinish: false,
-  draftMode: false,
-  candidatesBoard: initializeCandidatesBoard(),
+  board: temp,
+  // incorrectCells: [],
+  // candidatesBoard: initializeCandidatesBoard(),
+  
   rowSolved: null,
   colSolved: null,
   zoneSolved: null,
   boardSolved: false,
-  gameOnGoing: false
+  
+  gameOnGoing: false,
+  boardLevel: null,
+  cellSelected: -1,
+  boardJustFinish: false,
+  draftMode: false,
 };

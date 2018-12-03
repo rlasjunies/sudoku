@@ -156,13 +156,13 @@ it('should return the zone of a cell number', () => {
 // })
 
 it('should list all possible value', () => {
-  const emptyBoard: number[] = Array(81);
-  const possibleValues = h.determinePossibleValues(0, emptyBoard);
+  const emptyBoard = h.initializeSudokuBoard();
+  const possibleValues = h.determinePossibleValuesx(0, emptyBoard);
   expect(possibleValues).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-  const boardWith1 = Array(81);
-  boardWith1[0] = 1;
-  const possibleValues1 = h.determinePossibleValues(1,boardWith1);
+  const boardWith1 = h.initializeSudokuBoard();
+  boardWith1.cells[0].value = 1;
+  const possibleValues1 = h.determinePossibleValuesx(1,boardWith1);
   expect(possibleValues1).toEqual([2,3,4,5,6,7,8,9]);
 });
 
@@ -180,11 +180,11 @@ it('should generate an initial sudoku board',()=>{
   expect(true).toBeTruthy();
 })
 
-it('should determine possible values of the board',()=>{
-  const sudokuBoard = h.generateSudokuBoard("easy");
-  h.visualize(sudokuBoard);
-  const sudokuBoardWithPossibleValues = h.candidatesForEmptyCells(sudokuBoard);
-  h.visualize(sudokuBoardWithPossibleValues);
-  expect(true).toBeTruthy();
+// it('should determine possible values of the board',()=>{
+//   const sudokuBoard = h.generateSudokuBoard("easy");
+//   h.visualize(sudokuBoard);
+//   const sudokuBoardWithPossibleValues = h.candidatesForEmptyCells(sudokuBoard);
+//   h.visualize(sudokuBoardWithPossibleValues);
+//   expect(true).toBeTruthy();
 
-})
+// })

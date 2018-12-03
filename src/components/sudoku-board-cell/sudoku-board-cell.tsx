@@ -1,17 +1,18 @@
 import { Component, Prop } from '@stencil/core';
+import { SudokuBoardCell } from "../../services/sudoku/sudoku";
 
 @Component({
-    tag: 'sudoku-board-cell',
+    tag: 'sudoku-board-cell-component',
     styleUrl: 'sudoku-board-cell.css',
     shadow: true
 })
-export class SudokuBoardCell {
+export class SudokuBoardCellComponent {
 
-    @Prop() candidates: boolean[] = Array(9);
-    @Prop() value: number = null;
+    @Prop() candidates: boolean[] = Array(8);
+    @Prop() cell: SudokuBoardCell = null;
 
     isThereValueDefined():boolean{
-        return this.value ? false : true;
+        return this.cell.value ? false : true;
     }
 
     render() {
@@ -38,7 +39,7 @@ export class SudokuBoardCell {
         } else {
             // console.log(`value:${this.value} -  ${this.candidates}`);
             return (
-                <div class="sudoku-board-cell" ><div class="value">{this.value}</div></div>
+                <div class="sudoku-board-cell" ><div class={this.cell.initialeValue === true ? "value initialvalue" : "value"}>{this.cell.value}{this.cell.initialeValue}</div></div>
             )
         }
     }
