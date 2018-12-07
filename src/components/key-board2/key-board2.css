@@ -49,3 +49,6 @@
   transform: translateY(1px);
 }
 
+.key-board .hidden{
+  visibility: hidden; 
+}

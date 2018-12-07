@@ -1,6 +1,6 @@
 import { SudokuAction } from "./sudoku.actions";
 import { SudokuPageState } from "./sudoku.state";
-import { isPossibleNumberx, isRowSolvedx, zoneOfCellNumber, isColSolvedx, isZoneSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone } from "../../services/sudoku/sudoku";
+import { isPossibleNumberx, isRowSolvedx, zoneOfCellNumber, isColSolvedx, isZoneSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers } from "../../services/sudoku/sudoku";
 // export const VALUE_TYPED_ACTION = 
 
 export type keyboardActionType =
@@ -85,6 +85,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
         // console.log(` [${col}-${row}-${zone}] rowSolved:${rowSolved} - colSolved:${colSolved} - zoneSolved:${zoneSolved} - boardSolved:${boardSolved}`);
       }
     }
+    newBoard.remainingNumbers = remainingNumbers(newBoard.cells);
 
     return {
       ...state,

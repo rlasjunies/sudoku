@@ -33,11 +33,13 @@ export namespace Components {
 
   interface KeyBoard2 {
     'draftMode': boolean;
+    'remainingNumbers': number[];
   }
   interface KeyBoard2Attributes extends StencilHTMLAttributes {
     'draftMode'?: boolean;
     'onClearClicked'?: (event: CustomEvent) => void;
     'onNumberClicked'?: (event: CustomEvent) => void;
+    'remainingNumbers'?: number[];
   }
 
   interface SudokuBoardCellComponent {

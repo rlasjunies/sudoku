@@ -89,7 +89,8 @@ export class SudokuPage {
           <key-board2
             draftMode={this.draftMode}
             onClearClicked={_ => this.dispatchClearTyped()}
-            onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}>
+            onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
+            remainingNumbers={this.board.remainingNumbers}>
           </key-board2>
         </div>
       </acc-page>

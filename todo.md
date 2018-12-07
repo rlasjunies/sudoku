@@ -25,10 +25,11 @@
 [ ] user should visualize when he click in the keyboard keys (click effect missing)
 [ ] user is notified when a zone is completed
 
-[ ] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
+[x] si toutes les occurences d'un chiffre sont remplis alors supprimer le chiffre du clavier 
 [x] interdire l'écrassement d'une valeur donnée initialement
 [x] mettre les valeurs initiales dans une couleur légèrement différente
 [ ] clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
+[ ] numbers are highligthed when keyboard selected
 
 [x] proposer la génération de nouveau tableau quand le jeu commence
 [x] splash screen navigate to current board if any
@@ -40,10 +41,10 @@
   (mediaquery)
   * put the "keyboard" on the side when 
 
-[ ] player can access to the sudoku from web browser
+[ ] player can access to the sudoku from web browser (publish on webportal)
 [ ] convert to PWA
 [ ] revenus are made from the application
-[ ] player are "pushed" to come back in the app
+[ ] player are "pushed" to come back in the app (daily challenge)
 
 [x] all pages of the program are based on acc-page
 [x] create a nicer button with ripple

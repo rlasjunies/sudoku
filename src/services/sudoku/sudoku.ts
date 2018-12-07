@@ -3,6 +3,7 @@ import * as arrayShuffle from "../arrayShuffle";
 export interface SudokuBoard {
     cells: SudokuBoardCell[];
     incorrectCells: number[];
+    remainingNumbers:number[];
 }
 export interface SudokuBoardCell {
     value: number | null;
@@ -18,7 +19,8 @@ const EMPTYCELL: SudokuBoardCell = {
 export function initializeSudokuBoard(): SudokuBoard {
     const board: SudokuBoard = {
         cells: [],
-        incorrectCells: []
+        incorrectCells: [],
+        remainingNumbers: []
     }
     for (let index = 0; index < 81; index++) {
         board.cells[index] = { ...EMPTYCELL };
@@ -227,8 +229,21 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
         sudokuBoard.cells[cellsToHide[index]] = { ...EMPTYCELL };
     }
 
+    sudokuBoard.remainingNumbers = remainingNumbers(sudokuBoard.cells);
+
     // TODO evaluate the complexity to solve
     return sudokuBoard;
+}
+
+export function remainingNumbers(sudokuBoardCells:SudokuBoardCell[]){
+
+    //reduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;
+    const init = [9,9,9,9,9,9,9,9,9];
+    return sudokuBoardCells.reduce<number[]>( (tmp,cell, _, __) => {
+        tmp[cell.value-1]-=1;
+        return tmp;
+
+    }, init );
 }
 
 // export function candidatesForEmptyCells(board: SudokuBoard): number[] {
