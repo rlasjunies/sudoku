@@ -36,7 +36,7 @@ export function colOfCellNumber(cellNumber: number) {
     return cellNumber % 9;
 }
 
-export function zoneOfCellNumber(cellNumber: number) {
+export function blockOfCellNumber(cellNumber: number) {
     return Math.floor(rowOfCellNumber(cellNumber) / 3) * 3 + Math.floor(colOfCellNumber(cellNumber) / 3);
 }
 
@@ -99,7 +99,7 @@ export function isPossibleBlockx(cellValue: number, block: number, sudoku: Sudok
 export function isPossibleNumberx(cellNumber: number, cellValue: number, board: SudokuBoard) {
     var row = rowOfCellNumber(cellNumber);
     var col = colOfCellNumber(cellNumber);
-    var block = zoneOfCellNumber(cellNumber);
+    var block = blockOfCellNumber(cellNumber);
     return isPossibleRowx(cellValue, row, board) && isPossibleColx(cellValue, col, board) && isPossibleBlockx(cellValue, block, board);
 }
 
@@ -125,7 +125,7 @@ export function isColSolvedx(col: number, board: SudokuBoard) {
 }
 
 
-export function isZoneSolvedx(block: number, board: SudokuBoard) {
+export function isBlockSolvedx(block: number, board: SudokuBoard) {
     var rightSequence = new Array(1, 2, 3, 4, 5, 6, 7, 8, 9);
     var blockTemp = new Array();
     for (var i = 0; i <= 8; i++) {
@@ -138,7 +138,7 @@ export function isZoneSolvedx(block: number, board: SudokuBoard) {
 
 export function isBoardSolvedx(board: SudokuBoard) {
     for (var i = 0; i <= 8; i++) {
-        if (!isZoneSolvedx(i, board) || !isRowSolvedx(i, board) || !isColSolvedx(i, board)) {
+        if (!isBlockSolvedx(i, board) || !isRowSolvedx(i, board) || !isColSolvedx(i, board)) {
             return false;
         }
     }

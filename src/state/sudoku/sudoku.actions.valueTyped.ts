@@ -1,6 +1,6 @@
 import { SudokuAction } from "./sudoku.actions";
 import { SudokuPageState } from "./sudoku.state";
-import { isPossibleNumberx, isRowSolvedx, zoneOfCellNumber, isColSolvedx, isZoneSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers } from "../../services/sudoku/sudoku";
+import { isPossibleNumberx, isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers } from "../../services/sudoku/sudoku";
 // export const VALUE_TYPED_ACTION = 
 
 export type keyboardActionType =
@@ -28,10 +28,10 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
   const oldBoard = state.board;
   const row = rowOfCellNumber(currentCell);
   const col = colOfCellNumber(currentCell);
-  const zone = zoneOfCellNumber(currentCell);
+  const block = blockOfCellNumber(currentCell);
   let rowSolved: number | null = null;
   let colSolved: number | null = null;
-  let zoneSolved: number | null = null;
+  let blockSolved: number | null = null;
   let boardSolved: boolean = false;
 
   let newBoard = sudokuBoardClone(state.board);
@@ -74,10 +74,10 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
         newBoard.cells[currentCell].value = value;
         rowSolved = isRowSolvedx(row, newBoard) ? row : null;
         colSolved = isColSolvedx(col, newBoard) ? col : null;
-        zoneSolved = isZoneSolvedx(zone, newBoard) ? zone : null;
+        blockSolved = isBlockSolvedx(block, newBoard) ? block : null;
         boardSolved = isBoardSolvedx(newBoard) ? true : false;
 
-        // console.log(` [${col}-${row}-${zone}] rowSolved:${rowSolved} - colSolved:${colSolved} - zoneSolved:${zoneSolved} - boardSolved:${boardSolved}`);
+        // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
       }
     }
     newBoard.remainingNumbers = remainingNumbers(newBoard.cells);
@@ -88,7 +88,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       boardHistory: [...state.boardHistory, oldBoard],  // add the oldBoard in the history
       rowSolved: rowSolved,
       colSolved: colSolved,
-      zoneSolved: zoneSolved,
+      blockSolved: blockSolved,
       boardSolved: boardSolved
     }
   }

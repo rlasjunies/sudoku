@@ -56,9 +56,9 @@ export namespace Components {
     'boardSolved': boolean;
     'cellSelected': number;
     'incorrectCells': number[];
+    'solvedBlock': number;
     'solvedCol': number;
     'solvedRow': number;
-    'solvedZone': number;
   }
   interface SudokuBoardComponentAttributes extends StencilHTMLAttributes {
     'board'?: SudokuBoard;
@@ -66,9 +66,9 @@ export namespace Components {
     'cellSelected'?: number;
     'incorrectCells'?: number[];
     'onCellSelection'?: (event: CustomEvent) => void;
+    'solvedBlock'?: number;
     'solvedCol'?: number;
     'solvedRow'?: number;
-    'solvedZone'?: number;
   }
 
   interface AccPage {

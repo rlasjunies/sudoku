@@ -9,7 +9,7 @@ export interface SudokuPageState {
   draftMode:boolean;
   rowSolved: number;
   colSolved: number;
-  zoneSolved: number;
+  blockSolved: number;
   boardSolved: boolean;
   gameOnGoing: boolean;
 }
@@ -20,7 +20,7 @@ export const sudokuPageInitialState: SudokuPageState = {
   boardHistory: [],
   rowSolved: null,
   colSolved: null,
-  zoneSolved: null,
+  blockSolved: null,
   boardSolved: false,
   
   gameOnGoing: false,

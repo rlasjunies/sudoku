@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Event, Element, Prop, Watch } from '@stencil/core';
-import { colOfCellNumber, rowOfCellNumber, zoneOfCellNumber, SudokuBoard, initializeSudokuBoard } from "../../services/sudoku/sudoku";
+import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initializeSudokuBoard } from "../../services/sudoku/sudoku";
 
 @Component({
     tag: 'sudoku-board-component',
@@ -12,7 +12,7 @@ export class SudokuBoardComponent {
  
     @Prop() solvedRow: number;
     @Prop() solvedCol: number;
-    @Prop() solvedZone: number;
+    @Prop() solvedBlock: number;
     @Prop() boardSolved: boolean;
     @Prop() board: SudokuBoard = initializeSudokuBoard();
     // @Prop() candidatesBoard: boolean[][] = Array(81);
@@ -119,11 +119,11 @@ export class SudokuBoardComponent {
 
         const colOfCell = colOfCellNumber(cell);
         const rowOfCell = rowOfCellNumber(cell);
-        const zoneOfCell = zoneOfCellNumber(cell);
+        const blockOfCell = blockOfCellNumber(cell);
 
         const colOfCellSelected = colOfCellNumber(this.cellSelected);
         const rowOfCellSelected = rowOfCellNumber(this.cellSelected);
-        const zoneOfCellSelected = zoneOfCellNumber(this.cellSelected);
+        const blockOfCellSelected = blockOfCellNumber(this.cellSelected);
 
         const isIncorrectCell = this.incorrectCells.lastIndexOf(cell) !== -1;
         const incorrectClass = isIncorrectCell ? " incorrect " : "";
@@ -133,7 +133,7 @@ export class SudokuBoardComponent {
             (this.cellSelected !== cell) &&
             ((colOfCell === colOfCellSelected) ||
                 (rowOfCell === rowOfCellSelected) ||
-                (zoneOfCell === zoneOfCellSelected))) ? " area-selected " : "";
+                (blockOfCell === blockOfCellSelected))) ? " area-selected " : "";
         const cellSelectedClass = (this.cellSelected === cell) ? " selected " : "";
 
         const sameValueAsTheOneSelected =
@@ -148,7 +148,7 @@ export class SudokuBoardComponent {
             ` cell${cell} ` +
             ` row${rowOfCell} ` +
             ` column${colOfCell} ` +
-            ` zone${zoneOfCell}` +
+            ` block${blockOfCell}` +
             cellsSelectedClass +
             cellSelectedClass +
             sameValueAsTheOneSelected +

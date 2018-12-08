@@ -22,26 +22,26 @@ it('should return the col of a cell number', () => {
   expect(h.colOfCellNumber(18)).toBe(0);
 });
 
-it('should return the zone of a cell number', () => {
-  expect(h.zoneOfCellNumber(0)).toBe(0);
-  expect(h.zoneOfCellNumber(1)).toBe(0);
-  expect(h.zoneOfCellNumber(5)).toBe(1);
-  expect(h.zoneOfCellNumber(8)).toBe(2);
-  expect(h.zoneOfCellNumber(9)).toBe(0);
-  expect(h.zoneOfCellNumber(10)).toBe(0);
-  expect(h.zoneOfCellNumber(15)).toBe(2);
-  expect(h.zoneOfCellNumber(18)).toBe(0);
+it('should return the block of a cell number', () => {
+  expect(h.blockOfCellNumber(0)).toBe(0);
+  expect(h.blockOfCellNumber(1)).toBe(0);
+  expect(h.blockOfCellNumber(5)).toBe(1);
+  expect(h.blockOfCellNumber(8)).toBe(2);
+  expect(h.blockOfCellNumber(9)).toBe(0);
+  expect(h.blockOfCellNumber(10)).toBe(0);
+  expect(h.blockOfCellNumber(15)).toBe(2);
+  expect(h.blockOfCellNumber(18)).toBe(0);
 });
 
-it('should return the zone of a cell number', () => {
-  expect(h.zoneOfCellNumber(0)).toBe(0);
-  expect(h.zoneOfCellNumber(1)).toBe(0);
-  expect(h.zoneOfCellNumber(5)).toBe(1);
-  expect(h.zoneOfCellNumber(8)).toBe(2);
-  expect(h.zoneOfCellNumber(9)).toBe(0);
-  expect(h.zoneOfCellNumber(10)).toBe(0);
-  expect(h.zoneOfCellNumber(15)).toBe(2);
-  expect(h.zoneOfCellNumber(18)).toBe(0);
+it('should return the block of a cell number', () => {
+  expect(h.blockOfCellNumber(0)).toBe(0);
+  expect(h.blockOfCellNumber(1)).toBe(0);
+  expect(h.blockOfCellNumber(5)).toBe(1);
+  expect(h.blockOfCellNumber(8)).toBe(2);
+  expect(h.blockOfCellNumber(9)).toBe(0);
+  expect(h.blockOfCellNumber(10)).toBe(0);
+  expect(h.blockOfCellNumber(15)).toBe(2);
+  expect(h.blockOfCellNumber(18)).toBe(0);
 });
 
 // it('should add value in the baord', () => {

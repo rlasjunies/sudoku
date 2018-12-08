@@ -19,7 +19,7 @@ export class SudokuPage {
   @State() draftMode: boolean;
   @State() colSolved: number;
   @State() rowSolved: number;
-  @State() zoneSolved: number;
+  @State() blockSolved: number;
   @State() boardSolved: boolean;
 
   unsubscribeStateChanged: () => void;
@@ -39,7 +39,7 @@ export class SudokuPage {
 
     thisContext.colSolved = state.sudokuPage.colSolved
     thisContext.rowSolved = state.sudokuPage.rowSolved
-    thisContext.zoneSolved = state.sudokuPage.zoneSolved
+    thisContext.blockSolved = state.sudokuPage.blockSolved
     thisContext.boardSolved = state.sudokuPage.boardSolved
   }
 
@@ -83,7 +83,7 @@ export class SudokuPage {
             incorrectCells={this.incorrectCells}
             solvedRow={this.rowSolved}
             solvedCol={this.colSolved}
-            solvedZone={this.zoneSolved}
+            solvedBlock={this.blockSolved}
             boardSolved={this.boardSolved}
 
             onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
