@@ -1,35 +1,47 @@
 # TODO: list
 
-[ ] game board expressive header
-  [x] user can easily switch to draft mode
-  [x] pouvoir annuler le dernier coup (full history?)
-  [ ] player knows how long duration of the current board game
-    [ ] player can pause the timer
-[ ] user visualy understand action button (icons)
-[ ] user can visualize the cell selected even if the cell is in error
-[ ] user should visualize when he click in the keyboard keys (click effect missing)
-[ ] user is notified when a zone is completed
+[ ] player knows the duration of the game
+[ ] player can pause the timer
 
-[ ] clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
-[ ] numbers are highligthed when keyboard selected
+[ ] generator evaluate the complexicity of the resolution based on rules
 
-[ ] player can continue playing easily after ending a game
+[ ] Style / UI
+  [ ] user can visualize the cell selected even if the cell is in error
+  [ ] user visualy understand action button (icons)
+  [ ] user should visualize when he click in the keyboard keys (click effect missing)
+
+[ ] UX
+  [ ] user is notified when a block is completed
+  [ ] system remove candidate value when the number is typed in the row, column or block
+  [ ] clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
+  [ ] system shows how many numbers are left for a specific number
+
+[ ] coach
+  [ ] shows how many cells have one candidates
+  [ ] shows how many cells have one candidates because other values are not possible by side effect
+    ( unicity on another area)
 
 [ ] user can play on small device
   * (resize the table depend on the siez of the screen)
   (mediaquery)
   * put the "keyboard" on the side when 
 
+[ ] player can continue playing easily after ending a game
+
 [ ] player can access to the sudoku from web browser (publish on webportal)
 [ ] convert to PWA
 [ ] revenus are made from the application
 [ ] player are "pushed" to come back in the app (daily challenge)
 
-[ ] operator enjoy a new slide button
 [ ] create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back
 [ ] unit tests
 [ ] e2e tests
 [ ] remove the stenciljs and rely in the statelgt framework?
+
+
+[x] game board expressive header
+  [x] user can easily switch to draft mode
+  [x] pouvoir annuler le dernier coup (full history?)
 
 [x] user can leave generate board without generating a new board (back)
 [x] user can erase a cell value and candidate
@@ -42,12 +54,12 @@
 [x] all pages of the program are based on acc-page
 [x] create a nicer button with ripple
 [x] mettre en évidence les cellules dont la valeur est erronnée
-[x] mettre en evidence les lignes / colonnes / block qui concerne la zone d'action de l'utilisateur  
+[x] mettre en evidence les lignes / colonnes / block qui concerne la block d'action de l'utilisateur  
   x change la couleur de fond
   - est-ce possible de réduire la taille des autres des autres valeurs?
 
 [x] définir les valeurs possibles
-[x] mettre en évidence la cellule sélectionnée, par rapport aux lignes/colonnes/zone
+[x] mettre en évidence la cellule sélectionnée, par rapport aux lignes/colonnes/block
 [x] mettre en evidence les chiffres quand l'utilisateur sélectionne un chiffre
 [x] when the app restart, the game restart at the same stage (persist the state in the localstaorage)  
 [x] informer l'utilisateur quand une area(ligne/colonne) est finie
