@@ -2,7 +2,7 @@
 
 [ ] game board expressive header
   [x] user can easily switch to draft mode
-  [ ] pouvoir annuler le dernier coup (full history?)
+  [x] pouvoir annuler le dernier coup (full history?)
   [ ] player knows how long duration of the current board game
     [ ] player can pause the timer
 [ ] user visualy understand action button (icons)

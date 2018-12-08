@@ -25,7 +25,7 @@ export function clearTypedAction(): SudokuAction {
 export function valueTypedReducer(state: SudokuPageState, action: SudokuAction): SudokuPageState {
   const payload: valueTypeActionPayload = action.payload;
   const currentCell = state.cellSelected;
-  const currentBoard = state.board;
+  const oldBoard = state.board;
   const row = rowOfCellNumber(currentCell);
   const col = colOfCellNumber(currentCell);
   const zone = zoneOfCellNumber(currentCell);
@@ -34,8 +34,6 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
   let zoneSolved: number | null = null;
   let boardSolved: boolean = false;
 
-  // let newCandidatesBoard = [...state.candidatesBoard];
-  // let newIncorrectCells = [...state.incorrectCells];
   let newBoard = sudokuBoardClone(state.board);
 
   // TODO: algo a revoir quand fonctionnel avancé, il faut mettre dans des sous fonctions l'ensemeble des cas
@@ -48,9 +46,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
     const value = payload.valueTyped;
 
     if (action.type === "CLEAR_TYPED") {
-      // newCandidatesBoard[currentCell]= [];
       newBoard.cells[currentCell].candidates = [];
-      // newBoard = updateBoardx(null, currentCell, currentBoard);
       newBoard.cells[currentCell].value = null;
       // remove the cell of the incorrect cells
       newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell);
@@ -64,10 +60,10 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       } else {
 
         // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
-        currentBoard.cells[currentCell].value = null;
+        oldBoard.cells[currentCell].value = null;
 
         // managed incorrect cell
-        const isValueCorrect = isPossibleNumberx(currentCell, value, currentBoard);
+        const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
 
         // remove the value from the list if already exists
         // TODO: create an array library - retrieve the one from uacommander
@@ -75,7 +71,6 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
         if (!isValueCorrect) {
           newBoard.incorrectCells.push(currentCell);
         }
-        // newBoard = updateBoard(value, currentCell, currentBoard);
         newBoard.cells[currentCell].value = value;
         rowSolved = isRowSolvedx(row, newBoard) ? row : null;
         colSolved = isColSolvedx(col, newBoard) ? col : null;
@@ -90,8 +85,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
     return {
       ...state,
       board: newBoard,
-      // incorrectCells: newIncorrectCells,
-      // candidatesBoard: newCandidatesBoard,
+      boardHistory: [...state.boardHistory, oldBoard],  // add the oldBoard in the history
       rowSolved: rowSolved,
       colSolved: colSolved,
       zoneSolved: zoneSolved,

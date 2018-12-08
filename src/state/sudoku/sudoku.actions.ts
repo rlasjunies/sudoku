@@ -6,8 +6,9 @@ export type SudokuActionType =
   "NUMBER_TYPED" |
   "CLEAR_TYPED" | 
   "SWITCH_DRAFT_MODE" |
-  "SHOW" | "HIDE" 
-
+  "SHOW" | 
+  "HIDE" | 
+  "UNDO"
 
 export interface SudokuAction extends Action {
   type: SudokuActionType;

@@ -2,8 +2,7 @@ import { SudokuLevelType, SudokuBoard, initializeSudokuBoard } from "../../servi
 
 export interface SudokuPageState {
   board: SudokuBoard;
-  // incorrectCells: number[] ;
-  // candidatesBoard: boolean[][];
+  boardHistory:SudokuBoard[];
   boardLevel: SudokuLevelType | null;
   cellSelected: number | null;
   boardJustFinish: boolean;
@@ -15,12 +14,10 @@ export interface SudokuPageState {
   gameOnGoing: boolean;
 }
   
-const temp = initializeSudokuBoard();
+const emptyBoard = initializeSudokuBoard();
 export const sudokuPageInitialState: SudokuPageState = {
-  board: temp,
-  // incorrectCells: [],
-  // candidatesBoard: initializeCandidatesBoard(),
-  
+  board: emptyBoard,
+  boardHistory: [],
   rowSolved: null,
   colSolved: null,
   zoneSolved: null,

@@ -1,16 +1,18 @@
 import { SudokuPageState, sudokuPageInitialState } from "./sudoku.state";
 import { SudokuAction } from "./sudoku.actions";
-import { CELL_SELECTED_ACTION, cellSelectedReducer } from "./sudoku.actions.cellSelected";
-import { GENERATE_BOARD, generateBoardReducer } from "./sudoku.actions.generateBoard";
+import { cellSelectedReducer } from "./sudoku.actions.cellSelected";
+import { generateBoardReducer } from "./sudoku.actions.generateBoard";
 import { valueTypedReducer } from "./sudoku.actions.valueTyped";
 import { swtichModeReducer } from "./sudoku.actions.switchDraftMode";
+import { undoReducer } from "./sudoku.actions.undo";
+
 export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialState, action: SudokuAction) {
   switch (action.type) {
-    case CELL_SELECTED_ACTION: {
-      return cellSelectedReducer(state, action);
-    };
-    case GENERATE_BOARD: {
+    case "GENERATE_BOARD": {
       return generateBoardReducer(state, action);
+    };
+    case "CELL_SELECTED": {
+      return cellSelectedReducer(state, action);
     };
     case "CLEAR_TYPED": {
       return valueTypedReducer(state, action);
@@ -20,6 +22,9 @@ export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialStat
     }
     case "SWITCH_DRAFT_MODE": {
       return swtichModeReducer(state, action);
+    }
+    case "UNDO": {
+      return undoReducer(state, action);
     }
   }
 

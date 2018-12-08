@@ -6,15 +6,14 @@ import { switchDraftModeAction } from "../../state/sudoku/sudoku.actions.switchD
 import { numberTypedAction, clearTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
 import { navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';
 import { SudokuBoard, initializeSudokuBoard } from 'services/sudoku/sudoku';
+import { undoAction } from 'state/sudoku/sudoku.actions.undo';
 
 @Component({
   tag: 'sudoku-page',
   styleUrl: 'sudoku-page.css'
 })
 export class SudokuPage {
-  // @Element() element: HTMLSudokuPageElement;
   @State() board: SudokuBoard = initializeSudokuBoard();
-  // @State() candidatesBoard: boolean[][];
   @State() incorrectCells: number[];
   @State() cellSelected: number = -1;
   @State() draftMode: boolean;
@@ -34,7 +33,6 @@ export class SudokuPage {
   }
   stateChanged(state: AppState, thisContext: SudokuPage): any {
     thisContext.board = state.sudokuPage.board;
-    // thisContext.candidatesBoard = state.sudokuPage.candidatesBoard;
     thisContext.incorrectCells = state.sudokuPage.board.incorrectCells;
     thisContext.cellSelected = state.sudokuPage.cellSelected;
     thisContext.draftMode = state.sudokuPage.draftMode;
@@ -64,11 +62,15 @@ export class SudokuPage {
   onBackClickHandler() {
     store.dispatch(navigateToSplashScreenPageAction());
   }
+  onUndoClickHandler() {
+    store.dispatch(undoAction());
+  }
   render() {
     return (
       <acc-page>
         <header>
           <acc-button onClick={() => this.onBackClickHandler()} >Back</acc-button>
+          <acc-button onClick={() => this.onUndoClickHandler()} >Undo</acc-button>
           <div class="title">Sudoku</div>
           <acc-switch onSwitch={(draftMode) => this.dispatchSwitchDraftMode(draftMode)}>Draft mode</acc-switch>
         </header>
