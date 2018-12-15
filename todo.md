@@ -1,11 +1,21 @@
 # TODO: list
 
-[ ] player knows the duration of the game
-[ ] player can pause the timer
+[x] player knows the duration of the game
+[x] player can pause the timer
+
+[ ] Think about 2 modes of game
+  - electronic sudoku ... with not help only replacing the paper ... no error raised when typing
+    the system can check on demand or at the end
+  - on typing the system check if the values entered are good, raised error if not, manage kind of number of error max
+[ ] Error is raised when the value entered is not the one expected 
+[ ] celebrate the end of the game
+  unselect cell, to show the whole board
+  when the game is finished, hide the "clear button"
 
 [ ] generator evaluate the complexicity of the resolution based on rules
 
 [ ] Style / UI
+  [ ] candidates color should be less attractives compare to the initial/entered values
   [ ] user can visualize the cell selected even if the cell is in error
   [ ] user visualy understand action button (icons)
   [ ] user should visualize when he click in the keyboard keys (click effect missing)
@@ -19,7 +29,8 @@
 [ ] coach
   [ ] shows how many cells have one candidates
   [ ] shows how many cells have one candidates because other values are not possible by side effect
-    ( unicity on another area)
+    ( unicity on another zone)
+    * if a value is mandatory only in one row / column of a block. It's not a candidates in the other blocks of the row/column
 
 [ ] user can play on small device
   * (resize the table depend on the siez of the screen)

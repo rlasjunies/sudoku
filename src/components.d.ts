@@ -21,9 +21,23 @@ export namespace Components {
     'onClick_'?: (event: CustomEvent) => void;
   }
 
+  interface AccFlipbox {
+    'flip': boolean;
+  }
+  interface AccFlipboxAttributes extends StencilHTMLAttributes {
+    'flip'?: boolean;
+  }
+
   interface AccSwitch {}
   interface AccSwitchAttributes extends StencilHTMLAttributes {
     'onSwitch'?: (event: CustomEvent) => void;
+  }
+
+  interface AccTimer {
+    'time': number;
+  }
+  interface AccTimerAttributes extends StencilHTMLAttributes {
+    'time'?: number;
   }
 
   interface KeyBoard {}
@@ -93,7 +107,9 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'AccButton': Components.AccButton;
+    'AccFlipbox': Components.AccFlipbox;
     'AccSwitch': Components.AccSwitch;
+    'AccTimer': Components.AccTimer;
     'KeyBoard': Components.KeyBoard;
     'KeyBoard2': Components.KeyBoard2;
     'SudokuBoardCellComponent': Components.SudokuBoardCellComponent;
@@ -107,7 +123,9 @@ declare global {
 
   interface StencilIntrinsicElements {
     'acc-button': Components.AccButtonAttributes;
+    'acc-flipbox': Components.AccFlipboxAttributes;
     'acc-switch': Components.AccSwitchAttributes;
+    'acc-timer': Components.AccTimerAttributes;
     'key-board': Components.KeyBoardAttributes;
     'key-board2': Components.KeyBoard2Attributes;
     'sudoku-board-cell-component': Components.SudokuBoardCellComponentAttributes;
@@ -126,10 +144,22 @@ declare global {
     new (): HTMLAccButtonElement;
   };
 
+  interface HTMLAccFlipboxElement extends Components.AccFlipbox, HTMLStencilElement {}
+  var HTMLAccFlipboxElement: {
+    prototype: HTMLAccFlipboxElement;
+    new (): HTMLAccFlipboxElement;
+  };
+
   interface HTMLAccSwitchElement extends Components.AccSwitch, HTMLStencilElement {}
   var HTMLAccSwitchElement: {
     prototype: HTMLAccSwitchElement;
     new (): HTMLAccSwitchElement;
+  };
+
+  interface HTMLAccTimerElement extends Components.AccTimer, HTMLStencilElement {}
+  var HTMLAccTimerElement: {
+    prototype: HTMLAccTimerElement;
+    new (): HTMLAccTimerElement;
   };
 
   interface HTMLKeyBoardElement extends Components.KeyBoard, HTMLStencilElement {}
@@ -188,7 +218,9 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'acc-button': HTMLAccButtonElement
+    'acc-flipbox': HTMLAccFlipboxElement
     'acc-switch': HTMLAccSwitchElement
+    'acc-timer': HTMLAccTimerElement
     'key-board': HTMLKeyBoardElement
     'key-board2': HTMLKeyBoard2Element
     'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement
@@ -202,7 +234,9 @@ declare global {
 
   interface ElementTagNameMap {
     'acc-button': HTMLAccButtonElement;
+    'acc-flipbox': HTMLAccFlipboxElement;
     'acc-switch': HTMLAccSwitchElement;
+    'acc-timer': HTMLAccTimerElement;
     'key-board': HTMLKeyBoardElement;
     'key-board2': HTMLKeyBoard2Element;
     'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement;

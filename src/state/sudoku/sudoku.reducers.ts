@@ -5,6 +5,7 @@ import { generateBoardReducer } from "./sudoku.actions.generateBoard";
 import { valueTypedReducer } from "./sudoku.actions.valueTyped";
 import { swtichModeReducer } from "./sudoku.actions.switchDraftMode";
 import { undoReducer } from "./sudoku.actions.undo";
+import { timerReducer } from "./sudoku.actions.timer";
 
 export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialState, action: SudokuAction) {
   switch (action.type) {
@@ -25,6 +26,12 @@ export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialStat
     }
     case "UNDO": {
       return undoReducer(state, action);
+    }
+    case "TIMER_PAUSE":
+    case "TIMER_RESUME":
+    case "TIMER_START":
+    case "TIMER_TICK": {
+      return timerReducer(state,action);
     }
   }
 

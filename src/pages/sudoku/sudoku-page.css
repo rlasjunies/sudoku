@@ -42,3 +42,10 @@ sudoku-page acc-page .main {
 sudoku-page acc-page key-board {
   flex: 1;
 }
+
+sudoku-page [slot="back"]{
+  font-size: 50vh;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}

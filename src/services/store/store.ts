@@ -12,12 +12,14 @@ export class Store {
     private _state: { [key: string]: any };
     private reducers: { [key: string]: Function };
     private reactions: Reaction[];
+    private name:string;
 
-    constructor(reducers = {}, initialState = {}) {
+    constructor(reducers = {}, initialState = {}, name: string) {
         this.reducers = reducers;
+        this.name = name;
         this.reactions = [];
-        const retrievePreviousState = retrieve();
-        const storedOrInitState = (retrievePreviousState !== null) ? retrievePreviousState : initialState; 
+        const retrievePreviousState = retrieve(this.name);
+        const storedOrInitState = (retrievePreviousState !== null) ? retrievePreviousState : initialState;
         this._state = this.reduce(storedOrInitState, {});
         console.log("STORE CONSTRUCTED!", this._state);
         this.reactions.push({
@@ -33,8 +35,8 @@ export class Store {
     dispatch(action: Action) {
         this._state = this.reduce(this._state, action);
         this._state.actionType = action.type;
-        persist(this._state);
-        this.reactions.forEach(reaction => reaction.function(this._state, reaction.context));
+        persist(this._state, this.name);
+        this.reactions.forEach(reaction => reaction.function.call(reaction.context, this._state));
     }
 
     private reduce(state, action) {
@@ -55,25 +57,25 @@ export class Store {
 
     subscribeReaction(reactionFunction: Function, reactionThis: any) {
         this.reactions = [...this.reactions, { function: reactionFunction, context: reactionThis }];
-        reactionFunction(this._state, reactionThis);
+        reactionFunction.call(reactionThis,this._state, reactionThis);
         return () => {
             this.reactions = this.reactions.filter(reaction => reaction.function !== reactionFunction);
         };
     }
 }
 
-function persist(state: any){
+function persist(state: any, key:string) {
     if (typeof localStorage != 'undefined') {
-        localStorage.setItem('accurentis-sudoku', JSON.stringify(state));
+        localStorage.setItem(key, JSON.stringify(state));
     } else {
         console.log("no localstorage");
     }
 }
 
-function retrieve():any{
+function retrieve(key:string): any {
     if (typeof localStorage != 'undefined') {
-        let storePersisted = localStorage.getItem('accurentis-sudoku');
-        if (storePersisted!== null ) storePersisted = JSON.parse(storePersisted);
+        let storePersisted = localStorage.getItem(key);
+        if (storePersisted !== null) storePersisted = JSON.parse(storePersisted);
         return storePersisted;
     } else {
         console.log("no localstorage");

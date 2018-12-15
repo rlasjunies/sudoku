@@ -12,6 +12,8 @@ export interface SudokuPageState {
   blockSolved: number;
   boardSolved: boolean;
   gameOnGoing: boolean;
+  timer:number; //seconds
+  timerOn:boolean;
 }
   
 const emptyBoard = initializeSudokuBoard();
@@ -28,4 +30,6 @@ export const sudokuPageInitialState: SudokuPageState = {
   cellSelected: -1,
   boardJustFinish: false,
   draftMode: false,
+  timer: 0,
+  timerOn: false
 };

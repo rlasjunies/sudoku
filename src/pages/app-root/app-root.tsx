@@ -18,10 +18,10 @@ export class AppRoot {
   componentDidLoad() {
     this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
   }
-  stateChanged(state: AppState, thisContext: AppRoot): any {
-    thisContext.showSplashScreenPage = state.appRoot.showSplashScreenPage;
-    thisContext.showSudokuPage = state.appRoot.showSudokuPage;
-    thisContext.showCreateNewBoardPage = state.appRoot.showCreateNewBoardPage;
+  stateChanged(state: AppState): any {
+    this.showSplashScreenPage = state.appRoot.showSplashScreenPage;
+    this.showSudokuPage = state.appRoot.showSudokuPage;
+    this.showCreateNewBoardPage = state.appRoot.showCreateNewBoardPage;
   }
 
   @State() showSplashScreenPage: boolean;

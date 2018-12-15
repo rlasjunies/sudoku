@@ -8,7 +8,11 @@ export type SudokuActionType =
   "SWITCH_DRAFT_MODE" |
   "SHOW" | 
   "HIDE" | 
-  "UNDO"
+  "UNDO" | 
+  "TIMER_START" |
+  "TIMER_PAUSE" |
+  "TIMER_RESUME" | 
+  "TIMER_TICK"
 
 export interface SudokuAction extends Action {
   type: SudokuActionType;

@@ -24,8 +24,8 @@ export class SplashScreenPage {
   componentDidLoad() {
     this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
   }
-  stateChanged(state: AppState, thisContext: SplashScreenPage): any {
-    thisContext.gameOnGoing = state.sudokuPage.gameOnGoing;
+  stateChanged(state: AppState): any {
+    this.gameOnGoing = state.sudokuPage.gameOnGoing;
   }
 
   navigateToSudokuPage() {

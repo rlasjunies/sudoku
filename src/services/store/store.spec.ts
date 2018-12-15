@@ -41,7 +41,7 @@ export function todoReducer(state: ITodoState = todoInitialState, action: TodoAc
     return state;
 }
 
-const store = new Store({ todos: todoReducer }, { todos: todoInitialState });
+const store = new Store({ todos: todoReducer }, { todos: todoInitialState }, "nameofstore");
 
 it('should initiate the store', () => {
 
