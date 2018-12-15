@@ -81,6 +81,7 @@
 
 # FIXME: 
 
+[x] cannot click on cell, back of flip is still available
 [x] when starting the cell is selected
 [x] reinitiliaze the candidates same time as the board
 [x] wrong highlight when selecting "empty" cell
