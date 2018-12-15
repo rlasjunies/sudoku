@@ -67,6 +67,7 @@ export class SudokuPage {
 
   onBackClickHandler() {
     store.dispatch(navigateToSplashScreenPageAction());
+    store.dispatch(timerPauseAction());
   }
   onUndoClickHandler() {
     store.dispatch(undoAction());

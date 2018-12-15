@@ -1,8 +1,6 @@
 # TODO: list
 
-[x] player knows the duration of the game
-[x] player can pause the timer
-
+[x] timer is paused when going in home page
 [ ] Think about 2 modes of game
   - electronic sudoku ... with not help only replacing the paper ... no error raised when typing
     the system can check on demand or at the end
@@ -49,6 +47,9 @@
 [ ] e2e tests
 [ ] remove the stenciljs and rely in the statelgt framework?
 
+
+[x] player knows the duration of the game
+[x] player can pause the timer
 
 [x] game board expressive header
   [x] user can easily switch to draft mode

@@ -3,7 +3,7 @@ import { store } from 'state/appStore';
 
 import { navigateToSudokuPageAction, navigateToCreateNewBordPageAction } from 'state/app-root/app-root.actions';
 import { AppState } from 'state/app.state';
-// import { closeSplashScreenAction } from 'state/splash-screen/splash-screen.actions.close';
+import { timerResumeAction } from 'state/sudoku/sudoku.actions.timer';
 
 @Component({
   tag: 'splash-screen-page',
@@ -29,6 +29,7 @@ export class SplashScreenPage {
   }
 
   navigateToSudokuPage() {
+    store.dispatch(timerResumeAction());
     store.dispatch(navigateToSudokuPageAction());
   }
   navigateToCreateNewBoardPage() {
