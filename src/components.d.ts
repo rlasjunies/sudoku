@@ -56,6 +56,16 @@ export namespace Components {
     'remainingNumbers'?: number[];
   }
 
+  interface KeyBoard3 {
+    'remainingNumbers': number[];
+  }
+  interface KeyBoard3Attributes extends StencilHTMLAttributes {
+    'onClearClicked'?: (event: CustomEvent) => void;
+    'onNumberClicked'?: (event: CustomEvent) => void;
+    'onUndoClicked'?: (event: CustomEvent) => void;
+    'remainingNumbers'?: number[];
+  }
+
   interface SudokuBoardCellComponent {
     'candidates': boolean[];
     'cell': SudokuBoardCell;
@@ -112,6 +122,7 @@ declare global {
     'AccTimer': Components.AccTimer;
     'KeyBoard': Components.KeyBoard;
     'KeyBoard2': Components.KeyBoard2;
+    'KeyBoard3': Components.KeyBoard3;
     'SudokuBoardCellComponent': Components.SudokuBoardCellComponent;
     'SudokuBoardComponent': Components.SudokuBoardComponent;
     'AccPage': Components.AccPage;
@@ -128,6 +139,7 @@ declare global {
     'acc-timer': Components.AccTimerAttributes;
     'key-board': Components.KeyBoardAttributes;
     'key-board2': Components.KeyBoard2Attributes;
+    'key-board3': Components.KeyBoard3Attributes;
     'sudoku-board-cell-component': Components.SudokuBoardCellComponentAttributes;
     'sudoku-board-component': Components.SudokuBoardComponentAttributes;
     'acc-page': Components.AccPageAttributes;
@@ -172,6 +184,12 @@ declare global {
   var HTMLKeyBoard2Element: {
     prototype: HTMLKeyBoard2Element;
     new (): HTMLKeyBoard2Element;
+  };
+
+  interface HTMLKeyBoard3Element extends Components.KeyBoard3, HTMLStencilElement {}
+  var HTMLKeyBoard3Element: {
+    prototype: HTMLKeyBoard3Element;
+    new (): HTMLKeyBoard3Element;
   };
 
   interface HTMLSudokuBoardCellComponentElement extends Components.SudokuBoardCellComponent, HTMLStencilElement {}
@@ -223,6 +241,7 @@ declare global {
     'acc-timer': HTMLAccTimerElement
     'key-board': HTMLKeyBoardElement
     'key-board2': HTMLKeyBoard2Element
+    'key-board3': HTMLKeyBoard3Element
     'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement
     'sudoku-board-component': HTMLSudokuBoardComponentElement
     'acc-page': HTMLAccPageElement
@@ -239,6 +258,7 @@ declare global {
     'acc-timer': HTMLAccTimerElement;
     'key-board': HTMLKeyBoardElement;
     'key-board2': HTMLKeyBoard2Element;
+    'key-board3': HTMLKeyBoard3Element;
     'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement;
     'sudoku-board-component': HTMLSudokuBoardComponentElement;
     'acc-page': HTMLAccPageElement;

@@ -1,0 +1,112 @@
+.key-board {
+  margin: 0px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.value {
+  /* background-color: aqua; */
+  font-size: var(--value-fontsize);
+}
+
+.key-board .row {
+  display: flex;
+  flex-direction: row;
+}
+
+.key-board .row .key {
+  /* background-color: aqua; */
+  /* align-items: stretch;
+  align-content: center; */
+  /* font-size: 100; */
+  /* border-style: dotted; */
+  border-radius: 1vw;
+  /* font-family: 'Courier New', Courier, monospace, 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  font-size: --value-fontsize;
+  min-width: 9vw;
+  max-width: 9vw;
+  min-height: 9vw;
+  max-height: 9vw;
+  flex: 1;
+  margin: 0.3vw;
+  display: flex;
+  justify-content: center;
+  display: flex;
+}
+
+
+.value {
+  margin: auto;
+}
+
+.key:hover {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .1);
+  transform: translateY(1px);
+}
+
+.key-board .hidden {
+  visibility: hidden;
+}
+
+key-board3 clr-icon {
+  width: 7vw;
+  height: 7vw;
+}
+
+
+/* .draftvalue { */
+/* background-color: aqua; */
+/* min-height: 1vh; */
+/* min-width: 1vw; */
+/* font-size: var(--draftvalue-fontsize); */
+/* font-weight: bold; */
+/* } */
+
+.draftkey {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 0px;
+  border-style: dotted;
+  /* background-color: violet; */
+
+  align-items: center;
+  /* justify-content: center; */
+  /* flex-direction: column;   */
+  /* text-align: center; */
+  /* vertical-align: middle; */
+
+  /* height: 100%; */
+  /* width: 100%; */
+}
+
+.draftkeyrow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 0px;
+}
+
+
+.draftkeyvalue {
+  /* background-color: yellow; */
+  flex: 1;
+  margin: 0px;
+  /* display: flex; */
+  /* justify-content: center; */
+
+
+  min-width: var(--keyboard-draftvalue-minwidth);
+  max-width: var(--keyboard-draftvalue-minwidth);
+
+  min-height: var(--keyboard-draftvalue-minheight);
+  max-height: var(--keyboard-draftvalue-minheight);
+  /* min-width: 30%;
+  max-width: 30%;
+  min-height: 30%;
+  max-height: 30%; */
+  font-size: var(--keyboard-draftvalue-fontsize);
+  margin: 0px;
+}

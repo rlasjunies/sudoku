@@ -1,5 +1,5 @@
 .sudoku-board {
-    margin: 10px;
+    margin: 1vw;
     display: flex;
     flex-direction: column;
 }
@@ -16,10 +16,20 @@
     flex: 1;
     display: flex;
     justify-content: center;
-    min-width: 95px;
-    min-height: 95px;
+    min-width: 10.5vw;
+    max-width: 10.5vw;
+    min-height: 10vw;
+    max-height: 10vw;
 }
 
+/* @media (max-width: 1024px) { */
+    /* .sudoku-board .cell { */
+        /* min-width: 10.5vw; */
+        /* max-width: 10.5vw; */
+        /* min-height: 10vw; */
+        /* max-height: 10vw; */
+    /* } */
+/* } */
 /* 
 
 Draw the black line of the board 
@@ -31,44 +41,44 @@ Draw the black line of the board
     border-top-style: solid;
 }
 
-.sudoku-board .row1, .row4, .row7 {
+ .sudoku-board .row1, .row4, .row7 {
     border-top: black;
     border-top-style: dotted;
 }
 
-.sudoku-board .row2, .row5, .row8 {
+ .sudoku-board .row2, .row5, .row8 {
     border-top: black;
     border-top-style: dotted;
     border-bottom: black;
     border-bottom-style: solid;
 }
 
-.sudoku-board .column0 {
+ .sudoku-board .column0 {
     border-left: black;
     border-left-style: solid;
 }
 
-.column1, .column4, .column7 {
+ .column1, .column4, .column7 {
     border-left: black;
     border-left-style: dotted;
 }
 
-.sudoku-board .column2, .column5, .column8 {
+ .sudoku-board .column2, .column5, .column8 {
     border-left: black;
     border-left-style: dotted;
     border-right: black;
     border-right-style: solid;
 }
 
-.area-selected {
+ .area-selected {
     background-color: cornsilk;
 }
 
-.selected {
+ .selected {
     background-color: antiquewhite;
 }
 
-.chenillardCol {
+ .chenillardCol {
     /* background-color:cyan; */
     background-color: antiquewhite;
     /* background: linear-gradient(to top, burlywood); */
@@ -77,6 +87,6 @@ Draw the black line of the board
     /* transition: background-color 0.2s ease; */
 }
 
-.incorrect {
+ .incorrect {
     background-color: burlywood;
 }
