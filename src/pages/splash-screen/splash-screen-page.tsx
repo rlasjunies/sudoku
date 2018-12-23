@@ -7,7 +7,7 @@ import { timerResumeAction } from 'state/sudoku/sudoku.actions.timer';
 
 @Component({
   tag: 'splash-screen-page',
-  styleUrl: 'splash-screen-page.css'
+  styleUrl: 'splash-screen-page.css',
 })
 export class SplashScreenPage {
 
@@ -39,16 +39,23 @@ export class SplashScreenPage {
   render() {
     return (
       <acc-page>
-        <div id="banner">
           <div id="title">Sudoku</div>
-        </div>
-        <div class="whatnext">
           {this.gameOnGoing ?
-            <acc-button id="gotogame" class="whatnext-question-button" onClick_={() => this.navigateToSudokuPage()}>Continue</acc-button>
+            <button
+              class="btn btn-icon btn-primary acc-btn-big"
+              onClick={() => this.navigateToSudokuPage()}>
+              <clr-icon shape="play"></clr-icon>
+              Continue
+            </button>
             : ''
           }
-            <acc-button id="createnewboard" class="whatnext-question-button" onClick_={() => this.navigateToCreateNewBoardPage()}>New</acc-button>
-        </div>
+          <button
+            // button is primary when no game on-going
+            class={this.gameOnGoing ? "btn btn-icon acc-btn-big" : "btn btn-icon btn-primary acc-btn-big "}
+            onClick={() => this.navigateToCreateNewBoardPage()}>
+            <clr-icon shape="new"></clr-icon>
+            New
+          </button>
       </acc-page>
     );
   }

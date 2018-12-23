@@ -5,7 +5,7 @@ import { AppState } from 'state/app.state';
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
-  shadow: true
+  // shadow: true
 })
 export class AppRoot {
   @Element() element: HTMLAppRootElement;
@@ -28,7 +28,7 @@ export class AppRoot {
   @Watch("showSplashScreenPage")
   showSplashScreenWatcher(newValue: boolean, oldValue: boolean) {
     // console.log(`showSplashScreenWatcher: ${newValue} - ${oldValue}`)
-    const splash : HTMLAccPageElement = this.element.shadowRoot.querySelector('splash-screen-page > acc-page');
+    const splash : HTMLAccPageElement = this.element.querySelector('splash-screen-page > acc-page');
     if (newValue && !oldValue) {
       // console.log("Show the splash screen!!!!");
       splash.show();
@@ -42,7 +42,7 @@ export class AppRoot {
   @Watch('showSudokuPage')
   showSudokuPagewatcher(newValue, oldValue) {
     // console.log(`showSudokuPagewatcher: ${newValue} - ${oldValue}`)
-    const sudoku: HTMLAccPageElement = this.element.shadowRoot.querySelector('sudoku-page > acc-page');
+    const sudoku: HTMLAccPageElement = this.element.querySelector('sudoku-page > acc-page');
     if (newValue && !oldValue) {
       // console.log("Show the sudoku page!!!!");
       sudoku.show();
@@ -56,7 +56,7 @@ export class AppRoot {
   @Watch('showCreateNewBoardPage')
   showCreateNewBoardPagewatcher(newValue, oldValue) {
     // console.log(`showCreateNewBoardPagewatcher: ${newValue} - ${oldValue}`)
-    const $createNewBoard: HTMLAccPageElement = this.element.shadowRoot.querySelector('create-new-board > acc-page');
+    const $createNewBoard: HTMLAccPageElement = this.element.querySelector('create-new-board > acc-page');
     if (newValue && !oldValue) {
       // console.log("Show the create board page!!!!");
       $createNewBoard.show();

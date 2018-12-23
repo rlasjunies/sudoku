@@ -84,40 +84,61 @@ export class SudokuPage {
   render() {
     return (
       <acc-page>
-        <header>
-          <acc-button onClick={() => this.onBackClickHandler()} >Back</acc-button>
-          <acc-button onClick={() => this.onUndoClickHandler()} >Undo</acc-button>
-          <acc-button onClick={() => this.onTimerSwitch()} >{this.timerOn ? "Pause" : "Resume "}</acc-button>
-          {/* <div class="title">Sudoku</div> */}
-          <acc-timer class="title" time={this.timer}></acc-timer>
-          <acc-switch onSwitch={(draftMode) => this.dispatchSwitchDraftMode(draftMode)}>Draft mode</acc-switch>
-        </header>
-        <acc-flipbox flip={!this.timerOn}>
-          <div slot="front">
-            <sudoku-board-component
-              id="sudokuboard"
-              board={this.board}
-              // candidatesBoard={this.candidatesBoard}
-              cellSelected={this.cellSelected}
-              incorrectCells={this.incorrectCells}
-              solvedRow={this.rowSolved}
-              solvedCol={this.colSolved}
-              solvedBlock={this.blockSolved}
-              boardSolved={this.boardSolved}
+        <div class="header">
+          <button class="btn btn-link"
+            onClick={() => this.onBackClickHandler()}>
+            <clr-icon shape="angle caret left" size="40"></clr-icon>Back
+          </button>
 
-              onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
-            </sudoku-board-component>
-            <key-board2
-              draftMode={this.draftMode}
-              onClearClicked={_ => this.dispatchClearTyped()}
-              onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
-              remainingNumbers={this.board.remainingNumbers}>
-            </key-board2>
-          </div>
-          <div slot="back" onClick={() => this.onTimerSwitch()}>
-            &#9658;
-          </div>
-        </acc-flipbox>
+          <button class="btn"
+            onClick={() => this.onUndoClickHandler()} >
+            <clr-icon shape="undo"></clr-icon>Undo
+          </button>
+
+          <acc-timer class="title" time={this.timer}></acc-timer>
+
+          <button class="btn"
+            onClick={() => this.onTimerSwitch()}>
+            <clr-icon shape={this.timerOn ? "pause" : "play"}></clr-icon>{this.timerOn ? "Pause" : "Resume"}
+          </button>
+
+          {/* <div class="toggle-switch"> */}
+            {/* <input type="checkbox" id="toggle_1" /> */}
+            {/* <label></label> */}
+          {/* </div> */}
+
+          <acc-switch onSwitch={(draftMode) => this.dispatchSwitchDraftMode(draftMode)}>
+            <clr-icon shape="pencil" size="30"></clr-icon>
+            Draft
+          </acc-switch>
+        </div>
+        <div class="content">
+          <acc-flipbox flip={!this.timerOn}>
+            <div slot="front">
+              <sudoku-board-component
+                id="sudokuboard"
+                board={this.board}
+                cellSelected={this.cellSelected}
+                incorrectCells={this.incorrectCells}
+                solvedRow={this.rowSolved}
+                solvedCol={this.colSolved}
+                solvedBlock={this.blockSolved}
+                boardSolved={this.boardSolved}
+
+                onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
+              </sudoku-board-component>
+              <key-board2
+                draftMode={this.draftMode}
+                onClearClicked={_ => this.dispatchClearTyped()}
+                onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
+                remainingNumbers={this.board.remainingNumbers}>
+              </key-board2>
+            </div>
+            <div slot="back" onClick={() => this.onTimerSwitch()}>
+              <clr-icon shape="play" ></clr-icon>
+            </div>
+          </acc-flipbox>
+        </div>
       </acc-page >
     );
   }

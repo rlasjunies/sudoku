@@ -10,7 +10,10 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@clr/icons": "^1.0.2",
+    "@clr/ui": "^1.0.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ionic-team/stencil-app-starter.git"

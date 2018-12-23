@@ -1,46 +1,82 @@
-acc-button {
-  font-size: 2vh;
-  padding: 10px;
-}
-
-.header {
-  /* background: #5851ff; */
-  background-color: antiquewhite;
-  color: white;
-  height: 70px;
+create-new-board .header{
   display: flex;
-  align-items: center;
-  /* align-self: center; */
+  flex-direction: column;
+  /* width: 100%; */
+
   justify-content: center;
-  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  background-color: var(--color-50);
+  /* align-content: center; */
+  /* align-self: center; */
+  /* align-items: center; */
+  /* text-align: center; */
+  
+  /* height: 150px; */
+  font-size: 5vh;
+  color:var(--color-500);
+
+  border-bottom: 1px;
+  border-color: var(--color-150);
 }
 
-.title {
-  flex: 1;
+create-new-board .header button{
+  /* width:50px; */
+  /* height:50px; */
+  font-size: 3vh;
+  height: 4vh;
+}
+create-new-board .header clr-icon{
+  width:50px;
+  height:50px;
+  /* font-size: 3vh; */
+}
+
+
+create-new-board #content{
+  display: flex;
+  flex:1;
+  flex-direction: column;
+  align-content: center;
   align-self: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+create-new-board .title{
+  flex:1;
+}
+create-new-board .buttons{
+  display: flex;
+  flex:2;
+  flex-direction: column;
+  align-content: center;
+  align-self: center;
+  align-items: center;
+  
+  width: 100%;
+}
+create-new-board .acc-btn-big {
+  /* display: flex; */
+  /* align-self: center; */
+  /* align-content: center; */
+  height: 7vh;
+  width: 90%;
+  min-width: 90%;
+  /* max-width: 100%; */
+  font-size: 5vh;
+  /* color: yellow; */
+}
+
+create-new-board .title {
+  display: flex;
+  flex:1;
+
+  align-self:   center;
   justify-content: center;
   align-content: center;
   text-align: center;
-  font-size: 3vh;
-  /* color: #fff; */
-  color: black;
-  /* padding: 0 12px; */
-}
-
-
-.buttons{
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  flex:1;
-}
-
-
-.generate-board {
-  font-size: 10vh;
-  display: flex;
-  padding: 20px;
-  /* width: 96%; */
-  /* flex attributes*/
-  flex: 1;
+  align-items: center;
+  
+  font-size: 5vh;
+  line-height: 5vh;
 }

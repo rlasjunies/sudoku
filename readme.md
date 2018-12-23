@@ -23,3 +23,7 @@ https://www.aligneddev.net/blog/2017/pwa-links/
 
 
 https://www.joshmorony.com/building-a-pwa-with-stencil-an-introduction-to-stencil/
+
+# UI / UX - Clarity project
+
+https://vmware.github.io/clarity/

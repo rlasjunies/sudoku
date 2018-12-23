@@ -22,14 +22,20 @@ export class CreateNewBoard {
     return (
       <acc-page>
         <div class="header">
-          <acc-button onClick={() => this.onBackClickHandler()} >Back</acc-button>
-          <div class="title">Sudoku</div>
+          <button class="btn btn-link"
+            onClick={() => this.onBackClickHandler()}>
+            <clr-icon shape="angle caret left" ></clr-icon>
+            Back
+              </button>
         </div>
-        <div class="buttons">
-          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("easy")}>Facile</acc-button>
-          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</acc-button>
-          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("complex")}>Difficile</acc-button>
-          <acc-button class="generate-board" onClick_={() => this.generateNewBoardOnClickHandler("very complex")}>Très difficile</acc-button>
+        <div id="content">
+          <div class="title">Quel challenge serez-vous relever?</div>
+          <div class="buttons">
+            <button class="btn acc-btn-big" onClick={() => this.generateNewBoardOnClickHandler("easy")}>Facile</button>
+            <button class="btn acc-btn-big" onClick={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</button>
+            <button class="btn acc-btn-big" onClick={() => this.generateNewBoardOnClickHandler("complex")}>Difficile</button>
+            <button class="btn acc-btn-big" onClick={() => this.generateNewBoardOnClickHandler("very complex")}>Très difficile</button>
+          </div>
         </div>
       </acc-page>
     );

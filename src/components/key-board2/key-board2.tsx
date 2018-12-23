@@ -3,7 +3,6 @@ import { Component, EventEmitter, Event, Prop } from '@stencil/core';
 @Component({
   tag: 'key-board2',
   styleUrl: 'key-board2.css',
-  shadow: true
 })
 export class KeyBoard2 {
   @Event() numberClicked: EventEmitter;
@@ -61,7 +60,9 @@ export class KeyBoard2 {
           <div class={this.remainingNumbers[6] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("7")}>{this.cellHTML(7)}</div>
           <div class={this.remainingNumbers[7] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("8")}>{this.cellHTML(8)}</div>
           <div class={this.remainingNumbers[8] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("9")}>{this.cellHTML(9)}</div>
-          <div class="key" onClick={() => this.clearClickedHandler()}><div>X</div></div>
+          <div class="key" onClick={() => this.clearClickedHandler()}>
+            <clr-icon shape="eraser" size="60" class="is-solid"></clr-icon>
+          </div>
         </div>
       </div>
     );

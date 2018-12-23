@@ -1,10 +1,27 @@
-sudoku-page acc-page {}
+sudoku-page acc-page {
+  height: 100%;
+}
 
-acc-button {
-  font-size: 2vh;
+sudoku-page clr-icon {
+  margin: 3px;
+}
+
+sudoku-page button {
+  font-size: 5vh;
   padding: 10px;
 }
-sudoku-page acc-page header {
+
+sudoku-page .draft {
+  width: 4vw;
+  height: 4vw;
+}
+
+sudoku-page .pause {
+  width: 25vw;
+  height: 25vh;
+}
+
+sudoku-page acc-page .header {
   /* background: #5851ff; */
   background-color: antiquewhite;
   color: white;
@@ -17,35 +34,53 @@ sudoku-page acc-page header {
 }
 
 sudoku-page acc-page .title {
-  flex: 1;
-  align-self: center;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-  font-size: 4vh;
+  /* flex: 1; */
+  /* align-self: center; */
+  /* justify-content: center; */
+  /* align-content: center; */
+  /* text-align: center; */
+  font-size: 2vh;
   /* color: #fff; */
   color: black;
-  /* padding: 0 12px; */
+  padding: 0 12px;
 }
 
-acc-switch{
+acc-switch {
   font-size: 3vh;
 }
 
-sudoku-page acc-page .main {
-  display: flex;
+sudoku-page [slot="back"] {
+  /* display: flex; */
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-}
-
-sudoku-page acc-page key-board {
-  flex: 1;
-}
-
-sudoku-page [slot="back"]{
-  font-size: 50vh;
+  flex-direction: column;  
   text-align: center;
   vertical-align: middle;
   cursor: pointer;
+  /* width: 100%; */
+  height: 80vh;
 }
+
+sudoku-page [slot="back"] clr-icon {
+  width: 240px;
+  height: 240px;
+  /* margin: auto; */
+}
+
+sudoku-page [slot="front"] {
+  /* display: flex; */
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;  
+  text-align: center;
+  vertical-align: middle;
+  /* font-size: 50vh; */
+  /* text-align: center; */
+  /* vertical-align: middle; */
+  /* cursor: pointer; */
+}
+
+/* sudoku-page .icon {
+  font-size: 10em;
+  color: Tomato;
+} */
