@@ -61,6 +61,7 @@ export namespace Components {
   }
   interface KeyBoard3Attributes extends StencilHTMLAttributes {
     'onClearClicked'?: (event: CustomEvent) => void;
+    'onDraftNumberClicked'?: (event: CustomEvent) => void;
     'onNumberClicked'?: (event: CustomEvent) => void;
     'onUndoClicked'?: (event: CustomEvent) => void;
     'remainingNumbers'?: number[];

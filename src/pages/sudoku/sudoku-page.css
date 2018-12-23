@@ -25,7 +25,8 @@ sudoku-page acc-page .header {
   /* background: #5851ff; */
   background-color: antiquewhite;
   color: white;
-  height: 70px;
+  max-height: 5vh;
+  min-height: 50px;
   display: flex;
   align-items: center;
   /* align-self: center; */
@@ -34,13 +35,12 @@ sudoku-page acc-page .header {
 }
 
 sudoku-page acc-page .title {
-  /* flex: 1; */
-  /* align-self: center; */
-  /* justify-content: center; */
-  /* align-content: center; */
-  /* text-align: center; */
+  flex: 1;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
   font-size: 2vh;
-  /* color: #fff; */
   color: black;
   padding: 0 12px;
 }
@@ -70,7 +70,7 @@ sudoku-page [slot="back"] clr-icon {
 sudoku-page [slot="front"] {
   /* display: flex; */
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   flex-direction: column;  
   text-align: center;
   vertical-align: middle;
@@ -79,8 +79,3 @@ sudoku-page [slot="front"] {
   /* vertical-align: middle; */
   /* cursor: pointer; */
 }
-
-/* sudoku-page .icon {
-  font-size: 10em;
-  color: Tomato;
-} */

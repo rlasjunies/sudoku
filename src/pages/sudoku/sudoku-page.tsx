@@ -2,8 +2,8 @@ import { Component, State } from '@stencil/core';
 import { store } from 'state/appStore';
 import { AppState } from 'state/app.state';
 import { cellSelectedAction } from "../../state/sudoku/sudoku.actions.cellSelected";
-import { switchDraftModeAction } from "../../state/sudoku/sudoku.actions.switchDraftMode";
-import { numberTypedAction, clearTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
+// import { switchDraftModeAction } from "../../state/sudoku/sudoku.actions.switchDraftMode";
+import { numberTypedAction, clearTypedAction, draftNumberTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
 import { navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';
 import { SudokuBoard, initializeSudokuBoard } from 'services/sudoku/sudoku';
 import { undoAction } from 'state/sudoku/sudoku.actions.undo';
@@ -56,14 +56,21 @@ export class SudokuPage {
   dispatchNumberTyped({ detail: keyTyped }) {
     store.dispatch(numberTypedAction(keyTyped));
   }
+  dispatchDraftNumberTyped({ detail: keyTyped }) {
+    store.dispatch(draftNumberTypedAction(keyTyped));
+  }
   dispatchClearTyped() {
     store.dispatch(clearTypedAction());
   }
-
-  dispatchSwitchDraftMode({ detail: draftMode }): void {
-    // console.log(`dispartchSwitchDraftMode:`,draftMode);
-    store.dispatch(switchDraftModeAction(draftMode));
+  
+  dispatchUndoTyped() {
+    store.dispatch(undoAction());
   }
+
+  // dispatchSwitchDraftMode({ detail: draftMode }): void {
+  //   // console.log(`dispartchSwitchDraftMode:`,draftMode);
+  //   store.dispatch(switchDraftModeAction(draftMode));
+  // }
 
   onBackClickHandler() {
     store.dispatch(navigateToSplashScreenPageAction());
@@ -90,10 +97,10 @@ export class SudokuPage {
             <clr-icon shape="angle caret left" size="40"></clr-icon>Back
           </button>
 
-          <button class="btn"
+          {/* <button class="btn"
             onClick={() => this.onUndoClickHandler()} >
             <clr-icon shape="undo"></clr-icon>Undo
-          </button>
+          </button> */}
 
           <acc-timer class="title" time={this.timer}></acc-timer>
 
@@ -107,10 +114,10 @@ export class SudokuPage {
             {/* <label></label> */}
           {/* </div> */}
 
-          <acc-switch onSwitch={(draftMode) => this.dispatchSwitchDraftMode(draftMode)}>
+          {/* <acc-switch onSwitch={(draftMode) => this.dispatchSwitchDraftMode(draftMode)}>
             <clr-icon shape="pencil" size="30"></clr-icon>
             Draft
-          </acc-switch>
+          </acc-switch> */}
         </div>
         <div class="content">
           <acc-flipbox flip={!this.timerOn}>
@@ -127,12 +134,14 @@ export class SudokuPage {
 
                 onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
               </sudoku-board-component>
-              <key-board2
-                draftMode={this.draftMode}
+              <key-board3
+                // draftMode={this.draftMode}
                 onClearClicked={_ => this.dispatchClearTyped()}
+                onUndoClicked={_ => this.dispatchClearTyped()}
                 onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
+                onDraftNumberClicked={(draftNumberClicked)=> this.dispatchDraftNumberTyped(draftNumberClicked)}
                 remainingNumbers={this.board.remainingNumbers}>
-              </key-board2>
+              </key-board3>
             </div>
             <div slot="back" onClick={() => this.onTimerSwitch()}>
               <clr-icon shape="play" ></clr-icon>

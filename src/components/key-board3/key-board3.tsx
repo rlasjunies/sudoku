@@ -6,6 +6,7 @@ import { Component, EventEmitter, Event, Prop } from '@stencil/core';
 })
 export class KeyBoard2 {
   @Event() numberClicked: EventEmitter;
+  @Event() draftNumberClicked: EventEmitter;
   @Event() clearClicked: EventEmitter;
   @Event() undoClicked: EventEmitter;
 
@@ -13,6 +14,9 @@ export class KeyBoard2 {
   @Prop() remainingNumbers: number[];
   numberClickedHandler(value: string) {
     this.numberClicked.emit(value);
+  }
+  draftNumberClickedHandler(value: string) {
+    this.draftNumberClicked.emit(value);
   }
   clearClickedHandler() {
     this.clearClicked.emit("x");
@@ -86,15 +90,15 @@ export class KeyBoard2 {
           </div>
         </div>
         <div class="row">
-          <div class={this.remainingNumbers[0] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("1")}>{this.cellHTML(1, true)}</div>
-          <div class={this.remainingNumbers[1] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("2")}>{this.cellHTML(2, true)}</div>
-          <div class={this.remainingNumbers[2] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("3")}>{this.cellHTML(3, true)}</div>
-          <div class={this.remainingNumbers[3] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("4")}>{this.cellHTML(4, true)}</div>
-          <div class={this.remainingNumbers[4] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("5")}>{this.cellHTML(5, true)}</div>
-          <div class={this.remainingNumbers[5] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("6")}>{this.cellHTML(6, true)}</div>
-          <div class={this.remainingNumbers[6] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("7")}>{this.cellHTML(7, true)}</div>
-          <div class={this.remainingNumbers[7] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("8")}>{this.cellHTML(8, true)}</div>
-          <div class={this.remainingNumbers[8] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("9")}>{this.cellHTML(9, true)}</div>
+          <div class={this.remainingNumbers[0] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("1")}>{this.cellHTML(1, true)}</div>
+          <div class={this.remainingNumbers[1] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("2")}>{this.cellHTML(2, true)}</div>
+          <div class={this.remainingNumbers[2] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("3")}>{this.cellHTML(3, true)}</div>
+          <div class={this.remainingNumbers[3] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("4")}>{this.cellHTML(4, true)}</div>
+          <div class={this.remainingNumbers[4] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("5")}>{this.cellHTML(5, true)}</div>
+          <div class={this.remainingNumbers[5] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("6")}>{this.cellHTML(6, true)}</div>
+          <div class={this.remainingNumbers[6] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("7")}>{this.cellHTML(7, true)}</div>
+          <div class={this.remainingNumbers[7] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("8")}>{this.cellHTML(8, true)}</div>
+          <div class={this.remainingNumbers[8] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("9")}>{this.cellHTML(9, true)}</div>
           <div class="key" onClick={() => this.undoClickedHandler()}>
             <clr-icon shape="undo" class="is-solid"></clr-icon>
           </div>

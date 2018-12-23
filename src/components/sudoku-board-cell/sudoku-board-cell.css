@@ -27,7 +27,9 @@
 
     
     min-width: var(--draftvalue-minwidth);
+    max-width: var(--draftvalue-minwidth);
     min-height: var(--draftvalue-minwidth);
+    max-height: var(--draftvalue-minwidth);
     font-size: var(--draftvalue-fontsize);
 }
 

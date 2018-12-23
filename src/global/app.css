@@ -18,6 +18,10 @@ body {
 @import url('../../node_modules/@clr/ui/clr-ui.min.css');
 @import url('../../node_modules/@clr/icons/clr-icons.min.css');
 
+sudoku-var {
+  --draftvalue-fontsize: 3vw;
+}
+
 /* material design Red 50 */
 red-50 {
   --red-50: #FFEBEE;
@@ -52,7 +56,8 @@ light-green-50 {
   --light-green-A400: #76FF03;
   --light-green-A700: #64DD17;
 }
-:root{
+
+:root {
   --color-50: #F1F8E9;
   --color-100: #DCEDC8;
   --color-200: #C5E1A5;
@@ -67,4 +72,19 @@ light-green-50 {
   --color-A200: #B2FF59;
   --color-A400: #76FF03;
   --color-A700: #64DD17;
+
+  --draftvalue-fontsize: 3vw;
+  --draftvalue-minwidth: 3vw;
+
+  --value-fontsize: 9vw;
+  --header-fontsize: 3vw;
+  --header-button-fontsize: 3vw;
+
+  --keyboard-draftvalue-fontsize: 2.5vw;
+  --keyboard-draftvalue-minwidth: 2vw;
+  --keyboard-draftvalue-minheight: 2vw;
+  
+
+  /* --font-family: font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+
 }

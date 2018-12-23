@@ -26,7 +26,7 @@ export class CreateNewBoard {
             onClick={() => this.onBackClickHandler()}>
             <clr-icon shape="angle caret left" ></clr-icon>
             Back
-              </button>
+          </button>
         </div>
         <div id="content">
           <div class="title">Quel challenge serez-vous relever?</div>

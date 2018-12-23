@@ -4,6 +4,7 @@ export type SudokuActionType =
   "CELL_SELECTED" | 
   "GENERATE_BOARD" | 
   "NUMBER_TYPED" |
+  "DRAFT_NUMBER_TYPED" |
   "CLEAR_TYPED" | 
   "SWITCH_DRAFT_MODE" |
   "SHOW" | 
@@ -12,7 +13,7 @@ export type SudokuActionType =
   "TIMER_START" |
   "TIMER_PAUSE" |
   "TIMER_RESUME" | 
-  "TIMER_TICK"
+  "TIMER_TICK";
 
 export interface SudokuAction extends Action {
   type: SudokuActionType;

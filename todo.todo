@@ -20,7 +20,8 @@ Style / UI:
   ☐ user can visualize the cell selected even if the cell is in error
   ✔ user visualy understand action button (icons) @done (12/23/2018, 11:57:06 AM)
   ☐ user should visualize when he click in the keyboard keys (click effect missing)
-
+  ☐ support vertical layout
+    may be propose 2 type of classes. JS determine if the layout is portrait or paysage, then classes are adapted as consequence
 UX:
   ☐ user is notified when a block is completed
   ☐ system remove candidate value when the number is typed in the row, column or block
@@ -33,7 +34,7 @@ coach features:
     ( unicity on another zone)
     * if a value is mandatory only in one row / column of a block. It's not a candidates in the other blocks of the row/column
 
-☐ user can play on small device
+✔ user can play on small device @done (12/23/2018, 5:28:18 PM)
   * (resize the table depend on the siez of the screen)
   (mediaquery)
   * put the "keyboard" on the side when 

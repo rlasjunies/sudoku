@@ -3,9 +3,6 @@ import { SudokuPageState } from "./sudoku.state";
 import { isPossibleNumberx, isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers } from "../../services/sudoku/sudoku";
 // export const VALUE_TYPED_ACTION = 
 
-export type keyboardActionType =
-  "NUMBER_TYPED" | "CLEAR_TYPED";
-
 interface valueTypeActionPayload {
   valueTyped: number
 }
@@ -15,6 +12,13 @@ export function numberTypedAction(value: number): SudokuAction {
     payload: { valueTyped: value }
   }
 }
+export function draftNumberTypedAction(value: number): SudokuAction {
+  return {
+    type: "DRAFT_NUMBER_TYPED",
+    payload: { valueTyped: value }
+  }
+}
+
 export function clearTypedAction(): SudokuAction {
   return {
     type: "CLEAR_TYPED",
@@ -50,35 +54,34 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       newBoard.cells[currentCell].value = null;
       // remove the cell of the incorrect cells
       newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell);
+    } else if (action.type === "DRAFT_NUMBER_TYPED") {
+
+      // if (state.draftMode === true) {
+      // switch value in the candidates
+      // newCandidatesBoard[currentCell][value - 1] = newCandidatesBoard[currentCell][value - 1] ? false : true;
+      newBoard.cells[currentCell].candidates[value - 1] = newBoard.cells[currentCell].candidates[value - 1] ? false : true;
+
     } else {
 
-      if (state.draftMode === true) {
-        // switch value in the candidates
-        // newCandidatesBoard[currentCell][value - 1] = newCandidatesBoard[currentCell][value - 1] ? false : true;
-        newBoard.cells[currentCell].candidates[value - 1] = newBoard.cells[currentCell].candidates[value - 1] ? false : true;
+      // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
+      oldBoard.cells[currentCell].value = null;
 
-      } else {
+      // managed incorrect cell
+      const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
 
-        // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
-        oldBoard.cells[currentCell].value = null;
-
-        // managed incorrect cell
-        const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
-
-        // remove the value from the list if already exists
-        // TODO: create an array library - retrieve the one from uacommander
-        newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell)
-        if (!isValueCorrect) {
-          newBoard.incorrectCells.push(currentCell);
-        }
-        newBoard.cells[currentCell].value = value;
-        rowSolved = isRowSolvedx(row, newBoard) ? row : null;
-        colSolved = isColSolvedx(col, newBoard) ? col : null;
-        blockSolved = isBlockSolvedx(block, newBoard) ? block : null;
-        boardSolved = isBoardSolvedx(newBoard) ? true : false;
-
-        // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
+      // remove the value from the list if already exists
+      // TODO: create an array library - retrieve the one from uacommander
+      newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell)
+      if (!isValueCorrect) {
+        newBoard.incorrectCells.push(currentCell);
       }
+      newBoard.cells[currentCell].value = value;
+      rowSolved = isRowSolvedx(row, newBoard) ? row : null;
+      colSolved = isColSolvedx(col, newBoard) ? col : null;
+      blockSolved = isBlockSolvedx(block, newBoard) ? block : null;
+      boardSolved = isBoardSolvedx(newBoard) ? true : false;
+
+      // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
     }
     newBoard.remainingNumbers = remainingNumbers(newBoard.cells);
 

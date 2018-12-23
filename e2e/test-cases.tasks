@@ -1,0 +1,12 @@
+☐ start game
+  ☐ should show home page with 1 button, new sudoku game
+☐ click new sudoku game
+  ☐ should navigate to create new sudoku game
+☐ click on 'back'
+  ☐ should navigate to home page
+  ☐ same home page as before
+☐ click on 'new'
+  ☐ should navigate to create new sudoku game
+☐ home page with 2 buttons
+☐ continue
+  ☐ should navigate to sudoku board

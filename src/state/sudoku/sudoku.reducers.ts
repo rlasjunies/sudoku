@@ -15,9 +15,8 @@ export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialStat
     case "CELL_SELECTED": {
       return cellSelectedReducer(state, action);
     };
-    case "CLEAR_TYPED": {
-      return valueTypedReducer(state, action);
-    }
+    case "CLEAR_TYPED":
+    case "DRAFT_NUMBER_TYPED":
     case "NUMBER_TYPED": {
       return valueTypedReducer(state, action);
     }
@@ -31,7 +30,7 @@ export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialStat
     case "TIMER_RESUME":
     case "TIMER_START":
     case "TIMER_TICK": {
-      return timerReducer(state,action);
+      return timerReducer(state, action);
     }
   }
 

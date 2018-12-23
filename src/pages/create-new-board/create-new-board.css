@@ -1,9 +1,12 @@
+create-new-board{
+  --bigbutton-fontsize: 5vw;
+}
 create-new-board .header{
   display: flex;
   flex-direction: column;
   /* width: 100%; */
 
-  justify-content: center;
+  justify-content: left;
   background-color: var(--color-50);
   /* align-content: center; */
   /* align-self: center; */
@@ -11,7 +14,7 @@ create-new-board .header{
   /* text-align: center; */
   
   /* height: 150px; */
-  font-size: 5vh;
+  font-size: var(--header-fontsize);
   color:var(--color-500);
 
   border-bottom: 1px;
@@ -19,15 +22,13 @@ create-new-board .header{
 }
 
 create-new-board .header button{
-  /* width:50px; */
-  /* height:50px; */
-  font-size: 3vh;
-  height: 4vh;
+  font-size: var(--header-button-fontsize);
+  width:150px;
+  /* height: 4vh; */
 }
 create-new-board .header clr-icon{
-  width:50px;
-  height:50px;
-  /* font-size: 3vh; */
+  width:40px;
+  height:40px;
 }
 
 
@@ -63,7 +64,7 @@ create-new-board .acc-btn-big {
   width: 90%;
   min-width: 90%;
   /* max-width: 100%; */
-  font-size: 5vh;
+  font-size: var(--bigbutton-fontsize);
   /* color: yellow; */
 }
 
