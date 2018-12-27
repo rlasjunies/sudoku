@@ -23,6 +23,11 @@ export function generateBoardReducer(state:SudokuPageState, action:SudokuAction)
     boardHistory: [board], // initialize the history with the new board
     boardLevel: level,
     cellSelected: -1,
-    gameOnGoing: true
+    gameOnGoing: true,
+
+    // initialize the timer
+    // TODO: this should be a concatenation of action
+    timerOn: true,
+    timer: 0
   }
 }
