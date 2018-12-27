@@ -27,6 +27,9 @@ export class AccFlipbox {
     }
   }
 
+  componentWillLoad() {
+    this.flipWatcher(this.flip);
+  }
   render() {
     return (
       [
