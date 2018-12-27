@@ -2,7 +2,7 @@
   "name": "Sudoku",
   "short_name": "Sudoku",
   "start_url": "/",
-  "display": "standalone",
+  "display": "fullscreen",
   "icons": [{
     "src": "assets/icon/icon.png",
     "sizes": "512x512",

@@ -1,5 +1,5 @@
 import { Component, State, Element, Watch } from '@stencil/core';
-import { store } from '../../state/appStore';
+import { store } from 'state/appStore';
 import { AppState } from 'state/app.state';
 
 @Component({

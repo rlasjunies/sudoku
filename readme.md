@@ -1,6 +1,10 @@
 
 https://sudoku-accurentis.firebaseapp.com
 
+# PWA
+[] npm run build
+
+
 inspire by:
 
 # github

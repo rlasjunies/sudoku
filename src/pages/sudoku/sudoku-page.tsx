@@ -1,7 +1,7 @@
 import { Component, State } from '@stencil/core';
 import { store } from 'state/appStore';
 import { AppState } from 'state/app.state';
-import { cellSelectedAction } from "../../state/sudoku/sudoku.actions.cellSelected";
+import { cellSelectedAction } from "state/sudoku/sudoku.actions.cellSelected";
 // import { switchDraftModeAction } from "../../state/sudoku/sudoku.actions.switchDraftMode";
 import { numberTypedAction, clearTypedAction, draftNumberTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
 import { navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';

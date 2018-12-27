@@ -47,6 +47,9 @@ coach features:
 ☐ player are "pushed" to come back in the app (daily challenge)
 
 ☐ create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back
+☐ no dependency ui:
+  https://github.com/michaelauderer/simple-buttons
+
 ☐ unit tests
 ☐ e2e tests
 ☐ remove the stenciljs and rely in the statemgt framework?
@@ -95,6 +98,7 @@ https://sudoku-accurentis.firebaseapp.com
 ☐ when new game, the backflipbox must be hidden
 ☐ when new game the timer is NaN and does not start player should click on "resume"
 ☐ when in pause, if F5 we shows the board, we should shows the "resume" / back flipbox 
+✔ fix PWA, the installation is not visible anymore @done (12/27/2018, 6:54:48 PM)
 [x] cannot click on cell, back of flip is still available
 [x] when starting the cell is selected
 [x] reinitiliaze the candidates same time as the board
