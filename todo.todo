@@ -2,13 +2,12 @@ spike:
 ☐ analyse pourquoi quand en pause, F5 on revient alors en game @spike
 
 features:
-☐ draft mode closed to the eraser icon
-☐ undo closed to the eraser
+☐ The board support horizontal layout
 ☐ Think about 2 modes of game
   - electronic sudoku ... with not help only replacing the paper ... no error raised when typing
     the system can check on demand or at the end
   - on typing the system check if the values entered are good, raised error if not, manage kind of number of error max
-☐ Error is raised when the value entered is not the one expected
+☐ Sudoku error is raised when the value entered is not the one expected
 ☐ celebrate the end of the game
   unselect cell, to show the whole board
   when the game is finished, hide the "clear button"
@@ -41,8 +40,9 @@ coach features:
 
 ☐ player can continue playing easily after ending a game
 
-☐ player can access to the sudoku from web browser (publish on webportal)
-☐ convert to PWA
+
+☐ add severals icons for the PWA
+☐ manage themes for the app
 ☐ revenus are made from the application
 ☐ player are "pushed" to come back in the app (daily challenge)
 
@@ -51,6 +51,12 @@ coach features:
 ☐ e2e tests
 ☐ remove the stenciljs and rely in the statemgt framework?
 
+
+✔ draft mode closed to the eraser icon @done (12/27/2018, 3:48:02 PM)
+✔ undo closed to the eraser @done (12/27/2018, 3:48:16 PM)
+✔ player can access to the sudoku from web browser (publish on webportal) @done (12/27/2018, 3:45:32 PM)
+https://sudoku-accurentis.firebaseapp.com
+✔ convert to PWA @done (12/27/2018, 3:45:53 PM)
 
 [x] timer is paused when going in home page
 [x] player knows the duration of the game
@@ -86,6 +92,8 @@ coach features:
 
 # FIXME: 
 
+☐ when new game, the backflipbox must be hidden
+☐ when new game the timer is NaN and does not start player should click on "resume"
 ☐ when in pause, if F5 we shows the board, we should shows the "resume" / back flipbox 
 [x] cannot click on cell, back of flip is still available
 [x] when starting the cell is selected
