@@ -3,13 +3,13 @@ import * as arrayShuffle from "../arrayShuffle";
 export interface SudokuBoard {
     cells: SudokuBoardCell[];
     incorrectCells: number[];
-    remainingNumbers:number[];
+    remainingNumbers: number[];
 }
 export interface SudokuBoardCell {
     value: number | null;
     candidates: boolean[];
     seed: boolean;
-    expectedValue:number;
+    expectedValue: number;
 }
 const EMPTYCELL: SudokuBoardCell = {
     value: null,
@@ -89,9 +89,9 @@ export function isPossibleColx(cellValue: number, col: number, board: SudokuBoar
     return true;
 }
 
-export function isPossibleBlockx(cellValue: number, block: number, sudoku: SudokuBoard) {
+export function isPossibleBlockx(cellValue: number, block: number, board: SudokuBoard) {
     for (var i = 0; i <= 8; i++) {
-        if (sudoku.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].value == cellValue) {
+        if (board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].value == cellValue) {
             return false;
         }
     }
@@ -158,6 +158,44 @@ export function determinePossibleValuesx(cellNumber: number, board: SudokuBoard)
     return possible;
 }
 
+export function removeCandidateBoard(board: SudokuBoard, value: number, cellNumber: number): SudokuBoard {
+    const newBoard = sudokuBoardClone(board);
+
+    var row = rowOfCellNumber(cellNumber);
+    var col = colOfCellNumber(cellNumber);
+    var block = blockOfCellNumber(cellNumber);
+
+    removeCandidateRow(value, row, newBoard);
+    removeCandidateCol(value,col,newBoard);
+    removeCandidateBlock(value,block,newBoard);
+
+    return newBoard;
+
+    function removeCandidateRow(value: number, row: number, board: SudokuBoard) {
+        for (var i = 0; i <= 8; i++) {
+            board.cells[row * 9 + i].candidates = removeCandidate(value, board.cells[row * 9 + i].candidates)
+        }
+    }
+
+    function removeCandidateCol(value: number, col: number, board: SudokuBoard) {
+        for (var i = 0; i <= 8; i++) {
+            board.cells[col + 9 * i].candidates = removeCandidate(value, board.cells[col + 9 * i].candidates);
+        }
+    }
+    
+    function removeCandidateBlock(value: number, block: number, board: SudokuBoard) {
+        for (var i = 0; i <= 8; i++) {
+            board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].candidates = removeCandidate(value,board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].candidates);
+        }
+    }
+    function removeCandidate(value: number, candidates: boolean[]): boolean[] {
+        if (candidates[value - 1]) {
+            candidates[value - 1] = false;
+        }
+        return candidates;
+    }
+}
+
 export function generateBoard(): SudokuBoard {
     const emptyBoard = initializeSudokuBoard();
 
@@ -180,7 +218,7 @@ function generateBoardFromCell(cellNumber: number, board: SudokuBoard) {
         let nextBoard = sudokuBoardClone(board);
 
         nextBoard.cells[cellNumber].value = possibleValuesShuffled[index];
-        nextBoard.cells[cellNumber].expectedValue = nextBoard.cells[cellNumber].value; 
+        nextBoard.cells[cellNumber].expectedValue = nextBoard.cells[cellNumber].value;
         nextBoard.cells[cellNumber].seed = true;
 
         const nextCellNumber = cellNumber + 1;
@@ -233,10 +271,10 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
 
     // for the complexity define, use this array shuffled to "remove" the values of the cells
     for (let index = 0; index < numberOfComplexity; index++) {
-        const cellToHide =cellsToHide[index]-1; 
+        const cellToHide = cellsToHide[index] - 1;
         // console.log(`index:${index} - cellsToHide[${index}]: ${cellToHide}`);
         // console.log(`index:${index} - cellsToHide[${index}]: ${cellToHide} - sudokuBoard.cells[index].expectedValue:${sudokuBoard.cells[cellToHide].expectedValue} `);
-        sudokuBoard.cells[cellToHide] = { ...EMPTYCELL, expectedValue:sudokuBoard.cells[cellToHide].expectedValue  };
+        sudokuBoard.cells[cellToHide] = { ...EMPTYCELL, expectedValue: sudokuBoard.cells[cellToHide].expectedValue };
     }
 
     // update the remaining number of numbers
@@ -248,14 +286,14 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
 
 // calculate the number of each numbers in cell
 // this is used to hide key when the a specific number has been used 9th times
-export function remainingNumbers(sudokuBoardCells:SudokuBoardCell[]){
+export function remainingNumbers(sudokuBoardCells: SudokuBoardCell[]) {
 
-    const init = [9,9,9,9,9,9,9,9,9];
-    return sudokuBoardCells.reduce<number[]>( (tmp,cell, _, __) => {
-        tmp[cell.value-1]-=1;
+    const init = [9, 9, 9, 9, 9, 9, 9, 9, 9];
+    return sudokuBoardCells.reduce<number[]>((tmp, cell, _, __) => {
+        tmp[cell.value - 1] -= 1;
         return tmp;
 
-    }, init );
+    }, init);
 }
 
 // export function candidatesForEmptyCells(board: SudokuBoard): number[] {

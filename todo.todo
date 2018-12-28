@@ -12,16 +12,13 @@ features:
   ☐ when udoing, select the current cell at the time of the move
 
   Style / UI:
-  ☐ candidates color should be less attractives compare to the initial/entered values
   ☐ user can visualize the cell selected even if the cell is in error
   ✔ user visualy understand action button (icons) @done (12/23/2018, 11:57:06 AM)
   ☐ user should visualize when he click in the keyboard keys (click effect missing)
-  ☐ support vertical layout
   may be propose 2 type of classes. JS determine if the layout is portrait or paysage, then classes are adapted as consequence
 
 UX:
   ☐ user is notified when a block is completed
-  ☐ system remove candidate value when the number is typed in the row, column or block
   ☐ clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
   ☐ system shows how many numbers are left for a specific number
       
@@ -47,6 +44,9 @@ coach features:
   ☐ remove the stenciljs and rely in the statemgt framework?
 
 done:
+  ✔ system remove candidate value when the number is typed in the row, column or block @done (12/28/2018, 3:06:46 PM)
+  ✔ support vertical layout @done (12/28/2018, 2:28:50 PM)  
+  ✔ candidates color should be less attractives compare to the initial/entered values @done (12/28/2018, 2:28:21 PM)
   ✔ undo previous move @done (12/28/2018, 2:26:32 PM)
   ✔ Sudoku error is raised when the value entered is not the one expected @done (12/28/2018, 2:00:11 PM)
   ✔ The board support horizontal layout @done (12/28/2018, 1:35:51 PM)

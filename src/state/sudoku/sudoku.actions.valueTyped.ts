@@ -1,6 +1,6 @@
 import { SudokuAction } from "./sudoku.actions";
 import { SudokuPageState } from "./sudoku.state";
-import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers } from "../../services/sudoku/sudoku";
+import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard } from "../../services/sudoku/sudoku";
 // export const VALUE_TYPED_ACTION = 
 
 interface valueTypeActionPayload {
@@ -69,7 +69,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       // managed incorrect cell
       // const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
       // the value is not correct when the value is not the same as the expected One
-      console.log("check is value is correct",value,newBoard.cells[currentCell].expectedValue,(value == newBoard.cells[currentCell].expectedValue))
+      console.log("check is value is correct", value, newBoard.cells[currentCell].expectedValue, (value == newBoard.cells[currentCell].expectedValue))
       const isValueCorrect = (value == newBoard.cells[currentCell].expectedValue) ? true : false;
 
       // remove the value from the list if already exists
@@ -78,12 +78,22 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       if (!isValueCorrect) {
         newBoard.incorrectCells.push(currentCell);
       }
+
+      // insert the value in the board even if incorrect, 
+      // if incorrect the value will be highlighted to the player
       newBoard.cells[currentCell].value = value;
+
+      // check if zones are solved in order to provide animation for the player
       rowSolved = isRowSolvedx(row, newBoard) ? row : null;
       colSolved = isColSolvedx(col, newBoard) ? col : null;
       blockSolved = isBlockSolvedx(block, newBoard) ? block : null;
       boardSolved = isBoardSolvedx(newBoard) ? true : false;
 
+      // remove equal candidates in the related zones
+      // only when the value is correct
+      if (isValueCorrect) {
+        newBoard = removeCandidateBoard(newBoard, value, currentCell);
+      }
 
       // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
     }
