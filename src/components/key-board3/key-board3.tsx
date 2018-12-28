@@ -4,7 +4,7 @@ import { Component, EventEmitter, Event, Prop } from '@stencil/core';
   tag: 'key-board3',
   styleUrl: 'key-board3.css',
 })
-export class KeyBoard2 {
+export class KeyBoard3 {
   @Event() numberClicked: EventEmitter;
   @Event() draftNumberClicked: EventEmitter;
   @Event() clearClicked: EventEmitter;
@@ -28,40 +28,21 @@ export class KeyBoard2 {
   cellHTML(digit: number, draft: boolean) {
     if (draft) {
       return (
-        // <table class="table-show">
-        //   <tbody>
-        //     <tr>
-        //       <td><div class="draftvalue">{digit === 1 ? '1' : ''}</div></td>
-        //       <td><div class="draftvalue">{digit === 2 ? '2' : ''}</div></td>
-        //       <td><div class="draftvalue">{digit === 3 ? '3' : ''}</div></td>
-        //     </tr>
-        //     <tr>
-        //       <td><div class="draftvalue">{digit === 4 ? '4' : ''}</div></td>
-        //       <td><div class="draftvalue">{digit === 5 ? '5' : ''}</div></td>
-        //       <td><div class="draftvalue">{digit === 6 ? '6' : ''}</div></td>
-        //     </tr>
-        //     <tr>
-        //       <td><div class="draftvalue">{digit === 7 ? '7' : ''}</div></td>
-        //       <td><div class="draftvalue">{digit === 8 ? '8' : ''}</div></td>
-        //       <td><div class="draftvalue">{digit === 9 ? '9' : ''}</div></td>
-        //     </tr>
-        //   </tbody>
-        // </table>
         <div class="draftkey">
-          <div class="draftkeyrow row0">
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 1 ? '1' : ''}</div></div>
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 2 ? '2' : ''}</div></div>
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 3 ? '3' : ''}</div></div>
+          <div class="draftkeyrow">
+            <div class="draftkeyvalue">{digit === 1 ? '1' : ''}</div>
+            <div class="draftkeyvalue">{digit === 2 ? '2' : ''}</div>
+            <div class="draftkeyvalue">{digit === 3 ? '3' : ''}</div>
           </div>
-          <div class="draftkeyrow row1">
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 4 ? '4' : ''}</div></div>
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 5 ? '5' : ''}</div></div>
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 6 ? '6' : ''}</div></div>
+          <div class="draftkeyrow">
+            <div class="draftkeyvalue">{digit === 4 ? '4' : ''}</div>
+            <div class="draftkeyvalue">{digit === 5 ? '5' : ''}</div>
+            <div class="draftkeyvalue">{digit === 6 ? '6' : ''}</div>
           </div>
-          <div class="draftkeyrow row2">
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 7 ? '7' : ''}</div></div>
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 8 ? '8' : ''}</div></div>
-            <div class="draftkeycolumn"><div class="draftkeyvalue">{digit === 9 ? '9' : ''}</div></div>
+          <div class="draftkeyrow">
+            <div class="draftkeyvalue">{digit === 7 ? '7' : ''}</div>
+            <div class="draftkeyvalue">{digit === 8 ? '8' : ''}</div>
+            <div class="draftkeyvalue">{digit === 9 ? '9' : ''}</div>
           </div>
         </div>
       )

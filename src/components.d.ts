@@ -40,22 +40,6 @@ export namespace Components {
     'time'?: number;
   }
 
-  interface KeyBoard {}
-  interface KeyBoardAttributes extends StencilHTMLAttributes {
-    'onKeyClicked'?: (event: CustomEvent) => void;
-  }
-
-  interface KeyBoard2 {
-    'draftMode': boolean;
-    'remainingNumbers': number[];
-  }
-  interface KeyBoard2Attributes extends StencilHTMLAttributes {
-    'draftMode'?: boolean;
-    'onClearClicked'?: (event: CustomEvent) => void;
-    'onNumberClicked'?: (event: CustomEvent) => void;
-    'remainingNumbers'?: number[];
-  }
-
   interface KeyBoard3 {
     'remainingNumbers': number[];
   }
@@ -121,8 +105,6 @@ declare global {
     'AccFlipbox': Components.AccFlipbox;
     'AccSwitch': Components.AccSwitch;
     'AccTimer': Components.AccTimer;
-    'KeyBoard': Components.KeyBoard;
-    'KeyBoard2': Components.KeyBoard2;
     'KeyBoard3': Components.KeyBoard3;
     'SudokuBoardCellComponent': Components.SudokuBoardCellComponent;
     'SudokuBoardComponent': Components.SudokuBoardComponent;
@@ -138,8 +120,6 @@ declare global {
     'acc-flipbox': Components.AccFlipboxAttributes;
     'acc-switch': Components.AccSwitchAttributes;
     'acc-timer': Components.AccTimerAttributes;
-    'key-board': Components.KeyBoardAttributes;
-    'key-board2': Components.KeyBoard2Attributes;
     'key-board3': Components.KeyBoard3Attributes;
     'sudoku-board-cell-component': Components.SudokuBoardCellComponentAttributes;
     'sudoku-board-component': Components.SudokuBoardComponentAttributes;
@@ -173,18 +153,6 @@ declare global {
   var HTMLAccTimerElement: {
     prototype: HTMLAccTimerElement;
     new (): HTMLAccTimerElement;
-  };
-
-  interface HTMLKeyBoardElement extends Components.KeyBoard, HTMLStencilElement {}
-  var HTMLKeyBoardElement: {
-    prototype: HTMLKeyBoardElement;
-    new (): HTMLKeyBoardElement;
-  };
-
-  interface HTMLKeyBoard2Element extends Components.KeyBoard2, HTMLStencilElement {}
-  var HTMLKeyBoard2Element: {
-    prototype: HTMLKeyBoard2Element;
-    new (): HTMLKeyBoard2Element;
   };
 
   interface HTMLKeyBoard3Element extends Components.KeyBoard3, HTMLStencilElement {}
@@ -240,8 +208,6 @@ declare global {
     'acc-flipbox': HTMLAccFlipboxElement
     'acc-switch': HTMLAccSwitchElement
     'acc-timer': HTMLAccTimerElement
-    'key-board': HTMLKeyBoardElement
-    'key-board2': HTMLKeyBoard2Element
     'key-board3': HTMLKeyBoard3Element
     'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement
     'sudoku-board-component': HTMLSudokuBoardComponentElement
@@ -257,8 +223,6 @@ declare global {
     'acc-flipbox': HTMLAccFlipboxElement;
     'acc-switch': HTMLAccSwitchElement;
     'acc-timer': HTMLAccTimerElement;
-    'key-board': HTMLKeyBoardElement;
-    'key-board2': HTMLKeyBoard2Element;
     'key-board3': HTMLKeyBoard3Element;
     'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement;
     'sudoku-board-component': HTMLSudokuBoardComponentElement;

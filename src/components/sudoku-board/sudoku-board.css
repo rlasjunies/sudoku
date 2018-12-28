@@ -1,84 +1,77 @@
-.sudoku-board {
+sudoku-board-component {
     margin: 1vw;
     display: flex;
     flex-direction: column;
+    flex:1;    
 }
-
-.sudoku-board .row {
+sudoku-board-component .sudoku-board {
     display: flex;
-    /* flex: 1; */
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    flex:1;
+    
 }
 
-.sudoku-board .cell {
+sudoku-board-component .sudoku-board .row {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+sudoku-board-component .sudoku-board .cell {
     flex: 1;
     display: flex;
-    justify-content: center;
-    min-width: 10.5vw;
-    max-width: 10.5vw;
-    min-height: 10vw;
-    max-height: 10vw;
+    /* justify-content: center; */
+    /* min-width: 10.5vw; */
+    /* max-width: 10.5vw; */
+    /* min-height: 10vw; */
+    /* max-height: 10vw; */
 }
 
-/* @media (max-width: 1024px) { */
-    /* .sudoku-board .cell { */
-        /* min-width: 10.5vw; */
-        /* max-width: 10.5vw; */
-        /* min-height: 10vw; */
-        /* max-height: 10vw; */
-    /* } */
-/* } */
-/* 
-
-Draw the black line of the board 
-
-*/
-
-.sudoku-board .row0 {
+sudoku-board-component .sudoku-board .row0 {
     border-top: black;
     border-top-style: solid;
 }
 
- .sudoku-board .row1, .row4, .row7 {
+sudoku-board-component .sudoku-board .row1, .row4, .row7 {
     border-top: black;
     border-top-style: dotted;
 }
 
- .sudoku-board .row2, .row5, .row8 {
+sudoku-board-component .sudoku-board .row2, .row5, .row8 {
     border-top: black;
     border-top-style: dotted;
     border-bottom: black;
     border-bottom-style: solid;
 }
 
- .sudoku-board .column0 {
+sudoku-board-component .sudoku-board .column0 {
     border-left: black;
     border-left-style: solid;
 }
 
- .column1, .column4, .column7 {
+sudoku-board-component .column1, .column4, .column7 {
     border-left: black;
     border-left-style: dotted;
 }
 
- .sudoku-board .column2, .column5, .column8 {
+sudoku-board-component .sudoku-board .column2, .column5, .column8 {
     border-left: black;
     border-left-style: dotted;
     border-right: black;
     border-right-style: solid;
 }
 
- .area-selected {
+sudoku-board-component .area-selected {
     background-color: cornsilk;
 }
 
- .selected {
+sudoku-board-component .selected {
     background-color: antiquewhite;
 }
 
- .chenillardCol {
+sudoku-board-component .chenillardCol {
     /* background-color:cyan; */
     background-color: antiquewhite;
     /* background: linear-gradient(to top, burlywood); */
@@ -87,6 +80,6 @@ Draw the black line of the board
     /* transition: background-color 0.2s ease; */
 }
 
- .incorrect {
+sudoku-board-component .incorrect {
     background-color: burlywood;
 }

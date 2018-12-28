@@ -4,7 +4,7 @@ import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initi
 @Component({
     tag: 'sudoku-board-component',
     styleUrl: 'sudoku-board.css',
-    shadow: true
+    // shadow: true
 })
 export class SudokuBoardComponent {
     @Element() element: HTMLSudokuBoardComponentElement;
@@ -55,7 +55,8 @@ export class SudokuBoardComponent {
         const rowOfCellNumber_ = rowOfCellNumber(startCell);
         console.log(`chenillardCol:${column},${startCell},${rowOfCellNumber_}`);
 
-        const cellsOfCol = this.element.shadowRoot.querySelectorAll(`.column${column}`);
+        // const cellsOfCol = this.element.shadowRoot.querySelectorAll(`.column${column}`);
+        const cellsOfCol = this.element.querySelectorAll(`.column${column}`);
         this.addRemoveChenillardClassToElement(cellsOfCol[rowOfCellNumber_],0);
         
         for (let index = rowOfCellNumber_ -1; index >= 0 ; index--) {
@@ -75,7 +76,8 @@ export class SudokuBoardComponent {
     chenillardBoard() {
         // TODO: improve with several / randomize highlight
         // console.log(`chenillard Board - cell selected:${startCell}`)
-        const cellsOfTheBoard = this.element.shadowRoot.querySelectorAll(`.cell`);
+        // const cellsOfTheBoard = this.element.shadowRoot.querySelectorAll(`.cell`);
+        const cellsOfTheBoard = this.element.querySelectorAll(`.cell`);
         for (let index = 0; index < cellsOfTheBoard.length; index++) {
             const cell = cellsOfTheBoard[index];
             this.addRemoveChenillardClassToElement(cell,index);
@@ -87,7 +89,8 @@ export class SudokuBoardComponent {
         const colOfCellNumber_ = colOfCellNumber(startCell);
         console.log(`chenillardCol:${row},${startCell},${colOfCellNumber_}`);
 
-        const cellsOfRow = this.element.shadowRoot.querySelectorAll(`.row${row}`);
+        // const cellsOfRow = this.element.shadowRoot.querySelectorAll(`.row${row}`);
+        const cellsOfRow = this.element.querySelectorAll(`.row${row}`);
         this.addRemoveChenillardClassToElement(cellsOfRow[colOfCellNumber_],0);
         
         for (let index = colOfCellNumber_ -1; index >= 0 ; index--) {

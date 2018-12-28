@@ -30,10 +30,7 @@ coach features:
     ( unicity on another zone)
     * if a value is mandatory only in one row / column of a block. It's not a candidates in the other blocks of the row/column
 
-✔ user can play on small device @done (12/23/2018, 5:28:18 PM)
-  * (resize the table depend on the siez of the screen)
-  (mediaquery)
-  * put the "keyboard" on the side when 
+
 
 ☐ player can continue playing easily after ending a game
 
@@ -51,7 +48,8 @@ coach features:
 ☐ e2e tests
 ☐ remove the stenciljs and rely in the statemgt framework?
 
-
+✔ user can play on small device @done (12/28/2018, 11:45:10 AM)
+  ✔ * (resize the table depend on the siez of the screen) @done (12/28/2018, 11:45:05 AM)  
 ✔ draft mode closed to the eraser icon @done (12/27/2018, 3:48:02 PM)
 ✔ undo closed to the eraser @done (12/27/2018, 3:48:16 PM)
 ✔ player can access to the sudoku from web browser (publish on webportal) @done (12/27/2018, 3:45:32 PM)

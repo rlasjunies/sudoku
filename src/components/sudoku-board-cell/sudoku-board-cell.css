@@ -1,5 +1,18 @@
- 
-  .sudoku-board-cell-draft {
+sudoku-board-cell-component {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+    /* flex-direction: column;   */
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    /* margin: auto; */
+}
+
+
+
+ sudoku-board-cell-component .sudoku-board-cell-draft {
     display: flex;
     flex: 1;
     flex-direction: column;
@@ -9,45 +22,46 @@
     /* flex-direction: column;   */
     /* text-align: center; */
     /* vertical-align: middle; */
+    /* margin: auto; */
 
 }
-
- .sudoku-board-cell-draft .row {
+sudoku-board-cell-component .rowdraft {
     display: flex;
+    flex: 1;
     flex-direction: row;
-    align-items: center; 
-    justify-content: center;
+    align-items: center;
+    /* justify-content: center; */
+    /* flex-direction: column;   */
+    /* text-align: center; */
+    /* vertical-align: middle; */
+    /* margin: auto; */
 }
 
- .sudoku-board-cell-draft .draft {
+sudoku-board-cell-component .celldraft {
     /* background-color: yellow; */
     flex: 1;
+    flex-grow: 1;
     display: flex;
     justify-content: center;
-
-    
-    min-width: var(--draftvalue-minwidth);
-    max-width: var(--draftvalue-minwidth);
-    min-height: var(--draftvalue-minwidth);
-    max-height: var(--draftvalue-minwidth);
     font-size: var(--draftvalue-fontsize);
+    color:lightgray;
 }
 
- .sudoku-board-cell {
+sudoku-board-cell-component .sudoku-board-cell {
     /* background-color: violet; */
     flex: 1;
     display: flex;
     justify-content: center;
-    width: 100%;
-    height:100%;
+    /* width: 100%; */
+    /* height:100%; */
 }
 
- .sudoku-board-cell .value {
+sudoku-board-cell-component .sudoku-board-cell .value {
     margin: auto;
     font-size: var(--value-fontsize);
 }
 
- .initialvalue{
+sudoku-board-cell-component .initialvalue{
     /* text-decoration: underline; */
     color: slategrey;
 }

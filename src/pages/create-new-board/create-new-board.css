@@ -1,6 +1,4 @@
-create-new-board{
-  --bigbutton-fontsize: 5vw;
-}
+
 create-new-board .header{
   display: flex;
   flex-direction: column;
@@ -43,9 +41,6 @@ create-new-board #content{
   width: 100%;
 }
 
-create-new-board .title{
-  flex:1;
-}
 create-new-board .buttons{
   display: flex;
   flex:2;
@@ -78,6 +73,6 @@ create-new-board .title {
   text-align: center;
   align-items: center;
   
-  font-size: 5vh;
-  line-height: 5vh;
+  font-size: 5vmin;
+  line-height: 5vmin;
 }

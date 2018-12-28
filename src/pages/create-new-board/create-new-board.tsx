@@ -29,7 +29,7 @@ export class CreateNewBoard {
           </button>
         </div>
         <div id="content">
-          <div class="title">Quel challenge serez-vous relever?</div>
+          <div class="title">Quel challenge seriez-vous relever?</div>
           <div class="buttons">
             <button class="btn acc-btn-big" onClick={() => this.generateNewBoardOnClickHandler("easy")}>Facile</button>
             <button class="btn acc-btn-big" onClick={() => this.generateNewBoardOnClickHandler("medium")}>Moyen</button>

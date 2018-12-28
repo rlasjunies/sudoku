@@ -1,11 +1,12 @@
 {
-  "name": "@stencil/starter",
+  "name": "@accurentis/sudoku",
   "private": true,
   "version": "0.0.1",
-  "description": "Stencil App Starter",
+  "description": "Sudoku trainer from accurentis",
   "scripts": {
-    "build": "stencil build --prerender",
     "start": "stencil build --dev --watch --serve",
+    "deploy":"firebase deploy",
+    "build": "stencil build --prerender",
     "testx": "stencil test --spec",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll"

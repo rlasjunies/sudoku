@@ -73,17 +73,14 @@ light-green-50 {
   --color-A400: #76FF03;
   --color-A700: #64DD17;
 
-  --draftvalue-fontsize: 3vw;
-  --draftvalue-minwidth: 3vw;
-
-  --value-fontsize: 9vw;
-  --header-fontsize: 3vw;
-  --header-button-fontsize: 3vw;
-
-  --keyboard-draftvalue-fontsize: 2.5vw;
-  --keyboard-draftvalue-minwidth: 2vw;
-  --keyboard-draftvalue-minheight: 2vw;
   
+  --value-fontsize: 8vmin;
+  --draftvalue-fontsize: 3vmin;
+  --header-fontsize: 3vmin;
+  --header-button-fontsize: 3vmin;
+  --bigbutton-fontsize: 5vmin;
+  --keyboard-value-fontsize: 8vmin;
+  --keyboard-draftvalue-fontsize: 3vmin;
 
   /* --font-family: font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
 

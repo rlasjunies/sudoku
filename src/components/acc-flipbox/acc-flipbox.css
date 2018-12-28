@@ -1,7 +1,7 @@
 acc-flipbox {
   display: flex;
   flex: 1;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 
 /* 
@@ -13,17 +13,23 @@ I need to found a way to remove display attribute but still having the center
 
 */
 acc-flipbox .fadein {
+  display: flex;
+  flex: 1;
   opacity: 0;
-  position: absolute;
-  width: 100%;
-  transition: opacity 0.5s ease-in-out, visibility 0.5s ;
+  /* position: absolute; */
+  /* width: 100%; */
+  transition: opacity 0.5s ease-in-out, visibility 0.5s;
   visibility: hidden;
   display: none;
 }
+
 acc-flipbox .fadeout {
+  display: flex;
+  flex: 1;
   opacity: 1;
-  position: absolute;
-  width: 100%;
+  /* position: absolute; */
+  /* width: 100%; */
+  /* height: 100%; */
   transition: visibility 0.5s, opacity 0.5s ease-in-out, ;
   visibility: visible;
   display: inherit;
