@@ -1,55 +1,56 @@
 features:
-☐ The board support horizontal layout
-☐ Think about 2 modes of game
+  ☐ Think about 2 modes of game
   - electronic sudoku ... with not help only replacing the paper ... no error raised when typing
-    the system can check on demand or at the end
+  the system can check on demand or at the end
   - on typing the system check if the values entered are good, raised error if not, manage kind of number of error max
-☐ Sudoku error is raised when the value entered is not the one expected
-☐ celebrate the end of the game
+
+  ☐ celebrate the end of the game
   unselect cell, to show the whole board
   when the game is finished, hide the "clear button"
+  ☐ write the move number at the bottom for history purpose
+  ☐ undo previous move
+  ☐ generator evaluate the complexicity of the resolution based on rules
 
-☐ generator evaluate the complexicity of the resolution based on rules
-
-Style / UI:
+  Style / UI:
   ☐ candidates color should be less attractives compare to the initial/entered values
   ☐ user can visualize the cell selected even if the cell is in error
   ✔ user visualy understand action button (icons) @done (12/23/2018, 11:57:06 AM)
   ☐ user should visualize when he click in the keyboard keys (click effect missing)
   ☐ support vertical layout
-    may be propose 2 type of classes. JS determine if the layout is portrait or paysage, then classes are adapted as consequence
+  may be propose 2 type of classes. JS determine if the layout is portrait or paysage, then classes are adapted as consequence
+
 UX:
   ☐ user is notified when a block is completed
   ☐ system remove candidate value when the number is typed in the row, column or block
   ☐ clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
   ☐ system shows how many numbers are left for a specific number
-
+      
 coach features:
   ☐ shows how many cells have one candidates
   ☐ shows how many cells have one candidates because other values are not possible by side effect
-    ( unicity on another zone)
-    * if a value is mandatory only in one row / column of a block. It's not a candidates in the other blocks of the row/column
+  ( unicity on another zone)
+  * if a value is mandatory only in one row / column of a block. It's not a candidates in the other blocks of the row/column
 
+  ☐ player can continue playing easily after ending a game
 
-
-☐ player can continue playing easily after ending a game
-
-
-☐ add severals icons for the PWA
-☐ manage themes for the app
-☐ revenus are made from the application
-☐ player are "pushed" to come back in the app (daily challenge)
-
-☐ create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back
-☐ no dependency ui:
+  ☐ add severals icons for the PWA
+  ☐ manage themes for the app
+  ☐ revenus are made from the application
+  ☐ player are "pushed" to come back in the app (daily challenge)
+  
+  ☐ create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back
+  ☐ no dependency ui:
   https://github.com/michaelauderer/simple-buttons
+  
+  ☐ unit tests
+  ☐ e2e tests
+  ☐ remove the stenciljs and rely in the statemgt framework?
 
-☐ unit tests
-☐ e2e tests
-☐ remove the stenciljs and rely in the statemgt framework?
-
+done:
+✔ Sudoku error is raised when the value entered is not the one expected @done (12/28/2018, 2:00:11 PM)
+✔ The board support horizontal layout @done (12/28/2018, 1:35:51 PM)
 ✔ user can play on small device @done (12/28/2018, 11:45:10 AM)
-  ✔ * (resize the table depend on the siez of the screen) @done (12/28/2018, 11:45:05 AM)  
+✔ * (resize the table depend on the siez of the screen) @done (12/28/2018, 11:45:05 AM)  
 ✔ draft mode closed to the eraser icon @done (12/27/2018, 3:48:02 PM)
 ✔ undo closed to the eraser @done (12/27/2018, 3:48:16 PM)
 ✔ player can access to the sudoku from web browser (publish on webportal) @done (12/27/2018, 3:45:32 PM)

@@ -1,6 +1,6 @@
 import { SudokuAction } from "./sudoku.actions";
 import { SudokuPageState } from "./sudoku.state";
-import { isPossibleNumberx, isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers } from "../../services/sudoku/sudoku";
+import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers } from "../../services/sudoku/sudoku";
 // export const VALUE_TYPED_ACTION = 
 
 interface valueTypeActionPayload {
@@ -44,7 +44,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
 
   if (currentCell === null) {
     // noting done
-  } else if (newBoard.cells[currentCell].initialeValue) {
+  } else if (newBoard.cells[currentCell].seed) {
     // no modification allowed
   } else {
     const value = payload.valueTyped;
@@ -67,7 +67,10 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       oldBoard.cells[currentCell].value = null;
 
       // managed incorrect cell
-      const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
+      // const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
+      // the value is not correct when the value is not the same as the expected One
+      console.log("check is value is correct",value,newBoard.cells[currentCell].expectedValue,(value == newBoard.cells[currentCell].expectedValue))
+      const isValueCorrect = (value == newBoard.cells[currentCell].expectedValue) ? true : false;
 
       // remove the value from the list if already exists
       // TODO: create an array library - retrieve the one from uacommander

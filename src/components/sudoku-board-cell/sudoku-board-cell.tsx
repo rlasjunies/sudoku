@@ -39,7 +39,7 @@ export class SudokuBoardCellComponent {
         } else {
             // console.log(`value:${this.value} -  ${this.candidates}`);
             return (
-                <div class="sudoku-board-cell" ><div class={this.cell.initialeValue === true ? "value initialvalue" : "value"}>{this.cell.value}{this.cell.initialeValue}</div></div>
+                <div class="sudoku-board-cell" ><div class={this.cell.seed === true ? "value initialvalue" : "value"}>{this.cell.value}{this.cell.seed}</div></div>
             )
         }
     }

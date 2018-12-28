@@ -5,16 +5,14 @@ https://sudoku-accurentis.firebaseapp.com
 [] npm run build
 
 
+# sudoku rule solver
+http://www.paulspages.co.uk/sudoku/howtosolve/#Stage2
+
+difficile à comprendre mais semble lister quelqes règles intéressantes
+https://books.google.fr/books?id=AFHrGY6VZPgC&pg=PA21&lpg=PA21&dq=sudoku+accurate&source=bl&ots=JsSoVECSRo&sig=juxPnoDaYlKXY0OFa9kgVvZQj_I&hl=fr&sa=X&ved=2ahUKEwjHseGhvcLfAhWGSRUIHVEuB2QQ6AEwBHoECC0QAQ#v=onepage&q=sudoku%20accurate&f=true
+
+
 inspire by:
-
-# github
-https://github.com/robatron/sudoku.js/
-https://github.com/pocketjoso/sudokuJS
-
-# algo
-
-http://norvig.com/sudoku.html
-https://codeutopia.net/blog/2008/11/29/generating-sudoku-puzzles-using-javascript/
 
 # state management posts
 

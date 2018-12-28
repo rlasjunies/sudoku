@@ -8,12 +8,14 @@ export interface SudokuBoard {
 export interface SudokuBoardCell {
     value: number | null;
     candidates: boolean[];
-    initialeValue: boolean;
+    seed: boolean;
+    expectedValue:number;
 }
 const EMPTYCELL: SudokuBoardCell = {
     value: null,
     candidates: [, , , , , , , ,],
-    initialeValue: false
+    seed: false,
+    expectedValue: null
 }
 
 export function initializeSudokuBoard(): SudokuBoard {
@@ -178,7 +180,8 @@ function generateBoardFromCell(cellNumber: number, board: SudokuBoard) {
         let nextBoard = sudokuBoardClone(board);
 
         nextBoard.cells[cellNumber].value = possibleValuesShuffled[index];
-        nextBoard.cells[cellNumber].initialeValue = true;
+        nextBoard.cells[cellNumber].expectedValue = nextBoard.cells[cellNumber].value; 
+        nextBoard.cells[cellNumber].seed = true;
 
         const nextCellNumber = cellNumber + 1;
         if (nextCellNumber === board.cells.length) {
@@ -219,25 +222,31 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
             numberOfComplexity = (81 - 35);
     }
 
+    // creation of an array of number
     const indexCellsToHide = Array(81);
     for (let index = 0; index < indexCellsToHide.length; index++) {
         indexCellsToHide[index] = index + 1;
     }
 
+    // let's shuffled the array of number 
     const cellsToHide = arrayShuffle.knuthfisheryates2(indexCellsToHide);
+
+    // for the complexity define, use this array shuffled to "remove" the values of the cells
     for (let index = 0; index < numberOfComplexity; index++) {
-        sudokuBoard.cells[cellsToHide[index]] = { ...EMPTYCELL };
+        sudokuBoard.cells[cellsToHide[index]] = { ...EMPTYCELL, expectedValue:sudokuBoard.cells[cellsToHide[index]].expectedValue  };
     }
 
+    // update the remaining number of numbers
     sudokuBoard.remainingNumbers = remainingNumbers(sudokuBoard.cells);
 
     // TODO evaluate the complexity to solve
     return sudokuBoard;
 }
 
+// calculate the number of each numbers in cell
+// this is used to hide key when the a specific number has been used 9th times
 export function remainingNumbers(sudokuBoardCells:SudokuBoardCell[]){
 
-    //reduce<U>(callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U, initialValue: U): U;
     const init = [9,9,9,9,9,9,9,9,9];
     return sudokuBoardCells.reduce<number[]>( (tmp,cell, _, __) => {
         tmp[cell.value-1]-=1;
