@@ -233,7 +233,10 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
 
     // for the complexity define, use this array shuffled to "remove" the values of the cells
     for (let index = 0; index < numberOfComplexity; index++) {
-        sudokuBoard.cells[cellsToHide[index]] = { ...EMPTYCELL, expectedValue:sudokuBoard.cells[cellsToHide[index]].expectedValue  };
+        const cellToHide =cellsToHide[index]-1; 
+        // console.log(`index:${index} - cellsToHide[${index}]: ${cellToHide}`);
+        // console.log(`index:${index} - cellsToHide[${index}]: ${cellToHide} - sudokuBoard.cells[index].expectedValue:${sudokuBoard.cells[cellToHide].expectedValue} `);
+        sudokuBoard.cells[cellToHide] = { ...EMPTYCELL, expectedValue:sudokuBoard.cells[cellToHide].expectedValue  };
     }
 
     // update the remaining number of numbers

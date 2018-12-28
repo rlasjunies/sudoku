@@ -10,7 +10,7 @@ export function undoAction(): AppAction {
 }
 
 export function undoReducer(state: SudokuPageState, _action: SudokuAction): SudokuPageState {
-  if (state.boardHistory.length > 1) { // 1st element cannot be undo
+  if (state.boardHistory.length > 1) { // 1st element cannot be undone
     const newBoard = state.boardHistory.pop();
     const newHistory = [...state.boardHistory]
     return {
@@ -19,6 +19,7 @@ export function undoReducer(state: SudokuPageState, _action: SudokuAction): Sudo
       boardHistory: newHistory, // initialize the history with the new board
     }
   } else {
+     // 1st element cannot be undone
     return state;
   }
 }

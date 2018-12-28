@@ -8,8 +8,8 @@ features:
   unselect cell, to show the whole board
   when the game is finished, hide the "clear button"
   ☐ write the move number at the bottom for history purpose
-  ☐ undo previous move
   ☐ generator evaluate the complexicity of the resolution based on rules
+  ☐ when udoing, select the current cell at the time of the move
 
   Style / UI:
   ☐ candidates color should be less attractives compare to the initial/entered values
@@ -47,21 +47,22 @@ coach features:
   ☐ remove the stenciljs and rely in the statemgt framework?
 
 done:
-✔ Sudoku error is raised when the value entered is not the one expected @done (12/28/2018, 2:00:11 PM)
-✔ The board support horizontal layout @done (12/28/2018, 1:35:51 PM)
-✔ user can play on small device @done (12/28/2018, 11:45:10 AM)
-✔ * (resize the table depend on the siez of the screen) @done (12/28/2018, 11:45:05 AM)  
-✔ draft mode closed to the eraser icon @done (12/27/2018, 3:48:02 PM)
-✔ undo closed to the eraser @done (12/27/2018, 3:48:16 PM)
-✔ player can access to the sudoku from web browser (publish on webportal) @done (12/27/2018, 3:45:32 PM)
-https://sudoku-accurentis.firebaseapp.com
-✔ convert to PWA @done (12/27/2018, 3:45:53 PM)
+  ✔ undo previous move @done (12/28/2018, 2:26:32 PM)
+  ✔ Sudoku error is raised when the value entered is not the one expected @done (12/28/2018, 2:00:11 PM)
+  ✔ The board support horizontal layout @done (12/28/2018, 1:35:51 PM)
+  ✔ user can play on small device @done (12/28/2018, 11:45:10 AM)
+  ✔ * (resize the table depend on the siez of the screen) @done (12/28/2018, 11:45:05 AM)  
+  ✔ draft mode closed to the eraser icon @done (12/27/2018, 3:48:02 PM)
+  ✔ undo closed to the eraser @done (12/27/2018, 3:48:16 PM)
+  ✔ player can access to the sudoku from web browser (publish on webportal) @done (12/27/2018, 3:45:32 PM)
+  https://sudoku-accurentis.firebaseapp.com
+  ✔ convert to PWA @done (12/27/2018, 3:45:53 PM)
 
-[x] timer is paused when going in home page
-[x] player knows the duration of the game
-[x] player can pause the timer
+  [x] timer is paused when going in home page
+  [x] player knows the duration of the game
+  [x] player can pause the timer
 
-[x] game board expressive header
+  [x] game board expressive header
   [x] user can easily switch to draft mode
   [x] pouvoir annuler le dernier coup (full history?)
 

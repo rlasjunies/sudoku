@@ -22,7 +22,7 @@ export class KeyBoard3 {
     this.clearClicked.emit("x");
   }
   undoClickedHandler() {
-    this.clearClicked.emit("x");
+    this.undoClicked.emit("x");
   }
 
   cellHTML(digit: number, draft: boolean) {

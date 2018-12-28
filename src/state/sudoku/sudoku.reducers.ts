@@ -8,6 +8,7 @@ import { undoReducer } from "./sudoku.actions.undo";
 import { timerReducer } from "./sudoku.actions.timer";
 
 export function sudokuPageReducer(state: SudokuPageState = sudokuPageInitialState, action: SudokuAction) {
+  // console.log("sudokupageReducer",action.type);offscreenBuffering
   switch (action.type) {
     case "GENERATE_BOARD": {
       return generateBoardReducer(state, action);

@@ -137,7 +137,7 @@ export class SudokuPage {
               <key-board3
                 // draftMode={this.draftMode}
                 onClearClicked={_ => this.dispatchClearTyped()}
-                onUndoClicked={_ => this.dispatchClearTyped()}
+                onUndoClicked={_ => this.dispatchUndoTyped()}
                 onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
                 onDraftNumberClicked={(draftNumberClicked)=> this.dispatchDraftNumberTyped(draftNumberClicked)}
                 remainingNumbers={this.board.remainingNumbers}>
