@@ -64,7 +64,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
     } else {
 
       // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
-      oldBoard.cells[currentCell].value = null;
+      // oldBoard.cells[currentCell].value = null;
 
       // managed incorrect cell
       // const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
@@ -83,6 +83,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
       colSolved = isColSolvedx(col, newBoard) ? col : null;
       blockSolved = isBlockSolvedx(block, newBoard) ? block : null;
       boardSolved = isBoardSolvedx(newBoard) ? true : false;
+
 
       // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
     }
