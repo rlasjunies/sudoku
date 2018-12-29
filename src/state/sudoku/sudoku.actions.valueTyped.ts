@@ -1,35 +1,19 @@
-import { SudokuAction } from "./sudoku.actions";
-import { SudokuPageState } from "./sudoku.state";
 import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard } from "../../services/sudoku/sudoku";
-// export const VALUE_TYPED_ACTION = 
+import { Action, registerMutator } from "services/store/store";
+import { AppState } from "state/app.state";
 
-interface valueTypeActionPayload {
-  valueTyped: number
-}
-export function numberTypedAction(value: number): SudokuAction {
+export const actionNameNumberTyped = "NUMBER_TYPED";
+export function action(value: number): Action {
   return {
-    type: "NUMBER_TYPED",
-    payload: { valueTyped: value }
-  }
-}
-export function draftNumberTypedAction(value: number): SudokuAction {
-  return {
-    type: "DRAFT_NUMBER_TYPED",
+    name: actionNameNumberTyped,
     payload: { valueTyped: value }
   }
 }
 
-export function clearTypedAction(): SudokuAction {
-  return {
-    type: "CLEAR_TYPED",
-    payload: { valueTyped: null }
-  }
-}
-
-export function valueTypedReducer(state: SudokuPageState, action: SudokuAction): SudokuPageState {
-  const payload: valueTypeActionPayload = action.payload;
-  const currentCell = state.cellSelected;
-  const oldBoard = state.board;
+export function mutator(state: AppState, action: Action): AppState {
+  const payload = action.payload;
+  const currentCell = state.sudokuPage.cellSelected;
+  const oldBoard = state.sudokuPage.board;
   const row = rowOfCellNumber(currentCell);
   const col = colOfCellNumber(currentCell);
   const block = blockOfCellNumber(currentCell);
@@ -38,7 +22,7 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
   let blockSolved: number | null = null;
   let boardSolved: boolean = false;
 
-  let newBoard = sudokuBoardClone(state.board);
+  let newBoard = sudokuBoardClone(state.sudokuPage.board);
 
   // TODO: algo a revoir quand fonctionnel avancé, il faut mettre dans des sous fonctions l'ensemeble des cas
 
@@ -49,65 +33,54 @@ export function valueTypedReducer(state: SudokuPageState, action: SudokuAction):
   } else {
     const value = payload.valueTyped;
 
-    if (action.type === "CLEAR_TYPED") {
-      newBoard.cells[currentCell].candidates = [];
-      newBoard.cells[currentCell].value = null;
-      // remove the cell of the incorrect cells
-      newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell);
-    } else if (action.type === "DRAFT_NUMBER_TYPED") {
+    // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
+    // oldBoard.cells[currentCell].value = null;
 
-      // if (state.draftMode === true) {
-      // switch value in the candidates
-      // newCandidatesBoard[currentCell][value - 1] = newCandidatesBoard[currentCell][value - 1] ? false : true;
-      newBoard.cells[currentCell].candidates[value - 1] = newBoard.cells[currentCell].candidates[value - 1] ? false : true;
+    // managed incorrect cell
+    // const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
+    // the value is not correct when the value is not the same as the expected One
+    // console.log("check is value is correct", value, newBoard.cells[currentCell].expectedValue, (value == newBoard.cells[currentCell].expectedValue))
+    const isValueCorrect = (value == newBoard.cells[currentCell].expectedValue) ? true : false;
 
-    } else {
-
-      // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
-      // oldBoard.cells[currentCell].value = null;
-
-      // managed incorrect cell
-      // const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
-      // the value is not correct when the value is not the same as the expected One
-      console.log("check is value is correct", value, newBoard.cells[currentCell].expectedValue, (value == newBoard.cells[currentCell].expectedValue))
-      const isValueCorrect = (value == newBoard.cells[currentCell].expectedValue) ? true : false;
-
-      // remove the value from the list if already exists
-      // TODO: create an array library - retrieve the one from uacommander
-      newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell)
-      if (!isValueCorrect) {
-        newBoard.incorrectCells.push(currentCell);
-      }
-
-      // insert the value in the board even if incorrect, 
-      // if incorrect the value will be highlighted to the player
-      newBoard.cells[currentCell].value = value;
-
-      // check if zones are solved in order to provide animation for the player
-      rowSolved = isRowSolvedx(row, newBoard) ? row : null;
-      colSolved = isColSolvedx(col, newBoard) ? col : null;
-      blockSolved = isBlockSolvedx(block, newBoard) ? block : null;
-      boardSolved = isBoardSolvedx(newBoard) ? true : false;
-
-      // remove equal candidates in the related zones
-      // only when the value is correct
-      if (isValueCorrect) {
-        newBoard = removeCandidateBoard(newBoard, value, currentCell);
-      }
-
-      // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
+    // remove the value from the list if already exists
+    // TODO: create an array library - retrieve the one from uacommander
+    newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell)
+    if (!isValueCorrect) {
+      newBoard.incorrectCells.push(currentCell);
     }
-    newBoard.remainingNumbers = remainingNumbers(newBoard.cells);
 
-    return {
-      ...state,
+    // insert the value in the board even if incorrect, 
+    // if incorrect the value will be highlighted to the player
+    newBoard.cells[currentCell].value = value;
+
+    // check if zones are solved in order to provide animation for the player
+    rowSolved = isRowSolvedx(row, newBoard) ? row : null;
+    colSolved = isColSolvedx(col, newBoard) ? col : null;
+    blockSolved = isBlockSolvedx(block, newBoard) ? block : null;
+    boardSolved = isBoardSolvedx(newBoard) ? true : false;
+
+    // remove equal candidates in the related zones
+    // only when the value is correct
+    if (isValueCorrect) {
+      newBoard = removeCandidateBoard(newBoard, value, currentCell);
+    }
+
+    // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
+  }
+  newBoard.remainingNumbers = remainingNumbers(newBoard.cells);
+
+  return {
+    ...state,
+    sudokuPage: {
+      ...state.sudokuPage,
       board: newBoard,
-      boardHistory: [...state.boardHistory, oldBoard],  // add the oldBoard in the history
+      boardHistory: [...state.sudokuPage.boardHistory, oldBoard],  // add the oldBoard in the history
       rowSolved: rowSolved,
       colSolved: colSolved,
       blockSolved: blockSolved,
       boardSolved: boardSolved
     }
   }
-  return state;
 }
+
+registerMutator(actionNameNumberTyped, mutator);

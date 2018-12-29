@@ -3,17 +3,18 @@ import { AppState } from "state/app.state";
 
 export function action(): Action {
   return {
-    name: "SPLASHSCREEN-HIDE",
-    payload: {
-    }
+    name: "NAVIGATETO_CREATENEWBAORD",
+    payload: {}
   }
 }
 export function mutator(state: AppState, _action: Action): AppState {
   return {
     ...state,
-    splashScreenPage: {
-      ...state.splashScreenPage,
-      showPage: false
+    appRoot: {
+      ...state.appRoot,
+      showSudokuPage: false,
+      showCreateNewBoardPage: true,
+      showSplashScreenPage: false
     }
   }
 };

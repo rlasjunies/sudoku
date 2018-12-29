@@ -1,33 +1,31 @@
-import { AppAction } from "../app.actions";
 import { generateSudokuBoard, SudokuLevelType } from "../../services/sudoku/sudoku";
-import { SudokuPageState } from "./sudoku.state";
-import { SudokuAction } from "./sudoku.actions";
+import { Action, registerMutator } from "services/store/store";
+import { AppState } from "state/app.state";
 
-export function generateBoardAction( level: SudokuLevelType) : AppAction {
+export function action(level: SudokuLevelType): Action {
   return {
-    type: "GENERATE_BOARD",
-    payload: { 
-      level: level, 
-      board: generateSudokuBoard(level) 
+    name: "GENERATE_BOARD",
+    payload: {
+      level: level
     }
   }
 }
 
-export function generateBoardReducer(state:SudokuPageState, action:SudokuAction):SudokuPageState {
+export function mutator(state: AppState, action: Action): AppState {
   const level = action.payload.level;
-  const board = action.payload.board;
+  const board = generateSudokuBoard(level);
 
   return {
     ...state,
-    board: board,
-    boardHistory: [board], // initialize the history with the new board
-    boardLevel: level,
-    cellSelected: -1,
-    gameOnGoing: true,
-
-    // initialize the timer
-    // TODO: this should be a concatenation of action
-    timerOn: true,
-    timer: 0
+    sudokuPage: {
+      ...state.sudokuPage,
+      board: board,
+      boardHistory: [board], // initialize the history with the new board
+      boardLevel: level,
+      cellSelected: 0,
+      gameOnGoing: true,
+    }
   }
 }
+
+registerMutator("GENERATE_BOARD", mutator);

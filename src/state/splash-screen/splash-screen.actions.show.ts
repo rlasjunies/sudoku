@@ -1,16 +1,21 @@
-import { SplashScreenAction } from "./splash-screen.actions";
-import { SplashScreenPageState } from "./splash-screen.state";
+import { Action, registerMutator } from "services/store/store";
+import { AppState } from "state/app.state";
 
-export function showSplashScreenAction() : SplashScreenAction {
+export function action(): Action {
   return {
-    type: "SHOW",
-    payload: {  }
+    name: "SPLASHSCREEN-SHOW",
+    payload: {}
   }
 }
 
-export function showReducer(state:SplashScreenPageState) : SplashScreenPageState {
+export function mutator(state: AppState): AppState {
   return {
     ...state,
-    showPage: true
+    splashScreenPage: {
+      ...state.splashScreenPage,
+      showPage: true
+    }
   }
 }
+
+registerMutator(action().name, mutator);

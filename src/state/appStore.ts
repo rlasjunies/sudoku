@@ -1,18 +1,11 @@
 import { Store } from "../services/store/store";
-import { sudokuPageReducer } from "./sudoku/sudoku.reducers";
-import { sudokuPageInitialState } from "./sudoku/sudoku.state";
 import { AppState } from "./app.state";
-import { splashScreenPageInitialState } from "./splash-screen/splash-screen.state";
-import { splashScreenPageReducer } from "./splash-screen/splash-screen.reducers";
-import { appRootReducer } from "./app-root/app-root.reducers";
-import { appRootInitialState } from "./app-root/app-root.state";
-import { timerTickAction } from "./sudoku/sudoku.actions.timer";
 
-const reducers = {
-  sudokuPage: sudokuPageReducer,
-  splashScreenPage: splashScreenPageReducer,
-  appRoot: appRootReducer
-};
+import { sudokuPageInitialState } from "./sudoku/sudoku.state";
+import { splashScreenPageInitialState } from "./splash-screen/splash-screen.state";
+import { appRootInitialState } from "./app-root/app-root.state";
+
+import * as sudokuTimerTick from "./sudoku/sudoku.actions.timerTick";
 
 const initialState: AppState = {
   sudokuPage: sudokuPageInitialState,
@@ -20,21 +13,20 @@ const initialState: AppState = {
   appRoot: appRootInitialState
 }
 
-export const store = new Store(reducers, initialState, 'accurentis-sudoku');
+export const store = new Store(initialState, 'sudoku-accurentis');
 
 let context = {
   timerOn: false,
   timer: null
 };
 
-store.subscribeReaction(stateChanged, context)
 function stateChanged(state: AppState): any {
   // console.log(`Dans state changed:${state.sudokuPage.timerOn},${context.timerOn}`);
   if (state.sudokuPage.timerOn && !context.timerOn) {
     // activate the timer
     // console.log("activate");
     context.timer = setInterval(() => {
-      store.dispatch(timerTickAction());
+      store.dispatch(sudokuTimerTick.action());
     }, 1000);
     context.timerOn = true;
 
@@ -46,3 +38,5 @@ function stateChanged(state: AppState): any {
     context.timerOn = false;
   }
 }
+
+store.subscribeReaction(stateChanged, context)

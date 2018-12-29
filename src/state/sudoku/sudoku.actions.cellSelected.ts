@@ -1,17 +1,22 @@
-import { SudokuAction } from "./sudoku.actions";
-import { SudokuPageState } from "./sudoku.state";
+import { Action, registerMutator } from "services/store/store";
+import { AppState } from "state/app.state";
 
-export function cellSelectedAction(cell) : SudokuAction {
+export function action(cell: number): Action {
   return {
-    type: "CELL_SELECTED",
+    name: "CELL_SELECTED",
     payload: { cellSelected: cell }
   }
 }
 
-export function cellSelectedReducer(state:SudokuPageState, action:SudokuAction) : SudokuPageState {
+export function mutator(state: AppState, action: Action): AppState {
   const cellSelected = action.payload.cellSelected;
   return {
     ...state,
-    cellSelected: cellSelected
+    sudokuPage: {
+      ...state.sudokuPage,
+      cellSelected: cellSelected
+    }
   }
 }
+
+registerMutator("CELL_SELECTED", mutator);

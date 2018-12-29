@@ -3,19 +3,19 @@ import { AppState } from "state/app.state";
 
 export function action(): Action {
   return {
-    name: "SPLASHSCREEN-HIDE",
-    payload: {
-    }
+    name: "TIMER_RESUME",
+    payload: {}
   }
 }
+
 export function mutator(state: AppState, _action: Action): AppState {
   return {
     ...state,
-    splashScreenPage: {
-      ...state.splashScreenPage,
-      showPage: false
+    sudokuPage: {
+      ...state.sudokuPage,
+      timerOn: true
     }
   }
-};
+}
 
 registerMutator(action().name, mutator);

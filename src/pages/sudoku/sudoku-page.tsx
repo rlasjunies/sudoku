@@ -1,13 +1,15 @@
 import { Component, State } from '@stencil/core';
 import { store } from 'state/appStore';
 import { AppState } from 'state/app.state';
-import { cellSelectedAction } from "state/sudoku/sudoku.actions.cellSelected";
-// import { switchDraftModeAction } from "../../state/sudoku/sudoku.actions.switchDraftMode";
-import { numberTypedAction, clearTypedAction, draftNumberTypedAction } from "../../state/sudoku/sudoku.actions.valueTyped";
-import { navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';
+import * as sudokuValueTyped from "state/sudoku/sudoku.actions.valueTyped";
+import * as sudokuDraftTyped from "state/sudoku/sudoku.actions.draftTyped";
+import * as sudokuClearTyped from "state/sudoku/sudoku.actions.clear";
 import { SudokuBoard, initializeSudokuBoard } from 'services/sudoku/sudoku';
-import { undoAction } from 'state/sudoku/sudoku.actions.undo';
-import { timerResumeAction, timerPauseAction } from 'state/sudoku/sudoku.actions.timer';
+import * as sudokuUndo from 'state/sudoku/sudoku.actions.undo';
+import * as sudokuCellSelected from "state/sudoku/sudoku.actions.cellSelected";
+import * as sudokuTimerPause from "state/sudoku/sudoku.actions.timerPause";
+import * as sudokuTimerResume from "state/sudoku/sudoku.actions.timerResume";
+import * as navigateToSplashScreen_PauseTimer from "state/_multiDomain/actions.navigateToSplashScreen_StopTimer";
 
 @Component({
   tag: 'sudoku-page',
@@ -50,41 +52,36 @@ export class SudokuPage {
   }
 
   dispatchCellSelection({ detail: cell }) {
-    store.dispatch(cellSelectedAction(cell))
+    store.dispatch(sudokuCellSelected.action(cell))
   }
 
   dispatchNumberTyped({ detail: keyTyped }) {
-    store.dispatch(numberTypedAction(keyTyped));
+    store.dispatch(sudokuValueTyped.action(keyTyped));
   }
   dispatchDraftNumberTyped({ detail: keyTyped }) {
-    store.dispatch(draftNumberTypedAction(keyTyped));
+    store.dispatch( sudokuDraftTyped.action(keyTyped));
   }
   dispatchClearTyped() {
-    store.dispatch(clearTypedAction());
+    store.dispatch(sudokuClearTyped.action());
   }
   
   dispatchUndoTyped() {
-    store.dispatch(undoAction());
+    store.dispatch(sudokuUndo.action());
   }
 
-  // dispatchSwitchDraftMode({ detail: draftMode }): void {
-  //   // console.log(`dispartchSwitchDraftMode:`,draftMode);
-  //   store.dispatch(switchDraftModeAction(draftMode));
-  // }
 
   onBackClickHandler() {
-    store.dispatch(navigateToSplashScreenPageAction());
-    store.dispatch(timerPauseAction());
+    store.dispatch(navigateToSplashScreen_PauseTimer.action());
   }
   onUndoClickHandler() {
-    store.dispatch(undoAction());
+    store.dispatch(sudokuUndo.action());
   }
 
   onTimerSwitch() {
     if (this.timerOn) {
-      store.dispatch(timerPauseAction());
+      store.dispatch(sudokuTimerPause.action());
     } else {
-      store.dispatch(timerResumeAction());
+      store.dispatch(sudokuTimerResume.action());
     }
   }
 
@@ -97,10 +94,6 @@ export class SudokuPage {
             <clr-icon shape="angle caret left" size="40"></clr-icon>Back
           </button>
 
-          {/* <button class="btn"
-            onClick={() => this.onUndoClickHandler()} >
-            <clr-icon shape="undo"></clr-icon>Undo
-          </button> */}
 
           <acc-timer class="title" time={this.timer}></acc-timer>
 
@@ -109,15 +102,7 @@ export class SudokuPage {
             <clr-icon shape={this.timerOn ? "pause" : "play"}></clr-icon>{this.timerOn ? "Pause" : "Resume"}
           </button>
 
-          {/* <div class="toggle-switch"> */}
-            {/* <input type="checkbox" id="toggle_1" /> */}
-            {/* <label></label> */}
-          {/* </div> */}
 
-          {/* <acc-switch onSwitch={(draftMode) => this.dispatchSwitchDraftMode(draftMode)}>
-            <clr-icon shape="pencil" size="30"></clr-icon>
-            Draft
-          </acc-switch> */}
         </div>
         <div class="content">
           <acc-flipbox flip={!this.timerOn}>
@@ -135,7 +120,6 @@ export class SudokuPage {
                 onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
               </sudoku-board-component>
               <key-board3
-                // draftMode={this.draftMode}
                 onClearClicked={_ => this.dispatchClearTyped()}
                 onUndoClicked={_ => this.dispatchUndoTyped()}
                 onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}

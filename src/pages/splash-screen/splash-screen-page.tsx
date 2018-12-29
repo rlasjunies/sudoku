@@ -1,9 +1,9 @@
 import { Component, Element, State } from '@stencil/core';
 import { store } from 'state/appStore';
-
-import { navigateToSudokuPageAction, navigateToCreateNewBordPageAction } from 'state/app-root/app-root.actions';
 import { AppState } from 'state/app.state';
-import { timerResumeAction } from 'state/sudoku/sudoku.actions.timer';
+
+import * as navigateToCreateNewBoard from 'state/app-root/app-root.actions.navigateToCreateNewBoard';
+import * as navigateToSudoku_ResumeTimer from 'state/_multiDomain/actions.navigateToSudoku_ResumeTimer';
 
 @Component({
   tag: 'splash-screen-page',
@@ -29,11 +29,10 @@ export class SplashScreenPage {
   }
 
   navigateToSudokuPage() {
-    store.dispatch(timerResumeAction());
-    store.dispatch(navigateToSudokuPageAction());
+    store.dispatch(navigateToSudoku_ResumeTimer.action());
   }
   navigateToCreateNewBoardPage() {
-    store.dispatch(navigateToCreateNewBordPageAction());
+    store.dispatch(navigateToCreateNewBoard.action());
   }
 
   render() {

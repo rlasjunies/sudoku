@@ -1,9 +1,9 @@
 import { Component } from '@stencil/core';
-import { generateBoardAction } from 'state/sudoku/sudoku.actions.generateBoard';
 import { SudokuLevelType } from 'services/sudoku/sudoku';
 import { store } from 'state/appStore';
-import { navigateToSudokuPageAction, navigateToSplashScreenPageAction } from 'state/app-root/app-root.actions';
 
+import * as navigateToSplashScreen from "state/app-root/app-root.actions.navigateToSplashScreen";
+import * as generateBoardAndNavigateToSudokuPage from "state/_multiDomain/actions.generateBoard_NavigateToSudokuPage_StartTimer";
 @Component({
   tag: 'create-new-board',
   styleUrl: 'create-new-board.css'
@@ -12,11 +12,10 @@ export class CreateNewBoard {
 
   generateNewBoardOnClickHandler(difficulty: SudokuLevelType) {
     // console.log(`difficulty:${difficulty}`);
-    store.dispatch(generateBoardAction(difficulty));
-    store.dispatch(navigateToSudokuPageAction());
+    store.dispatch( generateBoardAndNavigateToSudokuPage.action(difficulty));
   }
   onBackClickHandler() {
-    store.dispatch(navigateToSplashScreenPageAction());
+    store.dispatch(navigateToSplashScreen.action());
   }
   render() {
     return (
