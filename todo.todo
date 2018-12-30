@@ -5,20 +5,23 @@ features:
   - on typing the system check if the values entered are good, raised error if not, manage kind of number of error max
 
   ☐ celebrate the end of the game
-  unselect cell, to show the whole board
-  when the game is finished, hide the "clear button"
+   ☐ unselect cell, to show the whole board
+   ☐ when the game is finished, hide the "clear button"
+   ☐ propose new game
+   
+  ☐ hide clear key when the number cannot be cleared (seed)
+
   ☐ write the move number at the bottom for history purpose
   ☐ generator evaluate the complexicity of the resolution based on rules
   ☐ when udoing, select the current cell at the time of the move
 
   Style / UI:
   ☐ user can visualize the cell selected even if the cell is in error
-  ✔ user visualy understand action button (icons) @done (12/23/2018, 11:57:06 AM)
   ☐ user should visualize when he click in the keyboard keys (click effect missing)
   may be propose 2 type of classes. JS determine if the layout is portrait or paysage, then classes are adapted as consequence
 
 UX:
-  ☐ user is notified when a block is completed
+
   ☐ clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
   ☐ system shows how many numbers are left for a specific number
       
@@ -44,6 +47,8 @@ coach features:
   ☐ remove the stenciljs and rely in the statemgt framework?
 
 done:
+  ✔ user is notified when a block is completed @done (12/30/2018, 11:51:12 AM)
+  ✔ user visualy understand action button (icons) @done (12/23/2018, 11:57:06 AM)
   ✔ system remove candidate value when the number is typed in the row, column or block @done (12/28/2018, 3:06:46 PM)
   ✔ support vertical layout @done (12/28/2018, 2:28:50 PM)  
   ✔ candidates color should be less attractives compare to the initial/entered values @done (12/28/2018, 2:28:21 PM)

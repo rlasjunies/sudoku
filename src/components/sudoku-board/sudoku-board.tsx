@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Event, Element, Prop, Watch } from '@stencil/core';
 import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initializeSudokuBoard } from "../../services/sudoku/sudoku";
+import { chenillardNorth, chenillardSouth, chenillardWest, chenillardEast, chenillardNorthEast, chenillardSouthEast, chenillardSouthWest, chenillardNorthWest } from './sudoku-chenillard';
 
 @Component({
     tag: 'sudoku-board-component',
@@ -9,7 +10,7 @@ import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initi
 export class SudokuBoardComponent {
     @Element() element: HTMLSudokuBoardComponentElement;
     @Event() cellSelection: EventEmitter;
- 
+
     @Prop() solvedRow: number;
     @Prop() solvedCol: number;
     @Prop() solvedBlock: number;
@@ -31,18 +32,20 @@ export class SudokuBoardComponent {
     solvedColWatcher(newValue: number) {
         // console.log(`solvedColWatcher:${newValue}, ${oldValue}`);
         if (newValue != 0 && newValue != undefined) {
-            this.chenillardCol(newValue, this.cellSelected);
+            // this.chenillardCol(newValue, this.cellSelected);
+            this.chenillardCol(this.cellSelected);
         }
     }
-    
+
     @Watch("solvedRow")
     solvedRowWatcher(newValue: number) {
         // console.log(`solvedRowWatcher:${newValue}, ${oldValue}`);
         if (newValue != 0 && newValue != undefined) {
-            this.chenillardRow(newValue, this.cellSelected);
+            // this.chenillardRow(newValue, this.cellSelected);
+            this.chenillardRow(this.cellSelected);
         }
     }
-    
+
     @Watch("boardSolved")
     boardSolvedWatcher(newValue: number) {
         // console.log(`boardSolvedWatcher:${newValue}, ${oldValue}`);
@@ -51,73 +54,88 @@ export class SudokuBoardComponent {
         }
     }
 
-    chenillardCol(column: number, startCell: number) {
-        const rowOfCellNumber_ = rowOfCellNumber(startCell);
-        console.log(`chenillardCol:${column},${startCell},${rowOfCellNumber_}`);
-
-        // const cellsOfCol = this.element.shadowRoot.querySelectorAll(`.column${column}`);
-        const cellsOfCol = this.element.querySelectorAll(`.column${column}`);
-        this.addRemoveChenillardClassToElement(cellsOfCol[rowOfCellNumber_],0);
-        
-        for (let index = rowOfCellNumber_ -1; index >= 0 ; index--) {
-            // console.log("for#1",index);
-            const elt = cellsOfCol[index];
-            this.addRemoveChenillardClassToElement(elt, (rowOfCellNumber_ - index) );
+    @Watch("solvedBlock")
+    solvedBlockWatcher(newValue: number) {
+        // console.log(`solvedRowWatcher:${newValue}, ${oldValue}`);
+        if (newValue != 0 && newValue != undefined) {
+            // this.chenillardRow(newValue, this.cellSelected);
+            this.chenillardBlock(this.cellSelected);
         }
-        for (let index = rowOfCellNumber_ + 1; index < 9 ; index++) {
-            // console.log("for#2",index);
-            const elt = cellsOfCol[index];
-            this.addRemoveChenillardClassToElement(elt, ( index - rowOfCellNumber_));
-        }
-        
-
     }
 
     chenillardBoard() {
-        // TODO: improve with several / randomize highlight
-        // console.log(`chenillard Board - cell selected:${startCell}`)
-        // const cellsOfTheBoard = this.element.shadowRoot.querySelectorAll(`.cell`);
-        const cellsOfTheBoard = this.element.querySelectorAll(`.cell`);
-        for (let index = 0; index < cellsOfTheBoard.length; index++) {
-            const cell = cellsOfTheBoard[index];
-            this.addRemoveChenillardClassToElement(cell,index);
-        }
+        const startCell = this.cellSelected;
+        const col = colOfCellNumber(startCell);
+        const row = rowOfCellNumber(startCell);
+        const block = blockOfCellNumber(startCell);
+
+        const coeff = 6;
+        let i = coeff * 0;
+        chenillardNorth(this.element, col, row, block, false, 0);
+        chenillardSouth(this.element, col, row, block, false, 0);
+        chenillardWest(this.element, col, row, block, false, 0);
+        chenillardEast(this.element, col, row, block, false, 0);
+        chenillardNorthEast(this.element, col, row, block, false, 0);
+        chenillardSouthEast(this.element, col, row, block, false, 0);
+        chenillardNorthWest(this.element, col, row, block, false, 0);
+        chenillardSouthWest(this.element, col, row, block, false, 0);
+        i = coeff * 1;
+        chenillardNorth(this.element, col, row, block, false, i);
+        chenillardSouth(this.element, col, row, block, false, i);
+        chenillardWest(this.element, col, row, block, false, i);
+        chenillardEast(this.element, col, row, block, false, i);
+        chenillardNorthEast(this.element, col, row, block, false, i);
+        chenillardSouthEast(this.element, col, row, block, false, i);
+        chenillardNorthWest(this.element, col, row, block, false, i);
+        chenillardSouthWest(this.element, col, row, block, false, i);
+        i = coeff * 2;
+        chenillardNorth(this.element, col, row, block, false, i);
+        chenillardSouth(this.element, col, row, block, false, i);
+        chenillardWest(this.element, col, row, block, false, i);
+        chenillardEast(this.element, col, row, block, false, i);
+        chenillardNorthEast(this.element, col, row, block, false, i);
+        chenillardSouthEast(this.element, col, row, block, false, i);
+        chenillardNorthWest(this.element, col, row, block, false, i);
+        chenillardSouthWest(this.element, col, row, block, false, i);
 
     }
 
-    chenillardRow(row: number, startCell: number) {
-        const colOfCellNumber_ = colOfCellNumber(startCell);
-        console.log(`chenillardCol:${row},${startCell},${colOfCellNumber_}`);
+    chenillardRow(startCell: number) {
+        const col = colOfCellNumber(startCell);
+        const row = rowOfCellNumber(startCell);
+        const block = blockOfCellNumber(startCell);
 
-        // const cellsOfRow = this.element.shadowRoot.querySelectorAll(`.row${row}`);
-        const cellsOfRow = this.element.querySelectorAll(`.row${row}`);
-        this.addRemoveChenillardClassToElement(cellsOfRow[colOfCellNumber_],0);
-        
-        for (let index = colOfCellNumber_ -1; index >= 0 ; index--) {
-            // console.log("for#1",index);
-            const elt = cellsOfRow[index];
-            this.addRemoveChenillardClassToElement(elt, (colOfCellNumber_ - index) );
-        }
-        for (let index = colOfCellNumber_ + 1; index < 9 ; index++) {
-            // console.log("for#2",index);
-            const elt = cellsOfRow[index];
-            this.addRemoveChenillardClassToElement(elt, ( index - colOfCellNumber_));
-        }
+        chenillardWest(this.element, col, row, block, false, 0);
+        chenillardEast(this.element, col, row, block, false, 0);
     }
 
-    addRemoveChenillardClassToElement(element:Element, delayCoeff:number){
-        const delay = delayCoeff * 100; 
-        setTimeout(()=>{
-            element.classList.add("chenillardCol");
-            setTimeout(() => {
-                element.classList.remove("chenillardCol");
-            }, 200);
-        }, delay)
+    chenillardCol(startCell: number) {
+        const col = colOfCellNumber(startCell);
+        const row = rowOfCellNumber(startCell);
+        const block = blockOfCellNumber(startCell);
+
+        chenillardNorth(this.element, col, row, block, false, 0);
+        chenillardSouth(this.element,col, row, block, false, 0);
+    }
+
+    chenillardBlock(startCell: number) {
+        const col = colOfCellNumber(startCell);
+        const row = rowOfCellNumber(startCell);
+        const block = blockOfCellNumber(startCell);
+
+        chenillardNorth(this.element, col, row, block, true, 0);
+        chenillardSouth(this.element, col, row, block, true, 0);
+        chenillardWest(this.element, col, row, block, true, 0);
+        chenillardEast(this.element, col, row, block, true, 0);
+        chenillardNorthEast(this.element, col, row, block, true, 0);
+        chenillardSouthEast(this.element, col, row, block, true, 0);
+        chenillardNorthWest(this.element, col, row, block, true, 0);
+        chenillardSouthWest(this.element, col, row, block, true, 0);
     }
 
     returnClassForTheCell(cell: number) {
         // console.log("this.cellSelected",this.cellSelected);
-        const selectedCellValue = this.cellSelected !== -1? this.board.cells[this.cellSelected].value + "" : "";
+        const selectedCellValue = this.cellSelected !== -1 ? this.board.cells[this.cellSelected].value + "" : "";
         const cellValue = this.board.cells[cell].value + "";
 
         const colOfCell = colOfCellNumber(cell);

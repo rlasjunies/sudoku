@@ -42,6 +42,10 @@ export function blockOfCellNumber(cellNumber: number) {
     return Math.floor(rowOfCellNumber(cellNumber) / 3) * 3 + Math.floor(colOfCellNumber(cellNumber) / 3);
 }
 
+export function blockOfColRow(col:number, row: number) {
+    return Math.floor(row / 3) * 3 + Math.floor(col / 3);
+}
+
 export function visualize(board: SudokuBoard) {
     let clone = { ...board };
     let boardToWrite: string;
