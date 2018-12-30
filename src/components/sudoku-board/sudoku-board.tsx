@@ -12,59 +12,58 @@ export class SudokuBoardComponent {
     @Event() cellSelection: EventEmitter;
 
     @Prop() solvedRow: number;
-    @Prop() solvedCol: number;
-    @Prop() solvedBlock: number;
-    @Prop() boardSolved: boolean;
-    @Prop() board: SudokuBoard = initializeSudokuBoard();
-    // @Prop() candidatesBoard: boolean[][] = Array(81);
-
-    // @Watch('candidatesBoard')
-    // watchHandler(newValue) {
-    //     for (let index = 0; index < newValue.length; index++) {
-    //         this.board.cells[index] = [...newValue[index]];
-    //     }
-    // }
-    @Prop() cellSelected: number = -1;
-
-    @Prop() incorrectCells: number[] = [];
-
-    @Watch("solvedCol")
-    solvedColWatcher(newValue: number) {
-        // console.log(`solvedColWatcher:${newValue}, ${oldValue}`);
-        if (newValue != 0 && newValue != undefined) {
-            // this.chenillardCol(newValue, this.cellSelected);
-            this.chenillardCol(this.cellSelected);
-        }
-    }
-
     @Watch("solvedRow")
     solvedRowWatcher(newValue: number) {
-        // console.log(`solvedRowWatcher:${newValue}, ${oldValue}`);
-        if (newValue != 0 && newValue != undefined) {
-            // this.chenillardRow(newValue, this.cellSelected);
+        // console.log(`solvedRowWatcher:${newValue}, ${this.cellSelected}`);
+        if (newValue != 0
+            && newValue !== undefined
+            && !this.boardSolved 
+            && this.cellSelected !== -1) {
             this.chenillardRow(this.cellSelected);
         }
     }
-
-    @Watch("boardSolved")
-    boardSolvedWatcher(newValue: number) {
-        // console.log(`boardSolvedWatcher:${newValue}, ${oldValue}`);
-        if (newValue != 0 && newValue != undefined) {
-            this.chenillardBoard();
+    @Prop() solvedCol: number;
+    @Watch("solvedCol")
+    solvedColWatcher(newValue: number) {
+        // console.log(`solvedColWatcher:${newValue}, ${this.cellSelected}`);
+        if (newValue != 0
+            && newValue !== undefined
+            && !this.boardSolved
+            && this.cellSelected !== -1) {
+            this.chenillardCol(this.cellSelected);
         }
     }
-
+    @Prop() solvedBlock: number;
     @Watch("solvedBlock")
     solvedBlockWatcher(newValue: number) {
-        // console.log(`solvedRowWatcher:${newValue}, ${oldValue}`);
-        if (newValue != 0 && newValue != undefined) {
+        // console.log(`solvedRowWatcher:${newValue}, ${this.cellSelected}`);
+        if (newValue != 0
+            && newValue !== undefined
+            && !this.boardSolved
+            && this.cellSelected !== -1) {
             // this.chenillardRow(newValue, this.cellSelected);
             this.chenillardBlock(this.cellSelected);
         }
     }
+    @Prop() boardSolved: boolean;
+    @Watch("boardSolved")
+    boardSolvedWatcher(newValue: boolean, oldValue: boolean) {
+        // console.log(`boardSolvedWatcher:${newValue}, ${oldValue} - cellSelected:${this.cellSelected}`);
+        if (newValue
+            && !oldValue
+            && (oldValue !== undefined)) {
+            // this.sudokuBoardComponent.chenillardBoard(this.cellSelected);
+            // store.dispatch(endGameStopTimer.action());
+            this.chenillardBoard(this.lastCellOfTheGame);
+        }
+    }
+    @Prop() board: SudokuBoard = initializeSudokuBoard();
+    @Prop() cellSelected: number = -1;
+    @Prop() lastCellOfTheGame: number = -1;
+    @Prop() incorrectCells: number[] = [];
 
-    chenillardBoard() {
-        const startCell = this.cellSelected;
+    chenillardBoard(cell: number) {
+        const startCell = cell;
         const col = colOfCellNumber(startCell);
         const row = rowOfCellNumber(startCell);
         const block = blockOfCellNumber(startCell);
@@ -97,7 +96,6 @@ export class SudokuBoardComponent {
         chenillardSouthEast(this.element, col, row, block, false, i);
         chenillardNorthWest(this.element, col, row, block, false, i);
         chenillardSouthWest(this.element, col, row, block, false, i);
-
     }
 
     chenillardRow(startCell: number) {
@@ -115,7 +113,7 @@ export class SudokuBoardComponent {
         const block = blockOfCellNumber(startCell);
 
         chenillardNorth(this.element, col, row, block, false, 0);
-        chenillardSouth(this.element,col, row, block, false, 0);
+        chenillardSouth(this.element, col, row, block, false, 0);
     }
 
     chenillardBlock(startCell: number) {
@@ -132,6 +130,21 @@ export class SudokuBoardComponent {
         chenillardNorthWest(this.element, col, row, block, true, 0);
         chenillardSouthWest(this.element, col, row, block, true, 0);
     }
+
+    // chenillardBoard(startCell: number) {
+    //     const col = colOfCellNumber(startCell);
+    //     const row = rowOfCellNumber(startCell);
+    //     const block = blockOfCellNumber(startCell);
+
+    //     chenillardNorth(this.element, col, row, block, true, 0);
+    //     chenillardSouth(this.element, col, row, block, true, 0);
+    //     chenillardWest(this.element, col, row, block, true, 0);
+    //     chenillardEast(this.element, col, row, block, true, 0);
+    //     chenillardNorthEast(this.element, col, row, block, true, 0);
+    //     chenillardSouthEast(this.element, col, row, block, true, 0);
+    //     chenillardNorthWest(this.element, col, row, block, true, 0);
+    //     chenillardSouthWest(this.element, col, row, block, true, 0);
+    // }
 
     returnClassForTheCell(cell: number) {
         // console.log("this.cellSelected",this.cellSelected);

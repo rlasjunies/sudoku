@@ -22,6 +22,10 @@ sudoku-var {
   --draftvalue-fontsize: 3vw;
 }
 
+.hidden{
+  visibility: hidden;
+}
+
 /* material design Red 50 */
 red-50 {
   --red-50: #FFEBEE;

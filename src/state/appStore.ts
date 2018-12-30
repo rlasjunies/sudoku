@@ -5,7 +5,7 @@ import { sudokuPageInitialState } from "./sudoku/sudoku.state";
 import { splashScreenPageInitialState } from "./splash-screen/splash-screen.state";
 import { appRootInitialState } from "./app-root/app-root.state";
 
-import * as sudokuTimerTick from "./sudoku/sudoku.actions.timerTick";
+import * as sudokuTimerTick from "./sudoku/sudoku.actions.timer.Tick";
 
 const initialState: AppState = {
   sudokuPage: sudokuPageInitialState,

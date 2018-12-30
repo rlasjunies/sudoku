@@ -3,7 +3,7 @@ import { AppState } from "state/app.state";
 
 export function action(cell: number): Action {
   return {
-    name: "CELL_SELECTED",
+    name: "SELECT_CELL",
     payload: { cellSelected: cell }
   }
 }
@@ -19,4 +19,4 @@ export function mutator(state: AppState, action: Action): AppState {
   }
 }
 
-registerMutator("CELL_SELECTED", mutator);
+registerMutator("SELECT_CELL", mutator);

@@ -3,8 +3,7 @@ import { blockOfColRow } from "services/sudoku/sudoku";
 export function chenillardNorth(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
 
   // highlightTheCellForChenillard
-  const cell = element.querySelectorAll(`.row${row}.column${col}`);
-  addRemoveChenillardClassToElement(cell[0], index);
+  highlightCell(element, row, col, index);
 
   // north increment
   // leave if reach limit of the board
@@ -26,8 +25,7 @@ export function chenillardSouth(element: HTMLSudokuBoardComponentElement, col: n
 
 
   // highlightTheCellForChenillard
-  const cell = element.querySelectorAll(`.row${row}.column${col}`);
-  addRemoveChenillardClassToElement(cell[0], index);
+  highlightCell(element, row, col, index);
 
   // north increment
   // leave if reach limit of the board
@@ -48,8 +46,7 @@ export function chenillardSouth(element: HTMLSudokuBoardComponentElement, col: n
 export function chenillardWest(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
 
   // highlightTheCellForChenillard
-  const cell = element.querySelectorAll(`.row${row}.column${col}`);
-  addRemoveChenillardClassToElement(cell[0], index);
+  highlightCell(element, row, col, index);
 
   // north increment
   // leave if reach limit of the board
@@ -70,8 +67,7 @@ export function chenillardWest(element: HTMLSudokuBoardComponentElement, col: nu
 export function chenillardEast(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
 
   // highlightTheCellForChenillard
-  const cell = element.querySelectorAll(`.row${row}.column${col}`);
-  addRemoveChenillardClassToElement(cell[0], index);
+  highlightCell(element, row, col, index);
 
   // north increment
   // leave if reach limit of the board
@@ -93,8 +89,7 @@ export function chenillardEast(element: HTMLSudokuBoardComponentElement, col: nu
 export function chenillardNorthEast(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
 
   // highlightTheCellForChenillard
-  const cell = element.querySelectorAll(`.row${row}.column${col}`);
-  addRemoveChenillardClassToElement(cell[0], index);
+  highlightCell(element, row, col, index);
 
   // north increment
   // leave if reach limit of the board
@@ -118,8 +113,7 @@ export function chenillardNorthEast(element: HTMLSudokuBoardComponentElement, co
 export function chenillardSouthEast(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
 
   // highlightTheCellForChenillard
-  const cell = element.querySelectorAll(`.row${row}.column${col}`);
-  addRemoveChenillardClassToElement(cell[0], index);
+  highlightCell(element, row, col, index);
 
   // north increment
   // leave if reach limit of the board
@@ -144,8 +138,7 @@ export function chenillardSouthEast(element: HTMLSudokuBoardComponentElement, co
 export function chenillardSouthWest(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
 
   // highlightTheCellForChenillard
-  const cell = element.querySelectorAll(`.row${row}.column${col}`);
-  addRemoveChenillardClassToElement(cell[0], index);
+  highlightCell(element, row, col, index);
 
   // north increment
   // leave if reach limit of the board
@@ -170,8 +163,7 @@ export function chenillardSouthWest(element: HTMLSudokuBoardComponentElement, co
 export function chenillardNorthWest(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
 
   // highlightTheCellForChenillard
-  const cell = element.querySelectorAll(`.row${row}.column${col}`);
-  addRemoveChenillardClassToElement(cell[0], index);
+  highlightCell(element, row, col, index);
 
   // north increment
   // leave if reach limit of the board
@@ -193,7 +185,16 @@ export function chenillardNorthWest(element: HTMLSudokuBoardComponentElement, co
   chenillardNorthWest(element, col, row, block, stayInCurrentBlock, index);
 }
 
-
+function highlightCell(element: HTMLSudokuBoardComponentElement, row: number, col: number, index: number) {
+  const cell = element.querySelectorAll(`.row${row}.column${col}`);
+  if (cell[0] === undefined) {
+    console.log(`chenillard - cannot found cell in the row-col:${row}-${col}`);
+    throw `chenillard - cannot found cell in the row-col:${row}-${col}`;
+    
+  } else {
+    addRemoveChenillardClassToElement(cell[0], index);
+  }
+}
 
 function addRemoveChenillardClassToElement(element: Element, delayCoeff: number) {
   const delay = delayCoeff * 100;

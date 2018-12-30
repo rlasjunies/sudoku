@@ -22,7 +22,7 @@ export function mutator(state: AppState, action: Action): AppState {
       board: board,
       boardHistory: [board], // initialize the history with the new board
       boardLevel: level,
-      cellSelected: 0,
+      cellSelected: -1,
       gameOnGoing: true,
     }
   }

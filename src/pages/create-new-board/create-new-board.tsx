@@ -3,7 +3,7 @@ import { SudokuLevelType } from 'services/sudoku/sudoku';
 import { store } from 'state/appStore';
 
 import * as navigateToSplashScreen from "state/app-root/app-root.actions.navigateToSplashScreen";
-import * as generateBoardAndNavigateToSudokuPage from "state/_multiDomain/actions.generateBoard_NavigateToSudokuPage_StartTimer";
+import * as generateBoardAndNavigateToSudokuPage from "state/_combinedActions/actions.generateBoard_NavigateToSudokuPage_StartTimer";
 @Component({
   tag: 'create-new-board',
   styleUrl: 'create-new-board.css'

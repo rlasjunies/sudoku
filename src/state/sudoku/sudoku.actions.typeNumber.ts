@@ -2,7 +2,7 @@ import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCel
 import { Action, registerMutator } from "services/store/store";
 import { AppState } from "state/app.state";
 
-export const actionNameNumberTyped = "NUMBER_TYPED";
+export const actionNameNumberTyped = "TYPE_NUMBER";
 export function action(value: number): Action {
   return {
     name: actionNameNumberTyped,
@@ -17,6 +17,7 @@ export function mutator(state: AppState, action: Action): AppState {
   const row = rowOfCellNumber(currentCell);
   const col = colOfCellNumber(currentCell);
   const block = blockOfCellNumber(currentCell);
+  
   let rowSolved: number | null = null;
   let colSolved: number | null = null;
   let blockSolved: number | null = null;
@@ -78,7 +79,7 @@ export function mutator(state: AppState, action: Action): AppState {
       rowSolved: rowSolved,
       colSolved: colSolved,
       blockSolved: blockSolved,
-      boardSolved: boardSolved
+      boardSolved: boardSolved,
     }
   }
 }

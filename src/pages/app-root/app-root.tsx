@@ -2,6 +2,8 @@ import { Component, State, Element, Watch } from '@stencil/core';
 import { store } from 'state/appStore';
 import { AppState } from 'state/app.state';
 
+import * as endGameStopTimer from "state/_combinedActions/actions.endGame_StopTimer";
+
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
@@ -22,13 +24,23 @@ export class AppRoot {
     this.showSplashScreenPage = state.appRoot.showSplashScreenPage;
     this.showSudokuPage = state.appRoot.showSudokuPage;
     this.showCreateNewBoardPage = state.appRoot.showCreateNewBoardPage;
+    this.boardSolved = state.sudokuPage.boardSolved;
+  }
+
+  @State() boardSolved: boolean = false;
+  @Watch("boardSolved")
+  boardSolvedWatcher(newValue: boolean, oldValue: boolean) {
+    // console.log(`root.boardSolved:${newValue},${oldValue}`);
+    if (newValue && !oldValue && (oldValue !== undefined)) {
+      store.dispatch(endGameStopTimer.action());
+    }
   }
 
   @State() showSplashScreenPage: boolean;
   @Watch("showSplashScreenPage")
   showSplashScreenWatcher(newValue: boolean, oldValue: boolean) {
     // console.log(`showSplashScreenWatcher: ${newValue} - ${oldValue}`)
-    const splash : HTMLAccPageElement = this.element.querySelector('splash-screen-page > acc-page');
+    const splash: HTMLAccPageElement = this.element.querySelector('splash-screen-page > acc-page');
     if (newValue && !oldValue) {
       // console.log("Show the splash screen!!!!");
       splash.show();

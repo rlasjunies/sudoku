@@ -3,7 +3,7 @@ import { AppState } from "state/app.state";
 
 export function action(): Action {
   return {
-    name: "UNDO",
+    name: "UNDO_LAST_MOVE",
     payload: {}
   }
 }

@@ -44,9 +44,9 @@
   transform: translateY(-2px);
 }
 
-.key-board .hidden {
+/* .key-board .hidden {
   visibility: hidden;
-}
+} */
 
 key-board3 clr-icon {
   width: 7vmin;

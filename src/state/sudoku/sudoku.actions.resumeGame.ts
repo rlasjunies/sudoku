@@ -3,7 +3,7 @@ import { AppState } from "state/app.state";
 
 export function action(): Action {
   return {
-    name: "BOARD_SOLVED",
+    name: "RESUME_GAME",
     payload: {}
   }
 }
@@ -13,10 +13,9 @@ export function mutator(state: AppState, _action: Action): AppState {
     ...state,
     sudokuPage: {
       ...state.sudokuPage,
-      cellSelected: -1,
-      gameOnGoing: false
+      gameInPause: false,
     }
   }
 }
 
-registerMutator("CELL_SELECTED", mutator);
+registerMutator(action().name, mutator);

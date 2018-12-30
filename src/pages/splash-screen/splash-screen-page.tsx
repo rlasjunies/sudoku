@@ -3,7 +3,7 @@ import { store } from 'state/appStore';
 import { AppState } from 'state/app.state';
 
 import * as navigateToCreateNewBoard from 'state/app-root/app-root.actions.navigateToCreateNewBoard';
-import * as navigateToSudoku_ResumeTimer from 'state/_multiDomain/actions.navigateToSudoku_ResumeTimer';
+import * as navigateToSudoku_ResumeTimer from 'state/_combinedActions/actions.navigateToSudoku_ResumeTimer';
 
 @Component({
   tag: 'splash-screen-page',

@@ -4,12 +4,8 @@ features:
   the system can check on demand or at the end
   - on typing the system check if the values entered are good, raised error if not, manage kind of number of error max
 
-  ☐ celebrate the end of the game
-   ☐ unselect cell, to show the whole board
-   ☐ when the game is finished, hide the "clear button"
-   ☐ propose new game
-   
-  ☐ hide clear key when the number cannot be cleared (seed)
+
+  ☐ hide clear key when the number cannot be cleared (seed, empty cell)
 
   ☐ write the move number at the bottom for history purpose
   ☐ generator evaluate the complexicity of the resolution based on rules
@@ -47,6 +43,10 @@ coach features:
   ☐ remove the stenciljs and rely in the statemgt framework?
 
 done:
+  ✔ celebrate the end of the game @done (12/30/2018, 6:15:04 PM)
+   ✔ unselect cell, to show the whole board @done (12/30/2018, 6:15:10 PM)
+   ✔ when the game is finished, hide the "clear button" @done (12/30/2018, 6:15:11 PM)
+   ✔ propose new game @done (12/30/2018, 6:15:17 PM)
   ✔ user is notified when a block is completed @done (12/30/2018, 11:51:12 AM)
   ✔ user visualy understand action button (icons) @done (12/23/2018, 11:57:06 AM)
   ✔ system remove candidate value when the number is typed in the row, column or block @done (12/28/2018, 3:06:46 PM)

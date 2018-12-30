@@ -2,7 +2,7 @@ import { sudokuBoardClone } from "../../services/sudoku/sudoku";
 import { Action, registerMutator } from "services/store/store";
 import { AppState } from "state/app.state";
 
-export const actionNameDraftNumberTyped = "DRAFT_NUMBER_TYPED";
+export const actionNameDraftNumberTyped = "TYPE_DRAFT_NUMBER";
 export function action(value: number): Action {
   return {
     name: actionNameDraftNumberTyped,
@@ -14,13 +14,6 @@ export function mutator(state: AppState, action: Action): AppState {
   const payload = action.payload;
   const currentCell = state.sudokuPage.cellSelected;
   const oldBoard = state.sudokuPage.board;
-  // const row = rowOfCellNumber(currentCell);
-  // const col = colOfCellNumber(currentCell);
-  // const block = blockOfCellNumber(currentCell);
-  // let rowSolved: number | null = null;
-  // let colSolved: number | null = null;
-  // let blockSolved: number | null = null;
-  // let boardSolved: boolean = false;
 
   let newBoard = sudokuBoardClone(state.sudokuPage.board);
 
@@ -41,10 +34,6 @@ export function mutator(state: AppState, action: Action): AppState {
         ...state.sudokuPage,
         board: newBoard,
         boardHistory: [...state.sudokuPage.boardHistory, oldBoard],  // add the oldBoard in the history
-        // rowSolved: rowSolved,
-        // colSolved: colSolved,
-        // blockSolved: blockSolved,
-        // boardSolved: boardSolved
       }
     }
   }

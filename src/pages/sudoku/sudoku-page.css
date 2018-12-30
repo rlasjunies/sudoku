@@ -9,9 +9,18 @@ sudoku-page clr-icon {
   margin: 3px;
 }
 
-sudoku-page button {
-  font-size: 5vh;
-  padding: 10px;
+sudoku-page .btn.btn-link {
+  font-size: x-large;
+  height: unset; /* remove height for better alignment */
+  /* background-color: yellow; */
+  /* padding: 10px; */
+}
+
+sudoku-page .btn {
+  font-size: x-large;
+  height: unset; /* remove height for better alignment */
+  /* background-color: yellow; */
+  /* padding: 10px; */
 }
 
 sudoku-page .draft {
@@ -35,6 +44,25 @@ sudoku-page acc-page .header {
   /* align-self: center; */
   justify-content: center;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  font-size: x-large;
+}
+
+sudoku-page #newGame{
+  flex-direction: column;
+  /* flex:1; */
+}
+
+sudoku-page #newGame p {
+  /* flex-direction: column; */
+  /* flex:1; */
+  font-size:4vh;
+  margin: 20px;
+}
+
+sudoku-page #newGame > button {
+  /* flex-direction: column; */
+  /* flex:1; */
+  font-size:4vh;
 }
 
 sudoku-page acc-page .title {
@@ -43,14 +71,14 @@ sudoku-page acc-page .title {
   justify-content: center;
   align-content: center;
   text-align: center;
-  font-size: 2vh;
+  font-size: 3vh;
   color: black;
   padding: 0 12px;
 }
 
-acc-switch {
+/* acc-switch {
   font-size: 3vh;
-}
+} */
 
 sudoku-page .content{
   display: flex;

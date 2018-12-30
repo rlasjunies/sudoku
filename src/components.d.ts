@@ -41,9 +41,13 @@ export namespace Components {
   }
 
   interface KeyBoard3 {
+    'hideClearKey': boolean;
+    'hideUndoKey': boolean;
     'remainingNumbers': number[];
   }
   interface KeyBoard3Attributes extends StencilHTMLAttributes {
+    'hideClearKey'?: boolean;
+    'hideUndoKey'?: boolean;
     'onClearClicked'?: (event: CustomEvent) => void;
     'onDraftNumberClicked'?: (event: CustomEvent) => void;
     'onNumberClicked'?: (event: CustomEvent) => void;
@@ -65,6 +69,7 @@ export namespace Components {
     'boardSolved': boolean;
     'cellSelected': number;
     'incorrectCells': number[];
+    'lastCellOfTheGame': number;
     'solvedBlock': number;
     'solvedCol': number;
     'solvedRow': number;
@@ -74,6 +79,7 @@ export namespace Components {
     'boardSolved'?: boolean;
     'cellSelected'?: number;
     'incorrectCells'?: number[];
+    'lastCellOfTheGame'?: number;
     'onCellSelection'?: (event: CustomEvent) => void;
     'solvedBlock'?: number;
     'solvedCol'?: number;

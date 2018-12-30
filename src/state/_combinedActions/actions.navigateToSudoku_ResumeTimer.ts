@@ -1,7 +1,7 @@
 import { Action, registerMutator } from "services/store/store";
 import { AppState } from "state/app.state";
 import * as navigateToSudoku from "state/app-root/app-root.actions.navigateToSudokuPage";
-import * as timerResume from "state/sudoku/sudoku.actions.timerResume";
+import * as timerResume from "state/sudoku/sudoku.actions.timer.Resume";
 
 export function action(): Action {
   return {

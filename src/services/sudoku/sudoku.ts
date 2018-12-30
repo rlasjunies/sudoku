@@ -256,12 +256,16 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
     switch (level) {
         case "easy":
             numberOfComplexity = (81 - 62);
+            break;
         case "medium":
             numberOfComplexity = (81 - 53);
+            break;
         case "complex":
             numberOfComplexity = (81 - 44);
+            break;
         case "very complex":
             numberOfComplexity = (81 - 35);
+            break;
     }
 
     // creation of an array of number
