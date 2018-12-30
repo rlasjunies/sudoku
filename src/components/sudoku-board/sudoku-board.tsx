@@ -13,34 +13,40 @@ export class SudokuBoardComponent {
 
     @Prop() solvedRow: number;
     @Watch("solvedRow")
-    solvedRowWatcher(newValue: number) {
-        // console.log(`solvedRowWatcher:${newValue}, ${this.cellSelected}`);
-        if (newValue != 0
-            && newValue !== undefined
-            && !this.boardSolved 
-            && this.cellSelected !== -1) {
+    solvedRowWatcher(newValue: number, oldValue: number) {
+        console.log(`solvedRowWatcher:${newValue}, ${this.cellSelected}, ${rowOfCellNumber(this.cellSelected)} ${oldValue}`);
+        // if (newValue != 0
+        //     && newValue !== undefined
+        //     && (newValue !== oldValue)
+        //     && !this.boardSolved
+        //     && this.cellSelected !== -1) {
+        if (newValue === rowOfCellNumber(this.cellSelected)) {
             this.chenillardRow(this.cellSelected);
         }
     }
     @Prop() solvedCol: number;
     @Watch("solvedCol")
-    solvedColWatcher(newValue: number) {
-        // console.log(`solvedColWatcher:${newValue}, ${this.cellSelected}`);
-        if (newValue != 0
-            && newValue !== undefined
-            && !this.boardSolved
-            && this.cellSelected !== -1) {
+    solvedColWatcher(newValue: number, oldValue: number) {
+        console.log(`solvedColWatcher:${newValue}, ${this.cellSelected},${oldValue}`);
+        // if (newValue != 0
+        //     && newValue !== undefined
+        //     && (newValue !== oldValue)
+        //     && !this.boardSolved
+        //     && this.cellSelected !== -1) {
+        if (newValue === colOfCellNumber(this.cellSelected)) {
             this.chenillardCol(this.cellSelected);
         }
     }
     @Prop() solvedBlock: number;
     @Watch("solvedBlock")
-    solvedBlockWatcher(newValue: number) {
-        // console.log(`solvedRowWatcher:${newValue}, ${this.cellSelected}`);
-        if (newValue != 0
-            && newValue !== undefined
-            && !this.boardSolved
-            && this.cellSelected !== -1) {
+    solvedBlockWatcher(newValue: number, oldValue: number) {
+        console.log(`solvedBlockWatcher:${newValue}, ${this.cellSelected},${oldValue}`);
+        // if (newValue != 0
+        //     && (newValue !== undefined)
+        //     && (newValue !== oldValue)
+        //     && !this.boardSolved
+        //     && this.cellSelected !== -1) {
+        if (newValue === blockOfCellNumber(this.cellSelected)) {
             // this.chenillardRow(newValue, this.cellSelected);
             this.chenillardBlock(this.cellSelected);
         }

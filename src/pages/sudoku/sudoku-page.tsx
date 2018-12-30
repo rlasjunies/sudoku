@@ -57,9 +57,9 @@ export class SudokuPage {
     this.gameOnGoing = state.sudokuPage.gameOnGoing;
     this.timer = state.sudokuPage.timer;
     this.gameInPause = state.sudokuPage.gameInPause;
-    if (this.cellSelected !== -1) {
-      console.log(`is there a value in the cell${this.cellSelected} - this.board.cells[this.cellSelected].value=${this.board.cells[this.cellSelected].value}, compare with 0?:${this.board.cells[this.cellSelected].value !== 0}`)
-    }
+    // if (this.cellSelected !== -1) {
+    //   console.log(`is there a value in the cell${this.cellSelected} - this.board.cells[this.cellSelected].value=${this.board.cells[this.cellSelected].value}, compare with 0?:${this.board.cells[this.cellSelected].value !== 0}`)
+    // }
   }
 
   dispatchCellSelection({ detail: cell }) {
@@ -106,12 +106,12 @@ export class SudokuPage {
         <div class="header">
           <button class="btn btn-link"
             onClick={() => this.onBackClickHandler()}>
-            <clr-icon shape="angle caret left" size="40"></clr-icon>Back
+            <clr-icon shape="angle caret left" size="35"></clr-icon>Back
           </button>
 
-          <acc-timer class="title" time={this.timer}></acc-timer>
+          <acc-timer class="timer" time={this.timer}></acc-timer>
 
-          <button class={this.gameOnGoing ? "btn" : "btn hidden"}
+          <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
             onClick={() => this.onTimerSwitch()}>
             <clr-icon shape={!this.gameInPause ? "pause" : "play"}></clr-icon>{!this.gameInPause ? "Pause" : "Resume"}
           </button>
@@ -134,7 +134,7 @@ export class SudokuPage {
 
                 onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
               </sudoku-board-component>
-              <key-board3
+              <key-board3 class={!this.gameOnGoing ? "displayNone" : ""}
                 onClearClicked={_ => this.dispatchClearTyped()}
                 onUndoClicked={_ => this.dispatchUndoTyped()}
                 onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
@@ -147,10 +147,9 @@ export class SudokuPage {
                 hideUndoKey={!this.gameOnGoing}
               >
               </key-board3>
-              <div id="newGame" class={this.gameOnGoing ? "hidden" : ""}>
+              <div id="newGame" class={this.gameOnGoing ? "displayNone" : ""}>
                 <div id="newGameText">
-                  <p>Good game!</p>
-                  <p>Wanna play another game?</p>
+                  <p>Good game! Play again?</p>
                 </div>
                 <button class="btn"
                   onClick={this.onNewGameClicked}

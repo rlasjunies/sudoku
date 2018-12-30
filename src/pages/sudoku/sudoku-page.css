@@ -10,14 +10,15 @@ sudoku-page clr-icon {
 }
 
 sudoku-page .btn.btn-link {
-  font-size: x-large;
+  font-size: 3vh;
   height: unset; /* remove height for better alignment */
   /* background-color: yellow; */
   /* padding: 10px; */
 }
 
 sudoku-page .btn {
-  font-size: x-large;
+  font-size: 3vh;
+  padding-left: 0;
   height: unset; /* remove height for better alignment */
   /* background-color: yellow; */
   /* padding: 10px; */
@@ -65,13 +66,13 @@ sudoku-page #newGame > button {
   font-size:4vh;
 }
 
-sudoku-page acc-page .title {
+sudoku-page acc-page .timer {
   flex: 1;
   align-self: center;
   justify-content: center;
   align-content: center;
   text-align: center;
-  font-size: 3vh;
+  font-size: 4vh;
   color: black;
   padding: 0 12px;
 }

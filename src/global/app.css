@@ -26,6 +26,10 @@ sudoku-var {
   visibility: hidden;
 }
 
+.displayNone{
+  display: none;
+}
+
 /* material design Red 50 */
 red-50 {
   --red-50: #FFEBEE;

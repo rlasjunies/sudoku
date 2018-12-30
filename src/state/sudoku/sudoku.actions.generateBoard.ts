@@ -24,6 +24,7 @@ export function mutator(state: AppState, action: Action): AppState {
       boardLevel: level,
       cellSelected: -1,
       gameOnGoing: true,
+      gameInPause: false
     }
   }
 }

@@ -97,6 +97,9 @@ done:
 
 # FIXME: 
 
+✔ the board does not take the whole verticality @done (12/30/2018, 8:26:38 PM)
+✔ chenillard is triggered even when the col / row / block is not finished @done (12/30/2018, 8:26:40 PM)
+✔ backbutton font is too big @done (12/30/2018, 8:26:42 PM)
 ☐ pre-rendering is not working. When npm run build there are errors that seems to block the prerendering
 ✔ when in pause, if F5 we shows the board, we should shows the "resume" / back flipbox @done (12/27/2018, 7:26:12 PM)
 ✔ when new game, the backflipbox must be hidden @done (12/27/2018, 7:08:42 PM)
