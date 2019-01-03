@@ -5,7 +5,7 @@
   "description": "Sudoku trainer from accurentis",
   "scripts": {
     "start": "stencil build --dev --watch --serve",
-    "deploy":"firebase deploy",
+    "deploy": "firebase deploy",
     "build": "stencil build --prerender",
     "testx": "stencil test --spec",
     "test": "stencil test --spec --e2e",
@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "@clr/icons": "^1.0.2",
-    "@clr/ui": "^1.0.2"
+    "@clr/ui": "^1.0.2",
+    "rollup-plugin-alias": "^1.5.1"
   },
   "repository": {
     "type": "git",

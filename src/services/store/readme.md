@@ -3,7 +3,7 @@
 ## create the store
 
 
-## create as many actions / mutator as needed
+## create as many actions / reducer as needed
 
 > more granular are the actions better will be the solution
 

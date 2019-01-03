@@ -1,16 +1,15 @@
 import { Component, State, Element } from '@stencil/core';
-import { store } from 'state/appStore';
-import { AppState } from 'state/app.state';
-import * as sudokuValueTyped from "state/sudoku/sudoku.actions.typeNumber";
-import * as sudokuDraftTyped from "state/sudoku/sudoku.actions.typeDraftNumber";
-import * as sudokuClearTyped from "state/sudoku/sudoku.actions.clearCellValue";
+import { AppState, store } from 'store/index';
+import * as sudokuValueTyped from "store/sudoku/sudoku.actions.typeNumber";
+import * as sudokuDraftTyped from "store/sudoku/sudoku.actions.typeDraftNumber";
+import * as sudokuClearTyped from "store/sudoku/sudoku.actions.clearCellValue";
 import { SudokuBoard, initializeSudokuBoard } from 'services/sudoku/sudoku';
-import * as sudokuUndo from 'state/sudoku/sudoku.actions.undoLastMove';
-import * as sudokuCellSelected from "state/sudoku/sudoku.actions.selectCell";
-import * as pauseGame_PauseTimer from "state/_combinedActions/actions.pauseGame_PauseTimer";
-import * as resumeGame_ResumeTimer from "state/_combinedActions/actions.resumeGame_ResumeTimer";
-import * as navigateToSplashScreen_PauseTimer from "state/_combinedActions/actions.navigateToSplashScreen_StopTimer";
-import * as navigateToNewGame from "state/app-root/app-root.actions.navigateToCreateNewBoard";
+import * as sudokuUndo from 'store/sudoku/sudoku.actions.undoLastMove';
+import * as sudokuCellSelected from "store/sudoku/sudoku.actions.selectCell";
+import * as pauseGame_PauseTimer from "store/_combinedActions/actions.pauseGame_PauseTimer";
+import * as resumeGame_ResumeTimer from "store/_combinedActions/actions.resumeGame_ResumeTimer";
+import * as navigateToSplashScreen_PauseTimer from "store/_combinedActions/actions.navigateToSplashScreen_StopTimer";
+import * as navigateToNewGame from "store/app-root/app-root.actions.navigateToCreateNewBoard";
 @Component({
   tag: 'sudoku-page',
   styleUrl: 'sudoku-page.css'

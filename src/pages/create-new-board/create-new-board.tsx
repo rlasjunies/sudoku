@@ -1,9 +1,9 @@
 import { Component } from '@stencil/core';
 import { SudokuLevelType } from 'services/sudoku/sudoku';
-import { store } from 'state/appStore';
+import { store } from 'store/index';
 
-import * as navigateToSplashScreen from "state/app-root/app-root.actions.navigateToSplashScreen";
-import * as generateBoardAndNavigateToSudokuPage from "state/_combinedActions/actions.generateBoard_NavigateToSudokuPage_StartTimer";
+import * as navigateToSplashScreen from "store/app-root/app-root.actions.navigateToSplashScreen";
+import * as generateBoardAndNavigateToSudokuPage from "store/_combinedActions/actions.generateBoard_NavigateToSudokuPage_StartTimer";
 @Component({
   tag: 'create-new-board',
   styleUrl: 'create-new-board.css'

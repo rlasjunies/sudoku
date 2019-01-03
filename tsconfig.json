@@ -17,7 +17,7 @@
     "jsxFactory": "h",
     "baseUrl": ".",
     "paths": {
-      "state/*":["src/state/*"],
+      "store/*":["src/store/*"],
       "services/*":["src/services/*"],
       // "*":["./src/*"],
     }

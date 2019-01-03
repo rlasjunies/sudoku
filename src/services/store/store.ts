@@ -1,17 +1,23 @@
+
 interface ObjectCollection<T> {
     [key: string]: T;
 }
-export type ActionType = string;
+
+export type actionName = string;
 
 export interface Action {
-    name: ActionType;
+    name: actionName;
     payload?: any;
 }
 
-export interface Mutator {
-    actionType: ActionType;
-    mutator: (state: ObjectCollection<any>, action: Action) => ObjectCollection<any>;
+export interface reducer {
+    actionName: actionName;
+    reducer: (state: ObjectCollection<any>, action: Action) => ObjectCollection<any>;
 }
+// export interface SideEffect {
+//     name: string;
+//     effect: (previousState: ObjectCollection<any>, tempState: ObjectCollection<any>, action: Action) => ObjectCollection<any>;
+// }
 
 export interface Reaction {
     function: Function;
@@ -19,57 +25,81 @@ export interface Reaction {
 }
 export class Store {
     private _state: ObjectCollection<any>;
-    private mutators: Mutator[] = [];
+    private reducers: reducer[] = [];
+    // private sideEffects: SideEffect[] = [];
     private reactions: Reaction[] = [];
     private name: string;
 
     constructor(initialState = {}, name: string) {
         this.name = name;
-        this.mutators = mutators;
-        this.reactions = [];
 
         // retrieve from local storage the previous state persisted
         const retrievePreviousState = retrieveInLocalStorage(this.name);
         this._state = (retrievePreviousState !== null) ? retrievePreviousState : initialState;
-
-        console.log("STORE CONSTRUCTED!", this._state);
-
-        // add a generic reaction, log every action / mutation
-        this.reactions.push({
-            function: (state: any, _) => console.log("STORE HISTORY:", state.actionType, state),
-            context: null
-        });
+        this._state.actionName = "STORE_INIT"
+        // console.log("STORE CONSTRUCTED!", this._state);
     }
 
     get state() {
         return this._state;
     }
 
-    // registerMutator(actionType: string, mutator: (state: ObjectCollection<any>, action: Action) => ObjectCollection<any>) {
-    //     this.mutators.push({
-    //         actionType: actionType,
-    //         mutator: mutator
+    registerReducer(actionName: string, reducer: (state: ObjectCollection<any>, action: Action) => ObjectCollection<any>) {
+        this.reducers.push({
+            actionName: actionName,
+            reducer: reducer
+        });
+        return this;
+    }
+    private reduce(state: ObjectCollection<any>, action: Action) {
+
+        const reducer = this.reducers.filter(reducer => {
+            // console.log("reducer",reducer.actionName,action.name)
+            if (reducer.actionName === action.name) return reducer;
+        });
+
+        console.log("reduer found",reducer[0]);
+
+        // console.log("reducer:", reducer, "state:", state);
+        if (reducer.length > 0) return reducer[0].reducer(state, action);
+        console.log("NO REDUCER FOUND", action);
+        return state;
+    }
+
+    // registerSideEffect( name: string,
+    //                     effect: (previousState: ObjectCollection<any>, tempState: ObjectCollection<any>, action: Action) => ObjectCollection<any>) {
+    //     this.sideEffects.push({
+    //         name: name,
+    //         effect: effect
     //     });
     //     return this;
     // }
 
+    // private sideEffectMutation(previousState: ObjectCollection<any>, tempState: ObjectCollection<any>, action: Action) {
+    //     let tmpState: ObjectCollection<any> = tempState;
+
+    //     for (let index = 0; index < this.sideEffects.length; index++) {
+    //         const sideEffect = this.sideEffects[index];
+    //         tmpState = sideEffect.effect(previousState, tempState, action);
+    //     }
+    //     return tmpState;
+    // }
+
     dispatch(action: Action) {
-        this._state = this.mutate(this._state, action);
-        this._state.actionType = action.name;
+        // mutate the state
+        // const tempState = this.reduce(this._state, action);
+        // tempState.actionName = action.name;
+
+        // apply side effects
+        // this._state = this.sideEffectMutation(this._state, tempState, action);
+
+        this._state = this.reduce(this._state, action);
+        this._state.actionName = action.name;
+
         persist(this._state, this.name);
         this.reactions.forEach(reaction => reaction.function.call(reaction.context, this._state));
     }
 
-    private mutate(state: ObjectCollection<any>, action: Action) {
-
-        const mutator = this.mutators.filter(m => {
-            if (m.actionType === action.name) return m;
-        });
-
-        // console.log("mutator:", mutator, "state:", state);
-        if (mutator.length > 0) return mutator[0].mutator(state, action);
-        return state;
-    }
     subscribeReaction(reactionFunction: Function, reactionThis: any) {
         this.reactions = [...this.reactions, { function: reactionFunction, context: reactionThis }];
         reactionFunction.call(reactionThis, this._state, reactionThis);
@@ -95,13 +125,4 @@ function retrieveInLocalStorage(key: string): any {
     } else {
         console.log("no localstorage");
     }
-}
-
-let mutators: Mutator[] = [];
-export function registerMutator(actionType: string, mutator: (state: ObjectCollection<any>, action: Action) => ObjectCollection<any>) {
-    mutators.push({
-        actionType: actionType,
-        mutator: mutator
-    });
-    return this;
 }

@@ -1,17 +1,19 @@
 features:
+
+  ☐ more contrast for the drafted values
   ☐ Think about 2 modes of game
   - electronic sudoku ... with not help only replacing the paper ... no error raised when typing
   the system can check on demand or at the end
   - on typing the system check if the values entered are good, raised error if not, manage kind of number of error max
 
-
-  ☐ hide clear key when the number cannot be cleared (seed, empty cell)
+  ☐ localiser l'interface graphique
 
   ☐ write the move number at the bottom for history purpose
   ☐ generator evaluate the complexicity of the resolution based on rules
   ☐ when udoing, select the current cell at the time of the move
 
-  Style / UI:
+  ☐ icones for the splashscreen and the main page
+Style / UI:
   ☐ user can visualize the cell selected even if the cell is in error
   ☐ user should visualize when he click in the keyboard keys (click effect missing)
   may be propose 2 type of classes. JS determine if the layout is portrait or paysage, then classes are adapted as consequence
@@ -34,6 +36,10 @@ coach features:
   ☐ revenus are made from the application
   ☐ player are "pushed" to come back in the app (daily challenge)
   
+technical:
+  ☐ store manage, action internal events
+  ☐ store supports events (async call after state changes)
+  ☐ create a react like ui framework (radi)  
   ☐ create a concept de page. Classe de base avec méthodes; show, hide, open, close, navigateTo, history, back
   ☐ no dependency ui:
   https://github.com/michaelauderer/simple-buttons
@@ -43,6 +49,7 @@ coach features:
   ☐ remove the stenciljs and rely in the statemgt framework?
 
 done:
+  ✔ hide clear key when the number cannot be cleared (seed, empty cell) @done (1/1/2019, 7:02:37 PM)
   ✔ celebrate the end of the game @done (12/30/2018, 6:15:04 PM)
    ✔ unselect cell, to show the whole board @done (12/30/2018, 6:15:10 PM)
    ✔ when the game is finished, hide the "clear button" @done (12/30/2018, 6:15:11 PM)

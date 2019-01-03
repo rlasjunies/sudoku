@@ -13,8 +13,8 @@ export class SudokuBoardComponent {
 
     @Prop() solvedRow: number;
     @Watch("solvedRow")
-    solvedRowWatcher(newValue: number, oldValue: number) {
-        console.log(`solvedRowWatcher:${newValue}, ${this.cellSelected}, ${rowOfCellNumber(this.cellSelected)} ${oldValue}`);
+    solvedRowWatcher(newValue: number, _oldValue: number) {
+        // console.log(`solvedRowWatcher:${newValue}, ${this.cellSelected}, ${rowOfCellNumber(this.cellSelected)} ${oldValue}`);
         // if (newValue != 0
         //     && newValue !== undefined
         //     && (newValue !== oldValue)
@@ -26,8 +26,8 @@ export class SudokuBoardComponent {
     }
     @Prop() solvedCol: number;
     @Watch("solvedCol")
-    solvedColWatcher(newValue: number, oldValue: number) {
-        console.log(`solvedColWatcher:${newValue}, ${this.cellSelected},${oldValue}`);
+    solvedColWatcher(newValue: number, _oldValue: number) {
+        // console.log(`solvedColWatcher:${newValue}, ${this.cellSelected},${oldValue}`);
         // if (newValue != 0
         //     && newValue !== undefined
         //     && (newValue !== oldValue)
@@ -39,8 +39,8 @@ export class SudokuBoardComponent {
     }
     @Prop() solvedBlock: number;
     @Watch("solvedBlock")
-    solvedBlockWatcher(newValue: number, oldValue: number) {
-        console.log(`solvedBlockWatcher:${newValue}, ${this.cellSelected},${oldValue}`);
+    solvedBlockWatcher(newValue: number, _oldValue: number) {
+        // console.log(`solvedBlockWatcher:${newValue}, ${this.cellSelected},${oldValue}`);
         // if (newValue != 0
         //     && (newValue !== undefined)
         //     && (newValue !== oldValue)
