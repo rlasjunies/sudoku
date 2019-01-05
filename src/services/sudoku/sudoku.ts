@@ -42,7 +42,7 @@ export function blockOfCellNumber(cellNumber: number) {
     return Math.floor(rowOfCellNumber(cellNumber) / 3) * 3 + Math.floor(colOfCellNumber(cellNumber) / 3);
 }
 
-export function blockOfColRow(col:number, row: number) {
+export function blockOfColRow(col: number, row: number) {
     return Math.floor(row / 3) * 3 + Math.floor(col / 3);
 }
 
@@ -151,7 +151,6 @@ export function isBoardSolvedx(board: SudokuBoard) {
     return true;
 }
 
-
 export function determinePossibleValuesx(cellNumber: number, board: SudokuBoard): number[] {
     var possible = new Array();
     for (var i = 1; i <= 9; i++) {
@@ -170,8 +169,8 @@ export function removeCandidateBoard(board: SudokuBoard, value: number, cellNumb
     var block = blockOfCellNumber(cellNumber);
 
     removeCandidateRow(value, row, newBoard);
-    removeCandidateCol(value,col,newBoard);
-    removeCandidateBlock(value,block,newBoard);
+    removeCandidateCol(value, col, newBoard);
+    removeCandidateBlock(value, block, newBoard);
 
     return newBoard;
 
@@ -186,10 +185,10 @@ export function removeCandidateBoard(board: SudokuBoard, value: number, cellNumb
             board.cells[col + 9 * i].candidates = removeCandidate(value, board.cells[col + 9 * i].candidates);
         }
     }
-    
+
     function removeCandidateBlock(value: number, block: number, board: SudokuBoard) {
         for (var i = 0; i <= 8; i++) {
-            board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].candidates = removeCandidate(value,board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].candidates);
+            board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].candidates = removeCandidate(value, board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].candidates);
         }
     }
     function removeCandidate(value: number, candidates: boolean[]): boolean[] {
@@ -208,8 +207,6 @@ export function generateBoard(): SudokuBoard {
 
     return board;
 }
-
-
 
 export function sudokuBoardClone(src: SudokuBoard): SudokuBoard {
     return JSON.parse(JSON.stringify(src));
@@ -230,14 +227,52 @@ function generateBoardFromCell(cellNumber: number, board: SudokuBoard) {
             return { board: nextBoard, finish: true, deadEnd: false };
         }
 
-        const { board: finishedBoard, finish } = generateBoardFromCell(nextCellNumber, nextBoard);
+        const { board: finishedBoard, finish, deadEnd } = generateBoardFromCell(nextCellNumber, nextBoard);
         if (finish) {
-            return { board: finishedBoard, finish: true, deadEnd: false };
+            return { board: finishedBoard, finish: true, deadEnd: deadEnd };
         }
     }
 
     // all cell values are wrong
     return { board: null, finish: false, deadEnd: true };
+}
+
+export function resolverWorkForce(cellNumber: number, board: SudokuBoard) {
+
+    // console.log(`resolverWorkForce: cell:${cellNumber}`);
+    // sortir de la recurrence
+    if (cellNumber >= board.cells.length) {
+        return { board: board, finish: true, resolved: true };
+    }
+
+    if (board.cells[cellNumber].value !== null) {
+        // the cell is already filled we continue recurrence
+        // console.log(`resolverWorkForce: ALREADY FILLED - cell:${cellNumber} - value:${board.cells[cellNumber].value}`);
+        return resolverWorkForce(cellNumber + 1, board);
+    } else {
+        // console.log(`resolverWorkForce: NO VALUE DEFINED cell:${cellNumber} - value:${board.cells[cellNumber].value}`);
+
+        // liste of potential values for the cell
+        const possibleValuesShuffled = arrayShuffle.knuthfisheryates2<number>(determinePossibleValuesx(cellNumber, board));
+
+        // parse all the potential values
+        for (let index = 0; index < possibleValuesShuffled.length; index++) {
+            let nextBoard = sudokuBoardClone(board);
+
+            nextBoard.cells[cellNumber].value = possibleValuesShuffled[index];
+
+            // console.log(`resolverWorkForce: PROPOSE VALUE cell:${cellNumber} - value:${nextBoard.cells[cellNumber].value}`);
+
+            const { board: finishedBoard, finish, resolved } = resolverWorkForce(cellNumber + 1, nextBoard);
+            if (finish) {
+                return { board: finishedBoard, finish: finish, resolved: resolved };
+            }
+        }
+
+        console.log(`resolverWorkForce: xxxxxxxxxxxxxxxxxxxxxxxxx !!! no possible value dead end: cell:${cellNumber}`, board)
+        // all cell values are wrong
+        return { board: null, finish: false, resolved: false };
+    }
 }
 
 export type SudokuLevelType = "easy" | "medium" | "complex" | "very complex";

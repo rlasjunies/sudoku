@@ -1,4 +1,4 @@
-import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard } from "../../services/sudoku/sudoku";
+import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard, resolverWorkForce, isPossibleNumberx } from "../../services/sudoku/sudoku";
 import { Action } from "services/store/store";
 import { AppState, store } from "store/index";
 
@@ -17,7 +17,7 @@ export function reducer(state: AppState, action: Action): AppState {
   const row = rowOfCellNumber(currentCell);
   const col = colOfCellNumber(currentCell);
   const block = blockOfCellNumber(currentCell);
-  
+
   let rowSolved: number | null = null;
   let colSolved: number | null = null;
   let blockSolved: number | null = null;
@@ -28,7 +28,7 @@ export function reducer(state: AppState, action: Action): AppState {
   // TODO: algo a revoir quand fonctionnel avancé, il faut mettre dans des sous fonctions l'ensemeble des cas
 
   if (currentCell === null) {
-    // noting done
+    // nothing done
   } else if (newBoard.cells[currentCell].seed) {
     // no modification allowed
   } else {
@@ -41,7 +41,13 @@ export function reducer(state: AppState, action: Action): AppState {
     // const isValueCorrect = isPossibleNumberx(currentCell, value, oldBoard);
     // the value is not correct when the value is not the same as the expected One
     // console.log("check is value is correct", value, newBoard.cells[currentCell].expectedValue, (value == newBoard.cells[currentCell].expectedValue))
-    const isValueCorrect = (value == newBoard.cells[currentCell].expectedValue) ? true : false;
+    // const isValueCorrect = (value == newBoard.cells[currentCell].expectedValue) ? true : false;
+
+    const isValuePossible = isPossibleNumberx(currentCell, value, oldBoard);
+    let isValueCorrect = false;
+    if( isValuePossible ) {
+      ({ resolved: isValueCorrect } = resolverWorkForce(0, newBoard));
+    }
 
     // remove the value from the list if already exists
     // TODO: create an array library - retrieve the one from uacommander

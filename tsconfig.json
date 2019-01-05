@@ -4,6 +4,7 @@
     "allowUnreachableCode": false,
     "declaration": false,
     "experimentalDecorators": true,
+    "sourceMap": true,
     "lib": [
       "dom",
       "es2015"
@@ -17,9 +18,8 @@
     "jsxFactory": "h",
     "baseUrl": ".",
     "paths": {
-      "store/*":["src/store/*"],
-      "services/*":["src/services/*"],
-      // "*":["./src/*"],
+      "store/*": ["src/store/*"],
+      "services/*": ["src/services/*"]
     }
   },
   "include": [
@@ -27,5 +27,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
+  ]
 }

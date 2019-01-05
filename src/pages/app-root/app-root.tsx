@@ -11,7 +11,6 @@ import * as endGameStopTimer from "store/_combinedActions/actions.endGame_StopTi
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
-  // shadow: true
 })
 export class AppRoot {
   @Element() element: HTMLAppRootElement;

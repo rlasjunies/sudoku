@@ -54,13 +54,9 @@ export class Store {
     private reduce(state: ObjectCollection<any>, action: Action) {
 
         const reducer = this.reducers.filter(reducer => {
-            // console.log("reducer",reducer.actionName,action.name)
             if (reducer.actionName === action.name) return reducer;
         });
 
-        console.log("reduer found",reducer[0]);
-
-        // console.log("reducer:", reducer, "state:", state);
         if (reducer.length > 0) return reducer[0].reducer(state, action);
         console.log("NO REDUCER FOUND", action);
         return state;

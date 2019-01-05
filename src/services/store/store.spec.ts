@@ -1,3 +1,9 @@
+describe('empty suite', () => {
+  it('fake test', () => {
+    expect(true).toBeTruthy();
+  });
+});
+
 // import { Store, Action } from "./store";
 // import 'jest-localstorage-mock';
 

@@ -49,6 +49,7 @@ technical:
   ☐ remove the stenciljs and rely in the statemgt framework?
 
 done:
+  ✔ check if the board is solvable after each input, not raise error just because is not the expected one @done (1/5/2019, 7:48:12 AM)
   ✔ hide clear key when the number cannot be cleared (seed, empty cell) @done (1/1/2019, 7:02:37 PM)
   ✔ celebrate the end of the game @done (12/30/2018, 6:15:04 PM)
    ✔ unselect cell, to show the whole board @done (12/30/2018, 6:15:10 PM)

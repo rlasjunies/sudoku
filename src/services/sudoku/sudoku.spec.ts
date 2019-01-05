@@ -1,4 +1,7 @@
 import * as h from './sudoku';
+import * as data from "./spec.data"; 
+
+// console.log("json loaded",data.board1);
 
 it('should return the row of a cell number', () => {
   expect(h.rowOfCellNumber(1)).toBe(0);
@@ -33,16 +36,6 @@ it('should return the block of a cell number', () => {
   expect(h.blockOfCellNumber(18)).toBe(0);
 });
 
-it('should return the block of a cell number', () => {
-  expect(h.blockOfCellNumber(0)).toBe(0);
-  expect(h.blockOfCellNumber(1)).toBe(0);
-  expect(h.blockOfCellNumber(5)).toBe(1);
-  expect(h.blockOfCellNumber(8)).toBe(2);
-  expect(h.blockOfCellNumber(9)).toBe(0);
-  expect(h.blockOfCellNumber(10)).toBe(0);
-  expect(h.blockOfCellNumber(15)).toBe(2);
-  expect(h.blockOfCellNumber(18)).toBe(0);
-});
 
 // it('should add value in the baord', () => {
 
@@ -166,7 +159,6 @@ it('should list all possible value', () => {
   expect(possibleValues1).toEqual([2,3,4,5,6,7,8,9]);
 });
 
-
 it('should generate a board',()=>{
   console.time("generate newboard");
   h.generateBoard();
@@ -180,11 +172,12 @@ it('should generate an initial sudoku board',()=>{
   expect(true).toBeTruthy();
 })
 
-// it('should determine possible values of the board',()=>{
-//   const sudokuBoard = h.generateSudokuBoard("easy");
-//   h.visualize(sudokuBoard);
-//   const sudokuBoardWithPossibleValues = h.candidatesForEmptyCells(sudokuBoard);
-//   h.visualize(sudokuBoardWithPossibleValues);
-//   expect(true).toBeTruthy();
+it('should resolve a board',()=>{ 
+  const initialBoard = data.board1;
+  h.visualize(initialBoard);
+  
+  const resolveResult = h.resolverWorkForce(0,initialBoard);
+  h.visualize(resolveResult.board);
 
-// })
+  expect(resolveResult.resolved).toBeTruthy();
+})

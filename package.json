@@ -7,9 +7,9 @@
     "start": "stencil build --dev --watch --serve",
     "deploy": "firebase deploy",
     "build": "stencil build --prerender",
-    "testx": "stencil test --spec",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll"
+    "test": "stencil test --spec",
+    "test.watch": "stencil test --spec --watch",
+    "test.e2e": "stencil test --e2e"
   },
   "dependencies": {
     "@clr/icons": "^1.0.2",
@@ -38,5 +38,23 @@
     "puppeteer": "1.7.0",
     "ts-jest": "23.10.5",
     "workbox-build": "3.4.1"
+  },
+  "jest": {
+    "verbose": true,
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleNameMapper": {
+      "@stencil/core/mock-doc": "<rootDir>/mock-doc/",
+      "store/index":"<rootDir>/src/store/index"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
   }
 }
