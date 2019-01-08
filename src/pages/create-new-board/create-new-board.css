@@ -1,4 +1,9 @@
 
+create-new-board .btn {
+    margin-right: 0;
+    /* suppression de la marge ajoutée par btn */
+}
+
 create-new-board .header{
   display: flex;
   flex-direction: column;

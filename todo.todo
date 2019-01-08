@@ -1,5 +1,6 @@
 features:
 
+  ☐ fix: npm run build
   ☐ more contrast for the drafted values
   ☐ Think about 2 modes of game
   - electronic sudoku ... with not help only replacing the paper ... no error raised when typing
@@ -31,7 +32,8 @@ coach features:
 
   ☐ player can continue playing easily after ending a game
 
-  ☐ add severals icons for the PWA
+
+  ☐ create a about form and include ico disclaimer as written in the asset/readme
   ☐ manage themes for the app
   ☐ revenus are made from the application
   ☐ player are "pushed" to come back in the app (daily challenge)
@@ -49,6 +51,7 @@ technical:
   ☐ remove the stenciljs and rely in the statemgt framework?
 
 done:
+  ✔ add severals icons for the PWA @done (1/6/2019, 7:35:17 PM)
   ✔ check if the board is solvable after each input, not raise error just because is not the expected one @done (1/5/2019, 7:48:12 AM)
   ✔ hide clear key when the number cannot be cleared (seed, empty cell) @done (1/1/2019, 7:02:37 PM)
   ✔ celebrate the end of the game @done (12/30/2018, 6:15:04 PM)
