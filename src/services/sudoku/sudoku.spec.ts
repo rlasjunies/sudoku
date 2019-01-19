@@ -1,5 +1,5 @@
 import * as h from './sudoku';
-import * as data from "./spec.data"; 
+import * as data from "./spec.data";
 
 // console.log("json loaded",data.board1);
 
@@ -155,29 +155,98 @@ it('should list all possible value', () => {
 
   const boardWith1 = h.initializeSudokuBoard();
   boardWith1.cells[0].value = 1;
-  const possibleValues1 = h.determinePossibleValuesx(1,boardWith1);
-  expect(possibleValues1).toEqual([2,3,4,5,6,7,8,9]);
+  const possibleValues1 = h.determinePossibleValuesx(1, boardWith1);
+  expect(possibleValues1).toEqual([2, 3, 4, 5, 6, 7, 8, 9]);
 });
 
-it('should generate a board',()=>{
+it('should generate a board', () => {
   console.time("generate newboard");
   h.generateBoard();
   console.timeEnd("generate newboard");
   expect(true).toBeTruthy();
 });
 
-it('should generate an initial sudoku board',()=>{
+it('should generate an initial sudoku board', () => {
   const sudokuBoard = h.generateSudokuBoard("easy");
   h.visualize(sudokuBoard);
   expect(true).toBeTruthy();
 })
 
-it('should resolve a board',()=>{ 
+it('should resolve a board', () => {
   const initialBoard = data.board1;
-  h.visualize(initialBoard);
-  
-  const resolveResult = h.resolverWorkForce(0,initialBoard);
+  h.visualize(initialBoard, "board1");
+
+  const resolveResult = h.resolverWorkForce(0, initialBoard);
   h.visualize(resolveResult.board);
 
   expect(resolveResult.resolved).toBeTruthy();
+})
+
+it('should return the cell number of a block', () => {
+
+  // block #1
+  expect(h.cellNumberOfColRowOfBlock(0, 0, 0)).toBe(0);
+  expect(h.cellNumberOfColRowOfBlock(1, 0, 0)).toBe(1);
+  expect(h.cellNumberOfColRowOfBlock(2, 0, 0)).toBe(2);
+  expect(h.cellNumberOfColRowOfBlock(0, 1, 0)).toBe(9);
+  expect(h.cellNumberOfColRowOfBlock(1, 1, 0)).toBe(10);
+  expect(h.cellNumberOfColRowOfBlock(2, 1, 0)).toBe(11);
+  expect(h.cellNumberOfColRowOfBlock(0, 2, 0)).toBe(18);
+  expect(h.cellNumberOfColRowOfBlock(1, 2, 0)).toBe(19);
+  expect(h.cellNumberOfColRowOfBlock(2, 2, 0)).toBe(20);
+
+  // block #2
+  expect(h.cellNumberOfColRowOfBlock(0, 0, 1)).toBe(3);
+  expect(h.cellNumberOfColRowOfBlock(1, 0, 1)).toBe(4);
+  expect(h.cellNumberOfColRowOfBlock(2, 0, 1)).toBe(5);
+  expect(h.cellNumberOfColRowOfBlock(0, 1, 1)).toBe(12);
+  expect(h.cellNumberOfColRowOfBlock(1, 1, 1)).toBe(13);
+  expect(h.cellNumberOfColRowOfBlock(2, 1, 1)).toBe(14);
+  expect(h.cellNumberOfColRowOfBlock(0, 2, 1)).toBe(21);
+  expect(h.cellNumberOfColRowOfBlock(1, 2, 1)).toBe(22);
+  expect(h.cellNumberOfColRowOfBlock(2, 2, 1)).toBe(23);
+
+  // block #3
+  expect(h.cellNumberOfColRowOfBlock(0, 0, 2)).toBe(6);
+  expect(h.cellNumberOfColRowOfBlock(1, 0, 2)).toBe(7);
+  expect(h.cellNumberOfColRowOfBlock(2, 0, 2)).toBe(8);
+  expect(h.cellNumberOfColRowOfBlock(0, 1, 2)).toBe(15);
+  expect(h.cellNumberOfColRowOfBlock(1, 1, 2)).toBe(16);
+  expect(h.cellNumberOfColRowOfBlock(2, 1, 2)).toBe(17);
+  expect(h.cellNumberOfColRowOfBlock(0, 2, 2)).toBe(24);
+  expect(h.cellNumberOfColRowOfBlock(1, 2, 2)).toBe(25);
+  expect(h.cellNumberOfColRowOfBlock(2, 2, 2)).toBe(26);
+
+  // block #4
+  expect(h.cellNumberOfColRowOfBlock(0, 0, 3)).toBe(27);
+  expect(h.cellNumberOfColRowOfBlock(1, 0, 3)).toBe(28);
+  expect(h.cellNumberOfColRowOfBlock(2, 0, 3)).toBe(29);
+  expect(h.cellNumberOfColRowOfBlock(0, 1, 3)).toBe(36);
+  expect(h.cellNumberOfColRowOfBlock(1, 1, 3)).toBe(37);
+  expect(h.cellNumberOfColRowOfBlock(2, 1, 3)).toBe(38);
+  expect(h.cellNumberOfColRowOfBlock(0, 2, 3)).toBe(45);
+  expect(h.cellNumberOfColRowOfBlock(1, 2, 3)).toBe(46);
+  expect(h.cellNumberOfColRowOfBlock(2, 2, 3)).toBe(47);
+
+  // block #5
+  expect(h.cellNumberOfColRowOfBlock(0, 0, 4)).toBe(30);
+  expect(h.cellNumberOfColRowOfBlock(1, 0, 4)).toBe(31);
+  expect(h.cellNumberOfColRowOfBlock(2, 0, 4)).toBe(32);
+  expect(h.cellNumberOfColRowOfBlock(0, 1, 4)).toBe(39);
+  expect(h.cellNumberOfColRowOfBlock(1, 1, 4)).toBe(40);
+  expect(h.cellNumberOfColRowOfBlock(2, 1, 4)).toBe(41);
+  expect(h.cellNumberOfColRowOfBlock(0, 2, 4)).toBe(48);
+  expect(h.cellNumberOfColRowOfBlock(1, 2, 4)).toBe(49);
+  expect(h.cellNumberOfColRowOfBlock(2, 2, 4)).toBe(50);
+
+  // block #7
+  expect(h.cellNumberOfColRowOfBlock(0, 0, 6)).toBe(54);
+  expect(h.cellNumberOfColRowOfBlock(1, 0, 6)).toBe(55);
+  expect(h.cellNumberOfColRowOfBlock(2, 0, 6)).toBe(56);
+  expect(h.cellNumberOfColRowOfBlock(0, 1, 6)).toBe(63);
+  expect(h.cellNumberOfColRowOfBlock(1, 1, 6)).toBe(64);
+  expect(h.cellNumberOfColRowOfBlock(2, 1, 6)).toBe(65);
+  expect(h.cellNumberOfColRowOfBlock(0, 2, 6)).toBe(72);
+  expect(h.cellNumberOfColRowOfBlock(1, 2, 6)).toBe(73);
+  expect(h.cellNumberOfColRowOfBlock(2, 2, 6)).toBe(74);
 })

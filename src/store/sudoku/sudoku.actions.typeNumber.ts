@@ -1,4 +1,4 @@
-import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard, resolverWorkForce, isPossibleNumberx } from "../../services/sudoku/sudoku";
+import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard, resolverWorkForce, isPossibleNumberx, resolveByRules, possibleValues } from "../../services/sudoku/sudoku";
 import { Action } from "services/store/store";
 import { AppState, store } from "store/index";
 
@@ -22,6 +22,7 @@ export function reducer(state: AppState, action: Action): AppState {
   let colSolved: number | null = null;
   let blockSolved: number | null = null;
   let boardSolved: boolean = false;
+  let solutionsByRules = null;
 
   let newBoard = sudokuBoardClone(state.sudokuPage.board);
 
@@ -45,7 +46,7 @@ export function reducer(state: AppState, action: Action): AppState {
 
     const isValuePossible = isPossibleNumberx(currentCell, value, oldBoard);
     let isValueCorrect = false;
-    if( isValuePossible ) {
+    if (isValuePossible) {
       ({ resolved: isValueCorrect } = resolverWorkForce(0, newBoard));
     }
 
@@ -72,6 +73,10 @@ export function reducer(state: AppState, action: Action): AppState {
       newBoard = removeCandidateBoard(newBoard, value, currentCell);
     }
 
+    newBoard = possibleValues(newBoard);
+
+    solutionsByRules = resolveByRules(newBoard);
+
     // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
   }
   newBoard.remainingNumbers = remainingNumbers(newBoard.cells);
@@ -86,6 +91,7 @@ export function reducer(state: AppState, action: Action): AppState {
       colSolved: colSolved,
       blockSolved: blockSolved,
       boardSolved: boardSolved,
+      solutionsByRules: solutionsByRules
     }
   }
 }

@@ -1,5 +1,14 @@
 import * as arrayShuffle from "../arrayShuffle";
 
+
+export interface Solution {
+    cell: number;
+    value: number
+}
+export interface SolutionsByRules {
+    uniquePossibleValue: Solution[];
+    uniqueOccurenceInZones: Solution[];
+}
 export interface SudokuBoard {
     cells: SudokuBoardCell[];
     incorrectCells: number[];
@@ -8,12 +17,14 @@ export interface SudokuBoard {
 export interface SudokuBoardCell {
     value: number | null;
     candidates: boolean[];
+    possibleValues: number[];
     seed: boolean;
     expectedValue: number;
 }
 const EMPTYCELL: SudokuBoardCell = {
     value: null,
     candidates: [, , , , , , , ,],
+    possibleValues: [],
     seed: false,
     expectedValue: null
 }
@@ -42,15 +53,37 @@ export function blockOfCellNumber(cellNumber: number) {
     return Math.floor(rowOfCellNumber(cellNumber) / 3) * 3 + Math.floor(colOfCellNumber(cellNumber) / 3);
 }
 
+export function cellNumberOfColRowOfBlock(col: number, row: number, block: number){
+    return (col + (block % 3) * 3) + ((row * 9) + (27 * Math.floor(block / 3)));
+}
+export function cellsNumberOfTheBlock(block: number): number[] {
+    
+    return [
+        cellNumberOfColRowOfBlock(0, 0, block),
+        cellNumberOfColRowOfBlock(1, 0, block),
+        cellNumberOfColRowOfBlock(2, 0, block),
+        cellNumberOfColRowOfBlock(0, 1, block),
+        cellNumberOfColRowOfBlock(1, 1, block),
+        cellNumberOfColRowOfBlock(2, 1, block),
+        cellNumberOfColRowOfBlock(0, 2, block),
+        cellNumberOfColRowOfBlock(1, 2, block),
+        cellNumberOfColRowOfBlock(2, 2, block)
+    ];
+
+
+}
+
 export function blockOfColRow(col: number, row: number) {
     return Math.floor(row / 3) * 3 + Math.floor(col / 3);
 }
 
-export function visualize(board: SudokuBoard) {
+export function visualize(board: SudokuBoard, name?: string) {
     let clone = { ...board };
     let boardToWrite: string;
 
     boardToWrite = "*******************\n";
+    boardToWrite += "* " + name + "\n";
+    boardToWrite += "*******************\n";
     for (let lineCounter = 0; lineCounter < 9; lineCounter++) {
         const boardLine = clone.cells.splice(0, 9);
         const boardLineWithSpace = boardLine.map(replaceNullBySpace())
@@ -269,7 +302,7 @@ export function resolverWorkForce(cellNumber: number, board: SudokuBoard) {
             }
         }
 
-        console.log(`resolverWorkForce: xxxxxxxxxxxxxxxxxxxxxxxxx !!! no possible value dead end: cell:${cellNumber}`, board)
+        // console.log(`resolverWorkForce: xxxxxxxxxxxxxxxxxxxxxxxxx !!! no possible value dead end: cell:${cellNumber}`, board)
         // all cell values are wrong
         return { board: null, finish: false, resolved: false };
     }
@@ -339,16 +372,157 @@ export function remainingNumbers(sudokuBoardCells: SudokuBoardCell[]) {
     }, init);
 }
 
-// export function candidatesForEmptyCells(board: SudokuBoard): number[] {
-//     const result = Array(81);
-//     for (let cell = 0; cell < result.length; cell++) {
-//         // const cellValue = result[cell]; //???? stange algo expecting to check the board not result to delete if new algo confirmed
-//         const cellValue = board.cells[cell];
-//         if (cellValue !== undefined) {
-//             // pass
-//         } else {
-//             result[cell] = ">" + determinePossibleValuesx(cell, board).join(",") + "<";
-//         }
-//     }
-//     return result;
-// }
+/**
+ * looks for solution of each empty cell in the board
+ * based on rules
+ * 
+ * @param board 
+ */
+export function resolveByRules(board: SudokuBoard) {
+
+    // calculate the possibleValues of all the cells
+    const boardWithPossibleValues = possibleValues(board);
+
+    // rule#1: unique possible value
+    const cellsWithUniquePossibleValue = rule1_cellsWithUniquePossibleValueParser(boardWithPossibleValues);
+
+    // rule#2.1: unique occurence of possible value in the cell row
+    // rule#2.2: unique occurence of possible value in the cell column
+    // rule#2.3: unique occurence of possible value in the cell block
+
+    const uniqueOcurrenceOfPossibleValueInZones = rule2_cellsWithUniqueOccurenceOfPossibleValueInCellZones(boardWithPossibleValues);
+
+    // rule#3: unique possibility of value in 3 lines or rows
+
+    return {
+        uniquePossibleValue: cellsWithUniquePossibleValue,
+        uniqueOccurenceInZones: uniqueOcurrenceOfPossibleValueInZones
+    }
+
+    function rule1_cellsWithUniquePossibleValueParser(board: SudokuBoard) {
+        // the board should already have the uniquePossibleValuesParsed
+        let uniquePossibleValues = [];
+        for (let index = 0; index < board.cells.length; index++) {
+            if (board.cells[index].possibleValues.length === 1) {
+                const possibleValue = board.cells[index].possibleValues[0];
+                console.log(`cell:${index} unique solution:${possibleValue}}`);
+                uniquePossibleValues.push({ cell: index, value: possibleValue });
+            }
+        }
+        return uniquePossibleValues;
+    }
+    function rule2_cellsWithUniqueOccurenceOfPossibleValueInCellZones(board: SudokuBoard) {
+        let uniqueOcurrenceOfPossibleValue = [];
+        for (let cellIndex = 0; cellIndex < board.cells.length; cellIndex++) {
+            // for each possible value
+            // only if there no in the case uniquePossibleValue
+            if (board.cells[cellIndex].possibleValues.length > 1) {
+                for (const possibleValue of board.cells[cellIndex].possibleValues) {
+                    // is this value in another zone
+                    // yes, continue it's not unique
+                    // no, add in the rule solution
+                    const uniqueOccurenceInARow = (1 === numberOfOccurenceInPossibleValuesInRow(board, cellIndex, possibleValue));
+                    if (uniqueOccurenceInARow) {
+                        console.log(`21 - Unique occurence in a row ${cellIndex} - value:${possibleValue}`);
+                        uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
+                    }
+
+                    const uniqueOccurenceInACol = (1 === numberOfOccurenceInPossibleValuesInCol(board, cellIndex, possibleValue));
+                    if (uniqueOccurenceInACol) {
+                        console.log(`22 - Unique occurence in a col ${cellIndex} - value:${possibleValue}`);
+                        uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
+                    }
+
+                    const uniqueOccurenceInABlock = (1 === numberOfOccurenceInPossibleValuesInBlock(board, cellIndex, possibleValue));
+                    if (uniqueOccurenceInABlock) {
+                        console.log(`23 - Unique occurence in a block ${blockOfCellNumber(cellIndex)} - value:${possibleValue}`);
+                        uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
+                    }
+                }
+            }
+        }
+        return uniqueOcurrenceOfPossibleValue;
+    }
+
+
+}
+
+export function possibleValues(board: SudokuBoard) {
+    let boardWithPossibleValues = sudokuBoardClone(board);
+
+    for (let index = 0; index < boardWithPossibleValues.cells.length; index++) {
+        if (boardWithPossibleValues.cells[index].value === null) {
+            const possibleValue = determinePossibleValuesx(index, boardWithPossibleValues);
+            boardWithPossibleValues.cells[index].possibleValues = possibleValue;
+        } else {
+            boardWithPossibleValues.cells[index].possibleValues = [];
+        }
+    }
+
+    return boardWithPossibleValues
+}
+
+function numberOfOccurenceInPossibleValuesInRow(board: SudokuBoard, cellNumber: number, possibleValue: number) {
+    const row = rowOfCellNumber(cellNumber);
+    let numberOfOccurence: number = 0;
+
+    // for each column of the row
+    // is the the possibleValue in the possibleValues?
+    for (let colIndex = 0; colIndex < 9; colIndex++) {
+        incrementNumberOfOccurenceIfItsPossibleValue(cell(colIndex));
+    }
+
+    return numberOfOccurence;
+
+    function cell(colIndex: number) {
+        return board.cells[row * 9 + colIndex];
+    }
+
+    function incrementNumberOfOccurenceIfItsPossibleValue(cell: SudokuBoardCell) {
+        if (cell.possibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
+            numberOfOccurence += 1;
+        }
+    }
+}
+
+function numberOfOccurenceInPossibleValuesInCol(board: SudokuBoard, cellNumber: number, possibleValue: number) {
+    const col = colOfCellNumber(cellNumber);
+    let numberOfOccurence: number = 0;
+
+    // for each column of the row
+    // is the the possibleValue in the possibleValues?
+    for (let rowIndex = 0; rowIndex < 9; rowIndex++) {
+        incrementNumberOfOccurenceIfItsPossibleValue(cell(rowIndex));
+    }
+
+    return numberOfOccurence;
+
+    function cell(row: number) {
+        return board.cells[row * 9 + col];
+    }
+
+    function incrementNumberOfOccurenceIfItsPossibleValue(cell: SudokuBoardCell) {
+        if (cell.possibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
+            numberOfOccurence += 1;
+        }
+    }
+}
+
+function numberOfOccurenceInPossibleValuesInBlock(board: SudokuBoard, cellNumber: number, possibleValue: number) {
+    const block = blockOfCellNumber(cellNumber);
+    let numberOfOccurence: number = 0;
+
+    // for each cells in the block
+    // is the the possibleValue in the possibleValues?
+    cellsNumberOfTheBlock(block).forEach(cellNumber => {
+        incrementNumberOfOccurenceIfItsPossibleValue(board.cells[cellNumber]);        
+    });
+
+    return numberOfOccurence;
+
+    function incrementNumberOfOccurenceIfItsPossibleValue(cell: SudokuBoardCell) {
+        if (cell.possibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
+            numberOfOccurence += 1;
+        }
+    }
+}

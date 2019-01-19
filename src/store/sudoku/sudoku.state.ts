@@ -1,4 +1,4 @@
-import { SudokuLevelType, SudokuBoard, initializeSudokuBoard } from "../../services/sudoku/sudoku";
+import { SudokuLevelType, SudokuBoard, initializeSudokuBoard, SolutionsByRules } from "../../services/sudoku/sudoku";
 
 export interface SudokuPageState {
   board: SudokuBoard;
@@ -16,6 +16,7 @@ export interface SudokuPageState {
   gameInPause: boolean;
   timer: number; //seconds
   timerOn: boolean;
+  solutionsByRules: SolutionsByRules;
 }
 
 const emptyBoard = initializeSudokuBoard();
@@ -34,5 +35,6 @@ export const sudokuPageInitialState: SudokuPageState = {
   lastCellOfTheGame:-1,
   gameInPause: false,
   timer: 0,
-  timerOn: false
+  timerOn: false,
+  solutionsByRules: null
 };
