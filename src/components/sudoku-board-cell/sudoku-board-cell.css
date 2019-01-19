@@ -49,6 +49,17 @@ sudoku-board-cell-component .celldraft {
   color: slategrey;
 }
 
+sudoku-board-cell-component .possibleValue {
+  /* background-color: yellow; */
+  flex: 1;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  font-size: var(--draftvalue-fontsize);
+  font-weight: bold;
+  color: black;
+}
+
 sudoku-board-cell-component .sudoku-board-cell {
   /* background-color: violet; */
   flex: 1;

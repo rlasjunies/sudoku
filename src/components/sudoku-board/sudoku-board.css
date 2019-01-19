@@ -30,17 +30,17 @@ sudoku-board-component .sudoku-board .cell {
 }
 
 sudoku-board-component .sudoku-board .row0 {
-    border-top: black;
+    /* border-top: black; */
     border-top-style: solid;
 }
 
 sudoku-board-component .sudoku-board .row1, .row4, .row7 {
-    border-top: black;
+    /* border-top: black; */
     border-top-style: dotted;
 }
 
 sudoku-board-component .sudoku-board .row2, .row5, .row8 {
-    border-top: black;
+    /* border-top: black; */
     border-top-style: dotted;
     border-bottom: black;
     border-bottom-style: solid;
@@ -70,6 +70,16 @@ sudoku-board-component .area-selected {
 sudoku-board-component .selected {
     background-color: antiquewhite;
 }
+
+sudoku-board-component .UniquePossibleValue{
+    background-color: aquamarine;
+}
+
+sudoku-board-component .UniqueOccurenceInZone{
+    background-color: cadetblue;
+}
+
+
 
 sudoku-board-component .chenillardCol {
     /* background-color:cyan; */

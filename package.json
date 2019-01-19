@@ -1,8 +1,8 @@
 {
-  "name": "@accurentis/sudoku",
+  "name": "sudoku-master",
   "private": true,
-  "version": "0.0.1",
-  "description": "Sudoku trainer from accurentis",
+  "version": "0.0.4",
+  "description": "Sudoku Master",
   "scripts": {
     "start": "stencil build --dev --watch --serve",
     "deploy": "firebase deploy",
@@ -16,16 +16,9 @@
     "@clr/ui": "^1.0.2",
     "rollup-plugin-alias": "^1.5.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ionic-team/stencil-app-starter.git"
-  },
-  "author": "Ionic Team",
+  "author": "Richard LASJUNIES",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
-  },
-  "homepage": "https://github.com/ionic-team/stencil",
+  "homepage": "https://sudoku-master.com",
   "devDependencies": {
     "@stencil/core": "^0.16.0",
     "@types/jest": "23.3.5",

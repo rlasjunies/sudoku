@@ -9,6 +9,7 @@ import '@stencil/core';
 
 
 import {
+  SolutionsByRules,
   SudokuBoard,
   SudokuBoardCell,
 } from './services/sudoku/sudoku';
@@ -70,6 +71,7 @@ export namespace Components {
     'cellSelected': number;
     'incorrectCells': number[];
     'lastCellOfTheGame': number;
+    'solutionsByRules': SolutionsByRules;
     'solvedBlock': number;
     'solvedCol': number;
     'solvedRow': number;
@@ -81,6 +83,7 @@ export namespace Components {
     'incorrectCells'?: number[];
     'lastCellOfTheGame'?: number;
     'onCellSelection'?: (event: CustomEvent) => void;
+    'solutionsByRules'?: SolutionsByRules;
     'solvedBlock'?: number;
     'solvedCol'?: number;
     'solvedRow'?: number;

@@ -25,11 +25,7 @@ UX:
   ☐ system shows how many numbers are left for a specific number
       
 coach features:
-  ☐ shows how many cells have one candidates
-  ☐ shows how many cells have one candidates because other values are not possible by side effect
-  ( unicity on another zone)
-  * if a value is mandatory only in one row / column of a block. It's not a candidates in the other blocks of the row/column
-
+  ☐ provide switches to show or not the candidates values, the rules helpers
   ☐ player can continue playing easily after ending a game
 
 
@@ -51,6 +47,12 @@ technical:
   ☐ remove the stenciljs and rely in the statemgt framework?
 
 done:
+  ✔ shows candidates @done (1/19/2019, 7:49:43 AM)
+  ✔ shows how many cells have one candidates @done (1/19/2019, 7:49:44 AM)
+  ✔ shows how many cells have one candidates because other values are not possible by side effect @done (1/19/2019, 7:49:44 AM)
+  ( unicity on another zone)
+  * if a value is mandatory only in one row / column of a block. It's not a candidates in the other blocks of the row/column
+
   ✔ add severals icons for the PWA @done (1/6/2019, 7:35:17 PM)
   ✔ check if the board is solvable after each input, not raise error just because is not the expected one @done (1/5/2019, 7:48:12 AM)
   ✔ hide clear key when the number cannot be cleared (seed, empty cell) @done (1/1/2019, 7:02:37 PM)

@@ -6,7 +6,7 @@ create-new-board .btn {
 
 create-new-board .header{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   /* width: 100%; */
 
   justify-content: left;
@@ -41,12 +41,12 @@ create-new-board .btn {
 
 create-new-board .header button{
   font-size: var(--header-button-fontsize);
-  width:150px;
+  /* width:150px; */
   /* height: 4vh; */
 }
 create-new-board .header clr-icon{
-  width:40px;
-  height:40px;
+  width:35px;
+  height:35px;
 }
 
 

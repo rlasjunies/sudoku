@@ -3,7 +3,7 @@ import { AppState, store } from 'store/index';
 import * as sudokuValueTyped from "store/sudoku/sudoku.actions.typeNumber";
 import * as sudokuDraftTyped from "store/sudoku/sudoku.actions.typeDraftNumber";
 import * as sudokuClearTyped from "store/sudoku/sudoku.actions.clearCellValue";
-import { SudokuBoard, initializeSudokuBoard } from 'services/sudoku/sudoku';
+import { SudokuBoard, initializeSudokuBoard, SolutionsByRules } from 'services/sudoku/sudoku';
 import * as sudokuUndo from 'store/sudoku/sudoku.actions.undoLastMove';
 import * as sudokuCellSelected from "store/sudoku/sudoku.actions.selectCell";
 import * as pauseGame_PauseTimer from "store/_combinedActions/actions.pauseGame_PauseTimer";
@@ -30,6 +30,7 @@ export class SudokuPage {
   @State() timer: number = 0;
   @State() gameOnGoing: boolean;
   @State() gameInPause: boolean;
+  @State() solutionsByRules: SolutionsByRules;
 
   unsubscribeStateChanged: () => void;
 
@@ -56,6 +57,8 @@ export class SudokuPage {
     this.gameOnGoing = state.sudokuPage.gameOnGoing;
     this.timer = state.sudokuPage.timer;
     this.gameInPause = state.sudokuPage.gameInPause;
+
+    this.solutionsByRules = state.sudokuPage.solutionsByRules;
     // if (this.cellSelected !== -1) {
     //   console.log(`is there a value in the cell${this.cellSelected} - this.board.cells[this.cellSelected].value=${this.board.cells[this.cellSelected].value}, compare with 0?:${this.board.cells[this.cellSelected].value !== 0}`)
     // }
@@ -130,6 +133,7 @@ export class SudokuPage {
                 solvedCol={this.colSolved}
                 solvedBlock={this.blockSolved}
                 boardSolved={this.boardSolved}
+                solutionsByRules={this.solutionsByRules}
 
                 onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
               </sudoku-board-component>

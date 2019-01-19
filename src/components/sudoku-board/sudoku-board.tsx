@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Event, Element, Prop, Watch } from '@stencil/core';
-import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initializeSudokuBoard } from "../../services/sudoku/sudoku";
+import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initializeSudokuBoard, SolutionsByRules } from "../../services/sudoku/sudoku";
 import { chenillardNorth, chenillardSouth, chenillardWest, chenillardEast, chenillardNorthEast, chenillardSouthEast, chenillardSouthWest, chenillardNorthWest } from './sudoku-chenillard';
 
 @Component({
@@ -67,6 +67,8 @@ export class SudokuBoardComponent {
     @Prop() cellSelected: number = -1;
     @Prop() lastCellOfTheGame: number = -1;
     @Prop() incorrectCells: number[] = [];
+    @Prop() solutionsByRules: SolutionsByRules = null;
+
 
     chenillardBoard(cell: number) {
         const startCell = cell;
@@ -184,6 +186,17 @@ export class SudokuBoardComponent {
                 (cellValue !== "undefined")
             ) ? " selected " : "";
         // console.log(`selectCellValue:${selectedCellValue} - cellValue:${cellValue} - ${sameValueAsTheOneSelected} - ${typeof (selectedCellValue)} - ${typeof (cellValue)}`);
+
+        let isSolution_UniqueOccurenceInZoneClass = "";
+        let isSolution_UniquePossibleValueClass = "";
+        if (this.solutionsByRules) {
+            const isSolution_UniquePossibleValue = this.solutionsByRules.uniquePossibleValue.filter(solution => solution.cell === cell).length > 0
+            isSolution_UniquePossibleValueClass = isSolution_UniquePossibleValue ? " UniquePossibleValue" : "";
+
+            const isSolution_UniquePossibleValueInZone = this.solutionsByRules.uniqueOccurenceInZones.filter(solution => solution.cell === cell).length > 0
+            isSolution_UniqueOccurenceInZoneClass = isSolution_UniquePossibleValueInZone ? " UniqueOccurenceInZone" : "";
+        }
+
         return `cell` +
             ` cell${cell} ` +
             ` row${rowOfCell} ` +
@@ -192,7 +205,10 @@ export class SudokuBoardComponent {
             cellsSelectedClass +
             cellSelectedClass +
             sameValueAsTheOneSelected +
-            incorrectClass;
+            incorrectClass +
+            isSolution_UniquePossibleValueClass + 
+            isSolution_UniqueOccurenceInZoneClass;
+
     }
 
     cellSelectedHandler(cell: number) {
