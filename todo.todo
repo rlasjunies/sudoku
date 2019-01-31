@@ -1,6 +1,11 @@
 features:
-
   ☐ fix: npm run build
+  ☐ fix: back does not reinitialize the candidates or color of unicity
+  ☐ fix: add background for the icon of the app
+
+  ✔ put the pause button closed to the timer @done (1/31/2019, 9:16:55 PM)
+  ☐ player can request auto generation of candidates
+  ☐ player can request highlight of fix proposals
   ☐ more contrast for the drafted values
   ☐ Think about 2 modes of game
   - electronic sudoku ... with not help only replacing the paper ... no error raised when typing

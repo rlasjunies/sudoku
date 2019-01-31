@@ -108,16 +108,24 @@ export class SudokuPage {
         <div class="header">
           <button class="btn btn-link"
             onClick={() => this.onBackClickHandler()}>
-            <clr-icon shape="angle caret left" size="35"></clr-icon>Back
+            {/* <clr-icon shape="angle caret left" size="35"></clr-icon>Back */}
+            <clr-icon shape="angle caret left" size="35"></clr-icon>
           </button>
 
-          <acc-timer class="timer" time={this.timer}></acc-timer>
+          {/* <button class={this.gameOnGoing ? "btn btn-link timer" : "btn btn-link hidden timer"} */}
+          <button class="btn btn-link timer"
+            onClick={() => this.onTimerSwitch()}>
+            <acc-timer time={this.timer}></acc-timer>
+            {/* <clr-icon shape={!this.gameInPause ? "pause" : "play"}></clr-icon>{!this.gameInPause ? "Pause" : "Resume"} */}
+            <clr-icon shape={!this.gameInPause ? "pause" : "play"} size="35"></clr-icon>
+          </button>
 
           <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
             onClick={() => this.onTimerSwitch()}>
-            <clr-icon shape={!this.gameInPause ? "pause" : "play"}></clr-icon>{!this.gameInPause ? "Pause" : "Resume"}
+            {/* <clr-icon shape={!this.gameInPause ? "pause" : "play"}></clr-icon>{!this.gameInPause ? "Pause" : "Resume"} */}
+            {/* <clr-icon shape="wand" size="35"></clr-icon>Help */}
+            <clr-icon shape="wand" size="35"></clr-icon>
           </button>
-
 
         </div>
         <div class="content">

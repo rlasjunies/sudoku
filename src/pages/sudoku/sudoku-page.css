@@ -7,11 +7,14 @@ sudoku-page acc-page {
 
 sudoku-page clr-icon {
   margin: 3px;
+  height: 35px;
+  width: 35px;
 }
 
 sudoku-page .btn.btn-link {
-  font-size: 3vh;
+  /* font-size: 3vh; */
   height: unset; /* remove height for better alignment */
+  min-width: unset;/* remove min-width for better alignment */
   /* background-color: yellow; */
   /* padding: 10px; */
 }
@@ -67,14 +70,16 @@ sudoku-page #newGame > button {
 }
 
 sudoku-page acc-page .timer {
+  display: flex;
   flex: 1;
+  flex-direction: row;
   align-self: center;
   justify-content: center;
   align-content: center;
   text-align: center;
   font-size: 4vh;
   color: black;
-  padding: 0 12px;
+  /* padding: 0 12px; */
 }
 
 /* acc-switch {
