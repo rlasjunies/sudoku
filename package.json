@@ -1,7 +1,7 @@
 {
   "name": "sudoku-master",
   "private": true,
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Sudoku Master",
   "scripts": {
     "start": "stencil build --dev --watch --serve",

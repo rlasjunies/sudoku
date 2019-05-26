@@ -18,7 +18,7 @@ export class SplashScreenPage {
   @State() deployed = isStandAlone();
   @State() webWorker = isWebWorker();
 
-  @State() version = "0.0.7";
+  @State() version = "0.0.8";
   unsubscribeStateChanged: () => void;
 
   componentDidUnload() {
