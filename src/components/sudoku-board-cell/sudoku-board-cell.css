@@ -28,7 +28,7 @@ sudoku-board-cell-component .sudoku-board-cell-draft {
 
 sudoku-board-cell-component .rowdraft {
   display: flex;
-  flex: 1;
+  flex: 1 1 0;
   flex-direction: row;
   align-items: center;
   /* justify-content: center; */
@@ -40,7 +40,7 @@ sudoku-board-cell-component .rowdraft {
 
 sudoku-board-cell-component .celldraft {
   /* background-color: yellow; */
-  flex: 1;
+  flex: 1 ;
   flex-grow: 1;
   display: flex;
   justify-content: center;
