@@ -1,4 +1,4 @@
-import { SudokuLevelType, SudokuBoard, initializeSudokuBoard, SolutionsByRules } from "../../services/sudoku/sudoku";
+import { SudokuLevelType, SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration } from "../../services/sudoku/sudoku";
 
 export interface SudokuPageState {
   board: SudokuBoard;
@@ -17,6 +17,7 @@ export interface SudokuPageState {
   timer: number; //seconds
   timerOn: boolean;
   solutionsByRules: SolutionsByRules;
+  wizardConfiguration: SudokuWizardConfiguration;
 }
 
 const emptyBoard = initializeSudokuBoard();
@@ -36,5 +37,10 @@ export const sudokuPageInitialState: SudokuPageState = {
   gameInPause: false,
   timer: 0,
   timerOn: false,
-  solutionsByRules: null
+  solutionsByRules: null,
+  wizardConfiguration:{
+    calculateCandidates: false,
+    showUniqueCandidatesInZones: false,
+    showUniqueCandidate:false
+  }
 };

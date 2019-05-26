@@ -3,7 +3,7 @@ import { AppState, store } from "store/index";
 
 export function action(): Action {
   return {
-    name: "NAVIGATETO_SPLASHPAGE",
+    name: "NAVIGATETO_WIZARDCONFIGURATION",
     payload: {}
   }
 }
@@ -14,9 +14,9 @@ export function reducer(state: AppState, _action: Action): AppState {
     appRoot: {
       ...state.appRoot,
       showSudokuPage: false,
+      showSplashScreenPage: false,
       showCreateNewBoardPage: false,
-      showSplashScreenPage: true,
-      showSudokuWizardPage: false
+      showSudokuWizardPage: true
     }
   }
 };

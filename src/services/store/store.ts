@@ -36,6 +36,7 @@ export class Store {
         // retrieve from local storage the previous state persisted
         const retrievePreviousState = retrieveInLocalStorage(this.name);
         this._state = (retrievePreviousState !== null) ? retrievePreviousState : initialState;
+        this._state = initialState;
         this._state.actionName = "STORE_INIT"
         // console.log("STORE CONSTRUCTED!", this._state);
     }

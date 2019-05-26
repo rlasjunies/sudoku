@@ -27,6 +27,7 @@ export class AppRoot {
     this.showSplashScreenPage = state.appRoot.showSplashScreenPage;
     this.showSudokuPage = state.appRoot.showSudokuPage;
     this.showCreateNewBoardPage = state.appRoot.showCreateNewBoardPage;
+    this.showWizardConfigPage = state.appRoot.showSudokuWizardPage;
     this.boardSolved = state.sudokuPage.boardSolved;
   }
 
@@ -80,11 +81,26 @@ export class AppRoot {
       $createNewBoard.hide();
     }
   }
+
+  @State() showWizardConfigPage: boolean;
+  @Watch('showWizardConfigPage')
+  showWizardConfigPageWatcher(newValue, oldValue) {
+    // console.log(`showCreateNewBoardPagewatcher: ${newValue} - ${oldValue}`)
+    const $wizardConfig: HTMLAccPageElement = this.element.querySelector('sudoku-wizard-page > acc-page');
+    if (newValue && !oldValue) {
+      // console.log("Show the create board page!!!!");
+      $wizardConfig.show();
+    } else if (!newValue && oldValue) {
+      // console.log("Hiding the create board page!!!!");
+      $wizardConfig.hide();
+    }
+  }
   render() {
     return [
       <splash-screen-page></splash-screen-page>,
       <sudoku-page></sudoku-page>,
-      <create-new-board></create-new-board>
+      <create-new-board></create-new-board>,
+      <sudoku-wizard-page></sudoku-wizard-page>
     ]
   }
 }

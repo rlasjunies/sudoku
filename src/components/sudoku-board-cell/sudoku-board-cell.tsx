@@ -20,7 +20,7 @@ export class SudokuBoardCellComponent {
     }
 
     possibleValue(value: number): string {
-        const possibleValue = this.cell.possibleValues.find(possibleValue => possibleValue === value); 
+        const possibleValue = this.cell.calculatedPossibleValues.find(possibleValue => possibleValue === value); 
         // console.log(`POssibleValues:`,this.cell.possibleValues);
         return possibleValue ? possibleValue.toString() : "" ;
     }

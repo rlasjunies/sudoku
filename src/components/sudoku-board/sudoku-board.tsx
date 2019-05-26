@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Event, Element, Prop, Watch } from '@stencil/core';
-import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initializeSudokuBoard, SolutionsByRules } from "../../services/sudoku/sudoku";
+import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration } from "../../services/sudoku/sudoku";
 import { chenillardNorth, chenillardSouth, chenillardWest, chenillardEast, chenillardNorthEast, chenillardSouthEast, chenillardSouthWest, chenillardNorthWest } from './sudoku-chenillard';
 
 @Component({
@@ -15,11 +15,6 @@ export class SudokuBoardComponent {
     @Watch("solvedRow")
     solvedRowWatcher(newValue: number, _oldValue: number) {
         // console.log(`solvedRowWatcher:${newValue}, ${this.cellSelected}, ${rowOfCellNumber(this.cellSelected)} ${oldValue}`);
-        // if (newValue != 0
-        //     && newValue !== undefined
-        //     && (newValue !== oldValue)
-        //     && !this.boardSolved
-        //     && this.cellSelected !== -1) {
         if (newValue === rowOfCellNumber(this.cellSelected)) {
             this.chenillardRow(this.cellSelected);
         }
@@ -28,11 +23,6 @@ export class SudokuBoardComponent {
     @Watch("solvedCol")
     solvedColWatcher(newValue: number, _oldValue: number) {
         // console.log(`solvedColWatcher:${newValue}, ${this.cellSelected},${oldValue}`);
-        // if (newValue != 0
-        //     && newValue !== undefined
-        //     && (newValue !== oldValue)
-        //     && !this.boardSolved
-        //     && this.cellSelected !== -1) {
         if (newValue === colOfCellNumber(this.cellSelected)) {
             this.chenillardCol(this.cellSelected);
         }
@@ -41,13 +31,7 @@ export class SudokuBoardComponent {
     @Watch("solvedBlock")
     solvedBlockWatcher(newValue: number, _oldValue: number) {
         // console.log(`solvedBlockWatcher:${newValue}, ${this.cellSelected},${oldValue}`);
-        // if (newValue != 0
-        //     && (newValue !== undefined)
-        //     && (newValue !== oldValue)
-        //     && !this.boardSolved
-        //     && this.cellSelected !== -1) {
         if (newValue === blockOfCellNumber(this.cellSelected)) {
-            // this.chenillardRow(newValue, this.cellSelected);
             this.chenillardBlock(this.cellSelected);
         }
     }
@@ -58,8 +42,6 @@ export class SudokuBoardComponent {
         if (newValue
             && !oldValue
             && (oldValue !== undefined)) {
-            // this.sudokuBoardComponent.chenillardBoard(this.cellSelected);
-            // store.dispatch(endGameStopTimer.action());
             this.chenillardBoard(this.lastCellOfTheGame);
         }
     }
@@ -68,7 +50,7 @@ export class SudokuBoardComponent {
     @Prop() lastCellOfTheGame: number = -1;
     @Prop() incorrectCells: number[] = [];
     @Prop() solutionsByRules: SolutionsByRules = null;
-
+    @Prop() wizardConfiguration: SudokuWizardConfiguration;
 
     chenillardBoard(cell: number) {
         const startCell = cell;
@@ -189,10 +171,11 @@ export class SudokuBoardComponent {
 
         let isSolution_UniqueOccurenceInZoneClass = "";
         let isSolution_UniquePossibleValueClass = "";
-        if (this.solutionsByRules) {
+        if (this.solutionsByRules && this.wizardConfiguration.showUniqueCandidate) {
             const isSolution_UniquePossibleValue = this.solutionsByRules.uniquePossibleValue.filter(solution => solution.cell === cell).length > 0
             isSolution_UniquePossibleValueClass = isSolution_UniquePossibleValue ? " UniquePossibleValue" : "";
-
+        }
+        if (this.solutionsByRules && this.wizardConfiguration.showUniqueCandidatesInZones) {
             const isSolution_UniquePossibleValueInZone = this.solutionsByRules.uniqueOccurenceInZones.filter(solution => solution.cell === cell).length > 0
             isSolution_UniqueOccurenceInZoneClass = isSolution_UniquePossibleValueInZone ? " UniqueOccurenceInZone" : "";
         }

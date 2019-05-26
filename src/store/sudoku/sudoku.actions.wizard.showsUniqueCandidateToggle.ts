@@ -3,7 +3,7 @@ import { AppState, store } from "store/index";
 
 export function action(): Action {
   return {
-    name: "NAVIGATETO_SPLASHPAGE",
+    name: "WIZARD_SHOWSUNIQUECANDIDATEINCELL_TOGGLE",
     payload: {}
   }
 }
@@ -11,14 +11,14 @@ export function action(): Action {
 export function reducer(state: AppState, _action: Action): AppState {
   return {
     ...state,
-    appRoot: {
-      ...state.appRoot,
-      showSudokuPage: false,
-      showCreateNewBoardPage: false,
-      showSplashScreenPage: true,
-      showSudokuWizardPage: false
+    sudokuPage: {
+      ...state.sudokuPage,
+      wizardConfiguration: {
+        ... state.sudokuPage.wizardConfiguration,
+        showUniqueCandidate: !state.sudokuPage.wizardConfiguration.showUniqueCandidate
+      }
     }
   }
-};
+}
 
 store.registerReducer(action().name, reducer);

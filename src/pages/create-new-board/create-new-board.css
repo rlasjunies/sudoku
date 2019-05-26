@@ -26,6 +26,7 @@ create-new-board .header{
 
 create-new-board .btn.btn-link {
   font-size: 3vh;
+  min-width: unset;
   height: unset; /* remove height for better alignment */
   /* background-color: yellow; */
   /* padding: 10px; */

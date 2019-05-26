@@ -12,6 +12,7 @@ import {
   SolutionsByRules,
   SudokuBoard,
   SudokuBoardCell,
+  SudokuWizardConfiguration,
 } from './services/sudoku/sudoku';
 
 
@@ -75,6 +76,7 @@ export namespace Components {
     'solvedBlock': number;
     'solvedCol': number;
     'solvedRow': number;
+    'wizardConfiguration': SudokuWizardConfiguration;
   }
   interface SudokuBoardComponentAttributes extends StencilHTMLAttributes {
     'board'?: SudokuBoard;
@@ -87,6 +89,7 @@ export namespace Components {
     'solvedBlock'?: number;
     'solvedCol'?: number;
     'solvedRow'?: number;
+    'wizardConfiguration'?: SudokuWizardConfiguration;
   }
 
   interface AccPage {
@@ -103,6 +106,9 @@ export namespace Components {
 
   interface SplashScreenPage {}
   interface SplashScreenPageAttributes extends StencilHTMLAttributes {}
+
+  interface SudokuWizardPage {}
+  interface SudokuWizardPageAttributes extends StencilHTMLAttributes {}
 
   interface SudokuPage {}
   interface SudokuPageAttributes extends StencilHTMLAttributes {}
@@ -121,6 +127,7 @@ declare global {
     'AppRoot': Components.AppRoot;
     'CreateNewBoard': Components.CreateNewBoard;
     'SplashScreenPage': Components.SplashScreenPage;
+    'SudokuWizardPage': Components.SudokuWizardPage;
     'SudokuPage': Components.SudokuPage;
   }
 
@@ -136,6 +143,7 @@ declare global {
     'app-root': Components.AppRootAttributes;
     'create-new-board': Components.CreateNewBoardAttributes;
     'splash-screen-page': Components.SplashScreenPageAttributes;
+    'sudoku-wizard-page': Components.SudokuWizardPageAttributes;
     'sudoku-page': Components.SudokuPageAttributes;
   }
 
@@ -206,6 +214,12 @@ declare global {
     new (): HTMLSplashScreenPageElement;
   };
 
+  interface HTMLSudokuWizardPageElement extends Components.SudokuWizardPage, HTMLStencilElement {}
+  var HTMLSudokuWizardPageElement: {
+    prototype: HTMLSudokuWizardPageElement;
+    new (): HTMLSudokuWizardPageElement;
+  };
+
   interface HTMLSudokuPageElement extends Components.SudokuPage, HTMLStencilElement {}
   var HTMLSudokuPageElement: {
     prototype: HTMLSudokuPageElement;
@@ -224,6 +238,7 @@ declare global {
     'app-root': HTMLAppRootElement
     'create-new-board': HTMLCreateNewBoardElement
     'splash-screen-page': HTMLSplashScreenPageElement
+    'sudoku-wizard-page': HTMLSudokuWizardPageElement
     'sudoku-page': HTMLSudokuPageElement
   }
 
@@ -239,6 +254,7 @@ declare global {
     'app-root': HTMLAppRootElement;
     'create-new-board': HTMLCreateNewBoardElement;
     'splash-screen-page': HTMLSplashScreenPageElement;
+    'sudoku-wizard-page': HTMLSudokuWizardPageElement;
     'sudoku-page': HTMLSudokuPageElement;
   }
 

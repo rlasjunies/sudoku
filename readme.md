@@ -1,11 +1,13 @@
 
+# How to develop
+[] npm start
+
 https://sudoku-accurentis.firebaseapp.com
 
 # Generate the PWA
-[] npm run build
-/*** ne marche pass **/
+[] npx run build
 
-npw stencil build
+npx stencil build
 firebase deploy
 
 # PWA know how
@@ -62,3 +64,23 @@ Dans le fichier de configuration launch.json,
 * l'extension ajoute un snippet de configuration pour vscode-jest-tests
 * le prendre, 
 généralement cela marche 
+
+
+# jsx type checking extension
+
+> I did not found yet the good approach to extend "correctly" the jsx type checking
+
+## extend intrisic element with new attributes
+
+example: `<input type="checkbox" clrCheckbox ...` where `clrCheckbox` is the extended property.
+
+The bad approach is:
+
+* [ ] goes in `node_modules\@stencil\core\dist\declarations\jsx.d.ts`  
+* [ ] then add the following declaration:
+
+```javascript
+    interface InputHTMLAttributes<T> extends HTMLAttributes<T> {
+        clrCheckbox?: boolean;
+    }
+```

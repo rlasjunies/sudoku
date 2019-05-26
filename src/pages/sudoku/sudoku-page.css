@@ -11,18 +11,21 @@ sudoku-page clr-icon {
   width: 35px;
 }
 
-sudoku-page .btn.btn-link {
+/* sudoku-page .btn.btn-link {
   /* font-size: 3vh; */
-  height: unset; /* remove height for better alignment */
-  min-width: unset;/* remove min-width for better alignment */
+  /* height: unset; remove height for better alignment */
+  /* min-width: unset;remove min-width for better alignment */
+  /* max-width: unset;remove min-width for better alignment */
   /* background-color: yellow; */
   /* padding: 10px; */
-}
+/* } */
 
 sudoku-page .btn {
   font-size: 3vh;
   padding-left: 0;
   height: unset; /* remove height for better alignment */
+  min-width: unset;/* remove min-width for better alignment */
+  max-width: unset;/* remove min-width for better alignment */
   /* background-color: yellow; */
   /* padding: 10px; */
 }

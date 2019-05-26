@@ -1,8 +1,10 @@
 features:
-  ☐ fix: npm run build
+  ✔ fix: npm run build @done (26/05/2019 à 10:18:06)
   ☐ fix: back does not reinitialize the candidates or color of unicity
   ☐ fix: add background for the icon of the app
-
+  ☐ fix: size cells are too height when all candidates ... on the phone there is an overflow of the page
+  ☐ fix: web browser - main page - overflow
+  
   ✔ put the pause button closed to the timer @done (1/31/2019, 9:16:55 PM)
   ☐ player can request auto generation of candidates
   ☐ player can request highlight of fix proposals

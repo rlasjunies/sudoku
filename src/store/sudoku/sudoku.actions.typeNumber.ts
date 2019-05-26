@@ -69,10 +69,12 @@ export function reducer(state: AppState, action: Action): AppState {
 
     // remove equal candidates in the related zones
     // only when the value is correct
+    // TODO: this should be done in the service, 
     if (isValueCorrect) {
       newBoard = removeCandidateBoard(newBoard, value, currentCell);
     }
 
+    // TODO: this should be done in the service, 
     newBoard = possibleValues(newBoard);
 
     solutionsByRules = resolveByRules(newBoard);

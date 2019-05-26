@@ -9,6 +9,17 @@ export interface SolutionsByRules {
     uniquePossibleValue: Solution[];
     uniqueOccurenceInZones: Solution[];
 }
+export interface SudokuWizardConfiguration {
+    calculateCandidates: boolean;
+    showUniqueCandidate: boolean;
+    showUniqueCandidatesInZones: boolean;
+}
+export const sudokuWizardConfigurationInit : SudokuWizardConfiguration = {
+    calculateCandidates:false,
+    showUniqueCandidate:false,
+    showUniqueCandidatesInZones:false
+}
+
 export interface SudokuBoard {
     cells: SudokuBoardCell[];
     incorrectCells: number[];
@@ -17,14 +28,14 @@ export interface SudokuBoard {
 export interface SudokuBoardCell {
     value: number | null;
     candidates: boolean[];
-    possibleValues: number[];
+    calculatedPossibleValues: number[];
     seed: boolean;
     expectedValue: number;
 }
 const EMPTYCELL: SudokuBoardCell = {
     value: null,
     candidates: [, , , , , , , ,],
-    possibleValues: [],
+    calculatedPossibleValues: [],
     seed: false,
     expectedValue: null
 }
@@ -53,11 +64,11 @@ export function blockOfCellNumber(cellNumber: number) {
     return Math.floor(rowOfCellNumber(cellNumber) / 3) * 3 + Math.floor(colOfCellNumber(cellNumber) / 3);
 }
 
-export function cellNumberOfColRowOfBlock(col: number, row: number, block: number){
+export function cellNumberOfColRowOfBlock(col: number, row: number, block: number) {
     return (col + (block % 3) * 3) + ((row * 9) + (27 * Math.floor(block / 3)));
 }
 export function cellsNumberOfTheBlock(block: number): number[] {
-    
+
     return [
         cellNumberOfColRowOfBlock(0, 0, block),
         cellNumberOfColRowOfBlock(1, 0, block),
@@ -403,8 +414,8 @@ export function resolveByRules(board: SudokuBoard) {
         // the board should already have the uniquePossibleValuesParsed
         let uniquePossibleValues = [];
         for (let index = 0; index < board.cells.length; index++) {
-            if (board.cells[index].possibleValues.length === 1) {
-                const possibleValue = board.cells[index].possibleValues[0];
+            if (board.cells[index].calculatedPossibleValues.length === 1) {
+                const possibleValue = board.cells[index].calculatedPossibleValues[0];
                 console.log(`cell:${index} unique solution:${possibleValue}}`);
                 uniquePossibleValues.push({ cell: index, value: possibleValue });
             }
@@ -416,24 +427,24 @@ export function resolveByRules(board: SudokuBoard) {
         for (let cellIndex = 0; cellIndex < board.cells.length; cellIndex++) {
             // for each possible value
             // only if there no in the case uniquePossibleValue
-            if (board.cells[cellIndex].possibleValues.length > 1) {
-                for (const possibleValue of board.cells[cellIndex].possibleValues) {
+            if (board.cells[cellIndex].calculatedPossibleValues.length > 1) {
+                for (const possibleValue of board.cells[cellIndex].calculatedPossibleValues) {
                     // is this value in another zone
                     // yes, continue it's not unique
                     // no, add in the rule solution
-                    const uniqueOccurenceInARow = (1 === numberOfOccurenceInPossibleValuesInRow(board, cellIndex, possibleValue));
+                    const uniqueOccurenceInARow = (1 === numberOfOccurenceInCalculatedPossibleValuesInRow(board, cellIndex, possibleValue));
                     if (uniqueOccurenceInARow) {
                         console.log(`21 - Unique occurence in a row ${cellIndex} - value:${possibleValue}`);
                         uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
                     }
 
-                    const uniqueOccurenceInACol = (1 === numberOfOccurenceInPossibleValuesInCol(board, cellIndex, possibleValue));
+                    const uniqueOccurenceInACol = (1 === numberOfOccurenceInCalculatedPossibleValuesInCol(board, cellIndex, possibleValue));
                     if (uniqueOccurenceInACol) {
                         console.log(`22 - Unique occurence in a col ${cellIndex} - value:${possibleValue}`);
                         uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
                     }
 
-                    const uniqueOccurenceInABlock = (1 === numberOfOccurenceInPossibleValuesInBlock(board, cellIndex, possibleValue));
+                    const uniqueOccurenceInABlock = (1 === numberOfOccurenceInCalculatedPossibleValuesInBlock(board, cellIndex, possibleValue));
                     if (uniqueOccurenceInABlock) {
                         console.log(`23 - Unique occurence in a block ${blockOfCellNumber(cellIndex)} - value:${possibleValue}`);
                         uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
@@ -453,16 +464,16 @@ export function possibleValues(board: SudokuBoard) {
     for (let index = 0; index < boardWithPossibleValues.cells.length; index++) {
         if (boardWithPossibleValues.cells[index].value === null) {
             const possibleValue = determinePossibleValuesx(index, boardWithPossibleValues);
-            boardWithPossibleValues.cells[index].possibleValues = possibleValue;
+            boardWithPossibleValues.cells[index].calculatedPossibleValues = possibleValue;
         } else {
-            boardWithPossibleValues.cells[index].possibleValues = [];
+            boardWithPossibleValues.cells[index].calculatedPossibleValues = [];
         }
     }
 
     return boardWithPossibleValues
 }
 
-function numberOfOccurenceInPossibleValuesInRow(board: SudokuBoard, cellNumber: number, possibleValue: number) {
+function numberOfOccurenceInCalculatedPossibleValuesInRow(board: SudokuBoard, cellNumber: number, possibleValue: number) {
     const row = rowOfCellNumber(cellNumber);
     let numberOfOccurence: number = 0;
 
@@ -479,13 +490,13 @@ function numberOfOccurenceInPossibleValuesInRow(board: SudokuBoard, cellNumber: 
     }
 
     function incrementNumberOfOccurenceIfItsPossibleValue(cell: SudokuBoardCell) {
-        if (cell.possibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
+        if (cell.calculatedPossibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
             numberOfOccurence += 1;
         }
     }
 }
 
-function numberOfOccurenceInPossibleValuesInCol(board: SudokuBoard, cellNumber: number, possibleValue: number) {
+function numberOfOccurenceInCalculatedPossibleValuesInCol(board: SudokuBoard, cellNumber: number, possibleValue: number) {
     const col = colOfCellNumber(cellNumber);
     let numberOfOccurence: number = 0;
 
@@ -502,26 +513,26 @@ function numberOfOccurenceInPossibleValuesInCol(board: SudokuBoard, cellNumber: 
     }
 
     function incrementNumberOfOccurenceIfItsPossibleValue(cell: SudokuBoardCell) {
-        if (cell.possibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
+        if (cell.calculatedPossibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
             numberOfOccurence += 1;
         }
     }
 }
 
-function numberOfOccurenceInPossibleValuesInBlock(board: SudokuBoard, cellNumber: number, possibleValue: number) {
+function numberOfOccurenceInCalculatedPossibleValuesInBlock(board: SudokuBoard, cellNumber: number, possibleValue: number) {
     const block = blockOfCellNumber(cellNumber);
     let numberOfOccurence: number = 0;
 
     // for each cells in the block
     // is the the possibleValue in the possibleValues?
     cellsNumberOfTheBlock(block).forEach(cellNumber => {
-        incrementNumberOfOccurenceIfItsPossibleValue(board.cells[cellNumber]);        
+        incrementNumberOfOccurenceIfItsPossibleValue(board.cells[cellNumber]);
     });
 
     return numberOfOccurence;
 
     function incrementNumberOfOccurenceIfItsPossibleValue(cell: SudokuBoardCell) {
-        if (cell.possibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
+        if (cell.calculatedPossibleValues.find(possibleValueOfThecell => possibleValueOfThecell === possibleValue)) {
             numberOfOccurence += 1;
         }
     }

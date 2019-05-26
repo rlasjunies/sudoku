@@ -17,6 +17,7 @@ export function reducer(state: AppState, _action: Action): AppState {
       sudokuPage: {
         ...state.sudokuPage,
         board: newBoard,
+        
         boardHistory: newHistory, // initialize the history with the new board
       }
     }

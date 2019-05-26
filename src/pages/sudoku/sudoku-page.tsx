@@ -3,13 +3,16 @@ import { AppState, store } from 'store/index';
 import * as sudokuValueTyped from "store/sudoku/sudoku.actions.typeNumber";
 import * as sudokuDraftTyped from "store/sudoku/sudoku.actions.typeDraftNumber";
 import * as sudokuClearTyped from "store/sudoku/sudoku.actions.clearCellValue";
-import { SudokuBoard, initializeSudokuBoard, SolutionsByRules } from 'services/sudoku/sudoku';
+import { SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration, sudokuWizardConfigurationInit } from 'services/sudoku/sudoku';
 import * as sudokuUndo from 'store/sudoku/sudoku.actions.undoLastMove';
 import * as sudokuCellSelected from "store/sudoku/sudoku.actions.selectCell";
 import * as pauseGame_PauseTimer from "store/_combinedActions/actions.pauseGame_PauseTimer";
 import * as resumeGame_ResumeTimer from "store/_combinedActions/actions.resumeGame_ResumeTimer";
 import * as navigateToSplashScreen_PauseTimer from "store/_combinedActions/actions.navigateToSplashScreen_StopTimer";
 import * as navigateToNewGame from "store/app-root/app-root.actions.navigateToCreateNewBoard";
+import * as navigateToWizard from "store/_combinedActions/actions.navigateToWiazrd_PauseTimer";
+import * as autoCalculateCandidateAction from "store/sudoku/sudoku.actions.wizard.AutoCalculateCandidatesToggle";
+
 @Component({
   tag: 'sudoku-page',
   styleUrl: 'sudoku-page.css'
@@ -31,7 +34,7 @@ export class SudokuPage {
   @State() gameOnGoing: boolean;
   @State() gameInPause: boolean;
   @State() solutionsByRules: SolutionsByRules;
-
+  @State() wizardConfiguration: SudokuWizardConfiguration = sudokuWizardConfigurationInit;
   unsubscribeStateChanged: () => void;
 
   componentDidUnload() {
@@ -59,9 +62,7 @@ export class SudokuPage {
     this.gameInPause = state.sudokuPage.gameInPause;
 
     this.solutionsByRules = state.sudokuPage.solutionsByRules;
-    // if (this.cellSelected !== -1) {
-    //   console.log(`is there a value in the cell${this.cellSelected} - this.board.cells[this.cellSelected].value=${this.board.cells[this.cellSelected].value}, compare with 0?:${this.board.cells[this.cellSelected].value !== 0}`)
-    // }
+    this.wizardConfiguration = state.sudokuPage.wizardConfiguration;
   }
 
   dispatchCellSelection({ detail: cell }) {
@@ -80,6 +81,10 @@ export class SudokuPage {
 
   dispatchUndoTyped() {
     store.dispatch(sudokuUndo.action());
+  }
+
+  dispatchNavigateToWizardPage() {
+    store.dispatch(navigateToWizard.action());
   }
 
   onBackClickHandler() {
@@ -102,6 +107,13 @@ export class SudokuPage {
     store.dispatch(navigateToNewGame.action());
   }
 
+  onWizardClickHandler() {
+    store.dispatch(navigateToWizard.action());
+  }
+
+  onCalculateCandidatesClickHandler() {
+    store.dispatch(autoCalculateCandidateAction.action());
+  }
   render() {
     return (
       <acc-page>
@@ -121,10 +133,14 @@ export class SudokuPage {
           </button>
 
           <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
-            onClick={() => this.onTimerSwitch()}>
+            onClick={() => this.onCalculateCandidatesClickHandler()}>
+            <clr-icon shape="calculator" size="35" class={this.wizardConfiguration.calculateCandidates ? "is-solid" : ""} ></clr-icon>
+          </button>
+          <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
+            onClick={() => this.onWizardClickHandler()}>
             {/* <clr-icon shape={!this.gameInPause ? "pause" : "play"}></clr-icon>{!this.gameInPause ? "Pause" : "Resume"} */}
             {/* <clr-icon shape="wand" size="35"></clr-icon>Help */}
-            <clr-icon shape="wand" size="35"></clr-icon>
+            <clr-icon shape="lightbulb" size="35"></clr-icon>
           </button>
 
         </div>
@@ -142,6 +158,7 @@ export class SudokuPage {
                 solvedBlock={this.blockSolved}
                 boardSolved={this.boardSolved}
                 solutionsByRules={this.solutionsByRules}
+                wizardConfiguration={this.wizardConfiguration}
 
                 onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
               </sudoku-board-component>
