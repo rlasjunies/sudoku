@@ -4,6 +4,8 @@ import { AppState } from 'store/app.state';
 import * as navigateToSudoku_ResumeTimer from 'store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
 import * as showUniqueCandidateAction from "store/sudoku/sudoku.actions.wizard.showsUniqueCandidateToggle";
 import * as showUniqueCandidateInZoneAction from "store/sudoku/sudoku.actions.wizard.showsUniqueCandidateInZoneToggle";
+import * as autoCalculateCandidateAction from "store/sudoku/sudoku.actions.wizard.AutoCalculateCandidatesToggle";
+import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from 'services/sudoku/sudoku';
 
 @Component({
   tag: 'sudoku-wizard-page',
@@ -15,6 +17,8 @@ export class SudokuWizardPage {
   @State() calculateCandidates: boolean;
   @State() showUniquePossibleValue: boolean;
   @State() showUniqueOccurenceInZones: boolean;
+  @State() wizardConfiguration: SudokuWizardConfiguration = sudokuWizardConfigurationInit;
+
 
   unsubscribeStateChanged: () => void;
 
@@ -41,6 +45,10 @@ export class SudokuWizardPage {
   }
   onShowUniqueCandidateInZoneClickHandler() {
     store.dispatch(showUniqueCandidateInZoneAction.action());
+  }
+
+  onCalculateCandidatesClickHandler() {
+    store.dispatch(autoCalculateCandidateAction.action());
   }
 
   render() {
@@ -80,6 +88,14 @@ export class SudokuWizardPage {
             ></input>
             Shows the unique candidates in row, column or zone
           </label>
+          {/* <div>
+            <clr-icon shape="calculator" size="35" class={this.wizardConfiguration.calculateCandidates ? "is-solid" : ""}></clr-icon>
+            <button class=""
+              onClick={() => this.onCalculateCandidatesClickHandler()}>
+              Calculate candidate
+          </button> 
+          </div> */}
+              {/* <clr-icon shape="calculator" size="35" class={this.wizardConfiguration.calculateCandidates ? "is-solid" : ""}></clr-icon> */}
         </div>
       </acc-page >
     );

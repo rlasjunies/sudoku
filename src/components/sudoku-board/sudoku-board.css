@@ -64,19 +64,19 @@ sudoku-board-component .sudoku-board .column2, .column5, .column8 {
 }
 
 sudoku-board-component .area-selected {
-    background-color: cornsilk;
+    background-color: rgb(248, 247, 244);
 }
 
 sudoku-board-component .selected {
-    background-color: antiquewhite;
+    background-color: rgb(248, 246, 244);
 }
 
 sudoku-board-component .UniquePossibleValue{
-    background-color: aquamarine;
+    background-color: rgb(237, 242, 245);
 }
 
 sudoku-board-component .UniqueOccurenceInZone{
-    background-color: cadetblue;
+    background-color:rgb(240, 250, 235);
 }
 
 

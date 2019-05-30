@@ -1,4 +1,4 @@
-import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard, resolverWorkForce, isPossibleNumberx, resolveByRules, possibleValues } from "../../services/sudoku/sudoku";
+import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard, resolverWorkForce, isPossibleNumberx, resolveByRules } from "../../services/sudoku/sudoku";
 import { Action } from "services/store/store";
 import { AppState, store } from "store/index";
 
@@ -75,7 +75,7 @@ export function reducer(state: AppState, action: Action): AppState {
     }
 
     // TODO: this should be done in the service, 
-    newBoard = possibleValues(newBoard);
+    // newBoard = possibleValues(newBoard);
 
     solutionsByRules = resolveByRules(newBoard);
 

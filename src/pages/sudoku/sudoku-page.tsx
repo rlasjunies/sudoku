@@ -132,10 +132,10 @@ export class SudokuPage {
             <clr-icon shape={!this.gameInPause ? "pause" : "play"} size="35"></clr-icon>
           </button>
 
-          <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
+          {/* <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
             onClick={() => this.onCalculateCandidatesClickHandler()}>
             <clr-icon shape="calculator" size="35" class={this.wizardConfiguration.calculateCandidates ? "is-solid" : ""} ></clr-icon>
-          </button>
+          </button> */}
           <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
             onClick={() => this.onWizardClickHandler()}>
             {/* <clr-icon shape={!this.gameInPause ? "pause" : "play"}></clr-icon>{!this.gameInPause ? "Pause" : "Resume"} */}
