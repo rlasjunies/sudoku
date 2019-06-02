@@ -34,9 +34,8 @@ export class Store {
         this.name = name;
 
         // retrieve from local storage the previous state persisted
-        const retrievePreviousState = retrieveInLocalStorage(this.name);
+        const retrievePreviousState = retrieveStateFromLocalStorage(this.name);
         this._state = (retrievePreviousState !== null) ? retrievePreviousState : initialState;
-        this._state = initialState;
         this._state.actionName = "STORE_INIT"
         // console.log("STORE CONSTRUCTED!", this._state);
     }
@@ -92,8 +91,8 @@ export class Store {
 
         this._state = this.reduce(this._state, action);
         this._state.actionName = action.name;
+        persistStateInLocalStorage(this._state, this.name);
 
-        persist(this._state, this.name);
         this.reactions.forEach(reaction => reaction.function.call(reaction.context, this._state));
     }
 
@@ -106,7 +105,7 @@ export class Store {
     }
 }
 
-function persist(state: any, key: string) {
+function persistStateInLocalStorage(state: any, key: string) {
     if (typeof localStorage != 'undefined') {
         localStorage.setItem(key, JSON.stringify(state));
     } else {
@@ -114,7 +113,7 @@ function persist(state: any, key: string) {
     }
 }
 
-function retrieveInLocalStorage(key: string): any {
+function retrieveStateFromLocalStorage(key: string): any {
     if (typeof localStorage != 'undefined') {
         let storePersisted = localStorage.getItem(key);
         if (storePersisted !== null) storePersisted = JSON.parse(storePersisted);
