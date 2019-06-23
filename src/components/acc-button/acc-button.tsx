@@ -1,4 +1,4 @@
-import { Component, Event, EventEmitter, Element } from '@stencil/core';
+import { Component, Event, EventEmitter, Element, h } from '@stencil/core';
 
 @Component({
   tag: 'acc-button',

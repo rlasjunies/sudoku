@@ -1,6 +1,6 @@
-import { Action } from "services/store/store";
-import { AppState, store } from "store/index";
-
+import { store } from '../../store/appStore';
+import { AppState} from '../../store/app.state';
+import { Action } from "../../services/store/store";
 export function action(): Action {
   return {
     name: "NAVIGATETO_SPLASHPAGE",

@@ -1,17 +1,18 @@
-import { Component, State, Element } from '@stencil/core';
-import { AppState, store } from 'store/index';
-import * as sudokuValueTyped from "store/sudoku/sudoku.actions.typeNumber";
-import * as sudokuDraftTyped from "store/sudoku/sudoku.actions.typeDraftNumber";
-import * as sudokuClearTyped from "store/sudoku/sudoku.actions.clearCellValue";
-import { SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration, sudokuWizardConfigurationInit } from 'services/sudoku/sudoku';
-import * as sudokuUndo from 'store/sudoku/sudoku.actions.undoLastMove';
-import * as sudokuCellSelected from "store/sudoku/sudoku.actions.selectCell";
-import * as pauseGame_PauseTimer from "store/_combinedActions/actions.pauseGame_PauseTimer";
-import * as resumeGame_ResumeTimer from "store/_combinedActions/actions.resumeGame_ResumeTimer";
-import * as navigateToSplashScreen_PauseTimer from "store/_combinedActions/actions.navigateToSplashScreen_StopTimer";
-import * as navigateToNewGame from "store/app-root/app-root.actions.navigateToCreateNewBoard";
-import * as navigateToWizard from "store/_combinedActions/actions.navigateToWiazrd_PauseTimer";
-import * as autoCalculateCandidateAction from "store/sudoku/sudoku.actions.wizard.AutoCalculateCandidatesToggle";
+import { Component, State, Element, h } from '@stencil/core';
+import { AppState} from '../../store//app.state';
+import { store } from '../../store/appStore';
+import * as sudokuValueTyped from "../../store/sudoku/sudoku.actions.typeNumber";
+import * as sudokuDraftTyped from "../../store/sudoku/sudoku.actions.typeDraftNumber";
+import * as sudokuClearTyped from "../../store/sudoku/sudoku.actions.clearCellValue";
+import * as sudokuUndo from '../../store/sudoku/sudoku.actions.undoLastMove';
+import * as sudokuCellSelected from "../../store/sudoku/sudoku.actions.selectCell";
+import * as pauseGame_PauseTimer from "../../store/_combinedActions/actions.pauseGame_PauseTimer";
+import * as resumeGame_ResumeTimer from "../../store/_combinedActions/actions.resumeGame_ResumeTimer";
+import * as navigateToSplashScreen_PauseTimer from "../../store/_combinedActions/actions.navigateToSplashScreen_StopTimer";
+import * as navigateToNewGame from "../../store/app-root/app-root.actions.navigateToCreateNewBoard";
+import * as navigateToWizard from "../../store/_combinedActions/actions.navigateToWiazrd_PauseTimer";
+import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculateCandidatesToggle";
+import { SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../services/sudoku/sudoku';
 
 @Component({
   tag: 'sudoku-page',

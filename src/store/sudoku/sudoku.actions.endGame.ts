@@ -1,5 +1,6 @@
-import { Action } from "services/store/store";
-import { AppState, store } from "store/index";
+import { Action } from "../../services/store/store";
+import { AppState} from '../../store//app.state';
+import { store } from '../../store//appStore';
 
 export function action(): Action {
   return {

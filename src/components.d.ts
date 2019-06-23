@@ -5,9 +5,7 @@
  */
 
 
-import '@stencil/core';
-
-
+import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   SolutionsByRules,
   SudokuBoard,
@@ -15,57 +13,31 @@ import {
   SudokuWizardConfiguration,
 } from './services/sudoku/sudoku';
 
-
 export namespace Components {
-
   interface AccButton {}
-  interface AccButtonAttributes extends StencilHTMLAttributes {
-    'onClick_'?: (event: CustomEvent) => void;
-  }
-
   interface AccFlipbox {
     'flip': boolean;
   }
-  interface AccFlipboxAttributes extends StencilHTMLAttributes {
-    'flip'?: boolean;
+  interface AccPage {
+    'hide': () => Promise<void>;
+    'show': () => Promise<void>;
   }
-
   interface AccSwitch {}
-  interface AccSwitchAttributes extends StencilHTMLAttributes {
-    'onSwitch'?: (event: CustomEvent) => void;
-  }
-
   interface AccTimer {
     'time': number;
   }
-  interface AccTimerAttributes extends StencilHTMLAttributes {
-    'time'?: number;
-  }
-
+  interface AppRoot {}
+  interface CreateNewBoard {}
   interface KeyBoard3 {
     'hideClearKey': boolean;
     'hideUndoKey': boolean;
     'remainingNumbers': number[];
   }
-  interface KeyBoard3Attributes extends StencilHTMLAttributes {
-    'hideClearKey'?: boolean;
-    'hideUndoKey'?: boolean;
-    'onClearClicked'?: (event: CustomEvent) => void;
-    'onDraftNumberClicked'?: (event: CustomEvent) => void;
-    'onNumberClicked'?: (event: CustomEvent) => void;
-    'onUndoClicked'?: (event: CustomEvent) => void;
-    'remainingNumbers'?: number[];
-  }
-
+  interface SplashScreenPage {}
   interface SudokuBoardCellComponent {
     'candidates': boolean[];
     'cell': SudokuBoardCell;
   }
-  interface SudokuBoardCellComponentAttributes extends StencilHTMLAttributes {
-    'candidates'?: boolean[];
-    'cell'?: SudokuBoardCell;
-  }
-
   interface SudokuBoardComponent {
     'board': SudokuBoard;
     'boardSolved': boolean;
@@ -78,74 +50,11 @@ export namespace Components {
     'solvedRow': number;
     'wizardConfiguration': SudokuWizardConfiguration;
   }
-  interface SudokuBoardComponentAttributes extends StencilHTMLAttributes {
-    'board'?: SudokuBoard;
-    'boardSolved'?: boolean;
-    'cellSelected'?: number;
-    'incorrectCells'?: number[];
-    'lastCellOfTheGame'?: number;
-    'onCellSelection'?: (event: CustomEvent) => void;
-    'solutionsByRules'?: SolutionsByRules;
-    'solvedBlock'?: number;
-    'solvedCol'?: number;
-    'solvedRow'?: number;
-    'wizardConfiguration'?: SudokuWizardConfiguration;
-  }
-
-  interface AccPage {
-    'hide': () => void;
-    'show': () => void;
-  }
-  interface AccPageAttributes extends StencilHTMLAttributes {}
-
-  interface AppRoot {}
-  interface AppRootAttributes extends StencilHTMLAttributes {}
-
-  interface CreateNewBoard {}
-  interface CreateNewBoardAttributes extends StencilHTMLAttributes {}
-
-  interface SplashScreenPage {}
-  interface SplashScreenPageAttributes extends StencilHTMLAttributes {}
-
-  interface SudokuWizardPage {}
-  interface SudokuWizardPageAttributes extends StencilHTMLAttributes {}
-
   interface SudokuPage {}
-  interface SudokuPageAttributes extends StencilHTMLAttributes {}
+  interface SudokuWizardPage {}
 }
 
 declare global {
-  interface StencilElementInterfaces {
-    'AccButton': Components.AccButton;
-    'AccFlipbox': Components.AccFlipbox;
-    'AccSwitch': Components.AccSwitch;
-    'AccTimer': Components.AccTimer;
-    'KeyBoard3': Components.KeyBoard3;
-    'SudokuBoardCellComponent': Components.SudokuBoardCellComponent;
-    'SudokuBoardComponent': Components.SudokuBoardComponent;
-    'AccPage': Components.AccPage;
-    'AppRoot': Components.AppRoot;
-    'CreateNewBoard': Components.CreateNewBoard;
-    'SplashScreenPage': Components.SplashScreenPage;
-    'SudokuWizardPage': Components.SudokuWizardPage;
-    'SudokuPage': Components.SudokuPage;
-  }
-
-  interface StencilIntrinsicElements {
-    'acc-button': Components.AccButtonAttributes;
-    'acc-flipbox': Components.AccFlipboxAttributes;
-    'acc-switch': Components.AccSwitchAttributes;
-    'acc-timer': Components.AccTimerAttributes;
-    'key-board3': Components.KeyBoard3Attributes;
-    'sudoku-board-cell-component': Components.SudokuBoardCellComponentAttributes;
-    'sudoku-board-component': Components.SudokuBoardComponentAttributes;
-    'acc-page': Components.AccPageAttributes;
-    'app-root': Components.AppRootAttributes;
-    'create-new-board': Components.CreateNewBoardAttributes;
-    'splash-screen-page': Components.SplashScreenPageAttributes;
-    'sudoku-wizard-page': Components.SudokuWizardPageAttributes;
-    'sudoku-page': Components.SudokuPageAttributes;
-  }
 
 
   interface HTMLAccButtonElement extends Components.AccButton, HTMLStencilElement {}
@@ -160,6 +69,12 @@ declare global {
     new (): HTMLAccFlipboxElement;
   };
 
+  interface HTMLAccPageElement extends Components.AccPage, HTMLStencilElement {}
+  var HTMLAccPageElement: {
+    prototype: HTMLAccPageElement;
+    new (): HTMLAccPageElement;
+  };
+
   interface HTMLAccSwitchElement extends Components.AccSwitch, HTMLStencilElement {}
   var HTMLAccSwitchElement: {
     prototype: HTMLAccSwitchElement;
@@ -170,30 +85,6 @@ declare global {
   var HTMLAccTimerElement: {
     prototype: HTMLAccTimerElement;
     new (): HTMLAccTimerElement;
-  };
-
-  interface HTMLKeyBoard3Element extends Components.KeyBoard3, HTMLStencilElement {}
-  var HTMLKeyBoard3Element: {
-    prototype: HTMLKeyBoard3Element;
-    new (): HTMLKeyBoard3Element;
-  };
-
-  interface HTMLSudokuBoardCellComponentElement extends Components.SudokuBoardCellComponent, HTMLStencilElement {}
-  var HTMLSudokuBoardCellComponentElement: {
-    prototype: HTMLSudokuBoardCellComponentElement;
-    new (): HTMLSudokuBoardCellComponentElement;
-  };
-
-  interface HTMLSudokuBoardComponentElement extends Components.SudokuBoardComponent, HTMLStencilElement {}
-  var HTMLSudokuBoardComponentElement: {
-    prototype: HTMLSudokuBoardComponentElement;
-    new (): HTMLSudokuBoardComponentElement;
-  };
-
-  interface HTMLAccPageElement extends Components.AccPage, HTMLStencilElement {}
-  var HTMLAccPageElement: {
-    prototype: HTMLAccPageElement;
-    new (): HTMLAccPageElement;
   };
 
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
@@ -208,16 +99,28 @@ declare global {
     new (): HTMLCreateNewBoardElement;
   };
 
+  interface HTMLKeyBoard3Element extends Components.KeyBoard3, HTMLStencilElement {}
+  var HTMLKeyBoard3Element: {
+    prototype: HTMLKeyBoard3Element;
+    new (): HTMLKeyBoard3Element;
+  };
+
   interface HTMLSplashScreenPageElement extends Components.SplashScreenPage, HTMLStencilElement {}
   var HTMLSplashScreenPageElement: {
     prototype: HTMLSplashScreenPageElement;
     new (): HTMLSplashScreenPageElement;
   };
 
-  interface HTMLSudokuWizardPageElement extends Components.SudokuWizardPage, HTMLStencilElement {}
-  var HTMLSudokuWizardPageElement: {
-    prototype: HTMLSudokuWizardPageElement;
-    new (): HTMLSudokuWizardPageElement;
+  interface HTMLSudokuBoardCellComponentElement extends Components.SudokuBoardCellComponent, HTMLStencilElement {}
+  var HTMLSudokuBoardCellComponentElement: {
+    prototype: HTMLSudokuBoardCellComponentElement;
+    new (): HTMLSudokuBoardCellComponentElement;
+  };
+
+  interface HTMLSudokuBoardComponentElement extends Components.SudokuBoardComponent, HTMLStencilElement {}
+  var HTMLSudokuBoardComponentElement: {
+    prototype: HTMLSudokuBoardComponentElement;
+    new (): HTMLSudokuBoardComponentElement;
   };
 
   interface HTMLSudokuPageElement extends Components.SudokuPage, HTMLStencilElement {}
@@ -226,45 +129,98 @@ declare global {
     new (): HTMLSudokuPageElement;
   };
 
+  interface HTMLSudokuWizardPageElement extends Components.SudokuWizardPage, HTMLStencilElement {}
+  var HTMLSudokuWizardPageElement: {
+    prototype: HTMLSudokuWizardPageElement;
+    new (): HTMLSudokuWizardPageElement;
+  };
   interface HTMLElementTagNameMap {
-    'acc-button': HTMLAccButtonElement
-    'acc-flipbox': HTMLAccFlipboxElement
-    'acc-switch': HTMLAccSwitchElement
-    'acc-timer': HTMLAccTimerElement
-    'key-board3': HTMLKeyBoard3Element
-    'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement
-    'sudoku-board-component': HTMLSudokuBoardComponentElement
-    'acc-page': HTMLAccPageElement
-    'app-root': HTMLAppRootElement
-    'create-new-board': HTMLCreateNewBoardElement
-    'splash-screen-page': HTMLSplashScreenPageElement
-    'sudoku-wizard-page': HTMLSudokuWizardPageElement
-    'sudoku-page': HTMLSudokuPageElement
-  }
-
-  interface ElementTagNameMap {
     'acc-button': HTMLAccButtonElement;
     'acc-flipbox': HTMLAccFlipboxElement;
+    'acc-page': HTMLAccPageElement;
     'acc-switch': HTMLAccSwitchElement;
     'acc-timer': HTMLAccTimerElement;
-    'key-board3': HTMLKeyBoard3Element;
-    'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement;
-    'sudoku-board-component': HTMLSudokuBoardComponentElement;
-    'acc-page': HTMLAccPageElement;
     'app-root': HTMLAppRootElement;
     'create-new-board': HTMLCreateNewBoardElement;
+    'key-board3': HTMLKeyBoard3Element;
     'splash-screen-page': HTMLSplashScreenPageElement;
-    'sudoku-wizard-page': HTMLSudokuWizardPageElement;
+    'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement;
+    'sudoku-board-component': HTMLSudokuBoardComponentElement;
     'sudoku-page': HTMLSudokuPageElement;
+    'sudoku-wizard-page': HTMLSudokuWizardPageElement;
   }
-
-
-  export namespace JSX {
-    export interface Element {}
-    export interface IntrinsicElements extends StencilIntrinsicElements {
-      [tagName: string]: any;
-    }
-  }
-  export interface HTMLAttributes extends StencilHTMLAttributes {}
-
 }
+
+declare namespace LocalJSX {
+  interface AccButton extends JSXBase.HTMLAttributes<HTMLAccButtonElement> {
+    'onClick_'?: (event: CustomEvent<any>) => void;
+  }
+  interface AccFlipbox extends JSXBase.HTMLAttributes<HTMLAccFlipboxElement> {
+    'flip'?: boolean;
+  }
+  interface AccPage extends JSXBase.HTMLAttributes<HTMLAccPageElement> {}
+  interface AccSwitch extends JSXBase.HTMLAttributes<HTMLAccSwitchElement> {
+    'onSwitch'?: (event: CustomEvent<any>) => void;
+  }
+  interface AccTimer extends JSXBase.HTMLAttributes<HTMLAccTimerElement> {
+    'time'?: number;
+  }
+  interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {}
+  interface CreateNewBoard extends JSXBase.HTMLAttributes<HTMLCreateNewBoardElement> {}
+  interface KeyBoard3 extends JSXBase.HTMLAttributes<HTMLKeyBoard3Element> {
+    'hideClearKey'?: boolean;
+    'hideUndoKey'?: boolean;
+    'onClearClicked'?: (event: CustomEvent<any>) => void;
+    'onDraftNumberClicked'?: (event: CustomEvent<any>) => void;
+    'onNumberClicked'?: (event: CustomEvent<any>) => void;
+    'onUndoClicked'?: (event: CustomEvent<any>) => void;
+    'remainingNumbers'?: number[];
+  }
+  interface SplashScreenPage extends JSXBase.HTMLAttributes<HTMLSplashScreenPageElement> {}
+  interface SudokuBoardCellComponent extends JSXBase.HTMLAttributes<HTMLSudokuBoardCellComponentElement> {
+    'candidates'?: boolean[];
+    'cell'?: SudokuBoardCell;
+  }
+  interface SudokuBoardComponent extends JSXBase.HTMLAttributes<HTMLSudokuBoardComponentElement> {
+    'board'?: SudokuBoard;
+    'boardSolved'?: boolean;
+    'cellSelected'?: number;
+    'incorrectCells'?: number[];
+    'lastCellOfTheGame'?: number;
+    'onCellSelection'?: (event: CustomEvent<any>) => void;
+    'solutionsByRules'?: SolutionsByRules;
+    'solvedBlock'?: number;
+    'solvedCol'?: number;
+    'solvedRow'?: number;
+    'wizardConfiguration'?: SudokuWizardConfiguration;
+  }
+  interface SudokuPage extends JSXBase.HTMLAttributes<HTMLSudokuPageElement> {}
+  interface SudokuWizardPage extends JSXBase.HTMLAttributes<HTMLSudokuWizardPageElement> {}
+
+  interface IntrinsicElements {
+    'acc-button': AccButton;
+    'acc-flipbox': AccFlipbox;
+    'acc-page': AccPage;
+    'acc-switch': AccSwitch;
+    'acc-timer': AccTimer;
+    'app-root': AppRoot;
+    'create-new-board': CreateNewBoard;
+    'key-board3': KeyBoard3;
+    'splash-screen-page': SplashScreenPage;
+    'sudoku-board-cell-component': SudokuBoardCellComponent;
+    'sudoku-board-component': SudokuBoardComponent;
+    'sudoku-page': SudokuPage;
+    'sudoku-wizard-page': SudokuWizardPage;
+  }
+}
+
+export { LocalJSX as JSX };
+
+
+declare module "@stencil/core" {
+  export namespace JSX {
+    interface IntrinsicElements extends LocalJSX.IntrinsicElements {}
+  }
+}
+
+

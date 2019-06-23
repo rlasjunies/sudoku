@@ -1,6 +1,7 @@
-import * as sudokuTimerTick from "store/sudoku/sudoku.actions.timer.Tick";
-import { AppState, store } from "store/index";
-import { Store } from "services/store/store";
+import * as sudokuTimerTick from "../../store/sudoku/sudoku.actions.timer.Tick";
+import { AppState} from '../../store/app.state';
+import { store } from '../../store/appStore';
+import { Store } from "../../services/store/store";
 
 // ok is not really a middleware
 // add a timer service

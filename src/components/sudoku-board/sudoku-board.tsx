@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Event, Element, Prop, Watch } from '@stencil/core';
+import { Component, EventEmitter, Event, Element, Prop, Watch, h } from '@stencil/core';
 import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration } from "../../services/sudoku/sudoku";
 import { chenillardNorth, chenillardSouth, chenillardWest, chenillardEast, chenillardNorthEast, chenillardSouthEast, chenillardSouthWest, chenillardNorthWest } from './sudoku-chenillard';
 

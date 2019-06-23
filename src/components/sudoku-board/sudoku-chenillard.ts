@@ -1,4 +1,4 @@
-import { blockOfColRow } from "services/sudoku/sudoku";
+import { blockOfColRow } from "../../services/sudoku/sudoku";
 
 export function chenillardNorth(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
 

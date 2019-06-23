@@ -1,7 +1,8 @@
-import { Action } from "services/store/store";
-import { AppState, store } from "store/index";
-import * as endGame from "store/sudoku/sudoku.actions.endGame";
-import * as pauseTimer from "store/sudoku/sudoku.actions.timer.Pause";
+import { Action } from "../../services/store/store";
+import { AppState} from '../../store//app.state';
+import { store } from '../../store//appStore';
+import * as endGame from "../../store/sudoku/sudoku.actions.endGame";
+import * as pauseTimer from "../../store/sudoku/sudoku.actions.timer.Pause";
 
 export function action(): Action {
   return {

@@ -1,11 +1,11 @@
-import { Component, State, Element } from '@stencil/core';
-import { store } from 'store/appStore';
-import { AppState } from 'store/app.state';
-import * as navigateToSudoku_ResumeTimer from 'store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
-import * as showUniqueCandidateAction from "store/sudoku/sudoku.actions.wizard.showsUniqueCandidateToggle";
-import * as showUniqueCandidateInZoneAction from "store/sudoku/sudoku.actions.wizard.showsUniqueCandidateInZoneToggle";
-import * as autoCalculateCandidateAction from "store/sudoku/sudoku.actions.wizard.AutoCalculateCandidatesToggle";
-import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from 'services/sudoku/sudoku';
+import { Component, State, Element, h } from '@stencil/core';
+import { store } from '../../store/appStore';
+import { AppState } from '../../store/app.state';
+import * as navigateToSudoku_ResumeTimer from '../../store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
+import * as showUniqueCandidateAction from "../../store/sudoku/sudoku.actions.wizard.showsUniqueCandidateToggle";
+import * as showUniqueCandidateInZoneAction from "../../store/sudoku/sudoku.actions.wizard.showsUniqueCandidateInZoneToggle";
+import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculateCandidatesToggle";
+import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../services/sudoku/sudoku';
 
 @Component({
   tag: 'sudoku-wizard-page',

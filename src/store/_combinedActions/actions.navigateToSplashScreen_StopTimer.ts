@@ -1,7 +1,8 @@
-import { Action } from "services/store/store";
-import { AppState, store } from "store/index";
-import * as navigateToSplashScreen from "store/app-root/app-root.actions.navigateToSplashScreen";
-import * as timerPause from "store/sudoku/sudoku.actions.timer.Pause";
+import { Action } from "../../services/store/store";
+import { AppState} from '../../store/app.state';
+import { store } from '../../store/appStore';
+import * as navigateToSplashScreen from "../../store/app-root/app-root.actions.navigateToSplashScreen";
+import * as timerPause from "../../store/sudoku/sudoku.actions.timer.Pause";
 
 export function action(): Action {
   return {

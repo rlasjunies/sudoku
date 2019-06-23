@@ -1,6 +1,7 @@
 import { sudokuBoardClone } from "../../services/sudoku/sudoku";
-import { Action } from "services/store/store";
-import { AppState, store } from "store/index";
+import { Action } from "../../services/store/store";
+import { AppState} from '../../store//app.state';
+import { store } from '../../store//appStore';
 
 export const actionNameDraftNumberTyped = "TYPE_DRAFT_NUMBER";
 export function action(value: number): Action {

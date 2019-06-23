@@ -1,8 +1,9 @@
-import { Action } from "services/store/store";
-import { AppState, store } from "store/index";
-import * as navigateToSudoku from "store/app-root/app-root.actions.navigateToSudokuPage";
-import * as timerResume from "store/sudoku/sudoku.actions.timer.Resume";
-import * as resumerGame from "store/sudoku/sudoku.actions.resumeGame";
+import { Action } from "../../services/store/store";
+import { AppState} from '../../store/app.state';
+import { store } from '../../store/appStore';
+import * as navigateToSudoku from "../../store/app-root/app-root.actions.navigateToSudokuPage";
+import * as timerResume from "../../store/sudoku/sudoku.actions.timer.Resume";
+import * as resumerGame from "../../store/sudoku/sudoku.actions.resumeGame";
 
 export function action(): Action {
   return {

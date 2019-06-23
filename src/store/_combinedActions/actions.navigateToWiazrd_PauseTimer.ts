@@ -1,9 +1,8 @@
-import { Action } from "services/store/store";
-import { AppState, store } from "store/index";
-// import * as navigateToSudoku from "store/app-root/app-root.actions.navigateToSudokuPage";
-import * as navigateToWizardConfig from "store/app-root/app-root.actions.navigateToWizardConfiguration";
-import * as timerPause from "store/sudoku/sudoku.actions.timer.Pause";
-// import * as resumerGame from "store/sudoku/sudoku.actions.resumeGame";
+import { Action } from "../../services/store/store";
+import { AppState} from '../../store/app.state';
+import { store } from '../../store/appStore';
+import * as navigateToWizardConfig from "../../store/app-root/app-root.actions.navigateToWizardConfiguration";
+import * as timerPause from "../../store/sudoku/sudoku.actions.timer.Pause";
 
 export function action(): Action {
   return {

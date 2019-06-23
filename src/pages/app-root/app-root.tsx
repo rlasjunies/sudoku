@@ -1,12 +1,13 @@
-import { Component, State, Element, Watch } from '@stencil/core';
-import { AppState, store } from 'store/index';
+import { Component, State, Element, Watch, h } from '@stencil/core';
+import { AppState} from '../../store/app.state';
+import { store } from '../../store/appStore';
 
 // @ts-ignore
-import * as storeLogger from "store/middleware/logger";
+import * as storeLogger from "../../store/middleware/logger";
 // @ts-ignore
-import * as storeTimer from "store/middleware/timerService";
+import * as storeTimer from "../../store/middleware/timerService";
 
-import * as endGameStopTimer from "store/_combinedActions/actions.endGame_StopTimer";
+import * as endGameStopTimer from "../../store/_combinedActions/actions.endGame_StopTimer";
 
 @Component({
   tag: 'app-root',

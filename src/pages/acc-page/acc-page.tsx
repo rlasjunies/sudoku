@@ -1,4 +1,4 @@
-import { Component, Method, Element } from '@stencil/core';
+import { Component, Method, Element, h } from '@stencil/core';
 
 @Component({
   tag: 'acc-page',
@@ -8,21 +8,21 @@ export class AccPage {
   @Element() element: HTMLElement;
 
   @Method()
-  hide() {
+  async hide() {
     // const page = this.element.querySelector("#page");
-    this.element.classList.remove("show");
-    this.element.classList.add("hide");
-    // this.element.addEventListener("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend", () => {
-    //   console.log("xxxxxxxxxxxxx animationend");
+    await this.element.classList.remove("show");
+    await this.element.classList.add("hide");
+    // this.element.addEventListener("webkitTransitionEnd o-Transition-end oTransitionEnd msTransitionEnd transition end", () => {
+    //   console.log("xxxxxxxxxxxxx animation end");
     //   //   // page.classList.add("hide");
     // });
   }
 
   @Method()
-  show() {
+  async show() {
     // const page = this.element.querySelector("#page");
-    this.element.classList.remove("hide");
-    this.element.classList.add("show");
+    await this.element.classList.remove("hide");
+    await this.element.classList.add("show");
   }
 
   render() {

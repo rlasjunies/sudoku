@@ -1,9 +1,10 @@
-import { Component, Element, State } from '@stencil/core';
-import { AppState, store } from 'store/index';
+import { AppState} from '../../store/app.state';
+import { store } from '../../store/appStore';
 
-import * as navigateToCreateNewBoard from 'store/app-root/app-root.actions.navigateToCreateNewBoard';
-import * as navigateToSudoku_ResumeTimer from 'store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
-import { isStandAlone, isWebWorker } from 'services/pwa';
+import * as navigateToCreateNewBoard from '../../store/app-root/app-root.actions.navigateToCreateNewBoard';
+import * as navigateToSudoku_ResumeTimer from '../../store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
+import { isStandAlone, isWebWorker } from '../../services/pwa';
+import { Component, Element, State, h } from '@stencil/core';
 
 @Component({
   tag: 'splash-screen-page',
@@ -18,7 +19,7 @@ export class SplashScreenPage {
   @State() deployed = isStandAlone();
   @State() webWorker = isWebWorker();
 
-  @State() version = "0.0.10";
+  @State() version = "10"; //version to be updated
   unsubscribeStateChanged: () => void;
 
   componentDidUnload() {

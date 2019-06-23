@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Event, Prop } from '@stencil/core';
+import { Component, EventEmitter, Event, Prop, h } from '@stencil/core';
 
 @Component({
   tag: 'key-board3',

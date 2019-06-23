@@ -1,11 +1,12 @@
-import { Action } from "services/store/store";
-import { AppState, store } from "store/index";
-import * as navigateToSudokuPage from "store/app-root/app-root.actions.navigateToSudokuPage";
-import * as generateBoard from "store/sudoku/sudoku.actions.generateBoard";
-import * as timerStart from "store/sudoku/sudoku.actions.timer.Start";
+import { Action } from "../../services/store/store";
+import { AppState} from '../../store/app.state';
+import { store } from '../../store/appStore';
+import * as navigateToSudokuPage from "../../store/app-root/app-root.actions.navigateToSudokuPage";
+import * as generateBoard from "../../store/sudoku/sudoku.actions.generateBoard";
+import * as timerStart from "../../store/sudoku/sudoku.actions.timer.Start";
 
 
-import { SudokuLevelType } from "services/sudoku/sudoku";
+import { SudokuLevelType } from "../../services/sudoku/sudoku";
 export function action(level: SudokuLevelType): Action {
   return {
     name: "GENERATEBOARD_NAVTOSUDOKU_STARTTIMER",

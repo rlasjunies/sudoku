@@ -44,6 +44,9 @@ https://www.aligneddev.net/blog/2017/pwa-links/
 
 https://www.joshmorony.com/building-a-pwa-with-stencil-an-introduction-to-stencil/
 
+> interesting option to improve the state management
+https://medium.com/@martin_hotell/redux-typescript-typed-actions-with-less-keystrokes-d984063901d
+
 # UI / UX - Clarity project
 
 https://vmware.github.io/clarity/
@@ -65,6 +68,8 @@ Dans le fichier de configuration launch.json,
 * le prendre, 
 généralement cela marche 
 
+> Paths aliases are ignored in unit tests
+> https://github.com/ionic-team/stencil/issues/1307
 
 # jsx type checking extension
 
