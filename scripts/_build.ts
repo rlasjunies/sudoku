@@ -20,7 +20,7 @@ const splashScreen = "./src/pages/splash-screen/splash-screen-page.tsx";
 echo("***************************************");
 echo(`replace version:${version} in file:${splashScreen}`);
 echo("***************************************");
-codeFiles.replaceVersionInCode(version, splashScreen);
+codeFiles.replaceBuildNumberInHomePageFromVersion(version, splashScreen);
 
 if (stenciljs.build()) {
   console.log("BUILD SUCCEEDED !!<<!");
