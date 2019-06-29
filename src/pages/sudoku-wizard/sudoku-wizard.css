@@ -65,6 +65,7 @@ sudoku-wizard-page .content{
   display: flex;
   flex: 1;
   flex-direction: column;
+  line-height: 1rem;
 }
 
 

@@ -52,7 +52,7 @@ splash-screen-page #version {
   /* flex:1; */
   /* display:flex; */
   /* font-size: 20vw; */
-  /* line-height: 20vw; */
+  line-height: 1rem;
   /* min-height: 20vw; */
   /* margin:auto; */
   /* padding:15px; */
