@@ -4,6 +4,7 @@ features:
   ☐ fix: add background for the icon of the app
   ✔ fix: size cells are too height when all candidates ... on the phone there is an overflow of the page @done (26/05/2019 à 11:27:05)
   ✔ fix: web browser - main page - overflow @done (26/05/2019 à 10:27:42)
+  ✔ candidates overflow the number cells @done (29/06/2019 à 19:08:28)
   
   ✔ put the pause button closed to the timer @done (1/31/2019, 9:16:55 PM)
   ☐ player can request auto generation of candidates

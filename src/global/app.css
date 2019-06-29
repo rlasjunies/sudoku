@@ -18,6 +18,14 @@ body {
 @import url('../../node_modules/@clr/ui/clr-ui.min.css');
 @import url('../../node_modules/@clr/icons/clr-icons.min.css');
 
+/* 
+  compensate line-height from clr-ui.css, defining line-height to 1rem, 
+  which create contrainsts in the flex, and then the candidate create overflow in the boardcell 
+*/
+body{
+  line-height: 0rem;
+}
+
 sudoku-var {
   --draftvalue-fontsize: 3vw;
 }
