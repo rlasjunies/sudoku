@@ -17,7 +17,7 @@ export class App {
 
   @Watch('route')
   routeWatcher(newValue: string, oldValue: string) {
-    console.log(`app-root2 new route - newvalue:${newValue} - oldValue:${oldValue}`);
+    // console.log(`app-root2 new route - newvalue:${newValue} - oldValue:${oldValue}`);
     if (newValue !== oldValue) {
       if (this.navElement) {
         console.log(`show route:${newValue}`);
@@ -39,13 +39,13 @@ export class App {
   }
 
   componentWillLoad() {
-    console.log('app-root2 Component will load');
+    // console.log('app-root2 Component will load');
     if (!this.navElement) {
-      console.log('app-root2 subscrubsption');
+      // console.log('app-root2 subscrubsption');
       this.navElement = this.element.querySelector('ion-nav');
       this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
     }else{
-      console.log('app-root2 déjà fait ');
+      // console.log('app-root2 déjà fait ');
     }
   }
 
