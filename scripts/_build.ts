@@ -16,7 +16,7 @@ echo("****************************************");
 packageJson.IncrementPatchVersion_WithNoCitTag();
 
 const version = packageJson.version();
-const splashScreen = "./src/pages/sudokuHome/sudoku-home.tsx";
+const splashScreen = "./src/pages/sudoku-home/sudoku-home.tsx";
 echo("****************************************");
 echo(`replace version:${version} in file:${splashScreen}`);
 echo("****************************************");

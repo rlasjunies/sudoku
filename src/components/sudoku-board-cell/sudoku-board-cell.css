@@ -73,7 +73,9 @@ sudoku-board-cell-component .sudoku-board-cell .value {
   margin: auto;
   font-size: var(--value-fontsize);
   line-height: var(--value-fontsize);
+  color: slategrey
 }
+
 
 sudoku-board-cell-component .initialvalue {
   /* text-decoration: underline; */
