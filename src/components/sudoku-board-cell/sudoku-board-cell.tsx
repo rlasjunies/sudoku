@@ -8,7 +8,7 @@ import { SudokuBoardCell } from "../../services/sudoku/sudoku";
 })
 export class SudokuBoardCellComponent {
 
-    @Prop() candidates: boolean[] = Array(8);
+    @Prop() drafted: boolean[] = Array(9);
     @Prop() cell: SudokuBoardCell = null;
 
     isThereValueDefined(): boolean {
@@ -16,7 +16,8 @@ export class SudokuBoardCellComponent {
     }
 
     isThereDraftValues(): boolean {
-        return this.cell.drafted.find(val => val !== null);
+        console.log(`drafted values?:${this.cell.drafted.find(val => val === true) || false}`,this.cell.drafted,)
+        return this.cell.drafted.find(val => val === true);
     }
 
     possibleValue(value: number): string {
@@ -38,19 +39,19 @@ export class SudokuBoardCellComponent {
         return (
             <div class="sudoku-board-cell-draft">
                 <div class="rowdraft">
-                    <div class="celldraft">{this.candidates[0] ? "1" : ""}</div>
-                    <div class="celldraft">{this.candidates[1] ? "2" : ""}</div>
-                    <div class="celldraft">{this.candidates[2] ? "3" : ""}</div>
+                    <div class="celldraft">{this.drafted[0] ? "1" : ""}</div>
+                    <div class="celldraft">{this.drafted[1] ? "2" : ""}</div>
+                    <div class="celldraft">{this.drafted[2] ? "3" : ""}</div>
                 </div>
                 <div class="rowdraft">
-                    <div class="celldraft">{this.candidates[3] ? "4" : ""}</div>
-                    <div class="celldraft">{this.candidates[4] ? "5" : ""}</div>
-                    <div class="celldraft">{this.candidates[5] ? "6" : ""}</div>
+                    <div class="celldraft">{this.drafted[3] ? "4" : ""}</div>
+                    <div class="celldraft">{this.drafted[4] ? "5" : ""}</div>
+                    <div class="celldraft">{this.drafted[5] ? "6" : ""}</div>
                 </div>
                 <div class="rowdraft">
-                    <div class="celldraft">{this.candidates[6] ? "7" : ""}</div>
-                    <div class="celldraft">{this.candidates[7] ? "8" : ""}</div>
-                    <div class="celldraft">{this.candidates[8] ? "9" : ""}</div>
+                    <div class="celldraft">{this.drafted[6] ? "7" : ""}</div>
+                    <div class="celldraft">{this.drafted[7] ? "8" : ""}</div>
+                    <div class="celldraft">{this.drafted[8] ? "9" : ""}</div>
                 </div>
             </div>)
     }
@@ -77,10 +78,10 @@ export class SudokuBoardCellComponent {
     }
     render() {
         if (this.isThereValueDefined()) {
-            // console.log(`value:${this.cell.value} -  ${this.candidates}`);
+            // console.log(`value:${this.cell.value} -  ${this.drafted}`);
             return this.renderTypedValueOrSeedValue();
         } else {
-            // console.log(`draft value:[${this.value}] -  ${this.candidates}`);
+            // console.log(`draft value:[${this.value}] -  ${this.drafted}`);
             if (this.isThereDraftValues()) {
                 return this.renderDraftedValues();
             } else {

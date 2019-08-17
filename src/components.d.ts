@@ -28,8 +28,8 @@ export namespace Components {
     'remainingNumbers': number[];
   }
   interface SudokuBoardCellComponent {
-    'candidates': boolean[];
     'cell': SudokuBoardCell;
+    'drafted': boolean[];
   }
   interface SudokuBoardComponent {
     'board': SudokuBoard;
@@ -155,8 +155,8 @@ declare namespace LocalJSX {
     'remainingNumbers'?: number[];
   }
   interface SudokuBoardCellComponent extends JSXBase.HTMLAttributes<HTMLSudokuBoardCellComponentElement> {
-    'candidates'?: boolean[];
     'cell'?: SudokuBoardCell;
+    'drafted'?: boolean[];
   }
   interface SudokuBoardComponent extends JSXBase.HTMLAttributes<HTMLSudokuBoardComponentElement> {
     'board'?: SudokuBoard;

@@ -16,7 +16,7 @@ export function reducer(state: AppState, _action: Action): AppState {
       ...state.sudokuPage,
       wizardConfiguration: {
         ... state.sudokuPage.wizardConfiguration,
-        showUniqueCandidatesInZones: !state.sudokuPage.wizardConfiguration.showUniqueCandidatesInZones
+        showUniquePossiblrValueInZones: !state.sudokuPage.wizardConfiguration.showUniquePossiblrValueInZones
       }
     }
   }

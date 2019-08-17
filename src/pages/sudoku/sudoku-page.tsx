@@ -11,7 +11,7 @@ import * as resumeGame_ResumeTimer from "../../store/_combinedActions/actions.re
 import * as navigateToSplashScreen_PauseTimer from "../../store/_combinedActions/actions.navigateToSplashScreen_StopTimer";
 import * as navigateToNewGame from "../../store/app-root/app-root.actions.navigateToCreateNewBoard";
 import * as navigateToWizard from "../../store/_combinedActions/actions.navigateToWiazrd_PauseTimer";
-import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculateCandidatesToggle";
+import * as autoCalculatePossibleValuesAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculatePossibleValuesToggle";
 import { SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../services/sudoku/sudoku';
 
 @Component({
@@ -112,8 +112,8 @@ export class SudokuPage {
     store.dispatch(navigateToWizard.action());
   }
 
-  onCalculateCandidatesClickHandler() {
-    store.dispatch(autoCalculateCandidateAction.action());
+  onCalculatePossibleValuesClickHandler() {
+    store.dispatch(autoCalculatePossibleValuesAction.action());
   }
 
   header() {

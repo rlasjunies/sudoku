@@ -39,8 +39,8 @@ export const sudokuPageInitialState: SudokuPageState = {
   timerOn: false,
   solutionsByRules: null,
   wizardConfiguration:{
-    calculateCandidates: false,
-    showUniqueCandidatesInZones: false,
-    showUniqueCandidate:false
+    calculatePossibleValues: false,
+    showUniquePossiblrValueInZones: false,
+    showUniquePossibleValueInRowOrColumn:false
   }
 };

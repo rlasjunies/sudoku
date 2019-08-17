@@ -1,4 +1,4 @@
-import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeCandidateBoard, resolverWorkForce, isPossibleNumberx, resolveByRules } from "../../services/sudoku/sudoku";
+import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeDraftedValueInZone, resolverWorkForce, isPossibleNumberx, resolveByRules } from "../../services/sudoku/sudoku";
 import { Action } from "../../services/store/store";
 import { AppState} from '../../store//app.state';
 import { store } from '../../store//appStore';
@@ -68,11 +68,11 @@ export function reducer(state: AppState, action: Action): AppState {
     blockSolved = isBlockSolvedx(block, newBoard) ? block : null;
     boardSolved = isBoardSolvedx(newBoard) ? true : false;
 
-    // remove equal candidates in the related zones
+    // remove equal drafted in the related zones
     // only when the value is correct
     // TODO: this should be done in the service, 
     if (isValueCorrect) {
-      newBoard = removeCandidateBoard(newBoard, value, currentCell);
+      newBoard = removeDraftedValueInZone(newBoard, value, currentCell);
     }
 
     // TODO: this should be done in the service, 

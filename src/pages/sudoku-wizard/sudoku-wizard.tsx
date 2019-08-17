@@ -4,7 +4,7 @@ import { AppState } from '../../store/app.state';
 import * as navigateToSudoku_ResumeTimer from '../../store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
 import * as showUniqueCandidateAction from "../../store/sudoku/sudoku.actions.wizard.showsUniqueCandidateToggle";
 import * as showUniqueCandidateInZoneAction from "../../store/sudoku/sudoku.actions.wizard.showsUniqueCandidateInZoneToggle";
-import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculateCandidatesToggle";
+import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculatePossibleValuesToggle";
 import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../services/sudoku/sudoku';
 
 @Component({
@@ -14,7 +14,7 @@ import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../
 export class SudokuWizardPage {
 
   @Element() element: HTMLSudokuWizardElement;
-  @State() calculateCandidates: boolean;
+  @State() calculatePossibleValues: boolean;
   @State() showUniquePossibleValue: boolean;
   @State() showUniqueOccurenceInZones: boolean;
   @State() wizardConfiguration: SudokuWizardConfiguration = sudokuWizardConfigurationInit;
@@ -31,9 +31,9 @@ export class SudokuWizardPage {
   }
 
   stateChanged(state: AppState): any {
-    this.calculateCandidates = state.sudokuPage.wizardConfiguration.calculateCandidates;
-    this.showUniquePossibleValue = state.sudokuPage.wizardConfiguration.showUniqueCandidate;
-    this.showUniqueOccurenceInZones = state.sudokuPage.wizardConfiguration.showUniqueCandidatesInZones;
+    this.calculatePossibleValues = state.sudokuPage.wizardConfiguration.calculatePossibleValues;
+    this.showUniquePossibleValue = state.sudokuPage.wizardConfiguration.showUniquePossibleValueInRowOrColumn;
+    this.showUniqueOccurenceInZones = state.sudokuPage.wizardConfiguration.showUniquePossiblrValueInZones;
   }
 
   onBackClickHandler() {
@@ -47,7 +47,7 @@ export class SudokuWizardPage {
     store.dispatch(showUniqueCandidateInZoneAction.action());
   }
 
-  onCalculateCandidatesClickHandler() {
+  onCalculatePossibleValuesClickHandler() {
     store.dispatch(autoCalculateCandidateAction.action());
   }
 
@@ -76,28 +76,11 @@ export class SudokuWizardPage {
           </ion-item>
           <ion-item
             onClick={() => this.onShowUniqueCandidateInZoneClickHandler()}>
-            <ion-label>Highlight cells with unique candidates in row, column or zone</ion-label>
+            <ion-label>Highlight cells with unique possible values in row, column or zone</ion-label>
             <ion-toggle slot="start"
               checked={this.showUniqueOccurenceInZones}></ion-toggle>
           </ion-item>
         </ion-list>
-
-
-        {/* <label class="choice">
-          <input type="checkbox"
-            checked={this.showUniquePossibleValue}
-            onClick={() => this.onShowUniqueCandidateClickHandler()}
-          ></input>
-          Shows the unique candidates
-          </label>
-        <label class="choice">
-          <input type="checkbox"
-            checked={this.showUniqueOccurenceInZones}
-            onClick={() => this.onShowUniqueCandidateInZoneClickHandler()}
-          ></input>
-          Shows the unique candidates in row, column or zone
-          </label> */}
-
       </ion-content>
     ]
     );

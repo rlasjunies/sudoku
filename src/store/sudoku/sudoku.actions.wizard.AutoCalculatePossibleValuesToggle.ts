@@ -1,10 +1,10 @@
 import { Action } from "../../services/store/store";
-import { AppState} from '../../store//app.state';
-import { store } from '../../store//appStore';
+import { AppState} from '../app.state';
+import { store } from '../appStore';
 
 export function action(): Action {
   return {
-    name: "WIZARD_AUTOCANDIDATES_TOGGLE",
+    name: "WIZARD_CALCULATE_POSSIBLE_VALUES_TOGGLE",
     payload: {}
   }
 }
@@ -16,7 +16,7 @@ export function reducer(state: AppState, _action: Action): AppState {
       ...state.sudokuPage,
       wizardConfiguration: {
         ... state.sudokuPage.wizardConfiguration,
-        calculateCandidates: !state.sudokuPage.wizardConfiguration.calculateCandidates
+        calculatePossibleValues: !state.sudokuPage.wizardConfiguration.calculatePossibleValues
       }
     }
   }

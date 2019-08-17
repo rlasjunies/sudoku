@@ -9,14 +9,14 @@ export interface SolutionsByRules {
     uniqueOccurenceInZones: Solution[];
 }
 export interface SudokuWizardConfiguration {
-    calculateCandidates: boolean;
-    showUniqueCandidate: boolean;
-    showUniqueCandidatesInZones: boolean;
+    calculatePossibleValues: boolean;
+    showUniquePossibleValueInRowOrColumn: boolean;
+    showUniquePossiblrValueInZones: boolean;
 }
 export const sudokuWizardConfigurationInit: SudokuWizardConfiguration = {
-    calculateCandidates: false,
-    showUniqueCandidate: false,
-    showUniqueCandidatesInZones: false
+    calculatePossibleValues: false,
+    showUniquePossibleValueInRowOrColumn: false,
+    showUniquePossiblrValueInZones: false
 }
 
 export interface SudokuBoard {
@@ -204,41 +204,41 @@ export function determinePossibleValuesx(cellNumber: number, board: SudokuBoard)
     return possible;
 }
 
-export function removeCandidateBoard(board: SudokuBoard, value: number, cellNumber: number): SudokuBoard {
+      export function removeDraftedValueInZone(board: SudokuBoard, value: number, cellNumber: number): SudokuBoard {
     const newBoard = sudokuBoardClone(board);
 
     var row = rowOfCellNumber(cellNumber);
     var col = colOfCellNumber(cellNumber);
     var block = blockOfCellNumber(cellNumber);
 
-    removeCandidateRow(value, row, newBoard);
-    removeCandidateCol(value, col, newBoard);
-    removeCandidateBlock(value, block, newBoard);
+    removeDraftedValueInRow(value, row, newBoard);
+    removeDraftedValueInCol(value, col, newBoard);
+    removeDraftedValueInBlock(value, block, newBoard);
 
     return newBoard;
 
-    function removeCandidateRow(value: number, row: number, board: SudokuBoard) {
+    function removeDraftedValueInRow(value: number, row: number, board: SudokuBoard) {
         for (var i = 0; i <= 8; i++) {
-            board.cells[row * 9 + i].drafted = removeCandidate(value, board.cells[row * 9 + i].drafted)
+            board.cells[row * 9 + i].drafted = removeDraftedValue(value, board.cells[row * 9 + i].drafted)
         }
     }
 
-    function removeCandidateCol(value: number, col: number, board: SudokuBoard) {
+    function removeDraftedValueInCol(value: number, col: number, board: SudokuBoard) {
         for (var i = 0; i <= 8; i++) {
-            board.cells[col + 9 * i].drafted = removeCandidate(value, board.cells[col + 9 * i].drafted);
+            board.cells[col + 9 * i].drafted = removeDraftedValue(value, board.cells[col + 9 * i].drafted);
         }
     }
 
-    function removeCandidateBlock(value: number, block: number, board: SudokuBoard) {
+    function removeDraftedValueInBlock(value: number, block: number, board: SudokuBoard) {
         for (var i = 0; i <= 8; i++) {
-            board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].drafted = removeCandidate(value, board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].drafted);
+            board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].drafted = removeDraftedValue(value, board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].drafted);
         }
     }
-    function removeCandidate(value: number, candidates: boolean[]): boolean[] {
-        if (candidates[value - 1]) {
-            candidates[value - 1] = false;
+    function removeDraftedValue(value: number, draftedValues: boolean[]): boolean[] {
+        if (draftedValues[value - 1]) {
+            draftedValues[value - 1] = false;
         }
-        return candidates;
+        return draftedValues;
     }
 }
 
