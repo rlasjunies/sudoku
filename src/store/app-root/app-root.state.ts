@@ -5,6 +5,7 @@ export interface AppRootState {
   showCreateNewBoardPage: boolean;
   showSudokuWizardPage: boolean;
   gameOnGoing:boolean;
+  url:string;
 
 }
   
@@ -13,6 +14,6 @@ export const appRootInitialState: AppRootState = {
   showSudokuPage:false,
   showCreateNewBoardPage:false,
   showSudokuWizardPage:false,
-  gameOnGoing:false
-
+  gameOnGoing:false,
+  url:"sudoku-home"
 };

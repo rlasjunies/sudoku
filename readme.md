@@ -63,6 +63,7 @@ En cas de soucis, supprimer la configuration qu'il y a dans launch.json
 Par défaut l'extension n'utilise pas de configuration,
 En cliquant sur l'icon play(>) dans la barre d'état le plugin demande quelle config on veut utiliser
 Dans le fichier de configuration launch.json, 
+
 * ajouter une nouvelle configuration
 * l'extension ajoute un snippet de configuration pour vscode-jest-tests
 * le prendre, 
@@ -71,21 +72,13 @@ généralement cela marche
 > Paths aliases are ignored in unit tests
 > https://github.com/ionic-team/stencil/issues/1307
 
+# unit testing
+
+https://medium.com/@tally_b/unit-testing-stenciljs-1-0-c4e902a4e63c
+
+
 # jsx type checking extension
 
 > I did not found yet the good approach to extend "correctly" the jsx type checking
 
-## extend intrisic element with new attributes
-
-example: `<input type="checkbox" clrCheckbox ...` where `clrCheckbox` is the extended property.
-
-The bad approach is:
-
-* [ ] goes in `node_modules\@stencil\core\dist\declarations\jsx.d.ts`  
-* [ ] then add the following declaration:
-
-```javascript
-    interface InputHTMLAttributes<T> extends HTMLAttributes<T> {
-        clrCheckbox?: boolean;
-    }
 ```

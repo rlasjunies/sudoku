@@ -1,0 +1,60 @@
+sudoku-home .ion-page {
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-content: center; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  /* justify-content: center; */
+}
+
+
+
+sudoku-home #title {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  flex: 1;
+  font-size: 20vw;
+  line-height: 15vw;
+  min-height: 15vw;
+  align-self: center;
+  padding: 5px;
+  /* align-items: center; */
+  /* margin:auto; */
+  /* padding:15px; */
+  /* align-content: center; */
+  /* align-items: center; */
+}
+
+sudoku-home #bottom ion-button {
+  /* flex: 1; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  height: 15vh;
+  padding: 0px 5px 0px 5px;
+  font-size: 5vh;
+}
+
+sudoku-home #bottom ion-icon {
+  /* flex: 1; */
+  /* display: flex; */
+  /* flex-direction: column; */
+  font-size: 5vh;
+  padding: 10px;
+}
+
+/* sudoku-home #bottom ion-button{ */
+/* flex: 3; */
+/* display: flex; */
+/* flex-direction: column; */
+/* } */
+
+sudoku-home #version {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* align-self: center; */
+  /* align-content: center; */
+  text-align: center;
+}

@@ -1,0 +1,35 @@
+sudoku-new h1 {
+  text-align: center;
+}
+
+sudoku-new .content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+sudoku-new .text {
+  display: flex;
+  flex-direction: column;
+  /* align-content: center; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  justify-content: center;
+  flex: 1;
+  font-size: 15vw;
+  line-height: 15vw;
+  min-height: 15vw;
+  align-self: center;
+  text-align: center;
+  padding: 5px;
+}
+
+sudoku-new .buttons {
+  /* display: flex; */
+  flex-direction: column;
+  /* align-content: center; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  /* justify-content: center; */
+  /* flex:1; */
+}

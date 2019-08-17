@@ -1,19 +1,36 @@
-import { Component, State, Element, Watch, h } from '@stencil/core';
-import { AppState} from '../../store/app.state';
+import { Component, h, Element, Prop, Watch } from '@stencil/core';
+import { AppState } from '../../store/app.state';
 import { store } from '../../store/appStore';
-
 // @ts-ignore
 import * as storeLogger from "../../store/middleware/logger";
 // @ts-ignore
 import * as storeTimer from "../../store/middleware/timerService";
 
-import * as endGameStopTimer from "../../store/_combinedActions/actions.endGame_StopTimer";
-
 @Component({
   tag: 'app-root',
   styleUrl: 'app-root.css',
 })
-export class AppRoot {
+export class App {
+  routerElement: HTMLIonRouterElement;
+  navElement: HTMLIonNavElement;
+  @Prop() route: string;
+
+  @Watch('route')
+  routeWatcher(newValue: string, oldValue: string) {
+    console.log(`app-root2 new route - newvalue:${newValue} - oldValue:${oldValue}`);
+    if (newValue !== oldValue) {
+      if (this.navElement) {
+        console.log(`show route:${newValue}`);
+        this.navElement.setRoot(newValue, null, {
+          animated: false
+        })
+      }
+      else {
+        console.log('navElement not yet loaded');
+      }
+    }
+  }
+
   @Element() element: HTMLAppRootElement;
 
   unsubscribeStateChanged: () => void;
@@ -21,87 +38,22 @@ export class AppRoot {
     this.unsubscribeStateChanged();
   }
 
-  componentDidLoad() {
-    this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
+  componentWillLoad() {
+    console.log('app-root2 Component will load');
+    if (!this.navElement) {
+      console.log('app-root2 subscrubsption');
+      this.navElement = this.element.querySelector('ion-nav');
+      this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
+    }else{
+      console.log('app-root2 déjà fait ');
+    }
   }
+
   stateChanged(state: AppState): any {
-    this.showSplashScreenPage = state.appRoot.showSplashScreenPage;
-    this.showSudokuPage = state.appRoot.showSudokuPage;
-    this.showCreateNewBoardPage = state.appRoot.showCreateNewBoardPage;
-    this.showWizardConfigPage = state.appRoot.showSudokuWizardPage;
-    this.boardSolved = state.sudokuPage.boardSolved;
+    this.route = state.appRoot.url;
   }
 
-  @State() boardSolved: boolean = false;
-  @Watch("boardSolved")
-  boardSolvedWatcher(newValue: boolean, oldValue: boolean) {
-    // console.log(`root.boardSolved:${newValue},${oldValue}`);
-    if (newValue && !oldValue && (oldValue !== undefined)) {
-      store.dispatch(endGameStopTimer.action());
-    }
-  }
-
-  @State() showSplashScreenPage: boolean;
-  @Watch("showSplashScreenPage")
-  showSplashScreenWatcher(newValue: boolean, oldValue: boolean) {
-    // console.log(`showSplashScreenWatcher: ${newValue} - ${oldValue}`)
-    const splash: HTMLAccPageElement = this.element.querySelector('splash-screen-page > acc-page');
-    if (newValue && !oldValue) {
-      // console.log("Show the splash screen!!!!");
-      splash.show();
-    } else if (!newValue && oldValue) {
-      // console.log("Hiding the splash screen!!!!");
-      splash.hide();
-    }
-  }
-
-  @State() showSudokuPage: boolean;
-  @Watch('showSudokuPage')
-  showSudokuPagewatcher(newValue, oldValue) {
-    // console.log(`showSudokuPagewatcher: ${newValue} - ${oldValue}`)
-    const sudoku: HTMLAccPageElement = this.element.querySelector('sudoku-page > acc-page');
-    if (newValue && !oldValue) {
-      // console.log("Show the sudoku page!!!!");
-      sudoku.show();
-    } else if (!newValue && oldValue) {
-      // console.log("Hiding the sudoku page!!!!");
-      sudoku.hide();
-    }
-  }
-
-  @State() showCreateNewBoardPage: boolean;
-  @Watch('showCreateNewBoardPage')
-  showCreateNewBoardPagewatcher(newValue, oldValue) {
-    // console.log(`showCreateNewBoardPagewatcher: ${newValue} - ${oldValue}`)
-    const $createNewBoard: HTMLAccPageElement = this.element.querySelector('create-new-board > acc-page');
-    if (newValue && !oldValue) {
-      // console.log("Show the create board page!!!!");
-      $createNewBoard.show();
-    } else if (!newValue && oldValue) {
-      // console.log("Hiding the create board page!!!!");
-      $createNewBoard.hide();
-    }
-  }
-
-  @State() showWizardConfigPage: boolean;
-  @Watch('showWizardConfigPage')
-  showWizardConfigPageWatcher(newValue, oldValue) {
-    // console.log(`showCreateNewBoardPagewatcher: ${newValue} - ${oldValue}`)
-    const $wizardConfig: HTMLAccPageElement = this.element.querySelector('sudoku-wizard-page > acc-page');
-    if (newValue && !oldValue) {
-      // console.log("Show the create board page!!!!");
-      $wizardConfig.show();
-    } else if (!newValue && oldValue) {
-      // console.log("Hiding the create board page!!!!");
-      $wizardConfig.hide();
-    }
-  }
   render() {
-    return [
-      <splash-screen-page></splash-screen-page>,
-      <sudoku-page></sudoku-page>,
-      <create-new-board></create-new-board>,
-      <sudoku-wizard-page></sudoku-wizard-page>
-    ]
+    return (<div id="app-root"></div>)
   }
 }

@@ -15,89 +15,51 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-@import url('../../node_modules/@clr/ui/clr-ui.min.css');
-@import url('../../node_modules/@clr/icons/clr-icons.min.css');
-
-/* 
-  compensate line-height from clr-ui.css, defining line-height to 1rem, 
-  which create contrainsts in the flex, and then the candidate create overflow in the boardcell 
-*/
-body{
-  line-height: 0rem;
-}
-
-sudoku-var {
-  --draftvalue-fontsize: 3vw;
-}
-
-.hidden{
-  visibility: hidden;
-}
-
-.displayNone{
-  display: none;
-}
-
-/* material design Red 50 */
-red-50 {
-  --red-50: #FFEBEE;
-  --red-100: #FFCDD2;
-  --red-200: #EF9A9A;
-  --red-300: #E57373;
-  --red-400: #EF5350;
-  --red-500: #F44336;
-  --red-600: #E53935;
-  --red-700: #D32F2F;
-  --red-800: #C62828;
-  --red-900: #B71C1C;
-  --red-A100: #FF8A80;
-  --red-A200: #FF5252;
-  --red-A400: #FF1744;
-  --red-A700: #D50000;
-}
-
-light-green-50 {
-  --light-green-50: #F1F8E9;
-  --light-green-100: #DCEDC8;
-  --light-green-200: #C5E1A5;
-  --light-green-300: #AED581;
-  --light-green-400: #9CCC65;
-  --light-green-500: #8BC34A;
-  --light-green-600: #7CB342;
-  --light-green-700: #689F38;
-  --light-green-800: #558B2F;
-  --light-green-900: #33691E;
-  --light-green-A100: #CCFF90;
-  --light-green-A200: #B2FF59;
-  --light-green-A400: #76FF03;
-  --light-green-A700: #64DD17;
+.pagecontent {
+  display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+  /* align-content: center; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  justify-content: center;
+  height: 100%;
 }
 
 :root {
-  --color-50: #F1F8E9;
-  --color-100: #DCEDC8;
-  --color-200: #C5E1A5;
-  --color-300: #AED581;
-  --color-400: #9CCC65;
-  --color-500: #8BC34A;
-  --color-600: #7CB342;
-  --color-700: #689F38;
-  --color-800: #558B2F;
-  --color-900: #33691E;
-  --color-A100: #CCFF90;
-  --color-A200: #B2FF59;
-  --color-A400: #76FF03;
-  --color-A700: #64DD17;
-
-  
-  --value-fontsize: 8vmin;
+  --value-fontsize: 11vmin;
   --draftvalue-fontsize: 3vmin;
-  --header-fontsize: 3vmin;
-  --header-button-fontsize: 3vmin;
-  --bigbutton-fontsize: 5vmin;
+  /* --header-fontsize: 3vmin; */
+  /* --header-button-fontsize: 3vmin; */
+  /* --bigbutton-fontsize: 5vmin; */
   --keyboard-value-fontsize: 8vmin;
   --keyboard-draftvalue-fontsize: 3vmin;
 
-  /* --font-family: font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+}
 
+/** Core CSS required for ionic components to work property */
+@import url('../../node_modules/@ionic/core/css/core.css');
+
+/** Basic CSS for apps built with Ionic */
+@import url('../../node_modules/@ionic/core/css/normalize.css');
+@import url('../../node_modules/@ionic/core/css/structure.css');
+@import url('../../node_modules/@ionic/core/css/typography.css');
+
+/** Optional CSS utils that can be commented out */
+@import url('../../node_modules/@ionic/core/css/padding.css');
+@import url('../../node_modules/@ionic/core/css/float-elements.css');
+@import url('../../node_modules/@ionic/core/css/text-alignment.css');
+@import url('../../node_modules/@ionic/core/css/text-transformation.css');
+@import url('../../node_modules/@ionic/core/css/flex-utils.css');
+
+.displayNone {
+  display: none;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.flex-hidden {
+  display: none;
 }

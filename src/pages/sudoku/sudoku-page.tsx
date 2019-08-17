@@ -1,5 +1,5 @@
 import { Component, State, Element, h } from '@stencil/core';
-import { AppState} from '../../store//app.state';
+import { AppState } from '../../store//app.state';
 import { store } from '../../store/appStore';
 import * as sudokuValueTyped from "../../store/sudoku/sudoku.actions.typeNumber";
 import * as sudokuDraftTyped from "../../store/sudoku/sudoku.actions.typeDraftNumber";
@@ -115,84 +115,98 @@ export class SudokuPage {
   onCalculateCandidatesClickHandler() {
     store.dispatch(autoCalculateCandidateAction.action());
   }
+
+  header() {
+    return (
+      <ion-header>
+        <ion-toolbar>
+          {this.header_start()}
+          {this.header_middle()}
+          {this.header_end()}
+        </ion-toolbar>
+      </ion-header>
+    )
+  }
+  header_middle() {
+    return ([
+        <ion-buttons slot="end">
+        <acc-timer time={this.timer}></acc-timer>
+        <ion-button
+          onClick={() => this.onTimerSwitch()}>
+          <ion-icon name={!this.gameInPause ? "pause" : "play"}></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    ])
+  }
+  header_end() {
+    return (
+      <ion-buttons slot="end">
+        <ion-button onClick={() => this.onWizardClickHandler()}>
+          <ion-icon name="help-buoy"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    )
+  }
+  header_start() {
+    return (
+      <ion-buttons slot="start">
+        <ion-button onClick={() => this.onBackClickHandler()}>
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    )
+  }
   render() {
     return (
-      <acc-page>
-        <div class="header">
-          <button class="btn btn-link"
-            onClick={() => this.onBackClickHandler()}>
-            {/* <clr-icon shape="angle caret left" size="35"></clr-icon>Back */}
-            <clr-icon shape="angle caret left" size="35"></clr-icon>
-          </button>
+      [
+        this.header(),
+        <div class="pagecontent">
+          <div id="game" class={this.gameInPause ? 'displayNone' : 'displayYes'}>
+            <sudoku-board-component
+              id="sudokuboard"
+              board={this.board}
+              cellSelected={this.cellSelected}
+              lastCellOfTheGame={this.lastCellOfTheGame}
+              incorrectCells={this.incorrectCells}
+              solvedRow={this.rowSolved}
+              solvedCol={this.colSolved}
+              solvedBlock={this.blockSolved}
+              boardSolved={this.boardSolved}
+              solutionsByRules={this.solutionsByRules}
+              wizardConfiguration={this.wizardConfiguration}
 
-          {/* <button class={this.gameOnGoing ? "btn btn-link timer" : "btn btn-link hidden timer"} */}
-          <button class="btn btn-link timer"
-            onClick={() => this.onTimerSwitch()}>
-            <acc-timer time={this.timer}></acc-timer>
-            {/* <clr-icon shape={!this.gameInPause ? "pause" : "play"}></clr-icon>{!this.gameInPause ? "Pause" : "Resume"} */}
-            <clr-icon shape={!this.gameInPause ? "pause" : "play"} size="35"></clr-icon>
-          </button>
-
-          {/* <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
-            onClick={() => this.onCalculateCandidatesClickHandler()}>
-            <clr-icon shape="calculator" size="35" class={this.wizardConfiguration.calculateCandidates ? "is-solid" : ""} ></clr-icon>
-          </button> */}
-          <button class={this.gameOnGoing ? "btn btn-link" : "btn btn-link hidden"}
-            onClick={() => this.onWizardClickHandler()}>
-            {/* <clr-icon shape={!this.gameInPause ? "pause" : "play"}></clr-icon>{!this.gameInPause ? "Pause" : "Resume"} */}
-            {/* <clr-icon shape="wand" size="35"></clr-icon>Help */}
-            <clr-icon shape="lightbulb" size="35"></clr-icon>
-          </button>
-
-        </div>
-        <div class="content">
-          <acc-flipbox flip={this.gameInPause}>
-            <div slot="front">
-              <sudoku-board-component
-                id="sudokuboard"
-                board={this.board}
-                cellSelected={this.cellSelected}
-                lastCellOfTheGame={this.lastCellOfTheGame}
-                incorrectCells={this.incorrectCells}
-                solvedRow={this.rowSolved}
-                solvedCol={this.colSolved}
-                solvedBlock={this.blockSolved}
-                boardSolved={this.boardSolved}
-                solutionsByRules={this.solutionsByRules}
-                wizardConfiguration={this.wizardConfiguration}
-
-                onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
-              </sudoku-board-component>
-              <key-board3 class={!this.gameOnGoing ? "displayNone" : ""}
-                onClearClicked={_ => this.dispatchClearTyped()}
-                onUndoClicked={_ => this.dispatchUndoTyped()}
-                onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
-                onDraftNumberClicked={(draftNumberClicked) => this.dispatchDraftNumberTyped(draftNumberClicked)}
-                remainingNumbers={this.board.remainingNumbers}
-                hideClearKey={this.cellSelected === -1
-                  || !this.gameOnGoing
-                  || this.board.cells[this.cellSelected].value === null
-                  || this.board.cells[this.cellSelected].seed}
-                hideUndoKey={!this.gameOnGoing}
-              >
-              </key-board3>
-              <div id="newGame" class={this.gameOnGoing ? "displayNone" : ""}>
-                <div id="newGameText">
-                  <p>Good game! Play again?</p>
-                </div>
-                <button class="btn"
-                  onClick={this.onNewGameClicked}
-                >
-                  Newboard
-                </button>
+              onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
+            </sudoku-board-component>
+            <key-board class={!this.gameOnGoing ? "displayNone" : ""}
+              onClearClicked={_ => this.dispatchClearTyped()}
+              onUndoClicked={_ => this.dispatchUndoTyped()}
+              onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
+              onDraftNumberClicked={(draftNumberClicked) => this.dispatchDraftNumberTyped(draftNumberClicked)}
+              remainingNumbers={this.board.remainingNumbers}
+              hideClearKey={this.cellSelected === -1
+                || !this.gameOnGoing
+                || this.board.cells[this.cellSelected].value === null
+                || this.board.cells[this.cellSelected].seed}
+              hideUndoKey={!this.gameOnGoing}
+            >
+            </key-board>
+            <div id="newGame" class={this.gameOnGoing ? "displayNone" : ""}>
+              <div id="newGameText">
+                <p>Good game! Play again?</p>
               </div>
+              <button class="btn"
+                onClick={this.onNewGameClicked}
+              >
+                Newboard
+                </button>
             </div>
-            <div slot="back" onClick={() => this.onTimerSwitch()}>
-              <clr-icon shape="play" ></clr-icon>
-            </div>
-          </acc-flipbox>
+          </div>
+          <div id="pause" class={this.gameInPause ? 'displayYes' : 'displayNone'}
+            onClick={() => this.onTimerSwitch()}>
+            <ion-icon name="play"></ion-icon>
+          </div>
         </div>
-      </acc-page >
+      ]
     );
   }
 }

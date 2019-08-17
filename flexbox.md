@@ -2,9 +2,19 @@
 # flexbox tutorial
 https://www.youtube.com/watch?v=k32voqQhODc
 
+## French tuto
+https://la-cascade.io/flexbox-guide-complet/
+
+## Graphical tuto
+https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+
+## Tools
+https://bennettfeely.com/flexplorer/
+
+
 ## auto fill the parent
 1. add the attribute `display: flex;`in the parent node
-1. add the attribute `flex:1` in the child to fill the parent node
+2. add the attribute `flex:1` in the child to fill the parent node
 
 ## auto size columns
 1. add the `flex:1` attribute in the node to size

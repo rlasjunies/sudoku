@@ -2,11 +2,9 @@
 
 ## create the store
 
-
 ## create as many actions / reducer as needed
 
-> more granular are the actions better will be the solution
-
+> more granular the actions are better the solution will be
 
 ## register the store at the root of the application
 

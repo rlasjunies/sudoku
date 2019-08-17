@@ -1,4 +1,4 @@
-// import { KeyBoard3 } from './key-board3';
+// import { KeyBoard3 } from './key-board';
 
 // describe('app', () => {
 //   it('builds', () => {

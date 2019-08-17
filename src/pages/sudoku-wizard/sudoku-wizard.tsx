@@ -8,12 +8,12 @@ import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions
 import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../services/sudoku/sudoku';
 
 @Component({
-  tag: 'sudoku-wizard-page',
+  tag: 'sudoku-wizard',
   styleUrl: 'sudoku-wizard.css'
 })
 export class SudokuWizardPage {
 
-  @Element() element: HTMLSudokuWizardPageElement;
+  @Element() element: HTMLSudokuWizardElement;
   @State() calculateCandidates: boolean;
   @State() showUniquePossibleValue: boolean;
   @State() showUniqueOccurenceInZones: boolean;
@@ -52,52 +52,54 @@ export class SudokuWizardPage {
   }
 
   render() {
-    return (
-      <acc-page>
-        <div class="header">
-          <button class="btn btn-link"
-            onClick={() => this.onBackClickHandler()}>
-            <clr-icon shape="angle caret left" size="35"></clr-icon>
-          </button>
-          <div class="title">
-            Wizard
-          </div>
-        </div>
-        <div class="content">
-          <div>
-            Need an help?
-          </div>
-          {/* <label class="choice">
-            <input type="checkbox"
-              checked={this.calculateCandidates}
-              onClick={() => this.onCalculateCandidatesClickHandler()}
-            ></input>
-            Autocalculate the candidates
+    return ([
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            {/* <ion-back-button></ion-back-button> */}
+            <ion-button onClick={() => this.onBackClickHandler()}>
+              <ion-icon name="arrow-back"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Need an help?</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      ,
+
+      <ion-content>
+        <ion-list>
+          <ion-item
+            onClick={() => this.onShowUniqueCandidateClickHandler()}>
+            <ion-label>Highlight cells with unique candidate cells/rows/cols</ion-label>
+            <ion-toggle slot="start"
+              checked={this.showUniquePossibleValue}></ion-toggle>
+          </ion-item>
+          <ion-item
+            onClick={() => this.onShowUniqueCandidateInZoneClickHandler()}>
+            <ion-label>Highlight cells with unique candidates in row, column or zone</ion-label>
+            <ion-toggle slot="start"
+              checked={this.showUniqueOccurenceInZones}></ion-toggle>
+          </ion-item>
+        </ion-list>
+
+
+        {/* <label class="choice">
+          <input type="checkbox"
+            checked={this.showUniquePossibleValue}
+            onClick={() => this.onShowUniqueCandidateClickHandler()}
+          ></input>
+          Shows the unique candidates
+          </label>
+        <label class="choice">
+          <input type="checkbox"
+            checked={this.showUniqueOccurenceInZones}
+            onClick={() => this.onShowUniqueCandidateInZoneClickHandler()}
+          ></input>
+          Shows the unique candidates in row, column or zone
           </label> */}
-          <label class="choice">
-            <input type="checkbox"
-              checked={this.showUniquePossibleValue}
-              onClick={() => this.onShowUniqueCandidateClickHandler()}
-            ></input>
-            Shows the unique candidates
-          </label>
-          <label class="choice">
-            <input type="checkbox"
-              checked={this.showUniqueOccurenceInZones}
-              onClick={() => this.onShowUniqueCandidateInZoneClickHandler()}
-            ></input>
-            Shows the unique candidates in row, column or zone
-          </label>
-          {/* <div>
-            <clr-icon shape="calculator" size="35" class={this.wizardConfiguration.calculateCandidates ? "is-solid" : ""}></clr-icon>
-            <button class=""
-              onClick={() => this.onCalculateCandidatesClickHandler()}>
-              Calculate candidate
-          </button> 
-          </div> */}
-              {/* <clr-icon shape="calculator" size="35" class={this.wizardConfiguration.calculateCandidates ? "is-solid" : ""}></clr-icon> */}
-        </div>
-      </acc-page >
+
+      </ion-content>
+    ]
     );
   }
 }

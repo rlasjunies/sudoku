@@ -1,4 +1,4 @@
-import { AppState} from '../../store/app.state';
+import { AppState } from '../../store/app.state';
 import { store } from '../../store/appStore';
 
 import * as navigateToCreateNewBoard from '../../store/app-root/app-root.actions.navigateToCreateNewBoard';
@@ -7,19 +7,19 @@ import { isStandAlone, isWebWorker } from '../../services/pwa';
 import { Component, Element, State, h } from '@stencil/core';
 
 @Component({
-  tag: 'splash-screen-page',
-  styleUrl: 'splash-screen-page.css',
+  tag: 'sudoku-home',
+  styleUrl: 'sudoku-home.css'
 })
-export class SplashScreenPage {
+export class SudokuHomePage {
 
-  @Element() element: HTMLElement;
+  @Element() element: HTMLSudokuPageElement;
 
   @State() gameOnGoing: boolean;
 
   @State() deployed = isStandAlone();
   @State() webWorker = isWebWorker();
 
-  @State() version = "10"; //version to be updated
+  @State() version = "12"; //version to be updated
   unsubscribeStateChanged: () => void;
 
   componentDidUnload() {
@@ -40,36 +40,56 @@ export class SplashScreenPage {
     store.dispatch(navigateToCreateNewBoard.action());
   }
 
-  render() {
+  title() {
     return (
-      <acc-page>
-        <header></header>
-        <div id="title">
-          <div>Sudoku</div>
-          <div>Master</div>
-        </div>
+      <div id="title">
+        <div>Sudoku</div>
+        <div>Master</div>
+      </div>
+    )
+  }
+
+  footer() {
+    return (
+      <div id="version">version: {this.version}
+        {this.deployed ? " deployed" : " running in webbrowser"}
+      </div>
+    )
+  }
+  actions() {
+    return (
+      <div id="bottom">
         {this.gameOnGoing ?
-          <button
-            class="btn btn-icon btn-primary acc-btn-big"
+          <ion-button
+            expand="block"
+            // size="large"
+            // class="btn btn-icon btn-primary acc-btn-big"
             onClick={() => this.navigateToSudokuPage()}>
-            <clr-icon shape="play"></clr-icon>
+            <ion-icon name="play"></ion-icon>
             Continue
-            </button>
+        </ion-button>
           : ''
         }
-        <button
-          // button is primary when no game on-going
-          class={this.gameOnGoing ? "btn btn-icon acc-btn-big" : "btn btn-icon btn-primary acc-btn-big "}
+
+        <ion-button
+          expand="block"
+          // size="large"
+          color={this.gameOnGoing ? "secondary" : "primary"}
           onClick={() => this.navigateToCreateNewBoardPage()}>
-          <clr-icon shape="new"></clr-icon>
+          <ion-icon slot="start" name="add"></ion-icon> 
           Start
-          </button>
-        <div id="version">version: {this.version} 
-          {/* {window.matchMedia('(display-mode: standalone)').matches ? "true" : "false"} */}
-          {this.deployed ? " deployed" : " running in webbrowser"}
-          {/* {this.webWorker ? "service worker: on" : "service worker: off"} */}
-        </div>
-      </acc-page>
+      </ion-button>
+        {this.footer()}
+      </div>
+    )
+  }
+  render() {
+    return ([
+      <div class="pagecontent">
+        {this.title()}
+        {this.actions()}
+      </div>
+    ]
     );
   }
 }

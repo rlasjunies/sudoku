@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Event, Prop, h } from '@stencil/core';
 
 @Component({
-  tag: 'key-board3',
-  styleUrl: 'key-board3.css',
+  tag: 'key-board',
+  styleUrl: 'key-board.css'
+  // shadow: true
 })
 export class KeyBoard3 {
   @Event() numberClicked: EventEmitter;
@@ -60,8 +61,8 @@ export class KeyBoard3 {
   }
 
   render() {
-    return (
-      <div class="key-board">
+    return ([
+      // <div class="key-board">
         <div class="row">
           <div class={this.remainingNumbers[0] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("1")}>{this.cellHTML(1, false)}</div>
           <div class={this.remainingNumbers[1] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("2")}>{this.cellHTML(2, false)}</div>
@@ -73,9 +74,9 @@ export class KeyBoard3 {
           <div class={this.remainingNumbers[7] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("8")}>{this.cellHTML(8, false)}</div>
           <div class={this.remainingNumbers[8] > 0 ? "key" : "key hidden"} onClick={() => this.numberClickedHandler("9")}>{this.cellHTML(9, false)}</div>
           <div class={this.hideClearKey ? "key hidden" : "key" } onClick={() => this.clearClickedHandler()}>
-            <clr-icon shape="eraser" class="is-solid"></clr-icon>
+            <ion-icon name="trash"></ion-icon>
           </div>
-        </div>
+        </div>,
         <div class="row">
           <div class={this.remainingNumbers[0] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("1")}>{this.cellHTML(1, true)}</div>
           <div class={this.remainingNumbers[1] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("2")}>{this.cellHTML(2, true)}</div>
@@ -87,10 +88,10 @@ export class KeyBoard3 {
           <div class={this.remainingNumbers[7] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("8")}>{this.cellHTML(8, true)}</div>
           <div class={this.remainingNumbers[8] > 0 ? "key" : "key hidden"} onClick={() => this.draftNumberClickedHandler("9")}>{this.cellHTML(9, true)}</div>
           <div class={this.hideUndoKey ? "key hidden" : "key"} onClick={() => this.undoClickedHandler()}>
-            <clr-icon shape="undo" class="is-solid"></clr-icon>
+            <ion-icon name="undo"></ion-icon>
           </div>
         </div>
-      </div>
-    );
+      //* </div> */
+    ]);
   }
 }

@@ -1,6 +1,5 @@
 import * as arrayShuffle from "../arrayShuffle";
 
-
 export interface Solution {
     cell: number;
     value: number

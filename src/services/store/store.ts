@@ -94,10 +94,12 @@ export class Store {
         persistStateInLocalStorage(this._state, this.name);
 
         this.reactions.forEach(reaction => reaction.function.call(reaction.context, this._state));
+
     }
 
     subscribeReaction(reactionFunction: Function, reactionThis: any) {
         this.reactions = [...this.reactions, { function: reactionFunction, context: reactionThis }];
+//        console.log("subscribeReaction",reactionFunction);
         reactionFunction.call(reactionThis, this._state, reactionThis);
         return () => {
             this.reactions = this.reactions.filter(reaction => reaction.function !== reactionFunction);

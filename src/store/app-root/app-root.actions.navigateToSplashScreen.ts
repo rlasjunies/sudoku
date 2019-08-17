@@ -13,10 +13,7 @@ export function reducer(state: AppState, _action: Action): AppState {
     ...state,
     appRoot: {
       ...state.appRoot,
-      showSudokuPage: false,
-      showCreateNewBoardPage: false,
-      showSplashScreenPage: true,
-      showSudokuWizardPage: false
+      url:"sudoku-home"
     }
   }
 };
