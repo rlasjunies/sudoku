@@ -19,7 +19,7 @@ export class SudokuHomePage {
   @State() deployed = isStandAlone();
   @State() webWorker = isWebWorker();
 
-  @State() version = "14"; //version to be updated
+  @State() version = "15"; //version to be updated
   unsubscribeStateChanged: () => void;
 
   componentDidUnload() {

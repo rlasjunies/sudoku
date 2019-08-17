@@ -33,7 +33,7 @@ export interface SudokuBoardCell {
 }
 const EMPTYCELL: SudokuBoardCell = {
     value: null,
-    drafted: [, , , , , , , , ,],
+    drafted: [, , , , , , , ,],
     calculatedPossibleValues: [],
     seed: false,
     expectedValue: null
@@ -204,7 +204,7 @@ export function determinePossibleValuesx(cellNumber: number, board: SudokuBoard)
     return possible;
 }
 
-      export function removeDraftedValueInZone(board: SudokuBoard, value: number, cellNumber: number): SudokuBoard {
+export function removeDraftedValueInZone(board: SudokuBoard, value: number, cellNumber: number): SudokuBoard {
     const newBoard = sudokuBoardClone(board);
 
     var row = rowOfCellNumber(cellNumber);
@@ -415,7 +415,7 @@ export function resolveByRules(board: SudokuBoard) {
         for (let index = 0; index < board.cells.length; index++) {
             if (board.cells[index].calculatedPossibleValues.length === 1) {
                 const possibleValue = board.cells[index].calculatedPossibleValues[0];
-                console.log(`cell:${index} unique solution:${possibleValue}}`);
+                // console.log(`cell:${index} unique solution:${possibleValue}}`);
                 uniquePossibleValues.push({ cell: index, value: possibleValue });
             }
         }
@@ -433,19 +433,19 @@ export function resolveByRules(board: SudokuBoard) {
                     // no, add in the rule solution
                     const uniqueOccurenceInARow = (1 === numberOfOccurenceInCalculatedPossibleValuesInRow(board, cellIndex, possibleValue));
                     if (uniqueOccurenceInARow) {
-                        console.log(`21 - Unique occurence in a row ${cellIndex} - value:${possibleValue}`);
+                        // console.log(`21 - Unique occurence in a row ${cellIndex} - value:${possibleValue}`);
                         uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
                     }
 
                     const uniqueOccurenceInACol = (1 === numberOfOccurenceInCalculatedPossibleValuesInCol(board, cellIndex, possibleValue));
                     if (uniqueOccurenceInACol) {
-                        console.log(`22 - Unique occurence in a col ${cellIndex} - value:${possibleValue}`);
+                        // console.log(`22 - Unique occurence in a col ${cellIndex} - value:${possibleValue}`);
                         uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
                     }
 
                     const uniqueOccurenceInABlock = (1 === numberOfOccurenceInCalculatedPossibleValuesInBlock(board, cellIndex, possibleValue));
                     if (uniqueOccurenceInABlock) {
-                        console.log(`23 - Unique occurence in a block ${blockOfCellNumber(cellIndex)} - value:${possibleValue}`);
+                        // console.log(`23 - Unique occurence in a block ${blockOfCellNumber(cellIndex)} - value:${possibleValue}`);
                         uniqueOcurrenceOfPossibleValue.push({ cell: cellIndex, value: possibleValue });
                     }
                 }

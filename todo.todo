@@ -1,10 +1,10 @@
 features:
-  
   ☐ fix: add background for the icon of the app
-  
+
   ☐ player can request auto generation of candidates
   ☐ player can request highlight of fix proposals
   ☐ more contrast for the drafted values
+
   ☐ Think about 2 modes of game
   - electronic sudoku ... with not help only replacing the paper ... no error raised when typing
   the system can check on demand or at the end

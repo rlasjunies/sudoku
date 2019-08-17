@@ -16,10 +16,10 @@ export class SudokuBoardCellComponent {
     }
 
     isThereDraftValues(): boolean {
-        console.log(`drafted values?:${this.cell.drafted.find(val => val === true) || false}`,this.cell.drafted,)
+        // console.log(`drafted values?:${this.cell.drafted.find(val => val === true) || false}`,this.cell.drafted,)
         return this.cell.drafted.find(val => val === true);
     }
-
+ 
     possibleValue(value: number): string {
         const possibleValue = this.cell.calculatedPossibleValues.find(possibleValue => possibleValue === value);
         // console.log(`POssibleValues:`,this.cell.possibleValues);

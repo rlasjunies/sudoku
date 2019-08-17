@@ -1,6 +1,6 @@
 import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeDraftedValueInZone, resolverWorkForce, isPossibleNumberx, resolveByRules } from "../../services/sudoku/sudoku";
 import { Action } from "../../services/store/store";
-import { AppState} from '../../store//app.state';
+import { AppState } from '../../store//app.state';
 import { store } from '../../store//appStore';
 
 export const actionNameNumberTyped = "TYPE_NUMBER";
