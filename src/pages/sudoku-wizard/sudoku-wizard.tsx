@@ -70,13 +70,13 @@ export class SudokuWizardPage {
         <ion-list>
           <ion-item
             onClick={() => this.onShowUniqueCandidateClickHandler()}>
-            <ion-label>Highlight cells with unique candidate cells/rows/cols</ion-label>
+            <ion-label>Highlight unique candidate in a zone</ion-label>
             <ion-toggle slot="start"
               checked={this.showUniquePossibleValue}></ion-toggle>
           </ion-item>
           <ion-item
             onClick={() => this.onShowUniqueCandidateInZoneClickHandler()}>
-            <ion-label>Highlight cells with unique possible values in row, column or zone</ion-label>
+            <ion-label>Highlight unique+ candidate in zone</ion-label>
             <ion-toggle slot="start"
               checked={this.showUniqueOccurenceInZones}></ion-toggle>
           </ion-item>
