@@ -27,7 +27,7 @@ export function reducer(state: AppState, action: Action): AppState {
   } else {
     const value = payload.valueTyped;
 
-    newBoard.cells[currentCell].candidates[value - 1] = newBoard.cells[currentCell].candidates[value - 1] ? false : true;
+    newBoard.cells[currentCell].drafted[value - 1] = newBoard.cells[currentCell].drafted[value - 1] ? false : true;
 
     return {
       ...state,

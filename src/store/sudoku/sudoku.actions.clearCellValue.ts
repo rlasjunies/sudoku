@@ -32,7 +32,7 @@ export function reducer(state: AppState, _action: Action): AppState {
     // no modification allowed
   } else {
 
-    newBoard.cells[currentCell].candidates = [];
+    newBoard.cells[currentCell].drafted = [];
     newBoard.cells[currentCell].value = null;
     // remove the cell of the incorrect cells
     newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell);

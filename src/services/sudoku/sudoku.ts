@@ -13,10 +13,10 @@ export interface SudokuWizardConfiguration {
     showUniqueCandidate: boolean;
     showUniqueCandidatesInZones: boolean;
 }
-export const sudokuWizardConfigurationInit : SudokuWizardConfiguration = {
-    calculateCandidates:false,
-    showUniqueCandidate:false,
-    showUniqueCandidatesInZones:false
+export const sudokuWizardConfigurationInit: SudokuWizardConfiguration = {
+    calculateCandidates: false,
+    showUniqueCandidate: false,
+    showUniqueCandidatesInZones: false
 }
 
 export interface SudokuBoard {
@@ -26,14 +26,14 @@ export interface SudokuBoard {
 }
 export interface SudokuBoardCell {
     value: number | null;
-    candidates: boolean[];
+    drafted: boolean[];
     calculatedPossibleValues: number[];
     seed: boolean;
     expectedValue: number;
 }
 const EMPTYCELL: SudokuBoardCell = {
     value: null,
-    candidates: [, , , , , , , ,],
+    drafted: [, , , , , , , , ,],
     calculatedPossibleValues: [],
     seed: false,
     expectedValue: null
@@ -219,19 +219,19 @@ export function removeCandidateBoard(board: SudokuBoard, value: number, cellNumb
 
     function removeCandidateRow(value: number, row: number, board: SudokuBoard) {
         for (var i = 0; i <= 8; i++) {
-            board.cells[row * 9 + i].candidates = removeCandidate(value, board.cells[row * 9 + i].candidates)
+            board.cells[row * 9 + i].drafted = removeCandidate(value, board.cells[row * 9 + i].drafted)
         }
     }
 
     function removeCandidateCol(value: number, col: number, board: SudokuBoard) {
         for (var i = 0; i <= 8; i++) {
-            board.cells[col + 9 * i].candidates = removeCandidate(value, board.cells[col + 9 * i].candidates);
+            board.cells[col + 9 * i].drafted = removeCandidate(value, board.cells[col + 9 * i].drafted);
         }
     }
 
     function removeCandidateBlock(value: number, block: number, board: SudokuBoard) {
         for (var i = 0; i <= 8; i++) {
-            board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].candidates = removeCandidate(value, board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].candidates);
+            board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].drafted = removeCandidate(value, board.cells[Math.floor(block / 3) * 27 + i % 3 + 9 * Math.floor(i / 3) + 3 * (block % 3)].drafted);
         }
     }
     function removeCandidate(value: number, candidates: boolean[]): boolean[] {
