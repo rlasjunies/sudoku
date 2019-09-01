@@ -1,5 +1,5 @@
 import { Action } from "../../services/store/store";
-import { AppState} from '../../store//app.state';
+import { AppState } from '../../store//app.state';
 import { store } from '../../store//appStore';
 
 export function action(): Action {
@@ -16,7 +16,8 @@ export function reducer(state: AppState, _action: Action): AppState {
       ...state.sudokuPage,
       cellSelected: -1,
       lastCellOfTheGame: state.sudokuPage.cellSelected,
-      gameOnGoing: false
+      gameOnGoing: false,
+      boardSolved: false
     }
   }
 }

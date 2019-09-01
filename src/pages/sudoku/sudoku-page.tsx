@@ -129,7 +129,7 @@ export class SudokuPage {
   }
   header_middle() {
     return ([
-        <ion-buttons slot="end">
+      <ion-buttons slot="end" class={this.gameOnGoing ? "" : "hidden"}>
         <acc-timer time={this.timer}></acc-timer>
         <ion-button
           onClick={() => this.onTimerSwitch()}>
@@ -140,7 +140,7 @@ export class SudokuPage {
   }
   header_end() {
     return (
-      <ion-buttons slot="end">
+      <ion-buttons slot="end" class={this.gameOnGoing ? "" : "hidden"}>
         <ion-button onClick={() => this.onWizardClickHandler()}>
           <ion-icon name="help-buoy"></ion-icon>
         </ion-button>
@@ -171,13 +171,13 @@ export class SudokuPage {
               solvedRow={this.rowSolved}
               solvedCol={this.colSolved}
               solvedBlock={this.blockSolved}
-              boardSolved={this.boardSolved}
+              gameOnGoing={this.gameOnGoing}
               solutionsByRules={this.solutionsByRules}
               wizardConfiguration={this.wizardConfiguration}
 
               onCellSelection={(cellNumberCustomEvent) => this.dispatchCellSelection(cellNumberCustomEvent)}>
             </sudoku-board-component>
-            <key-board class={!this.gameOnGoing ? "displayNone" : ""}
+            <key-board class={!this.gameOnGoing ? "hidden" : ""}
               onClearClicked={_ => this.dispatchClearTyped()}
               onUndoClicked={_ => this.dispatchUndoTyped()}
               onNumberClicked={(keyCustomeEvent) => this.dispatchNumberTyped(keyCustomeEvent)}
@@ -190,15 +190,11 @@ export class SudokuPage {
               hideUndoKey={!this.gameOnGoing}
             >
             </key-board>
-            <div id="newGame" class={this.gameOnGoing ? "displayNone" : ""}>
-              <div id="newGameText">
+            <div id="newGame" class={this.gameOnGoing ? "hidden" : ""}>
+              {/* <div id="newGameText"> */}
                 <p>Good game! Play again?</p>
-              </div>
-              <button class="btn"
-                onClick={this.onNewGameClicked}
-              >
-                Newboard
-                </button>
+              {/* </div> */}
+              <ion-button expand="block" size="large" onClick={this.onNewGameClicked}>Newboard</ion-button>
             </div>
           </div>
           <div id="pause" class={this.gameInPause ? 'displayYes' : 'displayNone'}

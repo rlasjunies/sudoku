@@ -1,4 +1,4 @@
-import { generateSudokuBoard, SudokuLevelType } from "../../services/sudoku/sudoku";
+import { generateSudokuBoard, SudokuLevelType, resolveByRules } from "../../services/sudoku/sudoku";
 import { Action } from "../../services/store/store";
 import { AppState} from '../../store//app.state';
 import { store } from '../../store//appStore';
@@ -14,6 +14,7 @@ export function action(level: SudokuLevelType): Action {
 export function reducer(state: AppState, action: Action): AppState {
   const level = action.payload.level;
   const board = generateSudokuBoard(level);
+  let solutionsByRules = resolveByRules(board);
 
   return {
     ...state,
@@ -24,7 +25,8 @@ export function reducer(state: AppState, action: Action): AppState {
       boardLevel: level,
       cellSelected: -1,
       gameOnGoing: true,
-      gameInPause: false
+      gameInPause: false,
+      solutionsByRules: solutionsByRules
     }
   }
 }

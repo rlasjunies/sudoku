@@ -19,7 +19,7 @@ export class SudokuHomePage {
   @State() deployed = isStandAlone();
   @State() webWorker = isWebWorker();
 
-  @State() version = "15"; //version to be updated
+  @State() version = "20"; //version to be updated
   unsubscribeStateChanged: () => void;
 
   componentDidUnload() {
@@ -77,7 +77,7 @@ export class SudokuHomePage {
           color={this.gameOnGoing ? "secondary" : "primary"}
           onClick={() => this.navigateToCreateNewBoardPage()}>
           <ion-icon slot="start" name="add"></ion-icon> 
-          Start
+          New game
       </ion-button>
         {this.footer()}
       </div>

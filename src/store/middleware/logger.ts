@@ -4,6 +4,6 @@ import { Store } from "../../services/store/store";
 export const logFunct = (state: any, _) => console.log("STORE HISTORY:", state.actionName, state);
 context: null;
 
-export function registerLogger(store: Store) {
+export function register(store: Store) {
   store.subscribeReaction(logFunct, null);
 }

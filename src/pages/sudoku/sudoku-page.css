@@ -45,6 +45,9 @@ sudoku-page acc-page .header {
 sudoku-page #newGame {
   flex-direction: column;
   /* flex:1; */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 sudoku-page #newGame p {

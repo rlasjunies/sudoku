@@ -35,13 +35,15 @@ export class SudokuBoardComponent {
             this.chenillardBlock(this.cellSelected);
         }
     }
-    @Prop() boardSolved: boolean;
-    @Watch("boardSolved")
-    boardSolvedWatcher(newValue: boolean, oldValue: boolean) {
-        // console.log(`boardSolvedWatcher:${newValue}, ${oldValue} - cellSelected:${this.cellSelected}`);
-        if (newValue
-            && !oldValue
+
+    @Prop() gameOnGoing: boolean;
+    @Watch("gameOnGoing")
+    endOfGameWatcher(newValue: boolean, oldValue: boolean) {
+        // console.log(`endOfGameWatcher:${newValue}, ${oldValue} - cellSelected:${this.lastCellOfTheGame}`);
+        if (!newValue
+            && oldValue
             && (oldValue !== undefined)) {
+            // this.chenillardBoard(this.lastCellOfTheGame);
             this.chenillardBoard(this.lastCellOfTheGame);
         }
     }
@@ -189,7 +191,7 @@ export class SudokuBoardComponent {
             cellSelectedClass +
             sameValueAsTheOneSelected +
             incorrectClass +
-            isSolution_UniquePossibleValueClass + 
+            isSolution_UniquePossibleValueClass +
             isSolution_UniqueOccurenceInZoneClass;
 
     }

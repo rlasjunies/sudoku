@@ -28,6 +28,6 @@ function stateChanged(state: AppState): any {
   }
 }
 
-export function registerTimer(store: Store) {
+export function register(store: Store) {
   store.subscribeReaction(stateChanged, context);
 }

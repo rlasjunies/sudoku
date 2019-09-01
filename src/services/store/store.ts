@@ -58,7 +58,7 @@ export class Store {
         });
 
         if (reducer.length > 0) return reducer[0].reducer(state, action);
-        console.log("NO REDUCER FOUND", action);
+        console.warn("NO REDUCER FOUND", action.name); 
         return state;
     }
 
