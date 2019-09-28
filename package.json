@@ -1,7 +1,7 @@
 {
   "name": "sudoku-master",
   "private": true,
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Sudoku Master",
   "scripts": {
     "start": "stencil build --dev --watch --serve",
@@ -13,12 +13,13 @@
     "test.watch": "stencil test --spec --watch",
     "test.e2e": "stencil test --e2e"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@ionic/core": "^4.7.4"
+  },
   "author": "Richard LASJUNIES",
   "license": "MIT",
   "homepage": "https://sudoku-master.com",
   "devDependencies": {
-    "@ionic/core": "^4.7.4",
     "@stencil/core": "^1.2.5",
     "@stencil/router": "^1.0.1",
     "@types/jest": "24.0.17",

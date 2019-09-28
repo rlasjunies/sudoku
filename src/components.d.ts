@@ -20,6 +20,7 @@ export namespace Components {
     'time': number;
   }
   interface AppRoot {
+    'boardSolved': boolean;
     'route': string;
   }
   interface KeyBoard {
@@ -33,8 +34,8 @@ export namespace Components {
   }
   interface SudokuBoardComponent {
     'board': SudokuBoard;
-    'boardSolved': boolean;
     'cellSelected': number;
+    'gameOnGoing': boolean;
     'incorrectCells': number[];
     'lastCellOfTheGame': number;
     'solutionsByRules': SolutionsByRules;
@@ -143,6 +144,7 @@ declare namespace LocalJSX {
     'time'?: number;
   }
   interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {
+    'boardSolved'?: boolean;
     'route'?: string;
   }
   interface KeyBoard extends JSXBase.HTMLAttributes<HTMLKeyBoardElement> {
@@ -160,8 +162,8 @@ declare namespace LocalJSX {
   }
   interface SudokuBoardComponent extends JSXBase.HTMLAttributes<HTMLSudokuBoardComponentElement> {
     'board'?: SudokuBoard;
-    'boardSolved'?: boolean;
     'cellSelected'?: number;
+    'gameOnGoing'?: boolean;
     'incorrectCells'?: number[];
     'lastCellOfTheGame'?: number;
     'onCellSelection'?: (event: CustomEvent<any>) => void;
