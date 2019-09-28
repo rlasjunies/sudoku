@@ -20,7 +20,7 @@ sudoku-home #title {
   min-height: 15vw;
   align-self: center;
   padding: 5px;
-  /* align-items: center; */
+  align-items: center;
   /* margin:auto; */
   /* padding:15px; */
   /* align-content: center; */
