@@ -7,6 +7,7 @@ import * as storeLogger from "../../store/middleware/logger";
 import * as storeTimer from "../../store/middleware/timerService";
 
 import * as endGame_StopTimer from "../../store/_combinedActions/actions.endGame_StopTimer";
+import { authSvc } from '../../services/AuthService';
 
 @Component({
   tag: 'app-root',
@@ -45,6 +46,11 @@ export class App {
   @Element() element: HTMLAppRootElement;
 
   unsubscribeStateChanged: () => void;
+
+  componentDidLoad() {
+    console.log(`${authSvc.name}`)
+     
+  }
   componentDidUnload() {
     this.unsubscribeStateChanged();
   }
