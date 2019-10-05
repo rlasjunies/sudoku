@@ -11,6 +11,29 @@ export class SudokuBoardCellComponent {
     @Prop() drafted: boolean[] = Array(9);
     @Prop() cell: SudokuBoardCell = null;
 
+
+    onClickRippleEffect(mouseEvent: MouseEvent) {
+        const $cell = (mouseEvent.target as HTMLElement).closest("sudoku-board-cell-component");
+
+        const rect = $cell.getBoundingClientRect();
+        let $ripple = $cell.querySelector('.ripplex') as HTMLElement;
+        if (!$ripple) {
+            $ripple = document.createElement('span');
+            $ripple.className = 'ripplex';
+            $ripple.style.height = $ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+            $cell.appendChild($ripple);
+        }
+
+        $ripple.classList.remove('show');
+        var top = mouseEvent.pageY - rect.top - $ripple.offsetHeight / 2 - document.body.scrollTop;
+        var left = mouseEvent.pageX - rect.left - $ripple.offsetWidth / 2 - document.body.scrollLeft;
+        $ripple.style.top = top + 'px';
+        $ripple.style.left = left + 'px';
+
+        $ripple.classList.add('show');
+        return false;
+    }
+
     isThereValueDefined(): boolean {
         return this.cell.value ? true : false;
     }
@@ -19,7 +42,7 @@ export class SudokuBoardCellComponent {
         // console.log(`drafted values?:${this.cell.drafted.find(val => val === true) || false}`,this.cell.drafted,)
         return this.cell.drafted.find(val => val === true);
     }
- 
+
     possibleValue(value: number): string {
         const possibleValue = this.cell.calculatedPossibleValues.find(possibleValue => possibleValue === value);
         // console.log(`POssibleValues:`,this.cell.possibleValues);
@@ -28,16 +51,19 @@ export class SudokuBoardCellComponent {
 
     renderTypedValueOrSeedValue() {
         return (
-            <div class="sudoku-board-cell" >
+            <div class="sudoku-board-cell"
+                onClick={(event: MouseEvent) => this.onClickRippleEffect(event)}>
+                <ion-ripple-effect></ion-ripple-effect>
                 <div class={this.cell.seed === true ? "value initialvalue" : "value"}>
                     {this.cell.value}{this.cell.seed}
                 </div>
             </div>
         )
     }
-    renderDraftedValues(){
+    renderDraftedValues() {
         return (
-            <div class="sudoku-board-cell-draft">
+            <div class="sudoku-board-cell-draft"
+                onClick={(event: MouseEvent) => this.onClickRippleEffect(event)}>
                 <div class="rowdraft">
                     <div class="celldraft">{this.drafted[0] ? "1" : ""}</div>
                     <div class="celldraft">{this.drafted[1] ? "2" : ""}</div>
@@ -56,9 +82,10 @@ export class SudokuBoardCellComponent {
             </div>)
     }
 
-    renderPossibleValues(){
+    renderPossibleValues() {
         return (
-            <div class="sudoku-board-cell-draft">
+            <div class="sudoku-board-cell-draft"
+                onClick={(event: MouseEvent) => this.onClickRippleEffect(event)}>
                 <div class="rowdraft">
                     <div class="possibleValue">{this.possibleValue(1)}</div>
                     <div class="possibleValue">{this.possibleValue(2)}</div>
