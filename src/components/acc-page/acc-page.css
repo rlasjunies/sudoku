@@ -1,0 +1,14 @@
+acc-page {
+  display: none;
+  min-height: 100vh;
+  max-height: 100vh;
+}
+
+acc-page.hide{
+  display: none;
+}
+
+acc-page.show{
+  display: flex;
+  flex-direction: column;
+}
