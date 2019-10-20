@@ -37,10 +37,10 @@ export class KeyBoard3 {
 
   onClickRippleEffect(mouseEvent: MouseEvent) {
     const $target = mouseEvent.target as HTMLElement;
-    let $key: HTMLElement;
+    let $key;
   
     if (!$target.classList.contains("key")) {
-      $key = (mouseEvent.target as Element).closest(".key"); 
+      $key = $target.closest(".key"); 
     } else {
       $key = $target;
     }
