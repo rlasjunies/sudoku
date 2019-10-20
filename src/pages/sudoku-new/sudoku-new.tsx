@@ -2,7 +2,7 @@ import { Component, h } from '@stencil/core';
 import { SudokuLevelType } from '../../services/sudoku/sudoku';
 import { store } from '../../store/appStore';
 
-import * as navigateToHome from "../../store/app-root/app-root.actions.navigateToSplashScreen";
+import * as navigateTo from "../../store/app-root/app-root.actions.navigateTo";
 import * as generateBoardAndNavigateToSudokuPage from "../../store/_combinedActions/actions.generateBoard_NavigateToSudokuPage_StartTimer";
 @Component({
   tag: 'sudoku-new',
@@ -15,7 +15,7 @@ export class SudokuNewPage {
     store.dispatch(generateBoardAndNavigateToSudokuPage.action(difficulty));
   }
   onBackClickHandler() {
-    store.dispatch(navigateToHome.action());
+    store.dispatch(navigateTo.action(navigateTo.pages.home));
   }
 
 

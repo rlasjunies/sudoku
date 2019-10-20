@@ -1,9 +1,9 @@
 import { AppState } from '../../store/app.state';
 import { store } from '../../store/appStore';
 
-import * as navigateToCreateNewBoard from '../../store/app-root/app-root.actions.navigateToCreateNewBoard';
 import * as navigateToSudoku_ResumeTimer from '../../store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
 import { isStandAlone, isWebWorker } from '../../services/pwa';
+import * as navigateTo from "../../store/app-root/app-root.actions.navigateTo";
 import { Component, Element, State, h } from '@stencil/core';
 
 @Component({
@@ -37,7 +37,7 @@ export class SudokuHomePage {
     store.dispatch(navigateToSudoku_ResumeTimer.action());
   }
   navigateToCreateNewBoardPage() {
-    store.dispatch(navigateToCreateNewBoard.action());
+    store.dispatch(navigateTo.action(navigateTo.pages.newGame));
   }
 
   title() {
@@ -58,12 +58,11 @@ export class SudokuHomePage {
   }
   actions() {
     return (
+
       <div id="bottom">
         {this.gameOnGoing ?
           <ion-button
             expand="block"
-            // size="large"
-            // class="btn btn-icon btn-primary acc-btn-big"
             onClick={() => this.navigateToSudokuPage()}>
             <ion-icon name="play"></ion-icon>
             Continue
@@ -76,7 +75,7 @@ export class SudokuHomePage {
           // size="large"
           color={this.gameOnGoing ? "secondary" : "primary"}
           onClick={() => this.navigateToCreateNewBoardPage()}>
-          <ion-icon slot="start" name="add"></ion-icon> 
+          <ion-icon slot="start" name="add"></ion-icon>
           New game
       </ion-button>
         {this.footer()}
@@ -85,10 +84,20 @@ export class SudokuHomePage {
   }
   render() {
     return ([
+      // <acc-page name="home">
+        <ion-header>
+          <ion-toolbar>
+            <ion-title></ion-title>
+            <ion-buttons slot="start">
+              <ion-menu-button />
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-header>,
       <div class="pagecontent">
-        {this.title()}
-        {this.actions()}
-      </div>
+          {this.title()}
+          {this.actions()}
+        </div>
+      // </acc-page>
     ]
     );
   }

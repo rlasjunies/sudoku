@@ -1,7 +1,7 @@
 import { Action } from "../../services/store/store";
 import { AppState} from '../../store/app.state';
 import { store } from '../../store/appStore';
-import * as navigateToWizardConfig from "../../store/app-root/app-root.actions.navigateToWizardConfiguration";
+import * as navigateTo from "../../store/app-root/app-root.actions.navigateTo";
 import * as timerPause from "../../store/sudoku/sudoku.actions.timer.Pause";
 
 export function action(): Action {
@@ -11,7 +11,7 @@ export function action(): Action {
   }
 }
 export function reducer(state: AppState, action: Action): AppState {
-  const navigateToWizardConfigState = navigateToWizardConfig.reducer(state, action);
+  const navigateToWizardConfigState = navigateTo.reducer(state, navigateTo.action(navigateTo.pages.sudokuWizard));
   const timerPauseState = timerPause.reducer(navigateToWizardConfigState, action);
   // const resumeGameState = resumerGame.reducer(timerResumeState,action);
   // const pauseGameState = pauseGame.reducer(state, action);

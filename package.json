@@ -14,7 +14,8 @@
     "test.e2e": "stencil test --e2e"
   },
   "dependencies": {
-    "@ionic/core": "^4.7.4"
+    "@ionic/core": "^4.7.4",
+    "firebase": "^7.0.0"
   },
   "author": "Richard LASJUNIES",
   "license": "MIT",

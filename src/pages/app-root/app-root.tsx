@@ -7,7 +7,6 @@ import * as storeLogger from "../../store/middleware/logger";
 import * as storeTimer from "../../store/middleware/timerService";
 
 import * as endGame_StopTimer from "../../store/_combinedActions/actions.endGame_StopTimer";
-import { authSvc } from '../../services/AuthService';
 
 @Component({
   tag: 'app-root',
@@ -28,7 +27,7 @@ export class App {
         this.navElement.setRoot(newValue, null, {
           animated: false
         })
-      } 
+      }
       else {
         console.log('navElement not yet loaded');
       }
@@ -39,7 +38,7 @@ export class App {
   boardSolvedWatcher(newValue: boolean, oldValue: boolean) {
     // console.log(`board solved watcher:newvalue${newValue}-oldValue:${oldValue}`);
     if (newValue && !oldValue){
-      store.dispatch(endGame_StopTimer.action());      
+      store.dispatch(endGame_StopTimer.action());
     }
   }
 
@@ -47,18 +46,15 @@ export class App {
 
   unsubscribeStateChanged: () => void;
 
-  componentDidLoad() {
-    console.log(`${authSvc.name}`)
-     
-  }
   componentDidUnload() {
     this.unsubscribeStateChanged();
   }
 
-  componentWillLoad() {
+  // componentWillLoad() {
+  componentDidLoad() {
     // console.log('app-root2 Component will load');
     if (!this.navElement) {
-      // console.log('app-root2 subscrubsption');
+      console.log('app-root subscrubsption');
       this.navElement = this.element.querySelector('ion-nav');
       this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
     } else {
@@ -72,6 +68,12 @@ export class App {
   }
 
   render() {
-    return (<div id="app-root"></div>)
+    return (
+      [
+        // <app-menu />,
+        <ion-nav id='main'>
+        </ion-nav>,
+      ]
+    )
   }
 }

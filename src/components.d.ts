@@ -15,10 +15,19 @@ import {
 
 export namespace Components {
   interface AccButton {}
+  interface AccPage {
+    'hide': () => Promise<void>;
+    'name': string;
+    'show': () => Promise<void>;
+  }
   interface AccSwitch {}
   interface AccTimer {
     'time': number;
   }
+  interface AppHeaderBack {
+    'title_': string;
+  }
+  interface AppMenu {}
   interface AppRoot {
     'boardSolved': boolean;
     'route': string;
@@ -28,6 +37,8 @@ export namespace Components {
     'hideUndoKey': boolean;
     'remainingNumbers': number[];
   }
+  interface PageAbout {}
+  interface PageAuth {}
   interface SudokuBoardCellComponent {
     'cell': SudokuBoardCell;
     'drafted': boolean[];
@@ -59,6 +70,12 @@ declare global {
     new (): HTMLAccButtonElement;
   };
 
+  interface HTMLAccPageElement extends Components.AccPage, HTMLStencilElement {}
+  var HTMLAccPageElement: {
+    prototype: HTMLAccPageElement;
+    new (): HTMLAccPageElement;
+  };
+
   interface HTMLAccSwitchElement extends Components.AccSwitch, HTMLStencilElement {}
   var HTMLAccSwitchElement: {
     prototype: HTMLAccSwitchElement;
@@ -71,6 +88,18 @@ declare global {
     new (): HTMLAccTimerElement;
   };
 
+  interface HTMLAppHeaderBackElement extends Components.AppHeaderBack, HTMLStencilElement {}
+  var HTMLAppHeaderBackElement: {
+    prototype: HTMLAppHeaderBackElement;
+    new (): HTMLAppHeaderBackElement;
+  };
+
+  interface HTMLAppMenuElement extends Components.AppMenu, HTMLStencilElement {}
+  var HTMLAppMenuElement: {
+    prototype: HTMLAppMenuElement;
+    new (): HTMLAppMenuElement;
+  };
+
   interface HTMLAppRootElement extends Components.AppRoot, HTMLStencilElement {}
   var HTMLAppRootElement: {
     prototype: HTMLAppRootElement;
@@ -81,6 +110,18 @@ declare global {
   var HTMLKeyBoardElement: {
     prototype: HTMLKeyBoardElement;
     new (): HTMLKeyBoardElement;
+  };
+
+  interface HTMLPageAboutElement extends Components.PageAbout, HTMLStencilElement {}
+  var HTMLPageAboutElement: {
+    prototype: HTMLPageAboutElement;
+    new (): HTMLPageAboutElement;
+  };
+
+  interface HTMLPageAuthElement extends Components.PageAuth, HTMLStencilElement {}
+  var HTMLPageAuthElement: {
+    prototype: HTMLPageAuthElement;
+    new (): HTMLPageAuthElement;
   };
 
   interface HTMLSudokuBoardCellComponentElement extends Components.SudokuBoardCellComponent, HTMLStencilElement {}
@@ -120,10 +161,15 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'acc-button': HTMLAccButtonElement;
+    'acc-page': HTMLAccPageElement;
     'acc-switch': HTMLAccSwitchElement;
     'acc-timer': HTMLAccTimerElement;
+    'app-header-back': HTMLAppHeaderBackElement;
+    'app-menu': HTMLAppMenuElement;
     'app-root': HTMLAppRootElement;
     'key-board': HTMLKeyBoardElement;
+    'page-about': HTMLPageAboutElement;
+    'page-auth': HTMLPageAuthElement;
     'sudoku-board-cell-component': HTMLSudokuBoardCellComponentElement;
     'sudoku-board-component': HTMLSudokuBoardComponentElement;
     'sudoku-home': HTMLSudokuHomeElement;
@@ -137,12 +183,20 @@ declare namespace LocalJSX {
   interface AccButton extends JSXBase.HTMLAttributes<HTMLAccButtonElement> {
     'onClick_'?: (event: CustomEvent<any>) => void;
   }
+  interface AccPage extends JSXBase.HTMLAttributes<HTMLAccPageElement> {
+    'name'?: string;
+  }
   interface AccSwitch extends JSXBase.HTMLAttributes<HTMLAccSwitchElement> {
     'onSwitch'?: (event: CustomEvent<any>) => void;
   }
   interface AccTimer extends JSXBase.HTMLAttributes<HTMLAccTimerElement> {
     'time'?: number;
   }
+  interface AppHeaderBack extends JSXBase.HTMLAttributes<HTMLAppHeaderBackElement> {
+    'onBackClick'?: (event: CustomEvent<any>) => void;
+    'title_'?: string;
+  }
+  interface AppMenu extends JSXBase.HTMLAttributes<HTMLAppMenuElement> {}
   interface AppRoot extends JSXBase.HTMLAttributes<HTMLAppRootElement> {
     'boardSolved'?: boolean;
     'route'?: string;
@@ -156,6 +210,8 @@ declare namespace LocalJSX {
     'onUndoClicked'?: (event: CustomEvent<any>) => void;
     'remainingNumbers'?: number[];
   }
+  interface PageAbout extends JSXBase.HTMLAttributes<HTMLPageAboutElement> {}
+  interface PageAuth extends JSXBase.HTMLAttributes<HTMLPageAuthElement> {}
   interface SudokuBoardCellComponent extends JSXBase.HTMLAttributes<HTMLSudokuBoardCellComponentElement> {
     'cell'?: SudokuBoardCell;
     'drafted'?: boolean[];
@@ -180,10 +236,15 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'acc-button': AccButton;
+    'acc-page': AccPage;
     'acc-switch': AccSwitch;
     'acc-timer': AccTimer;
+    'app-header-back': AppHeaderBack;
+    'app-menu': AppMenu;
     'app-root': AppRoot;
     'key-board': KeyBoard;
+    'page-about': PageAbout;
+    'page-auth': PageAuth;
     'sudoku-board-cell-component': SudokuBoardCellComponent;
     'sudoku-board-component': SudokuBoardComponent;
     'sudoku-home': SudokuHome;

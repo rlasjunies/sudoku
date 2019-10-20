@@ -4,7 +4,7 @@
 
 https://sudoku-accurentis.firebaseapp.com
 
-# Generate the PWA
+# Generate the **PWA**
 [] npx run build
 
 npx stencil build

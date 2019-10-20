@@ -1,0 +1,20 @@
+page-auth ion-icon {
+    margin-right:16px;
+}
+
+page-auth .loginwith {
+    width: 90vw;
+}
+page-auth ion-grid {
+    /* background-color: aqua; */
+    height: 100%;
+}
+page-auth ion-row {
+    /* background-color: red; */
+    text-align: center;
+    align-content: center;
+    height: 100%;
+}
+page-auth ion-col {
+    /* background-color: greenyellow; */
+}
