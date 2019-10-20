@@ -1,47 +1,20 @@
 features:
   ☐ inform user when screen size is too small to render the whole board
-  ☐ fix: add background for the icon of the app
-
-  ☐ player can request auto generation of candidates
-  ☐ player can request highlight of fix proposals
+    ☐ center the game in the web client
+    ☐ may be provide a max ratio
+  ☐ fix: add background for the icon of the app ... iOS icon is black on black
   ☐ more contrast for the drafted values
+  ☐ when selecting a number ... high light all the other numbers not the zone
+    ☐ wizard: when selecting a number highlight the row / column where the number is or missing
 
-  ☐ Think about 2 modes of game
-  - electronic sudoku ... with not help only replacing the paper ... no error raised when typing
-  the system can check on demand or at the end
-  - on typing the system check if the values entered are good, raised error if not, manage kind of number of error max
-  
   ☐ localiser l'interface graphique
-  
-  ☐ write the move number at the bottom for history purpose
-  ☐ generator evaluate the complexicity of the resolution based on rules
-  ☐ when udoing, select the current cell at the time of the move
-  
+    
   ☐ icones for the splashscreen and the main page
-Style / UI:
-  ☐ user can visualize the cell selected even if the cell is in error
-  ☐ user should visualize when he click in the keyboard keys (click effect missing)
-  may be propose 2 type of classes. JS determine if the layout is portrait or paysage, then classes are adapted as consequence
-  
+
   UX:
     ☐ clavier spécifique pour le mode brouillon. Aprés 1 sec faire appraitre la liste des possibles, des impossibles
     ☐ system shows how many numbers are left for a specific number
-    
-coach features:
-  ☐ provide switches to show or not the candidates values, the rules helpers
-  ☐ player can continue playing easily after ending a game
-  
-  
-  ☐ create a about form and include ico disclaimer as written in the asset/readme
-  ☐ manage themes for the app
-  ☐ revenus are made from the application
-  ☐ player are "pushed" to come back in the app (daily challenge)
-  
-  technical:  
-    ☐ unit tests
-    ☐ e2e tests
-    
-    ☐ fix: back does not reinitialize the candidates or color of unicity
+
 done:
   ✔ fix: end of game does not appears anymore @done (01/09/2019 à 15:25:20)
   ✔ wizard is working at the beginning. The possible value have not been caculated, they are done after the 1st typed value it should be done already when after creating the board @done (17/08/2019 à 21:39:22) 

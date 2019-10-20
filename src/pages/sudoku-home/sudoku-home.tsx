@@ -19,7 +19,7 @@ export class SudokuHomePage {
   @State() deployed = isStandAlone();
   @State() webWorker = isWebWorker();
 
-  @State() version = "21"; //version to be updated
+  @State() version = "22"; //version to be updated
   unsubscribeStateChanged: () => void;
 
   componentDidUnload() {
@@ -85,14 +85,14 @@ export class SudokuHomePage {
   render() {
     return ([
       // <acc-page name="home">
-        <ion-header>
-          <ion-toolbar>
-            <ion-title></ion-title>
-            <ion-buttons slot="start">
-              <ion-menu-button />
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>,
+        // <ion-header>
+        //   <ion-toolbar>
+        //     <ion-title></ion-title>
+        //     <ion-buttons slot="start">
+        //       <ion-menu-button />
+        //     </ion-buttons>
+        //   </ion-toolbar>
+        // </ion-header>,
       <div class="pagecontent">
           {this.title()}
           {this.actions()}
