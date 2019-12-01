@@ -22,26 +22,29 @@ export class SudokuNewPage {
   render() {
     return (
       [
-        <ion-header translucent>
-          <ion-toolbar>
-            <ion-buttons slot="start">
-              {/* <ion-back-button></ion-back-button> */}
-              <ion-button onClick={() => this.onBackClickHandler()}>
-                <ion-icon name="arrow-back"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-            <ion-title>Start new game</ion-title>
-          </ion-toolbar>
-        </ion-header>,
-        <div class="content">
-          <div class="text">Which challenge will you succeed?</div>
-          <div class="buttons">
-            <ion-button expand="block" size="large" onClick={() => this.generateNewBoardOnClickHandler("easy")}>Easy</ion-button>
-            <ion-button expand="block" size="large" onClick={() => this.generateNewBoardOnClickHandler("medium")}>Normal</ion-button>
-            <ion-button expand="block" size="large" onClick={() => this.generateNewBoardOnClickHandler("complex")}>Difficult</ion-button>
-            <ion-button expand="block" size="large" onClick={() => this.generateNewBoardOnClickHandler("very complex")}>Really Difficult</ion-button>
+        <acc-page name="sudoku-new">
+          <acc-header backbutton
+            onBackClick={() => this.onBackClickHandler()}>
+            Start new game
+          </acc-header>
+          <div class="content">
+            <div class="text">Which challenge will you succeed?</div>
+            <div class="buttons">
+              <acc-button styleinfo
+                onClick={() => this.generateNewBoardOnClickHandler("easy")}>Easy
+              </acc-button>
+              <acc-button styleinfo
+                onClick={() => this.generateNewBoardOnClickHandler("medium")}>Normal
+              </acc-button>
+              <acc-button styleinfo
+                onClick={() => this.generateNewBoardOnClickHandler("complex")}>Difficult
+              </acc-button>
+              <acc-button styleinfo
+                onClick={() => this.generateNewBoardOnClickHandler("very complex")}>Really Difficult
+              </acc-button>
+            </div>
           </div>
-        </div>
+        </acc-page>
       ]
     );
   }

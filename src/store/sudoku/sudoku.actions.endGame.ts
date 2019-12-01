@@ -1,6 +1,6 @@
 import { Action } from "../../services/store/store";
 import { AppState } from '../../store//app.state';
-import { store } from '../../store//appStore';
+// import { store } from '../../store//appStore';
 
 export function action(): Action {
   return {
@@ -22,4 +22,4 @@ export function reducer(state: AppState, _action: Action): AppState {
   }
 }
 
-store.registerReducer(action().name, reducer);
+// store.registerReducer(action().name, reducer);

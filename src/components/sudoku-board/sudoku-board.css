@@ -93,3 +93,7 @@ sudoku-board-component .chenillardCol {
 sudoku-board-component .incorrect {
     background-color: burlywood;
 }
+
+sudoku-board-component .sameValueAsTheOneSelected {
+    background-color: papayawhip;
+}

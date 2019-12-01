@@ -1,13 +1,13 @@
 {
   "name": "sudoku-master",
   "private": true,
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Sudoku Master",
   "scripts": {
     "start": "stencil build --dev --watch --serve",
     "predeploy": "npm run build",
     "deploy": "firebase deploy",
-    "build": "stencil build",
+    "build": "npx stencil build",
     "buildNdeploy": "npx ts-node  --project ./scripts/tsconfigscripts.json ./scripts/_build.ts",
     "test": "stencil test --spec",
     "test.watch": "stencil test --spec --watch",
@@ -15,15 +15,17 @@
   },
   "dependencies": {
     "@ionic/core": "^4.7.4",
+    "@types/node": "^12.12.7",
+    "@types/react-bootstrap": "^0.32.20",
     "firebase": "^7.0.0"
   },
   "author": "Richard LASJUNIES",
   "license": "MIT",
   "homepage": "https://sudoku-master.com",
   "devDependencies": {
-    "@stencil/core": "^1.2.5",
+    "@stencil/core": "1.7.5",
     "@stencil/router": "^1.0.1",
-    "@types/jest": "24.0.17",
+    "@types/jest": "^24.0.22",
     "@types/puppeteer": "1.19.1",
     "@types/shelljs": "^0.8.5",
     "jest": "24.8.0",

@@ -1,6 +1,6 @@
 import { Action } from "../../services/store/store";
 import { AppState} from '../../store/app.state';
-import { store } from '../../store/appStore';
+// import { store } from '../../store/appStore';
 import * as navigateTo from "../../store/app-root/app-root.actions.navigateTo";
 import * as timerResume from "../../store/sudoku/sudoku.actions.timer.Resume";
 import * as resumerGame from "../../store/sudoku/sudoku.actions.resumeGame";
@@ -18,4 +18,4 @@ export function reducer(state: AppState, action: Action): AppState {
   return resumeGameState;
 };
 
-store.registerReducer(action().name, reducer);
+// store.registerReducer(action().name, reducer);

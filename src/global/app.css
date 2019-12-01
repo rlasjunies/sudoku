@@ -7,12 +7,24 @@
 
   Any global CSS variables should also be applied here.
 */
+@font-face {
+  font-family: "localFontAwesome";
+  src: url("/assets/icon/fontawesome-free-5.11.2-web/webfonts/fa-solid-900.woff2") format("woff2")
+}
+
+/* #awesomelocal {
+  font-family: "localFontAwesome";
+  font-weight: bold;
+} */
+
 
 
 body {
   margin: 0px;
   padding: 0px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; */
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 .pagecontent {
@@ -38,19 +50,19 @@ body {
 }
 
 /** Core CSS required for ionic components to work property */
-@import url('../../node_modules/@ionic/core/css/core.css');
+/* @import url('../../node_modules/@ionic/core/css/core.css'); */
 
 /** Basic CSS for apps built with Ionic */
-@import url('../../node_modules/@ionic/core/css/normalize.css');
-@import url('../../node_modules/@ionic/core/css/structure.css');
-@import url('../../node_modules/@ionic/core/css/typography.css');
+/* @import url('../../node_modules/@ionic/core/css/normalize.css'); */
+/* @import url('../../node_modules/@ionic/core/css/structure.css'); */
+/* @import url('../../node_modules/@ionic/core/css/typography.css'); */
 
 /** Optional CSS utils that can be commented out */
-@import url('../../node_modules/@ionic/core/css/padding.css');
-@import url('../../node_modules/@ionic/core/css/float-elements.css');
-@import url('../../node_modules/@ionic/core/css/text-alignment.css');
-@import url('../../node_modules/@ionic/core/css/text-transformation.css');
-@import url('../../node_modules/@ionic/core/css/flex-utils.css');
+/* @import url('../../node_modules/@ionic/core/css/padding.css'); */
+/* @import url('../../node_modules/@ionic/core/css/float-elements.css'); */
+/* @import url('../../node_modules/@ionic/core/css/text-alignment.css'); */
+/* @import url('../../node_modules/@ionic/core/css/text-transformation.css'); */
+/* @import url('../../node_modules/@ionic/core/css/flex-utils.css'); */
 
 .displayNone {
   display: none;

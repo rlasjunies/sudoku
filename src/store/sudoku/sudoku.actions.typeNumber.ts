@@ -1,12 +1,12 @@
 import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCellNumber, colOfCellNumber, isBoardSolvedx, sudokuBoardClone, remainingNumbers, removeDraftedValueInZone, resolverWorkForce, isPossibleNumberx, resolveByRules } from "../../services/sudoku/sudoku";
 import { Action } from "../../services/store/store";
 import { AppState } from '../../store//app.state';
-import { store } from '../../store//appStore';
+// import { store } from '../../store//appStore';
 
-export const actionNameNumberTyped = "TYPE_NUMBER";
+export const NAME = "TYPE_NUMBER";
 export function action(value: number): Action {
   return {
-    name: actionNameNumberTyped,
+    name: NAME,
     payload: { valueTyped: value }
   }
 }
@@ -99,4 +99,4 @@ export function reducer(state: AppState, action: Action): AppState {
   }
 }
 
-store.registerReducer(actionNameNumberTyped, reducer);
+// store.registerReducer(NAME, reducer);

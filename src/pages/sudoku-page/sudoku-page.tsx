@@ -15,6 +15,8 @@ import * as navigateToWizard from "../../store/_combinedActions/actions.navigate
 import * as autoCalculatePossibleValuesAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculatePossibleValuesToggle";
 import { SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../services/sudoku/sudoku';
 
+const ICON_PAUSE = "f04c";
+const ICON_PLAY = "f04b";
 @Component({
   tag: 'sudoku-page',
   styleUrl: 'sudoku-page.css'
@@ -119,49 +121,35 @@ export class SudokuPage {
 
   header() {
     return (
-      <ion-header>
-        <ion-toolbar>
-          {this.header_start()}
-          {this.header_middle()}
-          {this.header_end()}
-        </ion-toolbar>
-      </ion-header>
-    )
-  }
-  header_middle() {
-    return ([
-      <ion-buttons slot="end" class={this.gameOnGoing ? "" : "hidden"}>
-        <acc-timer time={this.timer}></acc-timer>
-        <ion-button
+      <acc-header backbutton
+        onBackClick={() => this.onBackClickHandler()}>
+        <acc-timer
+          class={this.gameOnGoing ? "" : "hidden"}
+          time={this.timer}></acc-timer>
+        <acc-button
+          class={this.gameOnGoing ? "" : "hidden"}
           onClick={() => this.onTimerSwitch()}>
-          <ion-icon name={!this.gameInPause ? "pause" : "play"}></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    ])
-  }
-  header_end() {
-    return (
-      <ion-buttons slot="end" class={this.gameOnGoing ? "" : "hidden"}>
-        <ion-button onClick={() => this.onWizardClickHandler()}>
-          <ion-icon name="help-buoy"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+          <acc-icon iconUnicodeCode={!this.gameInPause ? ICON_PAUSE : ICON_PLAY} ></acc-icon>
+        </acc-button>
+        <acc-button
+          styledanger
+          class={this.gameOnGoing ? "" : "hidden"}
+          onClick={() => this.onWizardClickHandler()}>
+          <acc-icon iconUnicodeCode="f1cd"></acc-icon>
+        </acc-button>
+        {/* </div> */}
+
+      </acc-header>
     )
   }
-  header_start() {
-    return (
-      <ion-buttons slot="start">
-        <ion-button onClick={() => this.onBackClickHandler()}>
-          <ion-icon name="arrow-back"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-    )
-  }
+
+
   render() {
     return (
       [
-        this.header(),
-        <div class="pagecontent">
+        <acc-page name="sudoku-page">
+          {this.header()}
+          {/* <div class="pagecontent"> */}
           <div id="game" class={this.gameInPause ? 'displayNone' : 'displayYes'}>
             <sudoku-board-component
               id="sudokuboard"
@@ -193,16 +181,20 @@ export class SudokuPage {
             </key-board>
             <div id="newGame" class={this.gameOnGoing ? "hidden" : ""}>
               {/* <div id="newGameText"> */}
-                <p>Good game! Play again?</p>
+              <p>Good game! Play again?</p>
               {/* </div> */}
-              <ion-button expand="block" size="large" onClick={this.onNewGameClicked}>Newboard</ion-button>
+              <acc-button id="newGame"
+                stylesuccess
+                onClick={this.onNewGameClicked}>Newboard
+              </acc-button>
             </div>
           </div>
           <div id="pause" class={this.gameInPause ? 'displayYes' : 'displayNone'}
             onClick={() => this.onTimerSwitch()}>
-            <ion-icon name="play"></ion-icon>
+            <acc-icon iconUnicodeCode={ICON_PLAY}></acc-icon>
           </div>
-        </div>
+          {/* </div> */}
+        </acc-page>
       ]
     );
   }

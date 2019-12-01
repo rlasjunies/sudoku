@@ -1,10 +1,12 @@
 import { generateSudokuBoard, SudokuLevelType, resolveByRules } from "../../services/sudoku/sudoku";
 import { Action } from "../../services/store/store";
 import { AppState} from '../../store//app.state';
-import { store } from '../../store//appStore';
+// import { store } from '../../store//appStore';
+
+export const NAME = "GENERATE_BOARD";
 export function action(level: SudokuLevelType): Action {
   return {
-    name: "GENERATE_BOARD",
+    name: NAME,
     payload: {
       level: level
     }
@@ -31,4 +33,4 @@ export function reducer(state: AppState, action: Action): AppState {
   }
 }
 
-store.registerReducer("GENERATE_BOARD", reducer);
+// store.registerReducer(NAME, reducer);

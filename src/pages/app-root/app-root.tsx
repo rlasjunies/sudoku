@@ -10,11 +10,16 @@ import * as endGame_StopTimer from "../../store/_combinedActions/actions.endGame
 
 @Component({
   tag: 'app-root',
-  styleUrl: 'app-root.css',
+  styleUrls: [
+    'app-root.css',
+    // '../../assets/lib/bootstrap-toggle.min.css'
+  ],
+  shadow: false
 })
 export class App {
-  routerElement: HTMLIonRouterElement;
-  navElement: HTMLIonNavElement;
+  // routerElement: HTMLIonRouterElement;
+  // navElement: HTMLIonNavElement;
+  navElement: HTMLDivElement;
   @Prop() route: string;
   @Prop() boardSolved: boolean;
 
@@ -23,10 +28,10 @@ export class App {
     // console.log(`app-root2 new route - newvalue:${newValue} - oldValue:${oldValue}`);
     if (newValue !== oldValue) {
       if (this.navElement) {
-        // console.log(`show route:${newValue}`);
-        this.navElement.setRoot(newValue, null, {
-          animated: false
-        })
+        console.log(`show route:${newValue}`);
+        // this.navElement.setRoot(newValue, null, {
+        //   animated: false
+        // })
       }
       else {
         console.log('navElement not yet loaded');
@@ -37,7 +42,7 @@ export class App {
   @Watch('boardSolved')
   boardSolvedWatcher(newValue: boolean, oldValue: boolean) {
     // console.log(`board solved watcher:newvalue${newValue}-oldValue:${oldValue}`);
-    if (newValue && !oldValue){
+    if (newValue && !oldValue) {
       store.dispatch(endGame_StopTimer.action());
     }
   }
@@ -46,22 +51,26 @@ export class App {
 
   unsubscribeStateChanged: () => void;
 
-  componentDidUnload() {
-    this.unsubscribeStateChanged();
+
+  componentWillLoad() {
+    // console.log('Component is about to be rendered');
   }
 
-  // componentWillLoad() {
   componentDidLoad() {
     // console.log('app-root2 Component will load');
     if (!this.navElement) {
-      console.log('app-root subscrubsption');
-      this.navElement = this.element.querySelector('ion-nav');
+      // console.log('app-root subscrubsption');
+      // this.navElement = this.element.querySelector('ion-nav');
+      this.navElement = this.element.querySelector('#app-root');
       this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
     } else {
       // console.log('app-root2 déjà fait ');
     }
   }
 
+  componentDidUnload() {
+    this.unsubscribeStateChanged();
+  }
   stateChanged(state: AppState): any {
     this.route = state.appRoot.url;
     this.boardSolved = state.sudokuPage.boardSolved;
@@ -70,9 +79,12 @@ export class App {
   render() {
     return (
       [
-        // <app-menu />,
-        <ion-nav id='main'>
-        </ion-nav>,
+        <div id="app-root">
+          <sudoku-page></sudoku-page>
+          <sudoku-new></sudoku-new>
+          <sudoku-home></sudoku-home>
+          <sudoku-wizard></sudoku-wizard>
+        </div>
       ]
     )
   }

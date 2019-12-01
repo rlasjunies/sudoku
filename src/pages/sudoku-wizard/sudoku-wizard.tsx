@@ -9,7 +9,8 @@ import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../
 
 @Component({
   tag: 'sudoku-wizard',
-  styleUrl: 'sudoku-wizard.css'
+  styleUrl: 'sudoku-wizard.css',
+  shadow: false
 })
 export class SudokuWizardPage {
 
@@ -53,36 +54,24 @@ export class SudokuWizardPage {
 
   render() {
     return ([
-      <ion-header>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            {/* <ion-back-button></ion-back-button> */}
-            <ion-button onClick={() => this.onBackClickHandler()}>
-              <ion-icon name="arrow-back"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-          <ion-title>Need an help?</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      ,
+      <acc-page name="sudoku-wizard">
+        <acc-header backbutton
+          onBackClick={() => this.onBackClickHandler()}>
+          Need an help?
+        </acc-header>
 
-      <ion-content>
-        <ion-list>
-          <ion-item
-            onClick={() => this.onShowUniqueCandidateClickHandler()}>
-            <ion-label>Highlight unique candidate in a zone</ion-label>
-            <ion-toggle slot="start"
-              checked={this.showUniquePossibleValue}></ion-toggle>
-          </ion-item>
-          <ion-item
-            onClick={() => this.onShowUniqueCandidateInZoneClickHandler()}>
-            <ion-label>Highlight unique+ candidate in zone</ion-label>
-            <ion-toggle slot="start"
-              checked={this.showUniqueOccurenceInZones}></ion-toggle>
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    ]
-    );
+        <acc-switch
+          onSwitch={() => this.onShowUniqueCandidateClickHandler()}
+          checkInitialValue={this.showUniquePossibleValue}>
+            Highlight unique candidate in row, column
+        </acc-switch>
+
+        <acc-switch
+          onSwitch={() => this.onShowUniqueCandidateInZoneClickHandler()}
+          checkInitialValue={this.showUniqueOccurenceInZones}>
+            Highlight unique candidate in zone
+        </acc-switch>
+      </acc-page>
+    ]);
   }
 }

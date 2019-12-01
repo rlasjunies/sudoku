@@ -1,10 +1,11 @@
 import { Action } from "../../services/store/store";
 import { AppState} from '../../store//app.state';
-import { store } from '../../store//appStore';
+// import { store } from '../../store//appStore';
 
+export const NAME = "SELECT_CELL";
 export function action(cell: number): Action {
   return {
-    name: "SELECT_CELL",
+    name: NAME,
     payload: { cellSelected: cell }
   }
 }
@@ -20,4 +21,4 @@ export function reducer(state: AppState, action: Action): AppState {
   }
 }
 
-store.registerReducer("SELECT_CELL", reducer);
+// store.registerReducer(NAME, reducer);

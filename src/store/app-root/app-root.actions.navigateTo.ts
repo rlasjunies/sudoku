@@ -1,6 +1,6 @@
 import { Action } from "../../services/store/store";
 import { AppState} from '../app.state';
-import { store } from '../appStore';
+// import { store } from '../appStore';
 
 export enum pages {
   home = "sudoku-home",
@@ -10,9 +10,10 @@ export enum pages {
   sudokuGame = "sudoku-page",
   sudokuWizard = "sudoku-wizard"
 }
+export const NAME = "NAVIGATE_TO";
 export function action(url: pages): Action {
   return {
-    name: "NAVIGATE_TO",
+    name: NAME,
     payload: {url: url}
   }
 }
@@ -27,4 +28,4 @@ export function reducer(state: AppState, _action: Action): AppState {
   }
 };
 
-store.registerReducer(action(pages.home).name, reducer);
+// store.registerReducer(NAME, reducer);

@@ -1,0 +1,9 @@
+/* acc-icon { */
+  /* background-color: cyan; */
+/* } */
+
+acc-icon #iconid {
+  font-family: "localFontAwesome";
+  /* font-weight: bold; */
+  font-size: inherit;
+}

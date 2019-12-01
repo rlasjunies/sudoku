@@ -1,5 +1,5 @@
 /* The switch - the box around the slider */
-acc-switch{
+acc-switch {
   display: flex;
   /* flex:1; */
   flex-direction: row;
@@ -10,7 +10,7 @@ acc-switch{
   color: black;
 }
 
-.container{
+acc-switch .container {
   display: flex;
   /* align-content: center; */
   align-items: center;
@@ -18,7 +18,8 @@ acc-switch{
   /* justify-content: center; */
   padding: 10px;
 }
-label {
+
+acc-switch label {
   position: relative;
   display: inline-block;
   width: 60px;

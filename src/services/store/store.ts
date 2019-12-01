@@ -37,7 +37,7 @@ export class Store {
         const retrievePreviousState = retrieveStateFromLocalStorage(this.name);
         this._state = (retrievePreviousState !== null) ? retrievePreviousState : initialState;
         this._state.actionName = "STORE_INIT"
-        // console.log("STORE CONSTRUCTED!", this._state);
+        console.log(`STORE:${name} CONSTRUCTED!`, this._state);
     }
 
     get state() {
@@ -45,6 +45,7 @@ export class Store {
     }
 
     registerReducer(actionName: string, reducer: (state: ObjectCollection<any>, action: Action) => ObjectCollection<any>) {
+        // console.log(`actionName:${actionName}`);
         this.reducers.push({
             actionName: actionName,
             reducer: reducer
@@ -54,6 +55,7 @@ export class Store {
     private reduce(state: ObjectCollection<any>, action: Action) {
 
         const reducer = this.reducers.filter(reducer => {
+            // console.log(`reducer name:${reducer.actionName} - action name:${action.name}`);
             if (reducer.actionName === action.name) return reducer;
         });
 

@@ -4,8 +4,12 @@ interface IRoute {
 class Router {
   routes: IRoute[] = [];
   addRoute(routeName: string) {
-    console.log(`Router.addRoute:${routeName}`);
+    //console.log(`Router.addRoute:${routeName}`);
     this.routes.push({ name: routeName });
+  }
+
+  navigateTo(route: string) {
+    console.log(`NavigateTo:${route}`)
   }
 }
 

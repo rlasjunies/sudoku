@@ -76,9 +76,18 @@ généralement cela marche
 
 https://medium.com/@tally_b/unit-testing-stenciljs-1-0-c4e902a4e63c
 
-
 # jsx type checking extension
 
 > I did not found yet the good approach to extend "correctly" the jsx type checking
 
-```
+## node type
+
+20191111 - I needed to install @types/node because I've got error in typing
+
+checkbox CSS
+https://codersblock.com/blog/checkbox-trickery-with-css/
+
+
+# html widgets
+
+https://www.w3schools.com/howto/howto_css_switch.asp

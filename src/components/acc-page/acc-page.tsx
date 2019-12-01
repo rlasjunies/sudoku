@@ -1,11 +1,22 @@
 import { Component, Prop, Method, Element, h } from '@stencil/core';
-import { router } from "../../services/router";
+// import { router } from "../../services/router";
 import { store } from "../../store/appStore";
 import { AppState } from 'store/app.state';
 
+/** TODO:
+ * this approach is ok while not having a lot of pages
+ * a better approach may be to delegate the monitoring of the rooting state change to a core router
+ * an the core router to update the pages.
+ * This will avoid pages*treatment for each state change
+ * 
+ * Other approach is to have a store dedicated to the routing ;-)
+ * 
+ * Extend the subscription with smart filtering, to avoid statechange called if there is no meaningfull statechanges 
+ **/  
 @Component({
   tag: 'acc-page',
-  styleUrl: 'acc-page.css'
+  styleUrl: 'acc-page.css',
+  shadow: false
 })
 export class AccPage {
   @Element() element: HTMLElement;
@@ -27,7 +38,7 @@ export class AccPage {
   }
 
   componentDidLoad() {
-    router.addRoute(this.name);
+    // router.addRoute(this.name);
     this.unsubscribeStateChanged = store.subscribeReaction(this.stateChanged, this);
   }
   componentDidUnload() {
@@ -35,16 +46,22 @@ export class AccPage {
   }
 
   stateChanged(state: AppState): any {
-    const newUrl= state.appRoot.url;
-  
-    if (newUrl !== this.previousUrl){
-      this.previousUrl = newUrl;
-      if (newUrl === this.name) {
-        this.show();
-      } else {
-        this.hide();
-      };
+    const newUrl = state.appRoot.url;
+
+    if (newUrl !== this.previousUrl) {
+      this.navigateTo(newUrl);
     }
+  }
+
+  private navigateTo(newUrl: string) {
+    this.previousUrl = newUrl;
+    if (newUrl === this.name) {
+      this.show();
+    }
+    else {
+      this.hide();
+    }
+    ;
   }
 
   render() {

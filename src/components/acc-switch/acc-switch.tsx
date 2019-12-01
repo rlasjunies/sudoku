@@ -1,4 +1,4 @@
-import { Component, Event, h } from '@stencil/core';
+import { Component, Event, Prop, Element, h } from '@stencil/core';
 import { EventEmitter } from 'events';
 
 
@@ -7,24 +7,36 @@ import { EventEmitter } from 'events';
   styleUrl: 'acc-switch.css'
 })
 export class AccSwitch {
+  @Element() element: HTMLAccSwitchElement;
   @Event() switch: EventEmitter
+  @Prop() checkInitialValue: boolean = false;
 
-  checkBoxChangeHandler(switchValue: boolean) {
-    this.switch.emit(switchValue + "");
+  checkBox: HTMLInputElement;
+  checkBoxChangeHandler() {
+    this.switch.emit(this.checkBox.checked + "" );
   }
 
+  componentDidLoad() {
+    this.checkBox = this.element.querySelector('#checkbox');
+  }
   render() {
     return (
-      // <div onClick={_ => this.onClickHandler()}>
-      // <div onClick={evt => this.divOnClickChange(evt)} >
       [
-        <slot />,
         <div class="container">
           <label class="acc-switch" >
-            <input type="checkbox" onChange={evt => this.checkBoxChangeHandler((evt.srcElement as HTMLInputElement).checked)} />
+          
+            <input
+              id="checkbox"
+              type="checkbox"
+              checked={this.checkInitialValue}
+              onChange={() => this.checkBoxChangeHandler()} />
             {/* <input type="checkbox"/> */}
             <span class="slider round"></span>
           </label>
+        </div>,
+        <div
+          onClick={()=> this.checkBoxChangeHandler()}>
+          <slot />
         </div>
       ]
     );

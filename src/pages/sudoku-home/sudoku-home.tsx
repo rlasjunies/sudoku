@@ -8,7 +8,11 @@ import { Component, Element, State, h } from '@stencil/core';
 
 @Component({
   tag: 'sudoku-home',
-  styleUrl: 'sudoku-home.css'
+  styleUrls: [
+    'sudoku-home.css',
+    // '../../assets/lib/bootstrap-toggle.min.css'
+  ],
+  shadow: false
 })
 export class SudokuHomePage {
 
@@ -61,43 +65,43 @@ export class SudokuHomePage {
 
       <div id="bottom">
         {this.gameOnGoing ?
-          <ion-button
-            expand="block"
+          <acc-button styleinfo
+            // expand="block"
+            // type="button" 
+            class="btn info"
             onClick={() => this.navigateToSudokuPage()}>
-            <ion-icon name="play"></ion-icon>
+            {/* <ion-icon name="play"></ion-icon> */}
             Continue
-        </ion-button>
+        </acc-button>
           : ''
         }
 
-        <ion-button
-          expand="block"
-          // size="large"
-          color={this.gameOnGoing ? "secondary" : "primary"}
+        <acc-button stylesuccess
+          class={this.gameOnGoing ? "btn info" : "btn info"}
           onClick={() => this.navigateToCreateNewBoardPage()}>
-          <ion-icon slot="start" name="add"></ion-icon>
+          {/* <ion-icon slot="start" name="add"></ion-icon> */}
           New game
-      </ion-button>
+      </acc-button>
         {this.footer()}
       </div>
     )
   }
   render() {
     return ([
-      // <acc-page name="home">
-        // <ion-header>
-        //   <ion-toolbar>
-        //     <ion-title></ion-title>
-        //     <ion-buttons slot="start">
-        //       <ion-menu-button />
-        //     </ion-buttons>
-        //   </ion-toolbar>
-        // </ion-header>,
-      <div class="pagecontent">
-          {this.title()}
-          {this.actions()}
-        </div>
-      // </acc-page>
+      <acc-page name="sudoku-home">
+        {/*  <ion-header>
+           <ion-toolbar>
+             <ion-title></ion-title>
+             <ion-buttons slot="start">
+               <ion-menu-button />
+             </ion-buttons>
+           </ion-toolbar>
+         </ion-header>, */}
+        {/* <div class="pagecontent"> */}
+        {this.title()}
+        {this.actions()}
+        {/* </div> */}
+      </acc-page>
     ]
     );
   }

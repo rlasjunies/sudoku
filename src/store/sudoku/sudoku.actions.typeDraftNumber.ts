@@ -1,12 +1,12 @@
 import { sudokuBoardClone } from "../../services/sudoku/sudoku";
 import { Action } from "../../services/store/store";
 import { AppState} from '../../store//app.state';
-import { store } from '../../store//appStore';
+// import { store } from '../../store//appStore';
 
-export const actionNameDraftNumberTyped = "TYPE_DRAFT_NUMBER";
+export const NAME = "TYPE_DRAFT_NUMBER";
 export function action(value: number): Action {
   return {
-    name: actionNameDraftNumberTyped,
+    name: NAME,
     payload: { valueTyped: value }
   }
 }
@@ -41,4 +41,4 @@ export function reducer(state: AppState, action: Action): AppState {
   return state;
 }
 
-store.registerReducer(actionNameDraftNumberTyped, reducer);
+// store.registerReducer(NAME, reducer);

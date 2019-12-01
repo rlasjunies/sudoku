@@ -32,4 +32,20 @@ sudoku-new .buttons {
   /* justify-items: center; */
   /* justify-content: center; */
   /* flex:1; */
+  display: flex;
+}
+
+sudoku-new .buttons acc-button{
+  font-size: 8vh;
+  margin: 5px;
+  color: white;
+  display: flex;
+  text-align: center;
+}
+
+sudoku-new acc-header {
+  font-size: x-large;
+}
+sudoku-new acc-icon{
+  margin:5px;
 }
