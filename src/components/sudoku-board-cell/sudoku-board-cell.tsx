@@ -1,5 +1,6 @@
 import { Component, Prop, h } from '@stencil/core';
 import { SudokuBoardCell } from "../../services/sudoku/sudoku";
+const BOARD_CELL_DEV_MODE = ['%c[BOARD_CELL]', 'color:#ff11ff;font-weight: bold'];
 
 @Component({
     tag: 'sudoku-board-cell-component',
@@ -13,6 +14,7 @@ export class SudokuBoardCellComponent {
 
 
     onClickRippleEffect(mouseEvent: MouseEvent) {
+        console.debug(...BOARD_CELL_DEV_MODE, `onClickRippleEffect-event:${mouseEvent}`);
         const $cell = (mouseEvent.target as HTMLElement).closest("sudoku-board-cell-component");
 
         const rect = $cell.getBoundingClientRect();
@@ -31,6 +33,9 @@ export class SudokuBoardCellComponent {
         $ripple.style.left = left + 'px';
 
         $ripple.classList.add('show');
+        setTimeout(function () {
+            $ripple.remove();
+        }, 500);
         return false;
     }
 
