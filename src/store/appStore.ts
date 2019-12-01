@@ -77,7 +77,7 @@ import * as logger from "../store/middleware/logger";
 logger.register(store);
 
 // activate, deactivate, state update by the timer
-// import * as timer from "../store/middleware/timerService";
-// import * as timerTick from "./sudoku/sudoku.actions.timer.Tick";
-// store.registerReducer(timerTick.action().name , timerTick.reducer);
-// timer.register(store);
+import * as timer from "../store/middleware/timerService";
+import * as timerTick from "./sudoku/sudoku.actions.timer.Tick";
+store.registerReducer(timerTick.action().name , timerTick.reducer);
+timer.register(store);
