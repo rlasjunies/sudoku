@@ -1,3 +1,5 @@
+import { testEnvironment } from "../../global/global";
+
 import { Component, EventEmitter, Event, Element, Prop, Watch, h } from '@stencil/core';
 import { colOfCellNumber, rowOfCellNumber, blockOfCellNumber, SudokuBoard, initializeSudokuBoard, SolutionsByRules, SudokuWizardConfiguration } from "../../services/sudoku/sudoku";
 import { chenillardNorth, chenillardSouth, chenillardWest, chenillardEast, chenillardNorthEast, chenillardSouthEast, chenillardSouthWest, chenillardNorthWest } from './sudoku-chenillard';
@@ -197,7 +199,7 @@ returnClassForTheCell(cell: number) {
     
     const modeEntry = isNullOrEmpty(selectedCellValue) ;
     const modeHighlightNumber = !modeEntry;
-    console.debug(...BOARD_DEV_MODE,`cellSelected:${this.cellSelected} - SelectedValue:${selectedCellValue} - cellValue:${cellValue} - modeEntry:${modeEntry}`);
+    testEnvironment && console.debug(...BOARD_DEV_MODE,`cellSelected:${this.cellSelected} - SelectedValue:${selectedCellValue} - cellValue:${cellValue} - modeEntry:${modeEntry}`);
 
     const colOfCell = colOfCellNumber(cell);
     const rowOfCell = rowOfCellNumber(cell);
@@ -219,7 +221,7 @@ returnClassForTheCell(cell: number) {
     const areaSelectedClass = (modeEntry && isCellSelectedCorrect && isNotTheSelectedCell && isColRowOrBlockSelected) ? " area-selected " : "";
     const cellSelectedClass = isTheSelectedCell ? " selected " : "";
     const sameValueAsTheSelectedCellClass = modeHighlightNumber && cellValue == selectedCellValue ? " sameValueAsTheOneSelected " : "";
-    console.debug(...BOARD_DEV_MODE,`modeHighlightNumber: ${modeHighlightNumber} - sameValueAsTheSelectedCellClass:${sameValueAsTheSelectedCellClass}`);
+    testEnvironment && console.debug(...BOARD_DEV_MODE,`modeHighlightNumber: ${modeHighlightNumber} - sameValueAsTheSelectedCellClass:${sameValueAsTheSelectedCellClass}`);
     // const sameValueAsTheOneSelected = 
     //     (
     //         (selectedCellValue !== "null") &&

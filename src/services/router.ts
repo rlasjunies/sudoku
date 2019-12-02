@@ -1,3 +1,4 @@
+import { testEnvironment } from "../global/global";
 interface IRoute {
   name: string;
 }
@@ -9,7 +10,7 @@ class Router {
   }
 
   navigateTo(route: string) {
-    console.log(`NavigateTo:${route}`)
+    testEnvironment && console.log(`NavigateTo:${route}`)
   }
 }
 

@@ -7,6 +7,7 @@ import * as storeLogger from "../../store/middleware/logger";
 import * as storeTimer from "../../store/middleware/timerService";
 
 import * as endGame_StopTimer from "../../store/_combinedActions/actions.endGame_StopTimer";
+import { testEnvironment } from "../../global/global";
 
 @Component({
   tag: 'app-root',
@@ -28,13 +29,13 @@ export class App {
     // console.log(`app-root2 new route - newvalue:${newValue} - oldValue:${oldValue}`);
     if (newValue !== oldValue) {
       if (this.navElement) {
-        console.log(`show route:${newValue}`);
+        testEnvironment && console.log(`show route:${newValue}`);
         // this.navElement.setRoot(newValue, null, {
         //   animated: false
         // })
       }
       else {
-        console.log('navElement not yet loaded');
+        testEnvironment && console.log('navElement not yet loaded');
       }
     }
   }

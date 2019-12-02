@@ -16,11 +16,17 @@ echo("****************************************");
 packageJson.IncrementPatchVersion_WithNoCitTag();
 
 const version = packageJson.version();
-const splashScreen = "./src/pages/sudoku-home/sudoku-home.tsx";
+const globalFile = "./src/global/global.tsx";
 echo("****************************************");
-echo(`replace version:${version} in file:${splashScreen}`);
+echo(`replace version:${version} in file:${globalFile}`);
 echo("****************************************");
-codeFiles.replaceBuildNumberInHomePageFromVersion(version, splashScreen);
+codeFiles.replaceBuildNumberInGlobal(version, globalFile);
+
+echo("****************************************");
+echo(`define the environment as -not test-`);
+echo("****************************************");
+codeFiles.setProductionFlag(globalFile);
+
 
 if (stenciljs.build()) {
   console.log("+++ BUILD SUCCEEDED +++ !!");

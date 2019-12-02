@@ -1,5 +1,5 @@
 const APPSTORE_DEV_MODE = ['%c[appStore]', 'color:#ff11ff;font-weight: bold'];
-
+import { testEnvironment } from "../global/global";
 import { Store } from "../services/store/store";
 import { AppState } from "../store/app.state";
 
@@ -38,7 +38,7 @@ const initialState: AppState = {
   appRoot: appRootInitialState
 }
 
-console.debug(...APPSTORE_DEV_MODE,`parsing of the store:${new Date()}`);
+testEnvironment && console.debug(...APPSTORE_DEV_MODE,`parsing of the store:${new Date()}`);
 export const store = new Store(initialState, 'sudoku-accurentis');
 
 store.registerReducer(navigateTo.NAME, navigateTo.reducer);
@@ -72,9 +72,10 @@ store.registerReducer(wizardshowsUniqueCandidateToggle.action().name , wizardsho
  */
 
 
+
 // log in the web console the actions
 import * as logger from "../store/middleware/logger";
-logger.register(store);
+if (testEnvironment) logger.register(store);
 
 // activate, deactivate, state update by the timer
 import * as timer from "../store/middleware/timerService";

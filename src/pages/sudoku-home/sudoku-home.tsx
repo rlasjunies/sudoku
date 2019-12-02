@@ -1,6 +1,6 @@
 import { AppState } from '../../store/app.state';
 import { store } from '../../store/appStore';
-
+import { version } from "../../global/global";
 import * as navigateToSudoku_ResumeTimer from '../../store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
 import { isStandAlone, isWebWorker } from '../../services/pwa';
 import * as navigateTo from "../../store/app-root/app-root.actions.navigateTo";
@@ -23,7 +23,7 @@ export class SudokuHomePage {
   @State() deployed = isStandAlone();
   @State() webWorker = isWebWorker();
 
-  @State() version = "24"; //version to be updated
+  @State() version = version; //version to be updated
   unsubscribeStateChanged: () => void;
 
   componentDidUnload() {

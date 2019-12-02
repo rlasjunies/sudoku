@@ -1,3 +1,4 @@
+import { testEnvironment } from "../../global/global";
 
 interface ObjectCollection<T> {
     [key: string]: T;
@@ -37,7 +38,7 @@ export class Store {
         const retrievePreviousState = retrieveStateFromLocalStorage(this.name);
         this._state = (retrievePreviousState !== null) ? retrievePreviousState : initialState;
         this._state.actionName = "STORE_INIT"
-        console.log(`STORE:${name} CONSTRUCTED!`, this._state);
+        testEnvironment && console.log(`STORE:${name} CONSTRUCTED!`, this._state);
     }
 
     get state() {

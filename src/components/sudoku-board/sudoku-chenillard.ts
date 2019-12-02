@@ -1,3 +1,4 @@
+import { testEnvironment } from "../../global/global";
 import { blockOfColRow } from "../../services/sudoku/sudoku";
 
 export function chenillardNorth(element: HTMLSudokuBoardComponentElement, col: number, row: number, block: number, stayInCurrentBlock: boolean, index: number) {
@@ -188,7 +189,7 @@ export function chenillardNorthWest(element: HTMLSudokuBoardComponentElement, co
 function highlightCell(element: HTMLSudokuBoardComponentElement, row: number, col: number, index: number) {
   const cell = element.querySelectorAll(`.row${row}.column${col}`);
   if (cell[0] === undefined) {
-    console.log(`chenillard - cannot found cell in the row-col:${row}-${col}`);
+    testEnvironment && console.log(`chenillard - cannot found cell in the row-col:${row}-${col}`);
     throw `chenillard - cannot found cell in the row-col:${row}-${col}`;
     
   } else {
