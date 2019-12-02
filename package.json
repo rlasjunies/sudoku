@@ -1,7 +1,7 @@
 {
   "name": "sudoku-master",
   "private": true,
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Sudoku Master",
   "scripts": {
     "start": "stencil build --dev --watch --serve",
@@ -40,7 +40,7 @@
     "ts-node": "^8.3.0",
     "workbox-build": "4.3.1"
   },
-  "jest": {
+  "jestxx": {
     "verbose": true,
     "transform": {
       "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
