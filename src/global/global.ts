@@ -1,4 +1,4 @@
 
-export const version = 24; // version to replaced 
+export const version = 26; // version to replaced 
 
-export const testEnvironment = false; 
+export const testEnvironment = true;

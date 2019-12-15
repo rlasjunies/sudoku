@@ -1,4 +1,5 @@
 import * as arrayShuffle from "../arrayShuffle";
+import { testEnvironment } from "../../global/global";
 
 export interface Solution {
     cell: number;
@@ -333,7 +334,10 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
 
     switch (level) {
         case "easy":
-            numberOfComplexity = (81 - 62);
+            if (testEnvironment) {numberOfComplexity = 81-78} 
+            else {
+                numberOfComplexity = (81 - 62);
+            }
             break;
         case "medium":
             numberOfComplexity = (81 - 53);

@@ -16,7 +16,7 @@ echo("****************************************");
 packageJson.IncrementPatchVersion_WithNoCitTag();
 
 const version = packageJson.version();
-const globalFile = "./src/global/global.tsx";
+const globalFile = "./src/global/global.ts";
 echo("****************************************");
 echo(`replace version:${version} in file:${globalFile}`);
 echo("****************************************");

@@ -1,6 +1,6 @@
 import { AppState } from '../../store/app.state';
 import { store } from '../../store/appStore';
-import { version } from "../../global/global";
+import { version, testEnvironment } from "../../global/global";
 import * as navigateToSudoku_ResumeTimer from '../../store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
 import { isStandAlone, isWebWorker } from '../../services/pwa';
 import * as navigateTo from "../../store/app-root/app-root.actions.navigateTo";
@@ -57,6 +57,7 @@ export class SudokuHomePage {
     return (
       <div id="version">version: {this.version}
         {this.deployed ? " deployed" : " running in webbrowser"}
+        {testEnvironment ? " - test environment" : ""}
       </div>
     )
   }
