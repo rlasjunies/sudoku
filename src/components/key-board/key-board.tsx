@@ -61,6 +61,9 @@ export class KeyBoard3 {
     $ripple.style.left = left + 'px';
 
     $ripple.classList.add('show');
+    setTimeout(function () {
+            $ripple.remove();
+        }, 500);
     return false;
   }
 

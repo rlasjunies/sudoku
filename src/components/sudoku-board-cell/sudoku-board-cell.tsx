@@ -60,7 +60,6 @@ export class SudokuBoardCellComponent {
         return (
             <div class="sudoku-board-cell"
                 onClick={(event: MouseEvent) => this.onClickRippleEffect(event)}>
-                <ion-ripple-effect></ion-ripple-effect>
                 <div class={this.cell.seed === true ? "value initialvalue" : "value"}>
                     {this.cell.value}{this.cell.seed}
                 </div>
