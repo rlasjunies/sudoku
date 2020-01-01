@@ -1,7 +1,6 @@
 
 # How to be involved
 
-
 ## Address of the portal
 
 <https://sudoku-accurentis.firebaseapp.com>
@@ -18,7 +17,7 @@ npx stencil build
 
 ### build & deploy
 
-This actions have been scripted in `scripts/` 
+This actions have been scripted in `scripts/`
 
 They are accessible from npm package.json scripts
 
