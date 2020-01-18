@@ -2,6 +2,8 @@ import { isRowSolvedx, blockOfCellNumber, isColSolvedx, isBlockSolvedx, rowOfCel
 import { Action } from "../../services/store/store";
 import { AppState } from '../../store//app.state';
 // import { store } from '../../store//appStore';
+import { testEnvironment } from "../../global/global";
+const DEV_MODE = ['%c[Action-TypeNumber]', 'color:#ff11ff;font-weight: bold'];
 
 export const NAME = "TYPE_NUMBER";
 export function action(value: number): Action {
@@ -25,16 +27,19 @@ export function reducer(state: AppState, action: Action): AppState {
   let boardSolved: boolean = false;
   let solutionsByRules = null;
 
-  let newBoard = sudokuBoardClone(state.sudokuPage.board);
-
+  const value = payload.valueTyped;
   // TODO: algo a revoir quand fonctionnel avancé, il faut mettre dans des sous fonctions l'ensemeble des cas
-
-  if (currentCell === null) {
+  
+  if ((currentCell === null) || 
+  (state.sudokuPage.board.cells[currentCell].seed) ||
+  (state.sudokuPage.board.cells[currentCell].value === value)) {
     // nothing done
-  } else if (newBoard.cells[currentCell].seed) {
-    // no modification allowed
+    testEnvironment && console.debug(...DEV_MODE,`skip type number BL`);
+
+    return state;
   } else {
-    const value = payload.valueTyped;
+    let newBoard = sudokuBoardClone(state.sudokuPage.board);
+    
 
     // remove the value of the cell of the current board. because PossibleNumber check the value already in the board
     // oldBoard.cells[currentCell].value = null;
@@ -81,20 +86,20 @@ export function reducer(state: AppState, action: Action): AppState {
     solutionsByRules = resolveByRules(newBoard);
 
     // console.log(` [${col}-${row}-${block}] rowSolved:${rowSolved} - colSolved:${colSolved} - blockSolved:${blockSolved} - boardSolved:${boardSolved}`);
-  }
-  newBoard.remainingNumbers = remainingNumbers(newBoard.cells);
-
-  return {
-    ...state,
-    sudokuPage: {
-      ...state.sudokuPage,
-      board: newBoard,
-      boardHistory: [...state.sudokuPage.boardHistory, oldBoard],  // add the oldBoard in the history
-      rowSolved: rowSolved,
-      colSolved: colSolved,
-      blockSolved: blockSolved,
-      boardSolved: boardSolved,
-      solutionsByRules: solutionsByRules
+    newBoard.remainingNumbers = remainingNumbers(newBoard.cells);
+  
+    return {
+      ...state,
+      sudokuPage: {
+        ...state.sudokuPage,
+        board: newBoard,
+        boardHistory: [...state.sudokuPage.boardHistory, oldBoard],  // add the oldBoard in the history
+        rowSolved: rowSolved,
+        colSolved: colSolved,
+        blockSolved: blockSolved,
+        boardSolved: boardSolved,
+        solutionsByRules: solutionsByRules
+      }
     }
   }
 }
