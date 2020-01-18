@@ -209,7 +209,7 @@ returnClassForTheCell(cell: number) {
     const rowOfCellSelected = rowOfCellNumber(this.cellSelected);
     const blockOfCellSelected = blockOfCellNumber(this.cellSelected);
 
-    const isIncorrectCell = this.incorrectCells.lastIndexOf(cell) !== -1;
+    const isIncorrectCell = this.wizardConfiguration.showErrornousCells ? this.incorrectCells.lastIndexOf(cell) !== -1 : false;
     const incorrectClass = isIncorrectCell ? " incorrect " : "";
     
     // console.log(`cell:${cell} - selected:${this.cellSelected} - ${((this.cellSelected !== -1) && (this.cellSelected !== null))}`);

@@ -31,6 +31,7 @@ import * as undoLastMove from "./sudoku/sudoku.actions.undoLastMove";
 import * as wizardAutoCalculatePossibleValuesToggle from "./sudoku/sudoku.actions.wizard.AutoCalculatePossibleValuesToggle";
 import * as wizardshowsUniqueCandidateInZoneToggle from "./sudoku/sudoku.actions.wizard.showsUniqueCandidateInZoneToggle";
 import * as wizardshowsUniqueCandidateToggle from "./sudoku/sudoku.actions.wizard.showsUniqueCandidateToggle";
+import * as wizardshowsErrornousCellsToggle from "./sudoku/sudoku.actions.wizard.showErrornousCellsToggle";
 
 // import "sudoku-wasm";
 // let imports={};
@@ -81,6 +82,7 @@ store.registerReducer(undoLastMove.action().name, undoLastMove.reducer);
 store.registerReducer(wizardAutoCalculatePossibleValuesToggle.action().name, wizardAutoCalculatePossibleValuesToggle.reducer);
 store.registerReducer(wizardshowsUniqueCandidateInZoneToggle.action().name, wizardshowsUniqueCandidateInZoneToggle.reducer);
 store.registerReducer(wizardshowsUniqueCandidateToggle.action().name, wizardshowsUniqueCandidateToggle.reducer);
+store.registerReducer(wizardshowsErrornousCellsToggle.action().name, wizardshowsErrornousCellsToggle.reducer);
 
 
 /**

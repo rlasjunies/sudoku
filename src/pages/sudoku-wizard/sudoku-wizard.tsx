@@ -4,7 +4,8 @@ import { AppState } from '../../store/app.state';
 import * as navigateToSudoku_ResumeTimer from '../../store/_combinedActions/actions.navigateToSudoku_ResumeTimer';
 import * as showUniqueCandidateAction from "../../store/sudoku/sudoku.actions.wizard.showsUniqueCandidateToggle";
 import * as showUniqueCandidateInZoneAction from "../../store/sudoku/sudoku.actions.wizard.showsUniqueCandidateInZoneToggle";
-import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculatePossibleValuesToggle";
+import * as showErrornousCells from "../../store/sudoku/sudoku.actions.wizard.showErrornousCellsToggle";
+// import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculatePossibleValuesToggle";
 import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../services/sudoku/sudoku';
 
 @Component({
@@ -15,8 +16,9 @@ import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../
 export class SudokuWizardPage {
 
   @Element() element: HTMLSudokuWizardElement;
-  @State() calculatePossibleValues: boolean;
+  // @State() calculatePossibleValues: boolean;
   @State() showUniquePossibleValue: boolean;
+  @State() showErrornousCells: boolean;
   @State() showUniqueOccurenceInZones: boolean;
   @State() wizardConfiguration: SudokuWizardConfiguration = sudokuWizardConfigurationInit;
 
@@ -32,7 +34,8 @@ export class SudokuWizardPage {
   }
 
   stateChanged(state: AppState): any {
-    this.calculatePossibleValues = state.sudokuPage.wizardConfiguration.calculatePossibleValues;
+    // this.calculatePossibleValues = state.sudokuPage.wizardConfiguration.calculatePossibleValues;
+    this.showErrornousCells = state.sudokuPage.wizardConfiguration.showErrornousCells;
     this.showUniquePossibleValue = state.sudokuPage.wizardConfiguration.showUniquePossibleValueInRowOrColumn;
     this.showUniqueOccurenceInZones = state.sudokuPage.wizardConfiguration.showUniquePossiblrValueInZones;
   }
@@ -44,13 +47,18 @@ export class SudokuWizardPage {
   onShowUniqueCandidateClickHandler() {
     store.dispatch(showUniqueCandidateAction.action());
   }
+ 
+  onShowErrornousCellsClickHandler() {
+    store.dispatch(showErrornousCells.action());
+  }
+ 
   onShowUniqueCandidateInZoneClickHandler() {
     store.dispatch(showUniqueCandidateInZoneAction.action());
   }
 
-  onCalculatePossibleValuesClickHandler() {
-    store.dispatch(autoCalculateCandidateAction.action());
-  }
+  // onCalculatePossibleValuesClickHandler() {
+  //   store.dispatch(autoCalculateCandidateAction.action());
+  // }
 
   render() {
     return ([
@@ -59,6 +67,12 @@ export class SudokuWizardPage {
           onBackClick={() => this.onBackClickHandler()}>
           Need an help?
         </acc-header>
+
+        <acc-switch
+          onSwitch={() => this.onShowErrornousCellsClickHandler()}
+          checkInitialValue={this.showErrornousCells}>
+            Show errornous cells
+        </acc-switch>
 
         <acc-switch
           onSwitch={() => this.onShowUniqueCandidateClickHandler()}

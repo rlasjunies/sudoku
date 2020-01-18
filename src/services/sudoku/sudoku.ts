@@ -14,11 +14,13 @@ export interface SudokuWizardConfiguration {
     calculatePossibleValues: boolean;
     showUniquePossibleValueInRowOrColumn: boolean;
     showUniquePossiblrValueInZones: boolean;
+    showErrornousCells: boolean;
 }
 export const sudokuWizardConfigurationInit: SudokuWizardConfiguration = {
     calculatePossibleValues: false,
     showUniquePossibleValueInRowOrColumn: false,
-    showUniquePossiblrValueInZones: false
+    showUniquePossiblrValueInZones: false,
+    showErrornousCells: true
 }
 
 export interface SudokuBoard {

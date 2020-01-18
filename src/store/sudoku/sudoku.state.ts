@@ -41,6 +41,7 @@ export const sudokuPageInitialState: SudokuPageState = {
   wizardConfiguration:{
     calculatePossibleValues: false,
     showUniquePossiblrValueInZones: false,
-    showUniquePossibleValueInRowOrColumn:false
+    showUniquePossibleValueInRowOrColumn:false,
+    showErrornousCells:true
   }
 };
