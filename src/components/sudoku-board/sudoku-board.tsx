@@ -247,12 +247,12 @@ returnClassForTheCell(cell: number) {
         ` row${rowOfCell} ` +
         ` column${colOfCell} ` +
         ` block${blockOfCell}` +
-        areaSelectedClass +
-        cellSelectedClass +
-        sameValueAsTheSelectedCellClass +
         incorrectClass +
-        isSolution_UniquePossibleValueClass +
-        isSolution_UniqueOccurenceInZoneClass;
+        (isIncorrectCell ? `` : areaSelectedClass) +
+        (isIncorrectCell ? `` : cellSelectedClass) +
+        (isIncorrectCell ? `` : sameValueAsTheSelectedCellClass) +
+        (isIncorrectCell ? `` : isSolution_UniquePossibleValueClass) +
+        (isIncorrectCell ? `` : isSolution_UniqueOccurenceInZoneClass);
 }
 
 cellSelectedHandler(cell: number) {
