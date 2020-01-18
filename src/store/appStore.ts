@@ -32,6 +32,7 @@ import * as wizardAutoCalculatePossibleValuesToggle from "./sudoku/sudoku.action
 import * as wizardshowsUniqueCandidateInZoneToggle from "./sudoku/sudoku.actions.wizard.showsUniqueCandidateInZoneToggle";
 import * as wizardshowsUniqueCandidateToggle from "./sudoku/sudoku.actions.wizard.showsUniqueCandidateToggle";
 import * as wizardshowsErrornousCellsToggle from "./sudoku/sudoku.actions.wizard.showErrornousCellsToggle";
+import * as wizardshowsshowIdenticalNumber from "./sudoku/sudoku.actions.wizard.showIdenticalNumbers";
 
 // import "sudoku-wasm";
 // let imports={};
@@ -83,6 +84,7 @@ store.registerReducer(wizardAutoCalculatePossibleValuesToggle.action().name, wiz
 store.registerReducer(wizardshowsUniqueCandidateInZoneToggle.action().name, wizardshowsUniqueCandidateInZoneToggle.reducer);
 store.registerReducer(wizardshowsUniqueCandidateToggle.action().name, wizardshowsUniqueCandidateToggle.reducer);
 store.registerReducer(wizardshowsErrornousCellsToggle.action().name, wizardshowsErrornousCellsToggle.reducer);
+store.registerReducer(wizardshowsshowIdenticalNumber.action().name, wizardshowsshowIdenticalNumber.reducer);
 
 
 /**

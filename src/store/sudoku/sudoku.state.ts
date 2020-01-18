@@ -42,6 +42,7 @@ export const sudokuPageInitialState: SudokuPageState = {
     calculatePossibleValues: false,
     showUniquePossiblrValueInZones: false,
     showUniquePossibleValueInRowOrColumn:false,
-    showErrornousCells:true
+    showErrornousCells:true,
+    showIdenticalNumber:true,
   }
 };

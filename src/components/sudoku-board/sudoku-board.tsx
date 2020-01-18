@@ -220,7 +220,10 @@ returnClassForTheCell(cell: number) {
     
     const areaSelectedClass = (modeEntry && isCellSelectedCorrect && isNotTheSelectedCell && isColRowOrBlockSelected) ? " area-selected " : "";
     const cellSelectedClass = isTheSelectedCell ? " selected " : "";
-    const sameValueAsTheSelectedCellClass = modeHighlightNumber && cellValue == selectedCellValue ? " sameValueAsTheOneSelected " : "";
+    const sameValueAsTheSelectedCellClass = modeHighlightNumber 
+                                            && cellValue == selectedCellValue 
+                                            && this.wizardConfiguration.showIdenticalNumber ? " sameValueAsTheOneSelected " : "";
+
     testEnvironment && console.debug(...BOARD_DEV_MODE,`modeHighlightNumber: ${modeHighlightNumber} - sameValueAsTheSelectedCellClass:${sameValueAsTheSelectedCellClass}`);
     // const sameValueAsTheOneSelected = 
     //     (

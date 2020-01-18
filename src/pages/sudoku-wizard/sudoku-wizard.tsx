@@ -5,6 +5,7 @@ import * as navigateToSudoku_ResumeTimer from '../../store/_combinedActions/acti
 import * as showUniqueCandidateAction from "../../store/sudoku/sudoku.actions.wizard.showsUniqueCandidateToggle";
 import * as showUniqueCandidateInZoneAction from "../../store/sudoku/sudoku.actions.wizard.showsUniqueCandidateInZoneToggle";
 import * as showErrornousCells from "../../store/sudoku/sudoku.actions.wizard.showErrornousCellsToggle";
+import * as showIdenticalNumber from "../../store/sudoku/sudoku.actions.wizard.showIdenticalNumbers";
 // import * as autoCalculateCandidateAction from "../../store/sudoku/sudoku.actions.wizard.AutoCalculatePossibleValuesToggle";
 import { SudokuWizardConfiguration, sudokuWizardConfigurationInit } from '../../services/sudoku/sudoku';
 
@@ -19,6 +20,7 @@ export class SudokuWizardPage {
   // @State() calculatePossibleValues: boolean;
   @State() showUniquePossibleValue: boolean;
   @State() showErrornousCells: boolean;
+  @State() showIdenticalNumber: boolean;
   @State() showUniqueOccurenceInZones: boolean;
   @State() wizardConfiguration: SudokuWizardConfiguration = sudokuWizardConfigurationInit;
 
@@ -36,6 +38,7 @@ export class SudokuWizardPage {
   stateChanged(state: AppState): any {
     // this.calculatePossibleValues = state.sudokuPage.wizardConfiguration.calculatePossibleValues;
     this.showErrornousCells = state.sudokuPage.wizardConfiguration.showErrornousCells;
+    this.showIdenticalNumber = state.sudokuPage.wizardConfiguration.showIdenticalNumber;
     this.showUniquePossibleValue = state.sudokuPage.wizardConfiguration.showUniquePossibleValueInRowOrColumn;
     this.showUniqueOccurenceInZones = state.sudokuPage.wizardConfiguration.showUniquePossiblrValueInZones;
   }
@@ -50,6 +53,10 @@ export class SudokuWizardPage {
  
   onShowErrornousCellsClickHandler() {
     store.dispatch(showErrornousCells.action());
+  }
+ 
+  onShowshowIdenticalNumberClickHandler() {
+    store.dispatch(showIdenticalNumber.action());
   }
  
   onShowUniqueCandidateInZoneClickHandler() {
@@ -67,6 +74,12 @@ export class SudokuWizardPage {
           onBackClick={() => this.onBackClickHandler()}>
           Need an help?
         </acc-header>
+
+        <acc-switch
+          onSwitch={() => this.onShowshowIdenticalNumberClickHandler()}
+          checkInitialValue={this.showIdenticalNumber}>
+            Show identical number
+        </acc-switch>
 
         <acc-switch
           onSwitch={() => this.onShowErrornousCellsClickHandler()}
