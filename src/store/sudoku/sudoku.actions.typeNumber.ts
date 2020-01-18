@@ -53,15 +53,18 @@ export function reducer(state: AppState, action: Action): AppState {
     const isValuePossible = isPossibleNumberx(currentCell, value, oldBoard);
     let isValueCorrect = false;
     if (isValuePossible) {
-      ({ resolved: isValueCorrect } = resolverWorkForce(0, newBoard));
+      newBoard.cells[currentCell].value = value;
+      ({ resolved: isValueCorrect } = resolverWorkForce(currentCell, newBoard));
     }
-
+    
     // remove the value from the list if already exists
     // TODO: create an array library - retrieve the one from uacommander
+    testEnvironment && console.debug(...DEV_MODE,`isValuePossible:${isValuePossible} - isValueCorrect:${isValueCorrect} incorrect cells before:`,newBoard.incorrectCells);
     newBoard.incorrectCells = newBoard.incorrectCells.filter((cellNumber) => cellNumber !== currentCell)
     if (!isValueCorrect) {
       newBoard.incorrectCells.push(currentCell);
     }
+    testEnvironment && console.debug(...DEV_MODE,`isValuePossible:${isValuePossible} - isValueCorrect:${isValueCorrect} incorrect cells AFTER:`,newBoard.incorrectCells);
 
     // insert the value in the board even if incorrect, 
     // if incorrect the value will be highlighted to the player
