@@ -1,5 +1,6 @@
 import * as arrayShuffle from "../arrayShuffle";
 import { testEnvironment } from "../../global/global";
+const DEV_MODE = ['%c[sudoku.ts]', 'color:#ff11ff;font-weight: bold'];
 
 export interface Solution {
     cell: number;
@@ -334,7 +335,7 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
 
     switch (level) {
         case "easy":
-            if (testEnvironment) {numberOfComplexity = 81-78} 
+            if (testEnvironment) { numberOfComplexity = 81 - 78 }
             else {
                 numberOfComplexity = (81 - 62);
             }
@@ -350,14 +351,8 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
             break;
     }
 
-    // creation of an array of number
-    const indexCellsToHide = Array(81);
-    for (let index = 0; index < indexCellsToHide.length; index++) {
-        indexCellsToHide[index] = index + 1;
-    }
-
     // let's shuffled the array of number 
-    const cellsToHide = arrayShuffle.knuthfisheryates2(indexCellsToHide);
+    const cellsToHide = computeCellsToHide(numberOfComplexity);
 
     // for the complexity define, use this array shuffled to "remove" the values of the cells
     for (let index = 0; index < numberOfComplexity; index++) {
@@ -372,6 +367,37 @@ export function generateSudokuBoard(level: SudokuLevelType): SudokuBoard {
 
     // TODO evaluate the complexity to solve
     return sudokuBoard;
+}
+
+export function computeCellsToHide(numberOfComplexity: number) {
+    // creation of an array of number
+    const indexCellsToHide = Array(81);
+    for (let index = 0; index < indexCellsToHide.length; index++) {
+        indexCellsToHide[index] = index + 1;
+    }
+    const cellsToHide = arrayShuffle.knuthfisheryates2(indexCellsToHide);
+
+    let rowsRemainingValues: number[] = [9, 9, 9, 9, 9, 9, 9, 9, 9];
+    let colsRemainingValues: number[] = [9, 9, 9, 9, 9, 9, 9, 9, 9];
+    for (let index = 0; index < numberOfComplexity; index++) {
+        const cellToHide = cellsToHide[index] - 1;
+        rowsRemainingValues[rowOfCellNumber(cellToHide)] -= 1;
+        colsRemainingValues[colOfCellNumber(cellToHide)] -= 1;
+    }
+    if (rowsRemainingValues.find(value => value === 0) === 0 ||
+        colsRemainingValues.find(value => value === 0) === 0) {
+        // testEnvironment && console.debug(...DEV_MODE, rowsRemainingValues);
+        // testEnvironment && console.debug(...DEV_MODE, colsRemainingValues);
+        testEnvironment && console.debug(...DEV_MODE, `board WITHOUT rows or cols let's try again`);
+        // debugger;
+        return computeCellsToHide(numberOfComplexity);
+    } // else {
+    //    testEnvironment && console.debug(...DEV_MODE, `!!!!board ok `);
+    //     testEnvironment && console.debug(...DEV_MODE, rowsRemainingValues);
+    //     testEnvironment && console.debug(...DEV_MODE, colsRemainingValues);
+    //}
+
+    return cellsToHide;
 }
 
 // calculate the number of each numbers in cell
