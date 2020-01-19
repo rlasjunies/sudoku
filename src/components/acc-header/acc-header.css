@@ -27,6 +27,7 @@ acc-header #back {
   /* background-color: chartreuse; */
   display: flex;
   align-items: flex-start;
+  font-size: var(--header-actionbutton-fontsize);
 }
 
 acc-header #slot {

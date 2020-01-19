@@ -127,13 +127,13 @@ export class SudokuPage {
           class={this.gameOnGoing ? "" : "hidden"}
           time={this.timer}></acc-timer>
         <acc-button
-          class={this.gameOnGoing ? "" : "hidden"}
+          class={this.gameOnGoing ? "headeractionbutton" : "headeractionbutton hidden"}
           onClick={() => this.onTimerSwitch()}>
           <acc-icon iconUnicodeCode={!this.gameInPause ? ICON_PAUSE : ICON_PLAY} ></acc-icon>
         </acc-button>
         <acc-button
           styledanger
-          class={this.gameOnGoing ? "" : "hidden"}
+          class={this.gameOnGoing ? "headeractionbutton" : "headeractionbutton hidden"}
           onClick={() => this.onWizardClickHandler()}>
           <acc-icon iconUnicodeCode="f1cd"></acc-icon>
         </acc-button>
@@ -179,7 +179,7 @@ export class SudokuPage {
               hideUndoKey={!this.gameOnGoing}
             >
             </key-board>
-            <div id="newGame" class={this.gameOnGoing ? "hidden" : ""}>
+            <div id="newGame" class={this.gameOnGoing ? "displayNone" : ""}>
               {/* <div id="newGameText"> */}
               <p>Good game! Play again?</p>
               {/* </div> */}

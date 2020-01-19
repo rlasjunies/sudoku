@@ -5,11 +5,15 @@ key-board {
   flex-direction: column;
 }
 
+key-board .keyicon {
+  font-size: var(--keyboard-value-icon-fontsize);
+  display: flex;
+}
 key-board .value {
   /* background-color: aqua; */
   font-size: var(--keyboard-value-fontsize);
   line-height: var(--keyboard-value-fontsize);
-  margin: auto;
+  /* margin: auto; */
 }
 
 key-board .row {
@@ -27,10 +31,10 @@ key-board .row .key {
   font-size: var(--keyboard-value-fontsize);
   /* min-width: 9vw; */
   /* max-width: 9vw; */
-  min-height: 5vh;
+  /* min-height: 5vh; */
   /* max-height: 5vh; */
   flex: 1;
-  margin: 0.3vw;
+  /* margin: 0.3vw; */
   display: flex;
   justify-content: center;
   display: flex;

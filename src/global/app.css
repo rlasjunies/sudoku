@@ -17,6 +17,17 @@
   font-weight: bold;
 } */
 
+/* @media screen and (orientation: landscape) {
+  html {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    overflow-x: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+} */
 
 
 body {
@@ -39,13 +50,19 @@ body {
 }
 
 :root {
-  --value-fontsize: 11vmin;
-  --draftvalue-fontsize: 3vmin;
-  /* --header-fontsize: 3vmin; */
-  /* --header-button-fontsize: 3vmin; */
-  /* --bigbutton-fontsize: 5vmin; */
-  --keyboard-value-fontsize: 8vmin;
-  --keyboard-draftvalue-fontsize: 3vmin;
+  /* --value-fontsize: 10vmin;
+  --draftvalue-fontsize: 2.5vmin;
+  --keyboard-value-fontsize: 10vmin;
+  --keyboard-draftvalue-fontsize: 2.5vmin;
+  --header-actionbutton-fontsize: 4vmin; */
+
+  --value-fontsize: 7vh;
+  --draftvalue-fontsize: 2vh;
+  --keyboard-value-fontsize: 7vh;
+  --keyboard-value-icon-fontsize: 5vh;
+  --keyboard-draftvalue-fontsize: 2vh;
+  --header-actionbutton-fontsize: 3vh;
+  
 
 }
 

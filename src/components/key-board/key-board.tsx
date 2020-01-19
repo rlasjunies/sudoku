@@ -109,7 +109,7 @@ export class KeyBoard3 {
         <div class={this.remainingNumbers[6] > 0 ? "key" : "key hidden"} onClick={(evt) => this.numberClickedHandler(evt, "7")}>{this.cellHTML(7, false)}</div>
         <div class={this.remainingNumbers[7] > 0 ? "key" : "key hidden"} onClick={(evt) => this.numberClickedHandler(evt, "8")}>{this.cellHTML(8, false)}</div>
         <div class={this.remainingNumbers[8] > 0 ? "key" : "key hidden"} onClick={(evt) => this.numberClickedHandler(evt, "9")}>{this.cellHTML(9, false)}</div>
-        <div class={this.hideClearKey ? "key hidden" : "key"} onClick={(evt) => this.clearClickedHandler(evt)}>
+        <div class={this.hideClearKey ? "hidden keyicon" : "keyicon"} onClick={(evt) => this.clearClickedHandler(evt)}>
           <acc-icon iconUnicodeCode="f1f8" ></acc-icon>
         </div>
       </div>,
@@ -123,7 +123,7 @@ export class KeyBoard3 {
         <div class={this.remainingNumbers[6] > 0 ? "key" : "key hidden"} onClick={(evt) => this.draftNumberClickedHandler(evt, "7")}>{this.cellHTML(7, true)}</div>
         <div class={this.remainingNumbers[7] > 0 ? "key" : "key hidden"} onClick={(evt) => this.draftNumberClickedHandler(evt, "8")}>{this.cellHTML(8, true)}</div>
         <div class={this.remainingNumbers[8] > 0 ? "key" : "key hidden"} onClick={(evt) => this.draftNumberClickedHandler(evt, "9")}>{this.cellHTML(9, true)}</div>
-        <div class={this.hideUndoKey ? "key hidden" : "key"} onClick={(evt) => this.undoClickedHandler(evt)}>
+        <div class={this.hideUndoKey ? "hidden keyicon" : "keyicon"} onClick={(evt) => this.undoClickedHandler(evt)}>
           <acc-icon iconUnicodeCode="f0e2"></acc-icon>
         </div>
       </div>

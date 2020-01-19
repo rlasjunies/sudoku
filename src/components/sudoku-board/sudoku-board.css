@@ -1,8 +1,10 @@
 sudoku-board-component {
-    margin: 1vw;
+    /* margin: 1vw; */
     display: flex;
     flex-direction: column;
-    flex:1;    
+    flex:1;
+    /* width: calc(height)px; */
+    /* height: calc(75vh);     */
 }
 sudoku-board-component .sudoku-board {
     display: flex;
