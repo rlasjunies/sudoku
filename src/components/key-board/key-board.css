@@ -7,12 +7,14 @@ key-board {
 
 key-board .keyicon {
   font-size: var(--keyboard-value-icon-fontsize);
+  color: var(--keyboard-value-color);
   display: flex;
 }
 key-board .value {
   /* background-color: aqua; */
   font-size: var(--keyboard-value-fontsize);
   line-height: var(--keyboard-value-fontsize);
+  color: var(--keyboard-value-color);
   /* margin: auto; */
 }
 
@@ -57,16 +59,6 @@ key-board .draftkey {
   flex-direction: column;
   margin: 1px;
   border-style: dotted;
-  font-size: value(--keyboard-draftvalue-fontsize);
-  
-  /* background-color: violet; */
-
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* flex-direction: column;   */
-  /* text-align: center; */
-  /* vertical-align: middle; */
-  /* margin: auto; */
 }
 
 key-board .draftkeyrow {
@@ -90,14 +82,9 @@ key-board .draftkeyvalue {
   /* background-color: yellow; */
   flex: 1;
   margin: 0px;
+  font-family: 'draft';
   font-size: var(--keyboard-draftvalue-fontsize);
-
-  /* align-items: center; */
-  /* justify-content: center; */
-  /* flex-direction: column;   */
-  /* text-align: center; */
-  /* vertical-align: middle; */
-  /* margin: auto; */
+  color: var(--keyboard-draftvalue-color);
 }
 
 key-board .ripplex {

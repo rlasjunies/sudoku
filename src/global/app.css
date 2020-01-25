@@ -7,9 +7,21 @@
 
   Any global CSS variables should also be applied here.
 */
+
+  /*
+  Interesting Color website
+  https://www.color-hex.com
+  */
+
+
 @font-face {
   font-family: "localFontAwesome";
   src: url("/assets/icon/fontawesome-free-5.11.2-web/webfonts/fa-solid-900.woff2") format("woff2")
+}
+
+@font-face {
+  font-family: "draft";
+  src: url("/assets/font/cheveuxdange.medium.ttf")
 }
 
 /* #awesomelocal {
@@ -57,10 +69,25 @@ body {
   --header-actionbutton-fontsize: 4vmin; */
 
   --value-fontsize: 7vh;
+
+  /* #2f4f4f Color Hex Dark Slate Gray*/
+  --value-color: #2f4f4f;
+  
   --draftvalue-fontsize: 2vh;
+  --draftvalue-fontfamily: 'draft';
+  /* #778899 Color Hex Light Slate Gray */
+  /* lighter than light slate gray*/
+  --draftvalue-color: #a3afba;
+
   --keyboard-value-fontsize: 7vh;
   --keyboard-value-icon-fontsize: 5vh;
+
+  --keyboard-value-color: var(--value-color);
+  
   --keyboard-draftvalue-fontsize: 2vh;
+  --keyboard-draftvalue-color: var(--draftvalue-color);
+  
+  
   --header-actionbutton-fontsize: 3vh;
   
 
